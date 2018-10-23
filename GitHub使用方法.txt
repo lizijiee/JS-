@@ -22,4 +22,4 @@ git reset --hard 3628164   版本回退  id号
 
 git push命令  https://www.yiibai.com/git/git_push.html
 
-q按键回退
+q按键回退 ( git log  )
