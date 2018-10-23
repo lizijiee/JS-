@@ -12,3 +12,7 @@ git push -u origin master   （注：此操作目的是把本地仓库push到github上面，此步骤
 
 
 工作区  = >  版本区域  git commit -a  -m ""(上传已经存在的，只是修改)
+
+git reset --hard 3628164   版本回退  id号
+
+ git add file //file是我们想要添加的文件
