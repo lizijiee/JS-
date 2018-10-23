@@ -1,0 +1,3 @@
+git clone :	把远程仓库clone下来；
+cd 文件夹名字打开仓库
+git add. 添加
