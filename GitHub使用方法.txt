@@ -20,6 +20,20 @@ git reset --hard 3628164   版本回退  id号
 
  git add file //file是我们想要添加的文件
 
+
 git push命令  https://www.yiibai.com/git/git_push.html
 
+
 q按键回退 ( git log  )
+
+工作区（本地）查看缓存区
+
+git diff
+
+缓存区 
+
+git diff --cached
+ 
+工作区查版本区域
+
+git diff master 
