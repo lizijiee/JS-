@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        #list img {
+            opacity: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="header">
+            <span>排序</span>
+            <a href="javascript:;" kk="time">上架时间
+                <i class="up"></i>
+                <i class="down"></i>
+            </a>
+            <a href="javascript:;" kk="hot">热度
+                <i class="up"></i>
+                <i class="down"></i>
+            </a>
+            <a href="javascript:;" kk="price">价格
+                <i class="up"></i>
+                <i class="down"></i>
+            </a>
+        </div>
+        <ul id="list">
+            <!-- <li>
+            <img src="img/1.jpg" alt="">
+            <span>华为畅享7（香槟金）</span>
+            <span>2018-01-01</span>
+            <span>1</span>
+            <span>992</span>
+        </li> -->
+        </ul>
+    </div>
+    <script src="json/product.js"></script>
+    <script src="../mytools.js"></script>
+    <script>
+        data.push(...data); //40
+
+        function render(data) {
+            let html = '';
+            data.forEach((e, i) => {
+                html +=
+                    `
+                <li>
+                    <img width="205" height="205" _src="${e.img}" alt="">
+                    <span>${e.title}</span>
+                    <span>${e.time}</span>
+                    <span>${e.hot}</span>
+                    <span>${e.price}</span>
+                </li>
+            `;
+            });
+            list.innerHTML = html;
+        }
+        render(data);
+
+        // console.log(mytools.offset(list).top)
+
+        /*
+            思路整理：
+              1.可视区的大小   document.documentElement.clientHeight；
+
+              2.获取每一张照片的位置 绝对位置 到顶部的距离   li.offsetTop  img[i]   mytools.offset(img[i]).top
+             
+              object.getBoundingClientRect( ).top：元素上边到视窗上边的距离;
+
+              3.clientHeight    pageYOffset   offsetTop
+                可视区的大小 + 滚动条的距离 >= 每一张的绝对位置 
+               document.documentElement.clientHeight + window.pageYOffset >=li[i].offsetTop
+              
+              4.把所有需要延时加载的图片改成如下的格式：1、<img lazy_src="图片路径" border="0"/>
+
+              然后在页面加载时，保存到img1 = new Image中，然后在滚动时计算可视区域的top，然后把延时加载的图片中top小于当前可视区域（即图片出现在可视区域内）的图片的src的值用 img1 = new Image 的来替换（加载图片）：
+
+        */
+
+        let client_height = document.documentElement.clientHeight;
+        let li_list = Array.from(list.querySelectorAll('li'))
+        lazy_load() //先调用onscroll中的函数让其运行一次，可视区域内有内容
+        onscroll = lazy_load; //滚动事件添加给函数；（onscroll 事件在元素滚动条在滚动时触发。）
+        function lazy_load() {
+            //结构中,把所有需要延时加载的图片改成如下的格式：1、<img lazy_src="图片路径" border="0"/>
+            //得到每一个li给li添加判断(比图片小paddingtop=10px) ， (如果可视区的大小 + 滚动条的距离 <=每一张的绝对位置 ) 改格式  
+            //forEach循环检查标记，有标记进行操作；
+            //给浏览器缓存一张照片，触发照片的onload事件，将缓存照片地址赋给页面中的img；
+            //使用定时器进行删除标记；
+            li_list.forEach(el => {
+                /*el.offsetTop+paddingtop =mytools.offset(el.querySelector('img')).top*/
+            //*进行改格式操作*
+                if (el.offsetTop <= (document.documentElement.clientHeight + window.pageYOffset)) {
+                    let img = el.querySelector('img');//获取元素
+                    if (img.getAttribute('_src')) {//检查标记
+              //***给浏览器缓存一张照片，触发照片的onload事件，将缓存照片地址赋给页面中的img***
+                        let img1 = new Image; //创建对象  new Image()
+                        img1.src =img.getAttribute('_src'); //这样做就相当于给浏览器缓存了一张图片。
+                        //如果图片加载成功就会进入onload事件，加载完成后执行； 
+                        img1.onload = function () {
+                            img.src = img1.getAttribute('src') //调用加载的图片，解决部分未加载bug。
+                            // img.src=img.getAttribute('_src')//调用已经加载的图片，进行src修改，别调用未加载过得图片(_src)
+                            setTimeout(function () {
+                           //每次赋值之后都删除_src，以便下次就不去匹配了
+                           //加定时器的目的就是为了先赋值后删除
+                                img.removeAttribute('_src');
+                            }, 50);
+                        }
+                        img1.onerror = function () {
+                            img.src = 'img/timg.jpg'; //给张默认图片
+                            setTimeout(function () {
+                                img.removeAttribute('_src');
+                            }, 50);
+                        }
+                        img.style.opacity = 1      }}})}
+    </script>
+</body>
+
+</html>
