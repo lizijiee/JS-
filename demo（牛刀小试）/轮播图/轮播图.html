@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        #outer {
+            overflow: hidden;
+        }
+
+        #mask {
+            width: 1000px;
+            height: 300px;
+            opacity: 30%;
+            z-index: 2;
+            width: 1000px;
+            height: 300px;
+            z-index: 1;
+            position: absolute;
+        }
+
+        #prev {
+            width: 50%;
+            height: 100%;
+            right: 0;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        #prev::after {
+            content: "";
+            width: 28px;
+            height: 45px;
+            background: url("img/pre.png");
+            background-position: 0 0;
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            margin-top: -22.5px;
+            left: 0;
+        }
+
+        #next {
+            width: 50%;
+            height: 100%;
+            right: 0;
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        #next::after {
+            /* 伪类选择器创建元素 */
+            content: "";
+            width: 28px;
+            height: 45px;
+            background: url("img/pre.png");
+            background-position: 45px 0;
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            margin-top: -22.5px;
+            right: 0;
+        }
+
+        #prev:hover,
+        #next:hover {
+            opacity: 1;
+        }
+
+        /* 解决办法：
+         #prev:hover,#mask>div:first-child {
+            opacity: 1;
+        }
+         */
+
+        /* #prev:hover + #next {
+    不合法，CSS只能选择后面不能选择前面 
+            opacity: 1;
+        } */
+        #fir {
+            width: 820px;
+            height: 300px;
+            border: 1px solid green;
+            margin: 5px auto;
+        }
+
+        #fir div {
+            border: 1px dashed gray;
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 5px;
+            transition: transform 0.5s;
+        }
+
+        #fir div:first-child:hover+.se {
+            transform: rotate(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="mask">
+            <div id="prev"> <i id="left"> </i> </div>
+            <div id="next"> <i id="right"> </i> </div>
+        </div>
+        <div id="swiper">
+            <div><img src="img/banner1.jpg" alt=""></div>
+            <div><img src="img/banner2.jpg" alt=""></div>
+            <div><img src="img/banner3.jpg" alt=""></div>
+            <div><img src="img/banner4.jpg" alt=""></div>
+        </div>
+        <ul id="focus">
+            <li class="select"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script src="./js/tween.js"></script>
+<script>
+    let btn_next = document.getElementById('next');
+    let btn_prev = document.getElementById('prev');
+    let num = 0;
+    let list = document.getElementsByTagName('li');
+    let len = swiper.children.length;
+    list[0].style.backgroundColor = 'lightcoral';
+    btn_next.onclick = () => {
+        num++;
+        list[num - 1].style.backgroundColor = 'white';
+        console.log(num)
+        if (num >= len) {
+            num = 0; 
+        }
+        list[num].style.backgroundColor = 'lightcoral';
+        swiper.style.left = -num * 1000 + 'px';
+    }
+    btn_prev.onclick = () => {
+        list[num].style.backgroundColor = 'white';
+        num--;
+        console.log(num)
+        if (num < 0) {
+            num = 3; //小于0时直接搞到最后一张
+        }
+        list[num].style.backgroundColor = 'lightcoral';
+        swiper.style.left = -num * 1000 + 'px';
+    }
+    setInterval(next.onclick, 2000);
+</script>
+
+</html>
