@@ -1,0 +1,1141 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: -Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+
+}
+
+
+.top_margin .top_img {
+    float: left;
+    margin-right: 61px
+}
+
+.top-logo {
+    background: url("../images/topBar-logo.png") no-repeat;
+    display: block;
+    width: 133px;
+    height: 44px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.top_margin {
+    position: relative
+}
+
+.top_img:hover .top_pic {
+    background: url("../images/top-picture-big.png") no-repeat;
+    position: absolute;
+    top: 55px;
+    width: 960px;
+    height: 250px;
+    left: 0;
+    z-index: 3;
+}
+
+.top_margin {
+    width: 100%;
+    margin: auto;
+    height: 55px;
+    background-color: #fbfbfb;
+}
+
+.position {
+    width: 1000px;
+    background-color: #fdfefe;
+    margin: auto
+}
+
+.first_title {
+    background: #fbfbfb;
+}
+
+.top_login,
+div .top_gamemenu {
+    padding: 0 12px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+}
+
+.top_margin .top_gamemenu:hover,
+.top_login:hover {
+    color: #bc2e2e;
+    border-bottom: 3px solid #bc2e2e;
+    background-image: -webkit-linear-gradient(top, #F3F3F3 0, #FEFEFE 52px);
+    /*渐变色？？*/
+}
+
+.box_gamemenu {
+    display: inline-block;
+    z-index: 10;
+}
+
+/*重点：子元素hover要求盒子是父子关系*/
+.box_gamemenu:hover .gametable {
+    position: absolute;
+    left: 0;
+    top: 55px;
+    border: 1px solid #ececec;
+    display: block;
+}
+
+.top-nav {
+    overflow: hidden
+}
+
+.player {
+    width: 135px;
+    height: 415px;
+    padding-top: 10px;
+    padding-left: 14px;
+    text-align: left;
+    float: left;
+}
+
+.player a {
+    display: block;
+    font-weight: 400;
+    line-height: 24px;
+    color: #999;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse
+}
+
+.no-1 {
+    background: url("../images/gamemenu-pic.png")no-repeat;
+    background-position: 0 -267px
+}
+
+.new {
+    background: url("../images/gamemenu-pic.png")no-repeat;
+    background-position: 0 -206px
+}
+
+.new-another {
+    background: url("../images/gamemenu-pic.png")no-repeat;
+    background-position: -13px -206px
+}
+
+.hot {
+    background: url("../images/gamemenu-pic.png")no-repeat;
+    background-position: 0 -144px
+}
+
+a:hover {
+    color: #bc2e2e;
+    font-style: normal;
+    font-weight: 400
+}
+
+/*------------------------网易游戏列表部分----------------------*/
+.player p {
+    font-weight: 700;
+    color: #626262;
+    margin: 0 0 4px 6px;
+    line-height: 24px;
+}
+
+.gametable {
+    display: none;
+    z-index: 3;
+    position: absolute;
+    left: 160px !important;
+    top: 55px;
+}
+
+.player {
+    float: left
+}
+
+.nav-content {
+    float: left;
+    list-style: none;
+    height: 39px;
+    line-height: 39px;
+    color: #bc2e2e;
+    font-size: 14px;
+    text-indent: 20px;
+    background: #f7f7f8;
+    border-right: 1px solid #eee;
+}
+
+.xiuxian {
+    border-right: 1px solid #eee;
+    position: relative
+}
+
+.xiuxian a {
+    width: 105px
+}
+
+.more-game {
+    background: #bc2e2e;
+    border-radius: 2px;
+    width: 20px !important;
+    height: 95px;
+    line-height: 14px !important;
+    color: #FFFFFF !important;
+    vertical-align: middle;
+    text-align: center;
+    ;
+    padding: 7px 0 0 10px !important;
+    margin-left: 6px !important;
+    position: absolute;
+    right: 0;
+    top: 123px;
+}
+
+.recommend {
+    border-right: 1px solid #eee;
+    width: 148px;
+    box-sizing: border-box
+}
+
+.newrecommend {
+    width: 421px;
+    box-sizing: border-box;
+    height: 415px;
+    border-right: 1px solid #eee;
+    position: relative
+}
+
+.box1 {
+    width: 125px;
+    height: 415px;
+    text-align: left;
+    float: left;
+}
+
+.box2 {
+    width: 115px;
+}
+
+.help {
+    width: 117px
+}
+
+.game-logo {
+    background: url("../images/gamemenu-pic.png")no-repeat;
+    background-position: 0 -334px;
+    text-indent: 23px;
+    color: #bc3030 !important;
+}
+
+.mix {
+    width: 402px;
+    height: 24px;
+    padding: 0;
+}
+
+.top-list {
+    width: 100%;
+    height: 435px;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfefe;
+    box-sizing: none;
+}
+
+/*------------------------网易游戏列表部分----------------------*/
+
+ol li a {
+    text-decoration: none;
+    color: lime;
+    width: 30px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+ol li {
+    display: inline;
+    /*list-style: none;*/
+}
+
+ol {
+    color: lime;
+}
+
+.top_list {
+    height: 55px;
+    line-height: 52px;
+    color: #333;
+    background: #fbfbfb;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/*--------------------正文部分---------*/
+.head-flash {
+    position: absolute;
+    ;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    top: 55px
+}
+
+.flash-box {
+    position: absolute;
+    left: 50%;
+    margin-left: -960px;
+    width: 1920px;
+    height: 1080px;
+    z-index: 1;
+}
+
+
+
+.bg10 {
+    background: url("../images/bg_10.png") no-repeat center top;
+    height: 406px;
+}
+
+.bg11 {
+    background: url("../images/bg_11.png") no-repeat center top;
+    height: 741px;
+}
+
+.bg02 {
+    background: url("../images/bg_02.png") no-repeat center top;
+    height: 1100px;
+}
+
+.bg03 {
+    background: url("../images/bg_03.png") no-repeat center top;
+    margin-top: -336px;
+    height: 1100px;
+}
+
+.table-title li {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.table-title {
+    position: absolute;
+    left: 90px;
+    top: -7px;
+}
+
+.table-title a {
+    color: #FFFFFF !important;
+    width: 83px;
+    float: left;
+    line-height: 30px;
+    height: 30px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.table-list {
+    position: absolute;
+    left: 197px;
+    top: 25px;
+}
+
+.table-list li a {
+    display: block;
+    width: 93px;
+    height: 24px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.table-list li {
+    float: left;
+    vertical-align: center;
+}
+
+.title-list p {
+    width: 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    display: inline-block;
+    float: left
+}
+
+.i-hot {
+    background: url("../images/H.png")no-repeat;
+    margin-left: 3px;
+    width: 11px;
+    height: 11px;
+    line-height: 24px;
+    background-position: 0 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-table {
+    width: 977px;
+    height: 270px;
+    margin: auto;
+    position: relative;
+    margin-top: 28px
+}
+
+.table-box {
+    width: 1170px;
+    height: 325px;
+    margin: auto;
+    position: relative;
+    padding-top: 25px;
+    z-index: 1
+}
+
+.table-logo {
+    width: 200px;
+    height: 98px;
+    margin-right: 15px;
+    background: url("../images/table-logo.png");
+    display: block;
+    float: left
+}
+
+.star-logo {
+    display: block;
+    position: absolute;
+    width: 110px;
+    height: 107px;
+    background: url("../images/table-star.png");
+    right: 94px;
+    bottom: 15%;
+    z-index: 5
+}
+
+.table-happy {
+    display: block;
+    position: absolute;
+    right: -186px;
+    bottom: -4%;
+    background: url("../images/table-happy.png");
+    width: 405px;
+    height: 309px;
+    z-index: 4;
+}
+
+/*--------------------part01------------------------*/
+
+.part01 {
+    width: 1170px;
+    height: 460px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.part01-box01 {
+    width: 190px;
+    height: 459px;
+    float: left;
+    margin-right: 20px;
+    background: burlywood
+}
+
+
+.part01-box03 {
+    width: 478px;
+    height: 460px;
+    background: #FFFFFF;
+    float: left;
+}
+
+/*--------------------part01--box01----------------------*/
+
+.part01-box01 {
+    display: block
+}
+
+.btn-dl {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.JpcDownload {
+    width: 100%;
+    height: 100px;
+    background: url("../images/btn_dl_01.png")no-repeat;
+    color: white;
+    position: relative;
+}
+
+.btn-icon {
+    top: 30px;
+    left: 60px;
+    right: 120px;
+    margin-left: -40px;
+    background: url("../images/spriter.png");
+    background-position: -380px -221px;
+    width: 50px;
+    height: 44px;
+    display: inline-block;
+    position: absolute;
+}
+
+.arrow-box {
+    width: 32px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    margin: -13px 0 0 -16px;
+    overflow: hidden;
+}
+
+.i-arrow {
+    width: 22px;
+    height: 24px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -414px -327px;
+    position: absolute;
+    left: 50%;
+    margin-left: -11px;
+    top: -3px;
+    transition: 0.4s;
+}
+
+.i-arrow::after {
+    content: "";
+    width: 22px;
+    height: 24px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -414px -328px;
+    position: absolute;
+    left: 50%;
+    margin-left: -11px;
+    top: -26px;
+}
+
+.JpcDownload:hover .i-arrow {
+    transform: translateY(27px)
+}
+
+
+.dec {
+    height: 26px;
+    line-height: 26px;
+    position: absolute;
+    left: 78px;
+    top: 26px;
+    font-size: 18px;
+    color: #fefefe;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.JbtnHutong {
+    display: block;
+    width: 100%;
+    height: 99px;
+    background: url("../images/btn_dl_02.png")no-repeat;
+    position: relative;
+}
+
+.JbtnHutong:hover .i-arrow {
+    transform: translateY(28px)
+}
+
+.JbtnHutong .btn-icon {
+    width: 35px;
+    height: 47px;
+    background-position: -380px -174px;
+    left: 45px;
+    top: 23px;
+    margin-left: -17px;
+}
+
+.JbtnHutong .dec {
+    margin-left: 0px;
+    left: 72px;
+    padding-bottom: 5px;
+    height: 38px;
+    text-align: center;
+    line-height: 18px;
+    top: 50%;
+    margin-top: -19px;
+}
+
+.btn-desc {
+    font-style: normal;
+    /* 斜体变正体 */
+    color: #f7b0b4;
+    font-size: 12px;
+}
+
+.JbtnHelp {
+    width: 100%;
+    height: 98px;
+    background: url("../images/btn_dl_02.png")no-repeat;
+    position: relative;
+    transition: 1s;
+}
+
+.JbtnHelp .i-arrow::after {
+    content: "";
+    width: 41px;
+    height: 41px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -93px -328px;
+    position: absolute;
+    left: 12px;
+    top: -41px;
+}
+
+.JbtnHelp:hover .i-arrow {
+    transform: translateY(41px)
+}
+
+
+
+.JbtnHelp .arrow-box {
+    /* overflow: initial; */
+    width: 41px;
+    height: 41px;
+    top: 50%;
+    margin-top: -20.5px;
+    left: 42px;
+    margin-left: -16px;
+}
+
+.JbtnHelp .i-arrow {
+    width: 41px;
+    height: 41px;
+    background-position: -93px -328px;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+.JbtnHelp .dec {
+    left: 72px;
+}
+
+.btns-box {
+    width: 100%;
+    height: 100px;
+    background-color: #3b8bed;
+}
+
+
+.btns-01 i {
+    transition: 0.4s
+}
+
+.btns-01:hover,
+.btns-02:hover,
+.cantact:hover {
+    color: #fff;
+}
+
+.btns-01:hover i {
+    transform: translateY(40px)
+}
+
+.btns-01 .i_public::after {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 33px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -415px -174px;
+    left: 0;
+    top: -40px;
+    position: absolute;
+}
+
+.btns-01-02_public {
+    display: block;
+    width: 190px;
+    height: 50px;
+    position: relative;
+    padding-left: 71px;
+    line-height: 50px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+}
+
+.span_public {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    left: 31px;
+    top: 50%;
+    margin-top: -16.5px;
+}
+
+.i_public {
+    display: block;
+    width: 25px;
+    height: 33px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -415px -174px;
+}
+
+.btns-02 {
+    width: 119px;
+    border-top: solid 1px #2a73cc;
+}
+
+.btns-02 .i_public::after {
+    /* 记住：content: ""; */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -30px;
+    width: 30px;
+    height: 30px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -286px -199px;
+}
+
+.btns-02:hover .i_public {
+    transform: translateY(30px)
+}
+
+.btns-02 .i_public {
+    width: 30px;
+    height: 30px;
+    background-position: -286px -199px;
+    transition: 0.4s;
+}
+
+
+.cantact {
+    background-color: #2a7bdf;
+    height: 38px;
+    width: 119px;
+    line-height: 18px;
+    padding: 12px 0 12px 71px;
+    font-size: 14px;
+}
+
+.cantact .span_public {
+    width: 24px;
+    height: 27px;
+}
+
+.cantact .i_public {
+    background-position: -390px -328px;
+    transition: 0.4s
+}
+
+.cantact .i_public::after {
+    content: "";
+    width: 24px;
+    height: 27px;
+    background: url(../images/spriter.png), no-repeat;
+    background-position: -390px -328px;
+    position: absolute;
+    left: 0px;
+    top: -27px;
+}
+
+.cantact:hover .i_public {
+    transform: translateY(27px);
+}
+
+/* --------------part01--box02--------------------------- */
+.part01-box02 {
+    margin-right: 20px;
+    background: url("../images/table-box-part01-box02-time.jpg");
+    display: block;
+    float: left;
+    position: relative;
+    width: 462px;
+    height: 460px;
+    position: relative;
+    z-index: 0;
+}
+
+.slide_box {
+    position: absolute;
+    z-index: 1;
+}
+
+.slide_box a:nth-child(1) img {
+    display: block;
+}
+
+.slide_box .banner_img {
+    width: 462px;
+    height: 460px;
+    display: none;
+}
+
+.banner-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    width: 120px;
+    height: 40px;
+    background: #333e50;
+    z-index: auto;
+}
+
+.banner-nav a {
+    display: block;
+    line-height: 40px;
+    float: left;
+    font-size: 16px;
+    color: #fff;
+    min-width: 60px;
+    text-align: center;
+    display: block;
+    line-height: 40px;
+    float: left;
+    font-size: 16px;
+    color: #fff;
+    min-width: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.on {
+    background-color: #3b8bed;
+}
+
+.banner-nav a:nth-child(2)+img{
+    width: 462px;
+    height: 460px;
+    position: absolute;
+    z-index: -1;
+    left:-342px;
+    top:0;
+    opacity: 0;
+    transition: 1s;
+}
+.banner-nav a:nth-child(2):hover+img{
+    opacity: 1;
+} 
+
+.banner-item-nav {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 462px;
+    height: 60px;
+    z-index: auto;
+    font-size: 0;
+    background-color:rgba(0,0,0,.8);
+}
+
+
+.banner-item-nav a{
+    line-height: 60px;
+    width: 20%;
+    height: 60px;
+    /* background-color: lime; */
+    float: left;
+    text-align: center;
+    color: #8b8989;
+}
+.ib_nav{
+    font-size: 14px;
+    line-height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    font-style: normal;
+    padding: 0 10px;
+    text-align: center;
+}
+.banner-item-nav a:nth-child(1):hover{
+     background-color:  #3b8bed; 
+     color:white;
+}
+.banner-item-nav a:nth-child(1) img{
+    width:462px ;
+    height: 460px;;
+    border: 1px solid block;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    z-index: -1 ;
+    opacity: 0;
+    transition: 1s;
+}
+.banner-item-nav a:nth-child(1):hover img{
+    opacity: 1;
+}
+
+.banner-item-nav a:nth-child(1):hover {
+    background-color:  #3b8bed; 
+    color:white;
+}
+
+
+.banner-item-nav a:nth-child(2):hover{
+    background-color:  #3b8bed; 
+    color:white;
+}
+.banner-item-nav a:nth-child(2) img{
+    width:462px ;
+    height: 460px;;
+    border: 1px solid block;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    z-index: -1 ;
+    opacity: 0;
+    transition: 1s;
+}
+.banner-item-nav a:nth-child(2):hover img{
+    opacity: 1;
+}
+
+
+
+.banner-item-nav a:nth-child(3):hover{
+    background-color:  #3b8bed; 
+    color:white;
+}
+.banner-item-nav a:nth-child(3) img{
+    width:462px ;
+    height: 460px;;
+    border: 1px solid block;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    z-index: -1 ;
+    opacity: 0;
+    transition: 1s;
+}
+.banner-item-nav a:nth-child(3):hover img{
+    opacity: 1;
+}
+
+
+.banner-item-nav a:nth-child(4):hover{
+    background-color:  #3b8bed; 
+    color:white;
+}
+.banner-item-nav a:nth-child(4) img{
+    width:462px ;
+    height: 460px;;
+    border: 1px solid block;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    z-index: -1 ;
+    opacity: 0;
+    transition: 1s;
+}
+.banner-item-nav a:nth-child(4):hover img{
+    opacity: 1;
+}
+
+
+
+.banner-item-nav a:nth-child(5):hover{
+    background-color:  #3b8bed; 
+    color:white;
+}
+.banner-item-nav a:nth-child(5) img{
+    width:462px ;
+    height: 460px;;
+    border: 1px solid block;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    z-index: -1 ;
+    opacity: 0;
+    transition: 1s;
+}
+.banner-item-nav a:nth-child(5):hover img{
+    opacity: 1;
+}
+/* --------------part01--box03--------------------------- */
+.news-nav{
+    width: 100%;
+    height: 60px;
+}
+.news-nav a{
+    width: 75px;
+    height: 57px;
+    color: #3c3c3c;
+    line-height: 57px;
+    border-top:3px solid transparent; 
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+}
+.news-nav a:hover{
+   color: #f24854;
+   border-top:3px solid #f24854; 
+}
+.news-box{
+    width: 478px;
+    height: 398px;
+}
+.news-box .news-item:nth-child(1){
+    width: 478px;
+    height: 398px;
+}
+.news-box .news-item:nth-child(1) img{
+    display: block;
+    width: 150px;
+    height: 113px;
+    margin-right: 25px;
+    float: left;
+}
+
+.news-box .news-item:nth-child(1) em{
+    display: block;
+    margin-bottom: 15px;
+    display: block;
+    color: #f24854;
+    font-size: 16px;
+    line-height: 18px;
+    height: 18px;
+    font-style:normal;
+}
+.news-box .news-item:nth-child(1) span{
+    line-height: 25px;
+    font-size: 14px;
+    color: #3c3c3c;
+    height: 75px;
+    text-overflow: ellipsis;
+}
+
+
+.news-box .news-item:nth-child(1) .news-pic{
+    display: block;
+    width: 438px;
+    height: 113px;
+    margin: 0 20px;
+    padding: 27px 0 23px 0;
+    border-bottom:dotted 1px #dadada;
+}
+
+.news-box .news-item:nth-child(1) ul{
+    width: 438px;
+    height:219px ;
+    padding: 15px 20px 0 20px;
+}
+.news-box .news-item:nth-child(1) li{
+    width: 100%;
+    height:34px ;
+}
+.news-box .news-item:nth-child(1) ul .top-news{
+    
+}
+
+
+
+
+
+
+/*--------------------part02----------------------*/
+.part02 {
+    box-sizing: border-box;
+    height: 380px;
+    margin-bottom: 20px;
+}
+
+.part02-box01 {
+    height: 380px
+}
+
+.part02-box02 {
+    background: #FFFFFF;
+    height: 380px
+}
+
+.part02-box03 {
+    width: 230px;
+    height: 380px;
+    margin-right: 18px;
+    float: left;
+    background: #FFFFFF;
+    box-sizing: border-box
+}
+
+.part02-box04 {
+    float: left;
+    margin: 0;
+    width: 230px;
+    height: 380px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.part03 {
+    height: 380px;
+}
+
+.part03-box01 {
+    height: 380px;
+}
+
+.part03-box02 {
+    width: 670px;
+    padding: 0 20px 0 20px;
+    height: 380px;
+    margin-right: 20px;
+    background: #FFFFFF;
+    float: left
+}
+
+.part03-box03 {
+    height: 380px;
+    float: left;
+    width: 230px;
+    margin-right: 0;
+}
+
+.part04 {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 230px;
+    background: #71b5fd
+}
+
+.part05 {
+    height: 380px;
+}
+
+.part06,
+.part06-box01,
+.part06-box02,
+.part06-box03 {
+    height: 380px
+}
+
+.part07,
+.part07-box01,
+.part07-box02 {
+    height: 230px;
+}
+
+.part07-box02 {
+    width: 960px;
+    background: #FFFFFF;
+    float: left
+}
+
+.footer {
+    background: url("../images/footer-picture.png")no-repeat;
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+    height: 818px;
+}
