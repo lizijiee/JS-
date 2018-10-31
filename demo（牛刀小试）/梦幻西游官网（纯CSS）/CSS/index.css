@@ -1,8 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: -Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
-
 }
 
 
@@ -115,7 +113,7 @@ div .top_gamemenu {
 
 .new {
     background: url("../images/gamemenu-pic.png")no-repeat;
-    background-position: 0 -206px
+    background-position: 0px -206px
 }
 
 .new-another {
@@ -814,19 +812,20 @@ ol {
     background-color: #3b8bed;
 }
 
-.banner-nav a:nth-child(2)+img{
+.banner-nav a:nth-child(2)+img {
     width: 462px;
     height: 460px;
     position: absolute;
     z-index: -1;
-    left:-342px;
-    top:0;
+    left: -342px;
+    top: 0;
     opacity: 0;
     transition: 1s;
 }
-.banner-nav a:nth-child(2):hover+img{
+
+.banner-nav a:nth-child(2):hover+img {
     opacity: 1;
-} 
+}
 
 .banner-item-nav {
     position: absolute;
@@ -836,11 +835,11 @@ ol {
     height: 60px;
     z-index: auto;
     font-size: 0;
-    background-color:rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 
-.banner-item-nav a{
+.banner-item-nav a {
     line-height: 60px;
     width: 20%;
     height: 60px;
@@ -849,7 +848,8 @@ ol {
     text-align: center;
     color: #8b8989;
 }
-.ib_nav{
+
+.ib_nav {
     font-size: 14px;
     line-height: 18px;
     display: inline-block;
@@ -858,139 +858,230 @@ ol {
     padding: 0 10px;
     text-align: center;
 }
-.banner-item-nav a:nth-child(1):hover{
-     background-color:  #3b8bed; 
-     color:white;
+
+.banner-item-nav a:nth-child(1):hover {
+    background-color: #3b8bed;
+    color: white;
 }
-.banner-item-nav a:nth-child(1) img{
-    width:462px ;
-    height: 460px;;
+
+.banner-item-nav a:nth-child(1) img {
+    width: 462px;
+    height: 460px;
+    ;
     border: 1px solid block;
     position: absolute;
     bottom: 0;
-    left:0;
-    z-index: -1 ;
+    left: 0;
+    z-index: -1;
     opacity: 0;
     transition: 1s;
 }
-.banner-item-nav a:nth-child(1):hover img{
+
+.banner-item-nav a:nth-child(1):hover img {
     opacity: 1;
 }
 
 .banner-item-nav a:nth-child(1):hover {
-    background-color:  #3b8bed; 
-    color:white;
+    background-color: #3b8bed;
+    color: white;
 }
 
 
-.banner-item-nav a:nth-child(2):hover{
-    background-color:  #3b8bed; 
-    color:white;
+.banner-item-nav a:nth-child(2):hover {
+    background-color: #3b8bed;
+    color: white;
 }
-.banner-item-nav a:nth-child(2) img{
-    width:462px ;
-    height: 460px;;
+
+.banner-item-nav a:nth-child(2) img {
+    width: 462px;
+    height: 460px;
+    ;
     border: 1px solid block;
     position: absolute;
     bottom: 0;
-    left:0;
-    z-index: -1 ;
+    left: 0;
+    z-index: -1;
     opacity: 0;
     transition: 1s;
 }
-.banner-item-nav a:nth-child(2):hover img{
+
+.banner-item-nav a:nth-child(2):hover img {
     opacity: 1;
 }
 
 
 
-.banner-item-nav a:nth-child(3):hover{
-    background-color:  #3b8bed; 
-    color:white;
+.banner-item-nav a:nth-child(3):hover {
+    background-color: #3b8bed;
+    color: white;
 }
-.banner-item-nav a:nth-child(3) img{
-    width:462px ;
-    height: 460px;;
+
+.banner-item-nav a:nth-child(3) img {
+    width: 462px;
+    height: 460px;
+    ;
     border: 1px solid block;
     position: absolute;
     bottom: 0;
-    left:0;
-    z-index: -1 ;
+    left: 0;
+    z-index: -1;
     opacity: 0;
     transition: 1s;
 }
-.banner-item-nav a:nth-child(3):hover img{
+
+.banner-item-nav a:nth-child(3):hover img {
     opacity: 1;
 }
 
 
-.banner-item-nav a:nth-child(4):hover{
-    background-color:  #3b8bed; 
-    color:white;
+.banner-item-nav a:nth-child(4):hover {
+    background-color: #3b8bed;
+    color: white;
 }
-.banner-item-nav a:nth-child(4) img{
-    width:462px ;
-    height: 460px;;
+
+.banner-item-nav a:nth-child(4) img {
+    width: 462px;
+    height: 460px;
+    ;
     border: 1px solid block;
     position: absolute;
     bottom: 0;
-    left:0;
-    z-index: -1 ;
+    left: 0;
+    z-index: -1;
     opacity: 0;
     transition: 1s;
 }
-.banner-item-nav a:nth-child(4):hover img{
+
+.banner-item-nav a:nth-child(4):hover img {
     opacity: 1;
 }
 
 
 
-.banner-item-nav a:nth-child(5):hover{
-    background-color:  #3b8bed; 
-    color:white;
+.banner-item-nav a:nth-child(5):hover {
+    background-color: #3b8bed;
+    color: white;
 }
-.banner-item-nav a:nth-child(5) img{
-    width:462px ;
-    height: 460px;;
+
+.banner-item-nav a:nth-child(5) img {
+    width: 462px;
+    height: 460px;
+    ;
     border: 1px solid block;
     position: absolute;
     bottom: 0;
-    left:0;
-    z-index: -1 ;
+    left: 0;
+    z-index: -1;
     opacity: 0;
     transition: 1s;
 }
-.banner-item-nav a:nth-child(5):hover img{
+
+.banner-item-nav a:nth-child(5):hover img {
     opacity: 1;
 }
+
 /* --------------part01--box03--------------------------- */
-.news-nav{
+.news-nav {
     width: 100%;
     height: 60px;
+    position: relative;
 }
-.news-nav a{
+
+.news-nav>a:nth-child(-n+5) {
+    /* 用空格选取不准确 */
+    /* 兄弟选择器 ~ */
     width: 75px;
     height: 57px;
     color: #3c3c3c;
     line-height: 57px;
-    border-top:3px solid transparent; 
+    border-top: 3px solid transparent;
     display: inline-block;
     font-size: 16px;
     text-align: center;
 }
-.news-nav a:hover{
-   color: #f24854;
-   border-top:3px solid #f24854; 
+
+.news-nav>a:nth-child(6){
+    position: absolute;
+    right: 20px;
+    top:50%;
+    margin-top: -8.5px;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #000;
+    transition: all ease-out 0.3s
 }
-.news-box{
+
+
+.news-nav>a:nth-child(6):hover{
+    color: #f24854;
+    text-indent: 5px;
+}
+.news-nav>a:nth-child(6):hover i{
+    display: none;
+}
+
+.news-nav>a:nth-child(6) span{
+    float: left;
+}
+.news-nav>a:nth-child(6) i{
+    display: block;
+    width: 4px;
+    height: 7px;
+    margin-top:6px; 
+    float: right;
+    background: url("../images/spriter.png") no-repeat;
+    background-position: -434px -230px;
+}
+
+
+
+
+
+.news-nav>a:nth-child(-n+5):hover{
+    border-top: 3px solid #f24854;
+}
+/* .media{
+    opacity: 1!important;
+} */
+.news-nav>a:nth-child(1)~.composite{
+    display: block;
+}
+
+.news-nav>a:nth-child(2):hover~.maintain{
+    display: block;
+}
+.news-nav>a:nth-child(3):hover~.special{
+    display: block;
+}
+.news-nav>a:nth-child(4):hover~.forum{
+    display: block;
+}
+.news-nav>a:nth-child(5):hover~.media{
+    display: block;
+}
+
+.news-nav .news-box{
+    position: absolute;
+    width: 478px;
+    height: 398px;
+    display: none;
+    /* opacity: 0; */
+    transition: 1s;
+    z-index: 2;
+    background-color:white;
+}
+
+
+
+.news-box .news-item:nth-child(1) {
     width: 478px;
     height: 398px;
 }
-.news-box .news-item:nth-child(1){
-    width: 478px;
-    height: 398px;
-}
-.news-box .news-item:nth-child(1) img{
+
+.news-box .news-item:nth-child(1) img {
     display: block;
     width: 150px;
     height: 113px;
@@ -998,7 +1089,7 @@ ol {
     float: left;
 }
 
-.news-box .news-item:nth-child(1) em{
+.news-box .news-item:nth-child(1) em {
     display: block;
     margin-bottom: 15px;
     display: block;
@@ -1006,39 +1097,123 @@ ol {
     font-size: 16px;
     line-height: 18px;
     height: 18px;
-    font-style:normal;
+    font-style: normal;
+    text-align: left;
 }
-.news-box .news-item:nth-child(1) span{
+
+.news-box .news-item:nth-child(1) .news-pic span {
+    display: block;
     line-height: 25px;
     font-size: 14px;
     color: #3c3c3c;
     height: 75px;
     text-overflow: ellipsis;
+    text-align: left;
 }
 
 
-.news-box .news-item:nth-child(1) .news-pic{
+.news-box .news-item:nth-child(1) .news-pic {
     display: block;
     width: 438px;
     height: 113px;
     margin: 0 20px;
     padding: 27px 0 23px 0;
-    border-bottom:dotted 1px #dadada;
+    border-bottom: dotted 1px #dadada;
 }
 
-.news-box .news-item:nth-child(1) ul{
+.news-box .news-item:nth-child(1) ul {
     width: 438px;
-    height:219px ;
+    height: 219px;
     padding: 15px 20px 0 20px;
 }
-.news-box .news-item:nth-child(1) li{
-    width: 100%;
-    height:34px ;
-}
-.news-box .news-item:nth-child(1) ul .top-news{
-    
+
+
+
+
+
+
+
+
+/* ----------------------li通用设置 -----------------*/
+.news-box .news-item:nth-child(1) li a {
+    display: block;
+    width: 378px;
+    padding-right: 60px;
+    height: 34px;
+    overflow: hidden;
+    line-height: 34px;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #3c3c3c;
+    font-size: 14px;
+    font-family: initial;
+    text-align: left;
 }
 
+.news-box .news-item:nth-child(1) ul li a .time {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #b8b8b9;
+    line-height: 34px;
+    height: 34px;
+    padding: 0 5px;
+    text-align: center;
+}
+
+/* -------------------首个li设置 -----------------*/
+.news-box .news-item:nth-child(1) ul .top-news a {
+    height: 38px;
+    line-height: 38px;
+    width: 418px;
+    padding-right: 20px;
+    background: #f5f7f9;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.news-box .news-item:nth-child(1) ul a:hover{
+   color: #f24854;
+}
+
+
+
+.news-box .news-item:nth-child(1) .top-news .recom {
+    width: 42px;
+    height: 38px;
+    display: block;
+    background-color: #f24854;
+    float: left;
+    text-align: center;
+    line-height: 38px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    margin-right: 12px;
+}
+
+.news-box .news-item:nth-child(1) .top-news i {
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px;
+    border-color: transparent transparent transparent #f24854;
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    right: -9px;
+}
+
+.news-box .news-item:nth-child(1) .top-news .column {
+    font-size: 14px;
+    color: #3c3c3c;
+    font-weight: 500;
+}
 
 
 
@@ -1050,15 +1225,314 @@ ol {
     height: 380px;
     margin-bottom: 20px;
 }
-
+/*--------------------part02-box01----------------------*/
 .part02-box01 {
-    height: 380px
+    height: 380px;
+    background-color: #08bad7;
 }
+.btn-cangbaoge{
+    display: block;
+    width: 100%;
+    height: 62px;
+    line-height: 62px;
+    background: url(../images/spriter.png);
+    background-position:-190px -230px; 
+    position: relative;
+}
+.btn-cangbaoge span{
+    display: block;
+    overflow: hidden;
+    width: 48px;
+    height: 39px;
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    margin-top: -19.5px;
+}
+.btn-cangbaoge i{
+    display: block;
+    width: 100%;
+    height:  100%;
+    background: url(../images/spriter.png);
+    background-position:-134px -328px;  
+    transition:0.4s;
+}
+.btn-cangbaoge i::after{
+    content: "";
+    width: 48px;
+    height: 39px;
+    background: url(../images/spriter.png);
+    background-position:-134px -328px; 
+    position: absolute;
+    left: 0;
+    top: -39px;
+}
+.btn-cangbaoge:hover i{
+    transform: translateY(39px);
+}
+
+
+/* -----------------------li通用设置 -------------------*/
+
+.entrance-box li a{
+    display: block;
+    width: 119px;
+    height: 64px;
+    background-color:  #00a5c0;
+    padding-left: 71px;
+    font-size: 14px;
+    line-height: 64px;
+    color: #fff;
+    position: relative;
+}
+
+.entrance-box li a:hover{
+    background: #0197b0;
+}
+/* 分别设置图标    entrance-02*/
+.entrance-02 em{
+    display: block;
+    width: 33px;
+    height: 31px;
+    position: absolute;
+    left:  29px;
+    top: 50%;
+    margin-top: -15.5px;
+    overflow: hidden;
+}
+.entrance-02 i{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/spriter.png);
+    background-position:-253px -199px; 
+    transition:0.4s;
+}
+.entrance-02 i::after{
+    content: "";
+    display: block;
+    width: 33px;
+    height: 31px;
+    background: url(../images/spriter.png);
+    background-position:-253px -199px; 
+    position: absolute;
+    left:0;
+    top: -31px;
+}
+.entrance-02 a:hover i{
+    transform: translateY(31px)
+}
+/* 分别设置图标    entrance-03*/
+.entrance-03 em{
+    display: block;
+    width: 28px;
+    height: 36px;
+    position: absolute;
+    left:  29px;
+    top: 50%;
+    margin-top: -18px;
+    overflow: hidden;
+}
+.entrance-03 i{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/spriter.png);
+    background-position:-190px -292px;
+    transition:0.4s;
+}
+.entrance-03 i::after{
+    content: "";
+    display: block;
+    width: 28px;
+    height: 36px;
+    background: url(../images/spriter.png);
+    background-position:-190px -292px;
+    position: absolute;
+    left:0;
+    top: -36px;
+}
+.entrance-03 a:hover i{
+    transform: translateY(36px)
+}
+
+/* 分别设置图标    entrance-04*/
+.entrance-04 em{
+    display: block;
+    width: 32px;
+    height: 31px;
+    position: absolute;
+    left:  29px;
+    top: 50%;
+    margin-top: -15.5px;
+    overflow: hidden;
+}
+.entrance-04 i{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/spriter.png);
+    background-position:-221px -199px; 
+    transition:0.4s;
+}
+.entrance-04 i::after{
+    content: "";
+    display: block;
+    width: 32px;
+    height: 31px;
+    background: url(../images/spriter.png);
+    background-position:-221px -199px; 
+    position: absolute;
+    left:0;
+    top: -31px;
+}
+.entrance-04 a:hover i{
+    transform: translateY(31px)
+}
+
+/* 分别设置图标    entrance-05*/
+.entrance-05 em{
+    display: block;
+    width: 30px;
+    height: 32px;
+    position: absolute;
+    left:  29px;
+    top: 50%;
+    margin-top: -16px;
+    overflow: hidden;
+}
+.entrance-05 i{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/spriter.png);
+    background-position:-250px -292px; 
+    transition:0.4s;
+}
+.entrance-05 i::after{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 32px;
+    background: url(../images/spriter.png);
+    background-position:-250px -292px;
+    position: absolute;
+    left:0;
+    top: -32px;
+}
+.entrance-05 a:hover i{
+    transform: translateY(32px)
+}
+
+/* 分别设置图标    entrance-06*/
+.entrance-06 em{
+    display: block;
+    width: 30px;
+    height: 28px;
+    position: absolute;
+    left:  29px;
+    top: 50%;
+    margin-top: -14px;
+    overflow: hidden;
+}
+.entrance-06 i{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/spriter.png);
+    background-position:-306px -328px;
+    transition:0.4s;
+}
+.entrance-06 i::after{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 28px;
+    background: url(../images/spriter.png);
+    background-position:-306px -328px;
+    position: absolute;
+    left:0;
+    top: -28px;
+}
+.entrance-06 a:hover i{
+    transform: translateY(28px)
+}
+
+
+
+/*--------------------part02-box02----------------------*/
 
 .part02-box02 {
     background: #FFFFFF;
-    height: 380px
+    height: 380px;
+    width: 420px;
+    padding: 0 20px;
 }
+.box_title{
+    width: 420px;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    font-size: 20px;
+    color: #3c3c3c;
+    font-weight: 400;
+    border-bottom: solid 1px #e8e8e8;
+
+}
+/* 梦幻热点文字 */
+.box_title h4{
+    font-weight: 400;
+}
+/* 订阅 */
+.order-btn{
+    position: absolute;
+    right: 62px;
+    top: 21px;
+    width: 58px; 
+    height: 24px;
+    background: url(../images/spriter.png)no-repeat;
+    background-position: -58px -371px;
+}
+
+
+
+/*  更多部分 */
+.box_title>a{
+    position: absolute;
+    right: 0;
+    top:50%;
+    margin-top: -8.5px;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #000;
+    transition: all ease-out 0.3s
+}
+.box_title>a:hover{
+    color: #f24854;
+    text-indent: 5px;
+}
+.box_title>a:hover i{
+    display: none;
+}
+.box_title a span{
+    float: left;
+}
+.box_title a i{
+    display: block;
+    width: 4px;
+    height: 7px;
+    margin-top:6px; 
+    float: right;
+    background: url("../images/spriter.png") no-repeat;
+    background-position: -434px -230px;
+}
+
+
+
+/*--------------------part02-box03----------------------*/
 
 .part02-box03 {
     width: 230px;
@@ -1068,7 +1542,7 @@ ol {
     background: #FFFFFF;
     box-sizing: border-box
 }
-
+/*--------------------part02-box04----------------------*/
 .part02-box04 {
     float: left;
     margin: 0;
