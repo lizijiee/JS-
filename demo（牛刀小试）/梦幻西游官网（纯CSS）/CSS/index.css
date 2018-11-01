@@ -1000,10 +1000,10 @@ ol {
     text-align: center;
 }
 
-.news-nav>a:nth-child(6){
+.news-nav>a:nth-child(6) {
     position: absolute;
     right: 20px;
-    top:50%;
+    top: 50%;
     margin-top: -8.5px;
     width: 40px;
     height: 20px;
@@ -1015,22 +1015,24 @@ ol {
 }
 
 
-.news-nav>a:nth-child(6):hover{
+.news-nav>a:nth-child(6):hover {
     color: #f24854;
     text-indent: 5px;
 }
-.news-nav>a:nth-child(6):hover i{
+
+.news-nav>a:nth-child(6):hover i {
     display: none;
 }
 
-.news-nav>a:nth-child(6) span{
+.news-nav>a:nth-child(6) span {
     float: left;
 }
-.news-nav>a:nth-child(6) i{
+
+.news-nav>a:nth-child(6) i {
     display: block;
     width: 4px;
     height: 7px;
-    margin-top:6px; 
+    margin-top: 6px;
     float: right;
     background: url("../images/spriter.png") no-repeat;
     background-position: -434px -230px;
@@ -1040,30 +1042,34 @@ ol {
 
 
 
-.news-nav>a:nth-child(-n+5):hover{
+.news-nav>a:nth-child(-n+5):hover {
     border-top: 3px solid #f24854;
 }
+
 /* .media{
     opacity: 1!important;
 } */
-.news-nav>a:nth-child(1)~.composite{
+.news-nav>a:nth-child(1)~.composite {
     display: block;
 }
 
-.news-nav>a:nth-child(2):hover~.maintain{
-    display: block;
-}
-.news-nav>a:nth-child(3):hover~.special{
-    display: block;
-}
-.news-nav>a:nth-child(4):hover~.forum{
-    display: block;
-}
-.news-nav>a:nth-child(5):hover~.media{
+.news-nav>a:nth-child(2):hover~.maintain {
     display: block;
 }
 
-.news-nav .news-box{
+.news-nav>a:nth-child(3):hover~.special {
+    display: block;
+}
+
+.news-nav>a:nth-child(4):hover~.forum {
+    display: block;
+}
+
+.news-nav>a:nth-child(5):hover~.media {
+    display: block;
+}
+
+.news-nav .news-box {
     position: absolute;
     width: 478px;
     height: 398px;
@@ -1071,7 +1077,7 @@ ol {
     /* opacity: 0; */
     transition: 1s;
     z-index: 2;
-    background-color:white;
+    background-color: white;
 }
 
 
@@ -1175,8 +1181,8 @@ ol {
     font-weight: 700;
 }
 
-.news-box .news-item:nth-child(1) ul a:hover{
-   color: #f24854;
+.news-box .news-item:nth-child(1) ul a:hover {
+    color: #f24854;
 }
 
 
@@ -1225,21 +1231,24 @@ ol {
     height: 380px;
     margin-bottom: 20px;
 }
+
 /*--------------------part02-box01----------------------*/
 .part02-box01 {
     height: 380px;
     background-color: #08bad7;
 }
-.btn-cangbaoge{
+
+.btn-cangbaoge {
     display: block;
     width: 100%;
     height: 62px;
     line-height: 62px;
     background: url(../images/spriter.png);
-    background-position:-190px -230px; 
+    background-position: -190px -230px;
     position: relative;
 }
-.btn-cangbaoge span{
+
+.btn-cangbaoge span {
     display: block;
     overflow: hidden;
     width: 48px;
@@ -1249,36 +1258,39 @@ ol {
     top: 50%;
     margin-top: -19.5px;
 }
-.btn-cangbaoge i{
+
+.btn-cangbaoge i {
     display: block;
     width: 100%;
-    height:  100%;
+    height: 100%;
     background: url(../images/spriter.png);
-    background-position:-134px -328px;  
-    transition:0.4s;
+    background-position: -134px -328px;
+    transition: 0.4s;
 }
-.btn-cangbaoge i::after{
+
+.btn-cangbaoge i::after {
     content: "";
     width: 48px;
     height: 39px;
     background: url(../images/spriter.png);
-    background-position:-134px -328px; 
+    background-position: -134px -328px;
     position: absolute;
     left: 0;
     top: -39px;
 }
-.btn-cangbaoge:hover i{
+
+.btn-cangbaoge:hover i {
     transform: translateY(39px);
 }
 
 
 /* -----------------------li通用设置 -------------------*/
 
-.entrance-box li a{
+.entrance-box li a {
     display: block;
     width: 119px;
     height: 64px;
-    background-color:  #00a5c0;
+    background-color: #00a5c0;
     padding-left: 71px;
     font-size: 14px;
     line-height: 64px;
@@ -1286,175 +1298,192 @@ ol {
     position: relative;
 }
 
-.entrance-box li a:hover{
+.entrance-box li a:hover {
     background: #0197b0;
 }
+
 /* 分别设置图标    entrance-02*/
-.entrance-02 em{
+.entrance-02 em {
     display: block;
     width: 33px;
     height: 31px;
     position: absolute;
-    left:  29px;
+    left: 29px;
     top: 50%;
     margin-top: -15.5px;
     overflow: hidden;
 }
-.entrance-02 i{
+
+.entrance-02 i {
     display: block;
     width: 100%;
     height: 100%;
     background: url(../images/spriter.png);
-    background-position:-253px -199px; 
-    transition:0.4s;
+    background-position: -253px -199px;
+    transition: 0.4s;
 }
-.entrance-02 i::after{
+
+.entrance-02 i::after {
     content: "";
     display: block;
     width: 33px;
     height: 31px;
     background: url(../images/spriter.png);
-    background-position:-253px -199px; 
+    background-position: -253px -199px;
     position: absolute;
-    left:0;
+    left: 0;
     top: -31px;
 }
-.entrance-02 a:hover i{
+
+.entrance-02 a:hover i {
     transform: translateY(31px)
 }
+
 /* 分别设置图标    entrance-03*/
-.entrance-03 em{
+.entrance-03 em {
     display: block;
     width: 28px;
     height: 36px;
     position: absolute;
-    left:  29px;
+    left: 29px;
     top: 50%;
     margin-top: -18px;
     overflow: hidden;
 }
-.entrance-03 i{
+
+.entrance-03 i {
     display: block;
     width: 100%;
     height: 100%;
     background: url(../images/spriter.png);
-    background-position:-190px -292px;
-    transition:0.4s;
+    background-position: -190px -292px;
+    transition: 0.4s;
 }
-.entrance-03 i::after{
+
+.entrance-03 i::after {
     content: "";
     display: block;
     width: 28px;
     height: 36px;
     background: url(../images/spriter.png);
-    background-position:-190px -292px;
+    background-position: -190px -292px;
     position: absolute;
-    left:0;
+    left: 0;
     top: -36px;
 }
-.entrance-03 a:hover i{
+
+.entrance-03 a:hover i {
     transform: translateY(36px)
 }
 
 /* 分别设置图标    entrance-04*/
-.entrance-04 em{
+.entrance-04 em {
     display: block;
     width: 32px;
     height: 31px;
     position: absolute;
-    left:  29px;
+    left: 29px;
     top: 50%;
     margin-top: -15.5px;
     overflow: hidden;
 }
-.entrance-04 i{
+
+.entrance-04 i {
     display: block;
     width: 100%;
     height: 100%;
     background: url(../images/spriter.png);
-    background-position:-221px -199px; 
-    transition:0.4s;
+    background-position: -221px -199px;
+    transition: 0.4s;
 }
-.entrance-04 i::after{
+
+.entrance-04 i::after {
     content: "";
     display: block;
     width: 32px;
     height: 31px;
     background: url(../images/spriter.png);
-    background-position:-221px -199px; 
+    background-position: -221px -199px;
     position: absolute;
-    left:0;
+    left: 0;
     top: -31px;
 }
-.entrance-04 a:hover i{
+
+.entrance-04 a:hover i {
     transform: translateY(31px)
 }
 
 /* 分别设置图标    entrance-05*/
-.entrance-05 em{
+.entrance-05 em {
     display: block;
     width: 30px;
     height: 32px;
     position: absolute;
-    left:  29px;
+    left: 29px;
     top: 50%;
     margin-top: -16px;
     overflow: hidden;
 }
-.entrance-05 i{
+
+.entrance-05 i {
     display: block;
     width: 100%;
     height: 100%;
     background: url(../images/spriter.png);
-    background-position:-250px -292px; 
-    transition:0.4s;
+    background-position: -250px -292px;
+    transition: 0.4s;
 }
-.entrance-05 i::after{
+
+.entrance-05 i::after {
     content: "";
     display: block;
     width: 30px;
     height: 32px;
     background: url(../images/spriter.png);
-    background-position:-250px -292px;
+    background-position: -250px -292px;
     position: absolute;
-    left:0;
+    left: 0;
     top: -32px;
 }
-.entrance-05 a:hover i{
+
+.entrance-05 a:hover i {
     transform: translateY(32px)
 }
 
 /* 分别设置图标    entrance-06*/
-.entrance-06 em{
+.entrance-06 em {
     display: block;
     width: 30px;
     height: 28px;
     position: absolute;
-    left:  29px;
+    left: 29px;
     top: 50%;
     margin-top: -14px;
     overflow: hidden;
 }
-.entrance-06 i{
+
+.entrance-06 i {
     display: block;
     width: 100%;
     height: 100%;
     background: url(../images/spriter.png);
-    background-position:-306px -328px;
-    transition:0.4s;
+    background-position: -306px -328px;
+    transition: 0.4s;
 }
-.entrance-06 i::after{
+
+.entrance-06 i::after {
     content: "";
     display: block;
     width: 30px;
     height: 28px;
     background: url(../images/spriter.png);
-    background-position:-306px -328px;
+    background-position: -306px -328px;
     position: absolute;
-    left:0;
+    left: 0;
     top: -28px;
 }
-.entrance-06 a:hover i{
+
+.entrance-06 a:hover i {
     transform: translateY(28px)
 }
 
@@ -1467,8 +1496,10 @@ ol {
     height: 380px;
     width: 420px;
     padding: 0 20px;
+    position: relative;
 }
-.box_title{
+
+ .box_title {
     width: 420px;
     height: 60px;
     line-height: 60px;
@@ -1479,28 +1510,28 @@ ol {
     border-bottom: solid 1px #e8e8e8;
 
 }
+
 /* 梦幻热点文字 */
-.box_title h4{
+.part02-box02 .box_title h4 {
     font-weight: 400;
 }
+
 /* 订阅 */
-.order-btn{
+.part02-box02 .order-btn {
     position: absolute;
     right: 62px;
     top: 21px;
-    width: 58px; 
+    width: 58px;
     height: 24px;
     background: url(../images/spriter.png)no-repeat;
     background-position: -58px -371px;
 }
 
-
-
 /*  更多部分 */
-.box_title>a{
+.part02-box02 .box_title>a {
     position: absolute;
     right: 0;
-    top:50%;
+    top: 50%;
     margin-top: -8.5px;
     width: 40px;
     height: 20px;
@@ -1510,26 +1541,128 @@ ol {
     color: #000;
     transition: all ease-out 0.3s
 }
-.box_title>a:hover{
+
+.part02-box02 .box_title>a:hover {
     color: #f24854;
     text-indent: 5px;
 }
-.box_title>a:hover i{
+
+.part02-box02 .box_title>a:hover i {
     display: none;
 }
-.box_title a span{
+
+.part02-box02 .box_title a span {
     float: left;
 }
-.box_title a i{
+
+.part02-box02 .box_title a i {
     display: block;
     width: 4px;
     height: 7px;
-    margin-top:6px; 
+    margin-top: 6px;
     float: right;
     background: url("../images/spriter.png") no-repeat;
     background-position: -434px -230px;
 }
 
+/* 热点滑动内容部分 */
+.part02-box02 .hot_news_box {
+    margin-top: -2px;
+    position: absolute;
+}
+
+.part02-box02 .hot_news_box>span:nth-child(-n+6) {
+    display: block;
+    width: 84px;
+    height: 42px;
+    border-top: 3px solid transparent;
+    text-align: center;
+    line-height: 42px;
+    font-size: 14px;
+    color: #3c3c3c;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.part02-box02 .hot_txt_list {
+    position: absolute;
+    left: 0px;
+    top: 62px;
+    z-index: 2;
+    width: 420px;
+    display: none;
+    background-color: white;
+}
+
+.hot_news_box>span:nth-child(-n+6):hover {
+    color: #f24854;
+    border-top: 3px solid #f24854;
+}
+
+/* 首个li中推荐图标设置 */
+.hot_txt_list>li:nth-child(1) a {
+    width: 331px;
+    height: 24px;
+    position: relative;
+    padding: 0 0 14px 49px;
+    line-height: 24px;
+    color: #f24854;
+    font-size: 16px;
+}
+
+.hot_txt_list>li a:hover {
+    color: #f24854;
+}
+
+.hot_txt_list li i {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    font-size: 14px;
+    width: 40px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    background: #f24854;
+    color: #fff;
+    font-style: normal;
+}
+
+/* list 中 li 通用设置 */
+.hot_txt_list>li {
+    border-bottom: dotted 1px #dadada;
+    width: 100%;
+}
+
+.hot_txt_list>li>a {
+    display: block;
+    font-size: 14px;
+    color: #3c3c3c;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*:hover盒子组合 hot_list01 hot_list02  hot_list03  hot_list04 */
+.hot_news_box>span:nth-child(1)~.hot_list01 {
+    z-index: 1;
+    display: block !important;
+}
+
+.hot_news_box>span:nth-child(2):hover~.hot_list02 {
+    display: block !important;
+}
+
+.hot_news_box>span:nth-child(3):hover~.hot_list03 {
+    display: block !important;
+}
+
+.hot_news_box>span:nth-child(4):hover~.hot_list04 {
+    display: block !important;
+}
 
 
 /*--------------------part02-box03----------------------*/
@@ -1542,6 +1675,91 @@ ol {
     background: #FFFFFF;
     box-sizing: border-box
 }
+
+.xinfu-box {
+    background: url(../images/part02-box03-pic.jpg);
+    width: 230px;
+    height: 300px;
+    position: relative;
+}
+
+.xinfu-box h4 a {
+    position: absolute;
+    left: 22px;
+    top: 31px;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #f24854;
+}
+
+.xinfu-box ul {
+    padding: 88px 0 0 20px;
+}
+
+.xinfu-box ul>li:nth-child(1) {
+    margin-bottom: 28px;
+}
+
+.xinfu-box li a {
+    color: #3c3c3c;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+
+}
+
+
+.xinfu-box li span {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.xinfu-list {
+    font-size: 0;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: #3b8bed;
+}
+
+.xinfu-list>a {
+    width: 50%;
+    height: 80px;
+    line-height: 80px;
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    transition: 0.4s
+}
+
+.xinfu-list>a:hover {
+    background: #2a7bdf;
+}
+
+.xinfu-list>a:hover~i {
+    opacity: 0;
+}
+
+.xinfu-list i {
+    position: absolute;
+    display: block;
+    z-index: 2;
+    top: 50%;
+    margin-top: -10px;
+    left: 50%;
+    width: 1px;
+    height: 20px;
+    background: #7ab0f3;
+}
+
+
+
+
+
+
+
 /*--------------------part02-box04----------------------*/
 .part02-box04 {
     float: left;
@@ -1552,13 +1770,95 @@ ol {
     box-sizing: border-box;
 }
 
+.part02-box04>.xinfu-box {
+    background: url(../images/part02-box04-pic.jpg) no-repeat;
+}
+
+.part02-box04 .saishi_title {
+    position: absolute;
+    left: 21px;
+    top: 64px;
+    font-size: 16px;
+}
+
+.part02-box04 ul {
+    position: absolute;
+    padding: 0;
+    left: 22px;
+    top: 101px;
+}
+
+.part02-box04 ul>li {
+    margin: 0px!important;
+    height: 21px;
+    padding-left: 10px;
+    width: 100%;
+    background:url(../images/part02-box04-arrow.jpg)no-repeat;
+    background-position:0 7px ;
+}
+
+.part02-box04 ul li a {
+    font-size: 14px;
+    height: 21px;
+    font-weight: 400;
+}
+.part02-box04 ul li a:hover,.saishi_title:hover{
+    color: #f24854;
+}
+.part02-box04 ul li a span{
+    float: right;
+}
+.part02-box04 .saishi_list{
+    background-color: #00a5c0;
+}
+.part02-box04 .saishi_list a:hover{
+    background-color: #0197b0;
+}
+
+/*--------------------part03----------------------*/
+
 .part03 {
     height: 380px;
 }
 
+/*--------------------part03-box01----------------------*/
+
 .part03-box01 {
     height: 380px;
+    background-color: #445366;
+    color: #b3bed2;
+    padding: 0 20px;
+    width: 150px;
+    font-style:"Microsoft YaHei",simSun,"Lucida Grande","Lucida Sans Unicode",Arial;
 }
+.part03-box01>.box-title{
+    border-bottom: 1px solid #808a97;
+    width: 100%;
+    font-weight: 400;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    text-align: center;
+
+}
+.part03-box01 ul li a{
+    display: block;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 6px;
+    font-size: 14px;
+    color: #b3bed2;
+    transition: all ease .3s;
+    font-weight: 400;
+}
+.part03-box01 ul li a:hover{
+    color: white;
+}
+
+
+
+/*--------------------part03-box02----------------------*/
 
 .part03-box02 {
     width: 670px;
@@ -1566,8 +1866,139 @@ ol {
     height: 380px;
     margin-right: 20px;
     background: #FFFFFF;
-    float: left
+    float: left;
+    padding: 0 20px;
 }
+.part03-box02 .box_title{
+    width: 670px;
+}
+.part03-box02 .hot_news_box>span{
+   width: 100px!important;
+}
+
+.part03-box02 .hot_news_box>span:nth-child(1):hover~.wst_list{
+    opacity: 1;
+}
+
+
+/* slide 滑动部分 首个li设置 */
+.part03-box02 .wst_list{
+    position: absolute;
+    left: 0px;
+    top: 62px;
+    width: 680px;
+    height: 246px;
+    font-size: 0%;
+    margin-left: -10px;
+    z-index: -1;
+    /* opacity: 0; */
+    transition: 0.4s;
+}
+
+
+.part03-box02 .wst_list li  {
+    display: flex;
+    width: 18.53%;
+    height: 113px;
+    /* display: flex; */
+    margin: 0 0 10px 10px;
+    float: left;
+   }
+   .part03-box02 .wst_list  img {
+       display: block;
+    width: 100%;
+    height: 95px;
+  
+   }
+
+
+.part03-box02 .wst_list li a {
+    position: relative;
+    width: 100%;
+ display: block;
+}
+.part03-box02 .wst_list li span{
+    display:block;
+    height: 18px;
+    line-height: 18px;
+    color: #3c3c3c;
+    text-align: center;
+    font-size: 14px;
+    width: 86px;
+    padding: 0 20px;
+    /* white-space: nowrap; */
+    /* text-overflow:clip; */
+   }
+   .part03-box02 .wst_list li span i{
+     display: block;
+     height: 18px;
+     font-style: normal;
+     transition: 0.3s;
+     overflow: hidden;
+   }
+   .part03-box02 .wst_list .i-mask{
+    display: block;
+    width: 100%;
+    height: 95px;
+    position: absolute;
+    z-index: 1;
+    left:0px;
+    top:0px;
+    background: rgba(0,0,0,.3);
+    opacity:1 ;
+    transition: 0.4s;
+   }
+
+   .i-video{
+       background: url("../images/spriter.png") no-repeat;
+       background-position: -363px -328px;
+       display: none!important;
+   }
+
+.part03-box02 .wst_list .i-mask:hover{
+    opacity:0 ;
+}
+
+.part03-box02 .wst_list .i-mask:hover~span>.i-txt{
+    font-size: 14px;
+    color: white;
+    overflow: visible;
+}
+.part03-box02 .wst_list .i-mask:hover~span .i-video{
+    margin: 0 auto;
+    width: 27px;
+    height: 27px;
+    margin-bottom:5px; 
+    display: block!important;
+}
+
+
+
+
+.part03-box02 .wst_list .i-mask:hover~span{
+    transform: translateY(-80px)
+}
+
+
+
+
+
+.hot_news_box>span:nth-child(5):hover~.hot_list04 {
+    display: block !important;
+}
+.hot_news_box>span:nth-child(6):hover~.hot_list04 {
+    display: block !important;
+}
+
+
+
+
+
+
+
+
+
+/*--------------------part03-box03----------------------*/
 
 .part03-box03 {
     height: 380px;
