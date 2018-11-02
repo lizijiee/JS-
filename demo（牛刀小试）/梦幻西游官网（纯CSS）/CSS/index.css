@@ -1499,7 +1499,7 @@ ol {
     position: relative;
 }
 
- .box_title {
+.box_title {
     width: 420px;
     height: 60px;
     line-height: 60px;
@@ -1665,6 +1665,7 @@ ol {
 }
 
 
+
 /*--------------------part02-box03----------------------*/
 
 .part02-box03 {
@@ -1789,12 +1790,12 @@ ol {
 }
 
 .part02-box04 ul>li {
-    margin: 0px!important;
+    margin: 0px !important;
     height: 21px;
     padding-left: 10px;
     width: 100%;
-    background:url(../images/part02-box04-arrow.jpg)no-repeat;
-    background-position:0 7px ;
+    background: url(../images/part02-box04-arrow.jpg)no-repeat;
+    background-position: 0 7px;
 }
 
 .part02-box04 ul li a {
@@ -1802,16 +1803,21 @@ ol {
     height: 21px;
     font-weight: 400;
 }
-.part02-box04 ul li a:hover,.saishi_title:hover{
+
+.part02-box04 ul li a:hover,
+.saishi_title:hover {
     color: #f24854;
 }
-.part02-box04 ul li a span{
+
+.part02-box04 ul li a span {
     float: right;
 }
-.part02-box04 .saishi_list{
+
+.part02-box04 .saishi_list {
     background-color: #00a5c0;
 }
-.part02-box04 .saishi_list a:hover{
+
+.part02-box04 .saishi_list a:hover {
     background-color: #0197b0;
 }
 
@@ -1829,9 +1835,10 @@ ol {
     color: #b3bed2;
     padding: 0 20px;
     width: 150px;
-    font-style:"Microsoft YaHei",simSun,"Lucida Grande","Lucida Sans Unicode",Arial;
+    font-style: "Microsoft YaHei", simSun, "Lucida Grande", "Lucida Sans Unicode", Arial;
 }
-.part03-box01>.box-title{
+
+.part03-box01>.box-title {
     border-bottom: 1px solid #808a97;
     width: 100%;
     font-weight: 400;
@@ -1841,7 +1848,8 @@ ol {
     text-align: center;
 
 }
-.part03-box01 ul li a{
+
+.part03-box01 ul li a {
     display: block;
     width: 150px;
     height: 50px;
@@ -1852,7 +1860,8 @@ ol {
     transition: all ease .3s;
     font-weight: 400;
 }
-.part03-box01 ul li a:hover{
+
+.part03-box01 ul li a:hover {
     color: white;
 }
 
@@ -1869,20 +1878,22 @@ ol {
     float: left;
     padding: 0 20px;
 }
-.part03-box02 .box_title{
+
+.part03-box02 .box_title {
     width: 670px;
 }
-.part03-box02 .hot_news_box>span{
-   width: 100px!important;
+
+.part03-box02 .hot_news_box>span {
+    width: 100px !important;
 }
 
-.part03-box02 .hot_news_box>span:nth-child(1):hover~.wst_list{
+.part03-box02 .hot_news_box>span:nth-child(1):hover~.wst_list {
     opacity: 1;
 }
 
 
-/* slide 滑动部分 首个li设置 */
-.part03-box02 .wst_list{
+/* slide 滑动部分 首个li设置包含里面内容和mask */
+.part03-box02 .wst_list {
     position: absolute;
     left: 0px;
     top: 62px;
@@ -1891,34 +1902,36 @@ ol {
     font-size: 0%;
     margin-left: -10px;
     z-index: -1;
+    display: none;
     /* opacity: 0; */
     transition: 0.4s;
+    background-color: white;
 }
 
 
-.part03-box02 .wst_list li  {
+.part03-box02 .wst_list li {
     display: flex;
-    width: 18.53%;
+    width: 126px;
     height: 113px;
-    /* display: flex; */
     margin: 0 0 10px 10px;
     float: left;
-   }
-   .part03-box02 .wst_list  img {
-       display: block;
+}
+
+/* 图片：hover 效果设置 */
+.part03-box02 .wst_list img {
+    display: block;
     width: 100%;
     height: 95px;
-  
-   }
-
+}
 
 .part03-box02 .wst_list li a {
     position: relative;
     width: 100%;
- display: block;
+    display: block;
 }
-.part03-box02 .wst_list li span{
-    display:block;
+
+.part03-box02 .wst_list li span {
+    display: block;
     height: 18px;
     line-height: 18px;
     color: #3c3c3c;
@@ -1928,85 +1941,244 @@ ol {
     padding: 0 20px;
     /* white-space: nowrap; */
     /* text-overflow:clip; */
-   }
-   .part03-box02 .wst_list li span i{
-     display: block;
-     height: 18px;
-     font-style: normal;
-     transition: 0.3s;
-     overflow: hidden;
-   }
-   .part03-box02 .wst_list .i-mask{
+}
+
+.part03-box02 .wst_list li span i {
+    display: block;
+    height: 18px;
+    font-style: normal;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.part03-box02 .wst_list .i-mask {
     display: block;
     width: 100%;
     height: 95px;
     position: absolute;
     z-index: 1;
-    left:0px;
-    top:0px;
-    background: rgba(0,0,0,.3);
-    opacity:1 ;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, .1);
+    opacity: 1;
     transition: 0.4s;
-   }
-
-   .i-video{
-       background: url("../images/spriter.png") no-repeat;
-       background-position: -363px -328px;
-       display: none!important;
-   }
-
-.part03-box02 .wst_list .i-mask:hover{
-    opacity:0 ;
 }
 
-.part03-box02 .wst_list .i-mask:hover~span>.i-txt{
+.part03-box02 .wst_list .masks {
+    display: block;
+    width: 100%;
+    height: 95px;
+    position: absolute;
+    z-index: 0;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, .8);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.i-video {
+    background: url("../images/spriter.png") no-repeat;
+    background-position: -363px -328px;
+    display: none !important;
+}
+
+.part03-box02 .wst_list .i-mask:hover {
+    opacity: 0;
+}
+
+.part03-box02 .wst_list .i-mask:hover~.masks {
+    opacity: 1;
+}
+
+.part03-box02 .wst_list .i-mask:hover~span>.i-txt {
     font-size: 14px;
     color: white;
     overflow: visible;
 }
-.part03-box02 .wst_list .i-mask:hover~span .i-video{
+
+.part03-box02 .wst_list .i-mask:hover~span .i-video {
     margin: 0 auto;
     width: 27px;
     height: 27px;
-    margin-bottom:5px; 
-    display: block!important;
+    margin-bottom: 5px;
+    display: block !important;
 }
 
-
-
-
-.part03-box02 .wst_list .i-mask:hover~span{
+.part03-box02 .wst_list .i-mask:hover~span {
     transform: translateY(-80px)
 }
 
-
-
-
-
-.hot_news_box>span:nth-child(5):hover~.hot_list04 {
-    display: block !important;
-}
-.hot_news_box>span:nth-child(6):hover~.hot_list04 {
-    display: block !important;
+.part03-box02 ul li:nth-child(4) .i-mask:hover~span,
+.part03-box02 ul li:nth-child(5) .i-mask:hover~span,
+.part03-box02 ul li:nth-child(6) .i-mask:hover~span,
+.part03-box02 ul li:nth-child(9) .i-mask:hover~span,
+.part03-box02 ul li:nth-child(10) .i-mask:hover~span {
+    transform: translateY(-90px);
 }
 
+/* 滑动内容部分 */
 
+.wst_01 {
+    display: block !important;
+}
 
+.hot_news_box>span:nth-child(2):hover~.wst_02 {
+    display: block;
+}
 
+.hot_news_box>span:nth-child(3):hover~.wst_03 {
+    display: block;
+}
 
+.hot_news_box>span:nth-child(4):hover~.wst_04 {
+    display: block;
+}
 
+.hot_news_box>span:nth-child(5):hover~.wst_05 {
+    display: block;
+}
 
-
+.hot_news_box>span:nth-child(6):hover~.wst_06 {
+    display: block;
+}
 
 /*--------------------part03-box03----------------------*/
 
 .part03-box03 {
     height: 380px;
     float: left;
-    width: 230px;
+    width: 190px;
     margin-right: 0;
+    padding: 0 20px;
 }
 
+.part03-box03>.box_title {
+    width: 190px;
+}
+
+.wst-img {
+    display: block;
+    width: 190px;
+    height: 90px;
+    position: relative;
+}
+
+.wst-img>img {
+    display: block;
+    width: 100%;
+    height: 90px;
+    margin-top: 12px;
+}
+
+
+.wst-img>span {
+    display: block;
+    height: 18px;
+    line-height: 18px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    width: 86px;
+    padding: 0 20px;
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    /* left 和  margin-left 负值时 padding也算是盒子内容 */
+    top: 60px;
+    z-index: 1;
+    transition: 0.5s;
+    /* white-space: nowrap; */
+    /* text-overflow:clip; */
+}
+
+.wst-img .i-txt {
+    display: block;
+    height: 18px;
+    font-style: normal;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.wst-img .i-mask {
+    display: block;
+    width: 100%;
+    height: 90px;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, .3);
+    opacity: 1;
+    transition: 0.4s;
+}
+
+.wst-img .masks {
+    display: block;
+    width: 100%;
+    height: 90px;
+    position: absolute;
+    z-index: 0;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, .9);
+    opacity: 0;
+    transition: 1s;
+}
+
+.wst-img .i-video {
+    background: url("../images/spriter.png") no-repeat;
+    background-position: -363px -328px;
+    display: none !important;
+}
+
+.wst-img .i-mask:hover {
+    z-index: 5;
+    opacity: 0;
+}
+
+.wst-img :hover~.masks {
+    opacity: 1;
+}
+
+.wst-img :hover~span {
+    transform: translateY(-40px);
+}
+
+.wst-img :hover~span>.i-txt {
+    font-size: 14px;
+    color: white;
+    overflow: visible;
+}
+
+.wst-img :hover~span .i-video {
+    margin: 0 auto;
+    width: 27px;
+    height: 27px;
+    margin-bottom: 7px;
+    display: block !important;
+}
+
+/* 列表文字部分 */
+.txt-list li {
+    width: 190px;
+    height: 38px;
+    line-height: 38px;
+    color: #3c3c3c;
+    border-bottom: 1px dotted #dadada;
+}
+
+.txt-list li>a {
+    width: 100%;
+    height: 100%;
+    color: #3c3c3c;
+}
+
+.txt-list li a:hover {
+    color: #f24854;
+}
+
+/*--------------------part04----------------------*/
 .part04 {
     width: 100%;
     margin-bottom: 20px;
@@ -2014,12 +2186,347 @@ ol {
     background: #71b5fd
 }
 
+.update_box {
+    width: 1170px;
+    height: 230px;
+    margin: 0 auto;
+
+}
+
+.part04 h4 {
+    display: block;
+    width: 190px;
+    height: 230px;
+    line-height: 230px;
+    background-color: #3b8bed;
+    background-image: url("../images/spriter.png");
+    /* 颜色和图片在同一元素上 */
+    background-position: 0 0;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+}
+
+.part04 h4 {
+    display: block;
+    width: 190px;
+    height: 230px;
+    line-height: 230px;
+    background-color: #3b8bed;
+    background-image: url("../images/spriter.png");
+    background-position: 0 0;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+    position: relative;
+}
+
+.part04 h4>span {
+    display: block;
+    width: 60px;
+    font-size: 24px;
+    height: 60px;
+    line-height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    color: #d8e8fb;
+}
+
+.update_list {
+    float: left;
+    font-size: 0;
+}
+.update_list li{
+    width: 245px;
+    height: 230px;
+    float: left;
+    background-image: url(../images/part04-update01.png);
+    /*  还可以这样用 background-position: right  top;     */
+    background-position: right  top;  
+}
+.update_list a {
+    display: block;
+    padding: 72px 80px 0 52px;
+}
+
+.update_list li em{
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    height: 30px;
+}
+.update_list span:nth-of-type(1){
+    display: block;
+    font-size:14px;
+    color: #fff;
+    height: 24px;
+}
+.update_list  .i-go{
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    width: 68px;
+     height: 22px;
+     line-height: 22px;
+     color: #3b8bed;
+    text-indent: 17px;
+    position: relative;
+    background-image: url("../images/spriter.png");
+    background-position:-171px -371px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.update_list  .i-go:hover{
+    text-indent: 22px;
+}
+
+.i-go>i{
+    position: absolute;
+    width: 4px;
+    height: 7px;
+    right: 17px;
+    top: 50%;
+    margin-top: -4px;
+    background-image: url("../images/spriter.png");
+    background-position: -430px -237px;
+    transition: 0.3s;
+}
+.update_list  .i-go:hover i{
+    right: -17px;
+}   
+/* 另外三个盒子个性设置 */
+.update_list li:nth-child(2){
+     background-image: url(../images/part04-update02.png);
+}
+.update_list li:nth-child(3){
+     background-image: url(../images/part04-update03.png);
+}
+.update_list li:nth-child(4){
+     background-image: url(../images/part04-update04.png);
+}
+
+
+
+
+/*--------------------part05----------------------*/
+
 .part05 {
     height: 380px;
 }
 
-.part06,
-.part06-box01,
+/*--------------------part05-box01----------------------*/
+.part05 .searth_box{
+    width: 148px;
+    height: 32px;
+    margin: 13px 0 13px 0;
+    text-align: center;
+    position: relative;
+    background: #394657;
+}
+
+.part05 .searth{
+    border: 1px solid #808a97;
+    background:0 0;
+    display: block;
+    height: 16px;
+    width: 110px;
+    padding: 8px 28px 8px 8px;
+    font-size: 14px;
+    z-index: 1;
+    color:#b3bed2;
+   font: 400 13.3333px Arial;
+}
+/* .searth:focus .searth::-webkit-input-placeholder{
+    color:red;
+} */
+
+/* .searth:focus::-webkit-input-placeholder{
+    color: red;
+    text-indent: -999em;
+    z-index: -20;
+} */
+
+
+
+.searth::-webkit-input-placeholder{
+    display: block;
+    position: absolute;
+    right: 0;
+    color:#b3bed2;
+    font-size: 14px;
+    z-index: 3;
+}
+
+
+.searth_box .sear_logo{
+    width: 28px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    right: 0;
+    background-position: -278px -328px;
+    background-image: url("../images/spriter.png")
+}
+
+
+.part05 .mhbk_list li {
+    width: 50%;
+    float: left;
+}
+.part05 .mhbk_list li a{
+    width: 100%;
+}
+.mhbk_list  li:last-child>a{
+    width: 100%;
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    padding: 0;
+}
+
+.mhbk_list li:last-child{
+    margin-top: 5px;
+    width: 100%;
+    float: left;
+    border: 1px solid #576576;
+    text-align: center;
+}
+
+
+
+/*--------------------part05-box02----------------------*/
+.part05-box02>.hot_news_box>span{
+   display:block;
+    width: 70px!important;
+    float: left;
+}
+
+.part05-box02>.hot_news_box li a{
+    width: 380px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.part05-box02 .hot_txt_list li:nth-child(1) a{
+    width: 331px;
+}
+
+.hot_news_box>span:nth-child(5):hover~.hot_list05 {
+    display: block !important;
+}
+.hot_news_box>span:nth-child(6):hover~.hot_list06 {
+    display: block !important;
+}
+/*--------------------part05-box03----------------------*/
+.part05-box03{
+    margin-right: 20px;
+}
+/* .part05-box03 .box_title a:nth-of-type(1){
+    background-color: red;
+    top:0;
+} */
+.part05-box03 .box_title :nth-child(1){
+    position: relative;
+}
+.part05-box03 .box_title :nth-child(2){
+    margin-top:0;
+    top: 10px;
+    width: 70px;
+}
+.part05-box03 .box_title :nth-child(2) i{
+    margin-top:6px;
+    width: 4px;
+}
+
+.part05-box03 .box_title a:nth-of-type(2){
+    margin-top:0;
+    top:30px;
+    width: 70px;
+}
+.part05-box03 .box_title :nth-child(3) i{
+    margin-top:6px;
+    width: 4px;
+}
+
+.part05-box03 .pic-txt-list p{
+font-size: 12px!important;
+}
+
+
+
+/*--------------------part05-box04----------------------*/
+.part05-box04 .pic-txt-list li{
+    width: 190px;
+    height: 72px;
+    padding:15px 0; 
+    border-bottom:1px dotted #dadada;
+} 
+
+.part05-box04 .pic-txt-list li p{
+    float: left;
+    padding-top: 14px;
+    color: #3c3c3c;
+    line-height: 24px;
+    font-size: 14px;
+    height: 48px;
+    width: 103px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+} 
+
+
+.part05-box04 .pic-txt-list li strong{
+    display: block;
+    height: 24px;
+    color: #3c3c3c;
+    line-height: 24px;
+    font-size: 14px;
+} 
+
+.part05-box04 .pic-txt-list li img{
+    display: block;
+    width: 75px;
+    height: 75px;
+    margin-right: 12px;
+    float: left;
+    border-radius: 100%;
+}
+.part05-box04 .pic-txt-list li .pic-red{
+    height: 24px;
+    font-style: normal;
+    color: #f24854;
+}
+
+
+
+
+
+
+
+/*--------------------part06----------------------*/
+
+
+/*--------------------part06-box01----------------------*/
+
+.part06-box01{
+    background-color:#445366; 
+}
+.part06-box01 a{
+    
+}
+
+
+
+
 .part06-box02,
 .part06-box03 {
     height: 380px
