@@ -758,7 +758,7 @@ ol {
     display: block;
     float: left;
     position: relative;
-    width: 462px;
+    width: 460px;
     height: 460px;
     position: relative;
     z-index: 0;
@@ -774,7 +774,7 @@ ol {
 }
 
 .slide_box .banner_img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     display: none;
 }
@@ -813,7 +813,7 @@ ol {
 }
 
 .banner-nav a:nth-child(2)+img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     position: absolute;
     z-index: -1;
@@ -831,7 +831,7 @@ ol {
     position: absolute;
     left: 0px;
     bottom: 0px;
-    width: 462px;
+    width: 460px;
     height: 60px;
     z-index: auto;
     font-size: 0;
@@ -865,7 +865,7 @@ ol {
 }
 
 .banner-item-nav a:nth-child(1) img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     ;
     border: 1px solid block;
@@ -893,7 +893,7 @@ ol {
 }
 
 .banner-item-nav a:nth-child(2) img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     ;
     border: 1px solid block;
@@ -917,7 +917,7 @@ ol {
 }
 
 .banner-item-nav a:nth-child(3) img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     ;
     border: 1px solid block;
@@ -940,7 +940,7 @@ ol {
 }
 
 .banner-item-nav a:nth-child(4) img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     ;
     border: 1px solid block;
@@ -964,7 +964,7 @@ ol {
 }
 
 .banner-item-nav a:nth-child(5) img {
-    width: 462px;
+    width: 460px;
     height: 460px;
     ;
     border: 1px solid block;
@@ -2517,17 +2517,190 @@ font-size: 12px!important;
 
 /*--------------------part06-box01----------------------*/
 
-.part06-box01{
-    background-color:#445366; 
+.part06{
+    height: 380px;
+    width: 1170px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    position: relative;
 }
-.part06-box01 a{
+.part06-box01 {
+    background-color:#445366; 
+    height: 360px;
+    text-align: center;
+    font-size: 0px;
+    padding-top:20px; 
     
 }
 
+.part06-box01 a{
+    position: relative;
+    
+}
+
+.part06-box01 i:nth-child(1){
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: 3px 1.5px 10px 1.5px;
+    background-image: url(../images/spriter.png);
+    /* background-position: -214px -328px; */
+    background-position: -344px -292px;
+    background-color: #445366;
+    border-radius:100%; 
+    transition: 0.1s;
+    opacity: 0.5;
+}
+
+
+.part06-box01 a:nth-child(1):hover i{
+    /* background-position: -344px -292px; */
+    /* background-position: -280px -292px; 移动 */
+    opacity: 1;
+}
+
+.part06-box01 a:nth-child(2) i{
+     background-position: -218px -292px;
+    /* background-position: -246px -328px; */
+}
+.part06-box01 a:nth-child(2):hover i{
+    /* background-position: -218px -292px; */
+    /* background-position: -246px -328px; */
+    opacity: 1;
+}
+
+.part06-box01 a:nth-child(3) i{
+     background-position: -182px -328px;
+}
+
+.part06-box01 a:nth-child(3):hover i{
+     /* background-position: -246px -328px; */
+     /* background-position: -182px -328px; */
+     opacity: 1;
+}
+
+.part06-box01 a:nth-child(4) i{
+    background-position: -312px -292px;
+    opacity: 0.5; 
+}
+.part06-box01 a:nth-child(4):hover i{
+    opacity: 1; 
+}
+
+.part06-box01 a:nth-child(5) i{
+    background-position: -189px -199px;
+    opacity: 0.5; 
+}
+.part06-box01 a:nth-child(5):hover i{
+    background-position: -189px -199px;
+    opacity: 1; 
+}
+
+
+.part06-box01 .contact_box {
+    width: 190px;
+    height: 170px;
+    display: none;
+    background-color: #445366;
+    position: absolute;
+    left: 0px;
+    top: 72px;
+}
+
+.part06-box01 .contact_box img{
+    background: 0 0;
+    display: block;
+    margin: 0 auto;
+    width: 130px;
+    height: 130px;
+    margin-top: 10px;
+    color: #8d99ac;
+
+}
+
+.part06-box01 .contact_box em{
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    font-style: normal;
+    color: #8d99ac;
+    font-size: 12px;
+}
+/* 第三个盒子个性化设置 */
+.part06-box01 a:nth-child(8) img{
+    display: block;
+    margin: 0 auto;
+    width: 75px;
+    height: 75px;
+    margin-top: 10px;
+    color: #8d99ac;
+    opacity: 1; 
+}
+.part06-box01 a:nth-child(8)>em{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    color: #8d99ac;
+    font-size: 14px;
+    text-align: center;
+}
+.part06-box01 a:nth-child(8) .weibo_content {
+    display: block;
+    width: 138px;
+    border: 1px solid #788391;
+    line-height: 30px;
+    text-align: center;
+    color: #8d99ac;
+    font-size: 14px;
+    margin: 0 25px;
+}
 
 
 
-.part06-box02,
+
+.part06-box01 a:nth-child(8) .weibo_content  i{
+    background-image: url("../images/spriter.png");
+    background-position: -415px -207px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    margin: 0 8px 0 0;
+}
+.part06-box01 a:nth-child(8) .weibo_content:hover{
+    color:white;
+}
+
+
+
+
+
+
+.part06-box01>a:nth-child(6) {
+    z-index: 0;
+    display: block;
+}
+
+.part06-box01>a:nth-child(2):hover~a:nth-child(7) {
+    display: block;
+}
+.part06-box01>a:nth-child(3):hover~a:nth-child(8) {
+    display: block;
+}
+.part06-box01>a:nth-child(4):hover~a:nth-child(9) {
+    display: block;
+}
+.part06-box01>a:nth-child(5):hover~a:nth-child(10) {
+    display: block;
+}
+
+/*--------------------part06-box02----------------------*/
+
+
+.part06-box02 {
+
+}
 .part06-box03 {
     height: 380px
 }
