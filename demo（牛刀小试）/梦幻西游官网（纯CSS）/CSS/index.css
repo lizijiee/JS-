@@ -2104,7 +2104,7 @@ ol {
     width: 100%;
     height: 90px;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     left: 0px;
     top: 0px;
     background: rgba(0, 0, 0, .3);
@@ -2117,12 +2117,12 @@ ol {
     width: 100%;
     height: 90px;
     position: absolute;
-    z-index: 0;
+    z-index: 2;
     left: 0px;
     top: 0px;
     background: rgba(0, 0, 0, .9);
     opacity: 0;
-    transition: 1s;
+    transition: 0.4s;
 }
 
 .wst-img .i-video {
@@ -2131,32 +2131,39 @@ ol {
     display: none !important;
 }
 
-.wst-img .i-mask:hover {
-    z-index: 5;
-    opacity: 0;
-}
+/* ---------创建一个另外遮罩层(z-index: 2)来触发 ------------*/
 
-.wst-img :hover~.masks {
+.wst-img .masks:hover .i-mask {
     opacity: 1;
+    background: rgba(0, 0, 0, .9);
 }
 
-.wst-img :hover~span {
+.wst-img .masks:hover~.i-mask {
+    background: rgba(0, 0, 0, .9);
+}
+
+.masks:hover~span {
     transform: translateY(-40px);
 }
 
-.wst-img :hover~span>.i-txt {
+.masks:hover~span>.i-txt {
     font-size: 14px;
     color: white;
     overflow: visible;
 }
 
-.wst-img :hover~span .i-video {
+.masks:hover~span .i-video {
     margin: 0 auto;
     width: 27px;
     height: 27px;
     margin-bottom: 7px;
     display: block !important;
 }
+
+/* ---------创建一个另外遮罩层(!!以上!!)来触发 ------------*/
+
+
+
 
 /* 列表文字部分 */
 .txt-list li {
@@ -2239,20 +2246,22 @@ ol {
     float: left;
     font-size: 0;
 }
-.update_list li{
+
+.update_list li {
     width: 245px;
     height: 230px;
     float: left;
     background-image: url(../images/part04-update01.png);
     /*  还可以这样用 background-position: right  top;     */
-    background-position: right  top;  
+    background-position: right top;
 }
+
 .update_list a {
     display: block;
     padding: 72px 80px 0 52px;
 }
 
-.update_list li em{
+.update_list li em {
     display: block;
     font-size: 20px;
     color: #fff;
@@ -2260,32 +2269,35 @@ ol {
     font-weight: 700;
     height: 30px;
 }
-.update_list span:nth-of-type(1){
+
+.update_list span:nth-of-type(1) {
     display: block;
-    font-size:14px;
+    font-size: 14px;
     color: #fff;
     height: 24px;
 }
-.update_list  .i-go{
+
+.update_list .i-go {
     display: block;
     margin-top: 5px;
     font-size: 14px;
     width: 68px;
-     height: 22px;
-     line-height: 22px;
-     color: #3b8bed;
+    height: 22px;
+    line-height: 22px;
+    color: #3b8bed;
     text-indent: 17px;
     position: relative;
     background-image: url("../images/spriter.png");
-    background-position:-171px -371px;
+    background-position: -171px -371px;
     transition: 0.3s;
     overflow: hidden;
 }
-.update_list  .i-go:hover{
+
+.update_list .i-go:hover {
     text-indent: 22px;
 }
 
-.i-go>i{
+.i-go>i {
     position: absolute;
     width: 4px;
     height: 7px;
@@ -2296,18 +2308,22 @@ ol {
     background-position: -430px -237px;
     transition: 0.3s;
 }
-.update_list  .i-go:hover i{
+
+.update_list .i-go:hover i {
     right: -17px;
-}   
+}
+
 /* 另外三个盒子个性设置 */
-.update_list li:nth-child(2){
-     background-image: url(../images/part04-update02.png);
+.update_list li:nth-child(2) {
+    background-image: url(../images/part04-update02.png);
 }
-.update_list li:nth-child(3){
-     background-image: url(../images/part04-update03.png);
+
+.update_list li:nth-child(3) {
+    background-image: url(../images/part04-update03.png);
 }
-.update_list li:nth-child(4){
-     background-image: url(../images/part04-update04.png);
+
+.update_list li:nth-child(4) {
+    background-image: url(../images/part04-update04.png);
 }
 
 
@@ -2320,7 +2336,7 @@ ol {
 }
 
 /*--------------------part05-box01----------------------*/
-.part05 .searth_box{
+.part05 .searth_box {
     width: 148px;
     height: 32px;
     margin: 13px 0 13px 0;
@@ -2329,18 +2345,19 @@ ol {
     background: #394657;
 }
 
-.part05 .searth{
+.part05 .searth {
     border: 1px solid #808a97;
-    background:0 0;
+    background: 0 0;
     display: block;
     height: 16px;
     width: 110px;
     padding: 8px 28px 8px 8px;
     font-size: 14px;
     z-index: 1;
-    color:#b3bed2;
-   font: 400 13.3333px Arial;
+    color: #b3bed2;
+    font: 400 13.3333px Arial;
 }
+
 /* .searth:focus .searth::-webkit-input-placeholder{
     color:red;
 } */
@@ -2353,17 +2370,17 @@ ol {
 
 
 
-.searth::-webkit-input-placeholder{
+.searth::-webkit-input-placeholder {
     display: block;
     position: absolute;
     right: 0;
-    color:#b3bed2;
+    color: #b3bed2;
     font-size: 14px;
     z-index: 3;
 }
 
 
-.searth_box .sear_logo{
+.searth_box .sear_logo {
     width: 28px;
     height: 32px;
     position: absolute;
@@ -2379,10 +2396,12 @@ ol {
     width: 50%;
     float: left;
 }
-.part05 .mhbk_list li a{
+
+.part05 .mhbk_list li a {
     width: 100%;
 }
-.mhbk_list  li:last-child>a{
+
+.mhbk_list li:last-child>a {
     width: 100%;
     float: left;
     height: 32px;
@@ -2391,7 +2410,7 @@ ol {
     padding: 0;
 }
 
-.mhbk_list li:last-child{
+.mhbk_list li:last-child {
     margin-top: 5px;
     width: 100%;
     float: left;
@@ -2402,74 +2421,81 @@ ol {
 
 
 /*--------------------part05-box02----------------------*/
-.part05-box02>.hot_news_box>span{
-   display:block;
-    width: 70px!important;
+.part05-box02>.hot_news_box>span {
+    display: block;
+    width: 70px !important;
     float: left;
 }
 
-.part05-box02>.hot_news_box li a{
+.part05-box02>.hot_news_box li a {
     width: 380px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.part05-box02 .hot_txt_list li:nth-child(1) a{
+
+.part05-box02 .hot_txt_list li:nth-child(1) a {
     width: 331px;
 }
 
 .hot_news_box>span:nth-child(5):hover~.hot_list05 {
     display: block !important;
 }
+
 .hot_news_box>span:nth-child(6):hover~.hot_list06 {
     display: block !important;
 }
+
 /*--------------------part05-box03----------------------*/
-.part05-box03{
+.part05-box03 {
     margin-right: 20px;
 }
+
 /* .part05-box03 .box_title a:nth-of-type(1){
     background-color: red;
     top:0;
 } */
-.part05-box03 .box_title :nth-child(1){
+.part05-box03 .box_title :nth-child(1) {
     position: relative;
 }
-.part05-box03 .box_title :nth-child(2){
-    margin-top:0;
+
+.part05-box03 .box_title :nth-child(2) {
+    margin-top: 0;
     top: 10px;
     width: 70px;
 }
-.part05-box03 .box_title :nth-child(2) i{
-    margin-top:6px;
+
+.part05-box03 .box_title :nth-child(2) i {
+    margin-top: 6px;
     width: 4px;
 }
 
-.part05-box03 .box_title a:nth-of-type(2){
-    margin-top:0;
-    top:30px;
+.part05-box03 .box_title a:nth-of-type(2) {
+    margin-top: 0;
+    top: 30px;
     width: 70px;
 }
-.part05-box03 .box_title :nth-child(3) i{
-    margin-top:6px;
+
+.part05-box03 .box_title :nth-child(3) i {
+    margin-top: 6px;
     width: 4px;
 }
 
-.part05-box03 .pic-txt-list p{
-font-size: 12px!important;
+.part05-box03 .pic-txt-list p {
+    font-size: 12px !important;
 }
 
 
 
 /*--------------------part05-box04----------------------*/
-.part05-box04 .pic-txt-list li{
+.part05-box04 .pic-txt-list li {
     width: 190px;
     height: 72px;
-    padding:15px 0; 
-    border-bottom:1px dotted #dadada;
-} 
+    padding: 15px 0;
+    border-bottom: 1px dotted #dadada;
+}
 
-.part05-box04 .pic-txt-list li p{
+.part05-box04 .pic-txt-list li p {
     float: left;
     padding-top: 14px;
     color: #3c3c3c;
@@ -2480,18 +2506,18 @@ font-size: 12px!important;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-} 
+}
 
 
-.part05-box04 .pic-txt-list li strong{
+.part05-box04 .pic-txt-list li strong {
     display: block;
     height: 24px;
     color: #3c3c3c;
     line-height: 24px;
     font-size: 14px;
-} 
+}
 
-.part05-box04 .pic-txt-list li img{
+.part05-box04 .pic-txt-list li img {
     display: block;
     width: 75px;
     height: 75px;
@@ -2499,7 +2525,8 @@ font-size: 12px!important;
     float: left;
     border-radius: 100%;
 }
-.part05-box04 .pic-txt-list li .pic-red{
+
+.part05-box04 .pic-txt-list li .pic-red {
     height: 24px;
     font-style: normal;
     color: #f24854;
@@ -2516,28 +2543,29 @@ font-size: 12px!important;
 
 /*--------------------part06-box01----------------------*/
 
-.part06{
+.part06 {
     height: 380px;
     width: 1170px;
     margin: 0 auto;
     margin-bottom: 20px;
     position: relative;
 }
+
 .part06-box01 {
-    background-color:#445366; 
+    background-color: #445366;
     height: 360px;
     text-align: center;
     font-size: 0px;
-    padding-top:20px; 
-    
+    padding-top: 20px;
+
 }
 
-.part06-box01 a{
+.part06-box01 a {
     position: relative;
-    
+
 }
 
-.part06-box01 i:nth-child(1){
+.part06-box01 i:nth-child(1) {
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -2546,53 +2574,56 @@ font-size: 12px!important;
     /* background-position: -214px -328px; */
     background-position: -344px -292px;
     background-color: #445366;
-    border-radius:100%; 
+    border-radius: 100%;
     transition: 0.1s;
     opacity: 0.5;
 }
 
 
-.part06-box01 a:nth-child(1):hover i{
+.part06-box01 a:nth-child(1):hover i {
     /* background-position: -344px -292px; */
     /* background-position: -280px -292px; 移动 */
     opacity: 1;
 }
 
-.part06-box01 a:nth-child(2) i{
-     background-position: -218px -292px;
+.part06-box01 a:nth-child(2) i {
+    background-position: -218px -292px;
     /* background-position: -246px -328px; */
 }
-.part06-box01 a:nth-child(2):hover i{
+
+.part06-box01 a:nth-child(2):hover i {
     /* background-position: -218px -292px; */
     /* background-position: -246px -328px; */
     opacity: 1;
 }
 
-.part06-box01 a:nth-child(3) i{
-     background-position: -182px -328px;
+.part06-box01 a:nth-child(3) i {
+    background-position: -182px -328px;
 }
 
-.part06-box01 a:nth-child(3):hover i{
-     /* background-position: -246px -328px; */
-     /* background-position: -182px -328px; */
-     opacity: 1;
+.part06-box01 a:nth-child(3):hover i {
+    /* background-position: -246px -328px; */
+    /* background-position: -182px -328px; */
+    opacity: 1;
 }
 
-.part06-box01 a:nth-child(4) i{
+.part06-box01 a:nth-child(4) i {
     background-position: -312px -292px;
-    opacity: 0.5; 
-}
-.part06-box01 a:nth-child(4):hover i{
-    opacity: 1; 
+    opacity: 0.5;
 }
 
-.part06-box01 a:nth-child(5) i{
-    background-position: -189px -199px;
-    opacity: 0.5; 
+.part06-box01 a:nth-child(4):hover i {
+    opacity: 1;
 }
-.part06-box01 a:nth-child(5):hover i{
+
+.part06-box01 a:nth-child(5) i {
     background-position: -189px -199px;
-    opacity: 1; 
+    opacity: 0.5;
+}
+
+.part06-box01 a:nth-child(5):hover i {
+    background-position: -189px -199px;
+    opacity: 1;
 }
 
 
@@ -2606,7 +2637,7 @@ font-size: 12px!important;
     top: 72px;
 }
 
-.part06-box01 .contact_box img{
+.part06-box01 .contact_box img {
     background: 0 0;
     display: block;
     margin: 0 auto;
@@ -2617,7 +2648,7 @@ font-size: 12px!important;
 
 }
 
-.part06-box01 .contact_box em{
+.part06-box01 .contact_box em {
     display: block;
     height: 22px;
     line-height: 22px;
@@ -2625,17 +2656,19 @@ font-size: 12px!important;
     color: #8d99ac;
     font-size: 12px;
 }
+
 /* 第三个盒子个性化设置 */
-.part06-box01 a:nth-child(8) img{
+.part06-box01 a:nth-child(8) img {
     display: block;
     margin: 0 auto;
     width: 75px;
     height: 75px;
     margin-top: 10px;
     color: #8d99ac;
-    opacity: 1; 
+    opacity: 1;
 }
-.part06-box01 a:nth-child(8)>em{
+
+.part06-box01 a:nth-child(8)>em {
     width: 100%;
     height: 32px;
     line-height: 32px;
@@ -2643,6 +2676,7 @@ font-size: 12px!important;
     font-size: 14px;
     text-align: center;
 }
+
 .part06-box01 a:nth-child(8) .weibo_content {
     display: block;
     width: 138px;
@@ -2657,7 +2691,7 @@ font-size: 12px!important;
 
 
 
-.part06-box01 a:nth-child(8) .weibo_content  i{
+.part06-box01 a:nth-child(8) .weibo_content i {
     background-image: url("../images/spriter.png");
     background-position: -415px -207px;
     display: inline-block;
@@ -2667,8 +2701,9 @@ font-size: 12px!important;
     background-repeat: no-repeat;
     margin: 0 8px 0 0;
 }
-.part06-box01 a:nth-child(8) .weibo_content:hover{
-    color:white;
+
+.part06-box01 a:nth-child(8) .weibo_content:hover {
+    color: white;
 }
 
 
@@ -2684,12 +2719,15 @@ font-size: 12px!important;
 .part06-box01>a:nth-child(2):hover~a:nth-child(7) {
     display: block;
 }
+
 .part06-box01>a:nth-child(3):hover~a:nth-child(8) {
     display: block;
 }
+
 .part06-box01>a:nth-child(4):hover~a:nth-child(9) {
     display: block;
 }
+
 .part06-box01>a:nth-child(5):hover~a:nth-child(10) {
     display: block;
 }
@@ -2701,129 +2739,128 @@ font-size: 12px!important;
     width: 420px;
     height: 380px;
 }
-.part06-box02 .box_title{
+
+/*  -------------------  左边模块 -----------------   */
+
+.part06-box02 .slide {
+    width: 420px;
+    height: 236px;
+    position: absolute;
+    left: 0;
+    top: 65px;
+}
+
+.part06-box02 .box_title {
     width: 420px;
 }
-.part06-box02 .wst_list{
-    width: 420px;
-}
-.part06-box02 .wst-img{
+
+.part06-box02 .slide .wst-img {
     float: left;
     width: 260px;
     height: 236px;
 }
-.part06-box02 .wst_list>.wst-img>img{
+
+
+/* 左边盒子尺寸设置(~~img+mask~~) */
+.part06-box02 .slide>.wst-img img {
     margin-top: 0;
     width: 260px;
     height: 236px;
 }
 
-.part06-box02 .wst_list>.wst-img>.i-mask{
-    width: 260px;
-    height: 236px;
-    background: rgba(0,0,0,.3);
-}
-.part06-box02 .wst_list>.wst-img>.masks{
+.part06-box02 .slide>.wst-img .i-mask,
+.part06-box02 .slide>.wst-img .masks {
     width: 260px;
     height: 236px;
 }
-.part06-box02 .wst_list>.wst-img>span{
+
+/* 左边盒子houver 设置 */
+
+
+.part06-box02 .slide>.wst-img span {
     width: 220px;
     margin-left: -130px;
     top: 202px;
     font-size: 16px;
+    transition: 0.2s;
 }
-.part06-box02 .wst_list>.wst-img>span>.i-txt{
+
+.part06-box02 .slide>.wst-img span>.i-txt {
     font-size: 16px;
 }
 
-.part06-box02 .wst_list>.wst-img>span .i-video{
- background-position: -50px -328px;
+.part06-box02 .slide>.wst-img span .i-video {
+    background-position: -50px -328px;
 }
 
-
-
-.part06-box02 .wst_list .ssxx_content{
-    width: 150px;
-    height: 160px;
-    float: left;
+.part06-box02 .slide>.wst-img .masks:hover~span {
+    transform: translateY(-114.5px)
 }
 
-.part06-box02 .wst_list>.wst-img .i-mask:hover~span .i-txt {
+.part06-box02 .slide>.wst-img .masks:hover~span .i-txt {
     width: inherit;
     font-size: 16px;
     color: white;
 }
 
-.part06-box02 .wst_list a .i-mask:hover~span .more-video {
+.part06-box02 .slide a .masks:hover~span .more-video {
     width: 43px;
     height: 43px;
     margin-bottom: 8px;
-    display: block;  
-}   
-
-.part06-box02  .wst_list>.wst-img .i-mask:hover~span {
-    transform: translateY(-114.5px)
+    display: block;
 }
 
-.part06-box02 .ssxx_content li{
-width: 150px;
-height: 113px;
+
+/*  -------------------  右边模块 -----------------   */
+
+.part06-box02 .ssxx_content {
+    float: left;
+    width: 160px;
+    height: 236px;
+    display: block;
+    position: relative;
+    margin-left: 0px;
+    top: 0px;
 }
 
-.part06-box02 .ssxx_content li img{
+.part06-box02 .ssxx_content li {
+    width: 150px;
+    height: 113px;
+    margin: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+.part06-box02 .ssxx_content li .wst-img {
+    width: 150px;
+    height: 113px;
+}
+
+.part06-box02 .ssxx_content li img,
+.part06-box02 .ssxx_content li .masks,
+.part06-box02 .ssxx_content li .i-mask {
     width: 150px;
     height: 113px;
     margin-top: 0;
- }
- .part06-box02 .ssxx_content li .i-mask{
-    width: 150px;
-    height: 113px;
- }
- .part06-box02 .ssxx_content li .masks{
-    width: 150px;
-    height: 113px;
- }
- .part06-box02 .wst_list .ssxx_content .wst-img span {
+}
+
+.part06-box02 .ssxx_content .wst-img span {
     width: 110px;
     padding: 0 20px;
     margin-left: -75px;
-     top:85px;
-     color: #fff;
+    top: 85px;
+    color: #fff;
+   
+}
 
- }
-
-
- .part06-box02 .wst_list .ssxx_content .wst-img .i-mask:hover~span {
-    transform: translateY(-65px)
+.part06-box02 .ssxx_content .wst-img .masks:hover~span {
+    /* transform: translateY(-65px) */
+    top: 65px;
 }
 
 
 
 
 
-
-/* .part03-box02 .wst_list .i-mask:hover~span {
-    transform: translateY(-80px)
-} */
-
- .part03-box02 ul li:nth-child(4) .i-mask:hover~span,
-.part03-box02 ul li:nth-child(5) .i-mask:hover~span,
-.part03-box02 ul li:nth-child(6) .i-mask:hover~span,
-.part03-box02 ul li:nth-child(9) .i-mask:hover~span,
-.part03-box02 ul li:nth-child(10) .i-mask:hover~span {
-    transform: translateY(-90px);
-}
-
-/* 滑动内容部分 */
-
-.wst_01 {
-    display: block !important;
-}
-
-.hot_news_box>span:nth-child(2):hover~.wst_02 {
-    display: block;
-} 
 
 
 
