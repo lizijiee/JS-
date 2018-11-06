@@ -2748,6 +2748,8 @@ ol {
     position: absolute;
     left: 0;
     top: 65px;
+    display: none;
+    background: white;
 }
 
 .part06-box02 .box_title {
@@ -2857,41 +2859,91 @@ ol {
     top: 65px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*--------------------part06-box03----------------------*/
-
-
-.part06-box03 {
-    height: 380px
+/* --------------------滑动效果---------------------------- */
+.part06-box02 .hot_news_box .slide:nth-child(5){
+    display: block;
+    z-index: 0;
+}
+.part06-box02 .hot_news_box span:nth-child(2):hover~.slide:nth-child(6){
+    display: block;
+}
+.part06-box02 .hot_news_box span:nth-child(3):hover~.slide:nth-child(7){
+    display: block;
+}
+.part06-box02 .hot_news_box span:nth-child(4):hover~.slide:nth-child(8){
+    display: block;
 }
 
+/*--------------------part06-box03----------------------*/
+.part06-box03 {
+    height: 380px;
+    position: relative;
+}
+.part06-box03 h4{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    z-index: 1;
+    font-size: 24px;
+    color: #3c3c3c;
+    font-weight: 400;
+    /* line-height: 24px;
+    top: 69px;
+    left: 33px;
+    letter-spacing: 2px;
+    width: 24px;
+    text-align: center;      */
+}
+.part06-box03 .brand-box{
+    background-color: red;
+    width: 100%;
+    height: 236px;
+    padding:23px 20px 23px 84px;
+    box-sizing: border-box;
+}
+
+/* 文字部分 */
+
+
+/* 轮播图部分 */
+.part06-box03 .part01-box02{
+    width: 376px;
+    height:190px;
+    float: none;
+    margin:23px 20px 23px 84px;
+}
+.part06-box03 .banner-item-nav{
+    width: 376px;
+    height: 40px;
+}
+.part06-box03 .banner-item-nav a{
+    width: 94px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.part06-box03 .banner-item-nav a .ib_nav{
+    font-size:12px
+}
+.part06-box03 .banner-item-nav a img{
+    width: 376px;
+    height:190px;
+
+}
+/* 底部导航部分 */
+
+
+.link-list{
+    background-color: lime;
+    width: 100%;
+    height: 144px;
+}
+
+
+
+
+
+/*--------------------part07----------------------*/
 .part07,
 .part07-box01,
 .part07-box02 {
