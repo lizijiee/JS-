@@ -2851,7 +2851,7 @@ ol {
     margin-left: -75px;
     top: 85px;
     color: #fff;
-   
+
 }
 
 .part06-box02 .ssxx_content .wst-img .masks:hover~span {
@@ -2860,17 +2860,20 @@ ol {
 }
 
 /* --------------------滑动效果---------------------------- */
-.part06-box02 .hot_news_box .slide:nth-child(5){
+.part06-box02 .hot_news_box .slide:nth-child(5) {
     display: block;
     z-index: 0;
 }
-.part06-box02 .hot_news_box span:nth-child(2):hover~.slide:nth-child(6){
+
+.part06-box02 .hot_news_box span:nth-child(2):hover~.slide:nth-child(6) {
     display: block;
 }
-.part06-box02 .hot_news_box span:nth-child(3):hover~.slide:nth-child(7){
+
+.part06-box02 .hot_news_box span:nth-child(3):hover~.slide:nth-child(7) {
     display: block;
 }
-.part06-box02 .hot_news_box span:nth-child(4):hover~.slide:nth-child(8){
+
+.part06-box02 .hot_news_box span:nth-child(4):hover~.slide:nth-child(8) {
     display: block;
 }
 
@@ -2879,26 +2882,53 @@ ol {
     height: 380px;
     position: relative;
 }
-.part06-box03 h4{
+
+.part06-box03 .part01-box02 {
+    background: white;
+}
+ 
+
+.part06-box03 h4 {
     position: absolute;
     left: 0px;
-    top:0px;
+    top: 0px;
     z-index: 1;
     font-size: 24px;
     color: #3c3c3c;
     font-weight: 400;
-    /* line-height: 24px;
+    width: 24px;
     top: 69px;
     left: 33px;
+    line-height: 24px;
+    text-align: center; 
     letter-spacing: 2px;
-    width: 24px;
-    text-align: center;      */
 }
-.part06-box03 .brand-box{
+.part06-box03 h4::before{
+    content: "";
+    position: absolute;
+    width: 1px;
+    left: 49%;
+    background: #e8e8e8;
+    height: 38px;
+    top: -49px;
+}
+.part06-box03 h4::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    left: 49%;
+    background: #e8e8e8;
+    height: 38px;
+    bottom: -44px;
+}
+
+
+
+.part06-box03 .brand-box {
     background-color: red;
     width: 100%;
     height: 236px;
-    padding:23px 20px 23px 84px;
+    padding: 23px 20px 23px 84px;
     box-sizing: border-box;
 }
 
@@ -2906,34 +2936,102 @@ ol {
 
 
 /* 轮播图部分 */
-.part06-box03 .part01-box02{
+.part06-box03 .part01-box02 {
     width: 376px;
-    height:190px;
+    height: 190px;
     float: none;
-    margin:23px 20px 23px 84px;
+    margin: 23px 20px 23px 84px;
 }
-.part06-box03 .banner-item-nav{
+
+.part06-box03 .banner-item-nav {
     width: 376px;
     height: 40px;
 }
-.part06-box03 .banner-item-nav a{
+
+.part06-box03 .banner-item-nav a {
     width: 94px;
     height: 40px;
     text-align: center;
     line-height: 40px;
 }
-.part06-box03 .banner-item-nav a .ib_nav{
-    font-size:12px
+
+.part06-box03 .banner-item-nav a .ib_nav {
+    font-size: 12px
 }
-.part06-box03 .banner-item-nav a img{
+
+.part06-box03 .banner-item-nav a img {
     width: 376px;
-    height:190px;
+    height: 190px;
+    display: none;
+}
+.banner-item-nav a:nth-child(1)  img,.banner-item-nav a:nth-child(1) .i-go{
+    display: block;
+    z-index: -1;
+    opacity: 1;
+}
+
+
+
+.banner-item-nav a:nth-child(2):hover img,.banner-item-nav a:nth-child(2):hover .i-go{
+    display: block;
+}
+.banner-item-nav a:nth-child(3):hover img,.banner-item-nav a:nth-child(3):hover .i-go{
+    display: block;
+}
+.banner-item-nav a:nth-child(4):hover img,.banner-item-nav a:nth-child(4):hover .i-go{
+    display: block;
+}
+
+
+
+/* 悬浮框点击欣赏 */
+.part06-box03 .banner-item-nav {
+    /* position: relative; */
+}
+
+.part06-box03 .i-go {
+    display: block;
+    width: 104px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    text-align: left;   
+    text-indent: 18px;
+    background-repeat: no-repeat;
+    color: #fff;
+    position: absolute;
+    background: url(../images/spriter.png);
+    background-position: -239px -371px;
+    overflow: hidden;
+    top: -52px;
+    left: 19px;
+    transition:0.4s;
+    display: none;
 
 }
+
+.part06-box03 .i-go i{
+    background: url(../images/spriter.png);
+    background-position: -430px -230px;
+    transition:0.3s;
+}
+
+.part06-box03 .i-go:hover {
+    text-indent: 26px;
+}
+
+.part06-box03 .i-go:hover i {
+    -webkit-transform: translateX(30px);
+    -moz-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+}
+
+
 /* 底部导航部分 */
 
 
-.link-list{
+.link-list {
     background-color: lime;
     width: 100%;
     height: 144px;
