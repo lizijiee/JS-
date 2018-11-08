@@ -2211,6 +2211,7 @@ ol {
     overflow: hidden;
     text-align: center;
     float: left;
+    font-weight: 400;
 }
 
 .part04 h4 {
@@ -2880,13 +2881,14 @@ ol {
 /*--------------------part06-box03----------------------*/
 .part06-box03 {
     height: 380px;
+    width: 480px;
     position: relative;
 }
 
 .part06-box03 .part01-box02 {
     background: white;
 }
- 
+
 
 .part06-box03 h4 {
     position: absolute;
@@ -2900,10 +2902,11 @@ ol {
     top: 69px;
     left: 33px;
     line-height: 24px;
-    text-align: center; 
+    text-align: center;
     letter-spacing: 2px;
 }
-.part06-box03 h4::before{
+
+.part06-box03 h4::before {
     content: "";
     position: absolute;
     width: 1px;
@@ -2912,7 +2915,8 @@ ol {
     height: 38px;
     top: -49px;
 }
-.part06-box03 h4::after{
+
+.part06-box03 h4::after {
     content: "";
     position: absolute;
     width: 1px;
@@ -2964,7 +2968,9 @@ ol {
     height: 190px;
     display: none;
 }
-.banner-item-nav a:nth-child(1)  img,.banner-item-nav a:nth-child(1) .i-go{
+
+.banner-item-nav a:nth-child(1) img,
+.banner-item-nav a:nth-child(1) .i-go {
     display: block;
     z-index: -1;
     opacity: 1;
@@ -2972,13 +2978,18 @@ ol {
 
 
 
-.banner-item-nav a:nth-child(2):hover img,.banner-item-nav a:nth-child(2):hover .i-go{
+.banner-item-nav a:nth-child(2):hover img,
+.banner-item-nav a:nth-child(2):hover .i-go {
     display: block;
 }
-.banner-item-nav a:nth-child(3):hover img,.banner-item-nav a:nth-child(3):hover .i-go{
+
+.banner-item-nav a:nth-child(3):hover img,
+.banner-item-nav a:nth-child(3):hover .i-go {
     display: block;
 }
-.banner-item-nav a:nth-child(4):hover img,.banner-item-nav a:nth-child(4):hover .i-go{
+
+.banner-item-nav a:nth-child(4):hover img,
+.banner-item-nav a:nth-child(4):hover .i-go {
     display: block;
 }
 
@@ -2995,7 +3006,7 @@ ol {
     height: 22px;
     line-height: 22px;
     font-size: 14px;
-    text-align: left;   
+    text-align: left;
     text-indent: 18px;
     background-repeat: no-repeat;
     color: #fff;
@@ -3005,15 +3016,15 @@ ol {
     overflow: hidden;
     top: -52px;
     left: 19px;
-    transition:0.4s;
+    transition: 0.4s;
     display: none;
 
 }
 
-.part06-box03 .i-go i{
+.part06-box03 .i-go i {
     background: url(../images/spriter.png);
     background-position: -430px -230px;
-    transition:0.3s;
+    transition: 0.3s;
 }
 
 .part06-box03 .i-go:hover {
@@ -3032,32 +3043,404 @@ ol {
 
 
 .link-list {
-    background-color: lime;
     width: 100%;
     height: 144px;
+    font-size: 0;
+    background: #eaf1fa;
+    position: relative;
+}
+
+.link-list li {
+    background: #eaf1fa;
+    float: left;
+    width: 95px;
+    height: 71px;
+    line-height: 71px;
+    border-top: solid 1px #f5f7f9;
+    border-left: solid 1px #f5f7f9;
+    text-align: center;
+    margin-left: -1px;
+}
+
+.link-list li a {
+    display: block;
+    width: 95px;
+    height: 71px;
+    line-height: 71px;
+    text-align: center;
+    font-size: 14px;
+    color: #3c3c3c;
+    text-align: left;
+    text-align: center;
+}
+
+.link-list li a span {
+    display: inline-block;
+    width: 28px;
+    font-size: 14px;
+    color: #3c3c3c;
+    text-align: left;
+    line-height: 18px;
+    vertical-align: middle;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    text-align: center;
+}
+
+.link-list li a span::after {
+    content: "";
+    display: block;
+    width: 0;
+    margin: 0 auto;
+    bottom: -2px;
+    height: 2px;
+    background: red;
+    transition: width ease 0.4s;
+}
+
+.link-list a:hover span:after {
+    width: 100%;
 }
 
 
 
 
-
-/*--------------------part07----------------------*/
-.part07,
-.part07-box01,
-.part07-box02 {
+/*---------------part07-box01--------------*/
+.part07 {
     height: 230px;
 }
 
+.part07-box01 {
+    width: 190px !important;
+}
+
+
+/*-------------part07-box02----------------*/
 .part07-box02 {
+    height: 230px;
     width: 960px;
     background: #FFFFFF;
-    float: left
+    float: left;
+
 }
+
+/* <!-- 人族 start -->    <!-- 人族 end --> */
+.group-txt {
+    display: block;
+    width: 70px;
+    height: 230px;
+    background: #f24854;
+    position: relative;
+    float: left;
+
+}
+
+.group-txt span {
+    position: absolute;
+    top: 90px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+    left: 50%;
+    width: 22px;
+    margin-left: -11px;
+
+}
+
+.group-bd {
+    width: 819px;
+    height: 230px;
+    float: left;
+}
+
+
+.group-bd .i-triangle {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: -16px;
+    z-index: 1;
+    border-width: 8px;
+    border-style: solid;
+    /* 线型必须要写 */
+    border-color: transparent transparent transparent #f24854;
+}
+
+.group-bd .group-item {
+    width: 749px;
+    height: 230px;
+    float: left;
+    background-color: #f5f9ff;
+}
+
+
+.group-bd .group-item li {
+    width: 60px;
+    /* width: 449px; */
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition:  0.8s;
+    float: right;
+}
+.group-bd .group-item li .role-item {
+    width: 0;
+    /* width: 390px; */
+    height: 100%;
+    float: left;
+    font-size: 0;
+    color: #3c3c3c;
+    background-image: url("../images/part07-box02-peolpe-role_01.png");
+    background-repeat: no-repeat;
+    background-color: #f5f9ff;
+    transition:  0.8s;
+}
+
+
+
+
+
+
+
+
+
+.group-item .role-group {
+    display: block;
+    font-size: 16px;
+    position: absolute;
+    width: 230px;
+    left: 158px;
+    top: 45px;
+    color: #3c3c3c;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.group-bd .role-item dl {
+    display: block;
+    width: 230px;
+    position: absolute;
+    top: 90px;
+    left: 158px;
+    color: #3c3c3c;
+}
+
+.group-bd .role-item dl dt {
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+}
+
+.group-bd .role-item dl dd {
+    font-size: 14px;
+    color: #3c3c3c;
+}
+
+.group-bd .role-item dl dd a {
+    font-size: 14px;
+    color: #3c3c3c;
+}
+.group-bd .role-item dl dd a:hover{
+    text-decoration: underline;
+}
+
+
+
+/* 右侧-------role-txt---------*/
+.group-item .role-txt {
+    display: block;
+    border: 1px solid  #fff;
+    width: 60px;
+    height: 100%;
+    background-color: #f5f9ff;
+    float: right;
+    margin-left: -1px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.group-item .role-txt .role-name {
+    position: absolute;
+    top: 20px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #3c3c3c;
+    left: 50%;
+    width: 16px;
+    margin-left: -8px;
+    letter-spacing: 2px;
+    font-style: normal;
+}
+
+.group-item .role-txt .role-img {
+    display: block;
+    background-image:url("../images/part07-box02-peolpe-role_01_jxk.png");
+    position: absolute;
+    width: 100%;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    bottom: 22px;
+    left: 0;
+    height: 128px;
+    filter: grayscale(100%);
+    opacity: .8;
+    transition: 1s;
+}
+
+
+.group-bd .group-item li:hover .role-item{
+    width: 390px;
+    /* width: 449px; */
+}
+.group-bd .group-item li:hover{
+    /* width: 390px; */
+    width: 449px;
+}
+.group-bd .group-item li:hover .role-img{
+    /* zoom: .83; */
+    filter: none;
+    opacity: 1;
+}
+
+.group-bd .group-item li:hover .role-txt{
+    border: 1px solid  transparent;
+}
+.group-bd .group-item li:hover .role-txt .role-line{
+    opacity: 1;
+}
+.group-item .role-txt .role-line {
+    opacity: 0;
+    /* display: none; */
+    /* display: block; */
+    position: absolute;
+    left: -1px;
+    top: 20px;
+    width: 1px;
+    height: 49px;
+    background: #bfd0e5;
+}
+/* 修改图片部分 */
+.group-item li:nth-child(2)  .role-item{
+    background: url("../images/part07-box02-peolpe-role_02.png");
+    background-repeat:no-repeat; 
+    
+}
+.group-item li:nth-child(2) .role-img{
+    background: url("../images/part07-box02-peolpe-role_02_xiaoyao.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(3)  .role-item{
+    background: url("../images/part07-box02-peolpe-role_03.png");
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(3) .role-img{
+    background: url("../images/part07-box02-peolpe-role_03_fyn.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(4)  .role-item{
+    background: url("../images/part07-box02-peolpe-role_04.png");
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(4) .role-img{
+    background: url("../images/part07-box02-peolpe-role_04_fyn.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(5)  .role-item{
+    background: url("../images/part07-box02-peolpe-role_05.png");
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(5) .role-img{
+    background: url("../images/part07-box02-peolpe-role_05_mwomen.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(6)  .role-item{
+    background: url("../images/part07-box02-peolpe-role_06.png");
+    background-repeat: no-repeat;
+}
+.group-item li:nth-child(6) .role-img{
+    background: url("../images/part07-box02-peolpe-role_06_jws.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+/* 魔族仙族部分 */
+.group-mo{
+    width: 70px;
+}
+
+.slide-wrap li:nth-child(2) .group-txt{
+    background-color: #3b8bed;
+    width: 70px!important;
+}
+.group-xian{
+    width: 70px;
+}
+.slide-wrap li:nth-child(3) .group-txt{
+    background: #499df5;
+    width: 70px!important;
+}
+
+
+
+
+/*-------------footer----------------*/
 
 .footer {
     background: url("../images/footer-picture.png")no-repeat;
     background-size: cover;
     width: 100%;
     overflow: hidden;
-    height: 818px;
+    height: 279px;
+    /* height: 818px; */
+    padding-top: 521px;
+    position:relative;
+}
+
+.footer .west-01{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: 50%;
+    margin-left: -398px;
+    top: 352px;
+    background-image:url("../images/");
+}
+
+
+.footer .share-box{
+    background-color: red;
+    display: block;
+    width: 100%;
+    height: 34px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    color: #333;
+    margin-bottom: 23px;
+    
+}
+
+
+.footer .NIE-copyRight{
+    background-color: lime;
+    border-top: solid 1px #a0b7c7;
+    width: 968px;
+    height: 179px;
+    margin: 0 auto;
+    padding: 20px 0 40px;
+    color: #3c3c3c;
+    
 }
