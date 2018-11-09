@@ -3182,9 +3182,10 @@ ol {
     height: 100%;
     position: relative;
     overflow: hidden;
-    transition:  0.8s;
+    transition: 0.8s;
     float: right;
 }
+
 .group-bd .group-item li .role-item {
     width: 0;
     /* width: 390px; */
@@ -3195,7 +3196,7 @@ ol {
     background-image: url("../images/part07-box02-peolpe-role_01.png");
     background-repeat: no-repeat;
     background-color: #f5f9ff;
-    transition:  0.8s;
+    transition: 0.8s;
 }
 
 
@@ -3242,7 +3243,8 @@ ol {
     font-size: 14px;
     color: #3c3c3c;
 }
-.group-bd .role-item dl dd a:hover{
+
+.group-bd .role-item dl dd a:hover {
     text-decoration: underline;
 }
 
@@ -3251,7 +3253,7 @@ ol {
 /* 右侧-------role-txt---------*/
 .group-item .role-txt {
     display: block;
-    border: 1px solid  #fff;
+    border: 1px solid #fff;
     width: 60px;
     height: 100%;
     background-color: #f5f9ff;
@@ -3276,7 +3278,7 @@ ol {
 
 .group-item .role-txt .role-img {
     display: block;
-    background-image:url("../images/part07-box02-peolpe-role_01_jxk.png");
+    background-image: url("../images/part07-box02-peolpe-role_01_jxk.png");
     position: absolute;
     width: 100%;
     background-position: bottom center;
@@ -3290,26 +3292,30 @@ ol {
 }
 
 
-.group-bd .group-item li:hover .role-item{
+.group-bd .group-item li:hover .role-item {
     width: 390px;
     /* width: 449px; */
 }
-.group-bd .group-item li:hover{
+
+.group-bd .group-item li:hover {
     /* width: 390px; */
     width: 449px;
 }
-.group-bd .group-item li:hover .role-img{
+
+.group-bd .group-item li:hover .role-img {
     /* zoom: .83; */
     filter: none;
     opacity: 1;
 }
 
-.group-bd .group-item li:hover .role-txt{
-    border: 1px solid  transparent;
+.group-bd .group-item li:hover .role-txt {
+    border: 1px solid transparent;
 }
-.group-bd .group-item li:hover .role-txt .role-line{
+
+.group-bd .group-item li:hover .role-txt .role-line {
     opacity: 1;
 }
+
 .group-item .role-txt .role-line {
     opacity: 0;
     /* display: none; */
@@ -3321,49 +3327,59 @@ ol {
     height: 49px;
     background: #bfd0e5;
 }
+
 /* 修改图片部分 */
-.group-item li:nth-child(2)  .role-item{
+.group-item li:nth-child(2) .role-item {
     background: url("../images/part07-box02-peolpe-role_02.png");
-    background-repeat:no-repeat; 
-    
+    background-repeat: no-repeat;
+
 }
-.group-item li:nth-child(2) .role-img{
+
+.group-item li:nth-child(2) .role-img {
     background: url("../images/part07-box02-peolpe-role_02_xiaoyao.png");
     background-position: bottom center;
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(3)  .role-item{
+
+.group-item li:nth-child(3) .role-item {
     background: url("../images/part07-box02-peolpe-role_03.png");
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(3) .role-img{
+
+.group-item li:nth-child(3) .role-img {
     background: url("../images/part07-box02-peolpe-role_03_fyn.png");
     background-position: bottom center;
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(4)  .role-item{
+
+.group-item li:nth-child(4) .role-item {
     background: url("../images/part07-box02-peolpe-role_04.png");
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(4) .role-img{
+
+.group-item li:nth-child(4) .role-img {
     background: url("../images/part07-box02-peolpe-role_04_fyn.png");
     background-position: bottom center;
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(5)  .role-item{
+
+.group-item li:nth-child(5) .role-item {
     background: url("../images/part07-box02-peolpe-role_05.png");
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(5) .role-img{
+
+.group-item li:nth-child(5) .role-img {
     background: url("../images/part07-box02-peolpe-role_05_mwomen.png");
     background-position: bottom center;
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(6)  .role-item{
+
+.group-item li:nth-child(6) .role-item {
     background: url("../images/part07-box02-peolpe-role_06.png");
     background-repeat: no-repeat;
 }
-.group-item li:nth-child(6) .role-img{
+
+.group-item li:nth-child(6) .role-img {
     background: url("../images/part07-box02-peolpe-role_06_jws.png");
     background-position: bottom center;
     background-repeat: no-repeat;
@@ -3377,20 +3393,22 @@ ol {
 
 
 /* 魔族仙族部分 */
-.group-mo{
+.group-mo {
     width: 70px;
 }
 
-.slide-wrap li:nth-child(2) .group-txt{
+.slide-wrap li:nth-child(2) .group-txt {
     background-color: #3b8bed;
-    width: 70px!important;
+    width: 70px !important;
 }
-.group-xian{
+
+.group-xian {
     width: 70px;
 }
-.slide-wrap li:nth-child(3) .group-txt{
+
+.slide-wrap li:nth-child(3) .group-txt {
     background: #499df5;
-    width: 70px!important;
+    width: 70px !important;
 }
 
 
@@ -3399,29 +3417,110 @@ ol {
 /*-------------footer----------------*/
 
 .footer {
-    background: url("../images/footer-picture.png")no-repeat;
-    background-size: cover;
+    background: url("../images/footer-picture.png") no-repeat center bottom;;
+    /* background-size: cover; */
     width: 100%;
     overflow: hidden;
     height: 279px;
     /* height: 818px; */
     padding-top: 521px;
-    position:relative;
+    position: relative;
 }
 
-.footer .west-01{
+/*帧动画：首先声明帧动画@keyframes*/
+
+@keyframes west01 {
+    from {
+        background-position: 0;
+    }
+
+    to {
+        background-position: -1600px;
+    }
+}
+
+.footer .west-01 {
     position: absolute;
     width: 180px;
     height: 180px;
     left: 50%;
     margin-left: -398px;
     top: 352px;
-    background-image:url("../images/");
+    background-image: url("../images/footer-west_01.png");
+    -webkit-animation: west01 1.4s steps(8) infinite;
+    -moz-animation: west01 1.4s steps(8) infinite;
+    -ms-animation: west01 1.4s steps(8) infinite;
+    animation: west01 1.4s steps(8) infinite;
 }
 
 
-.footer .share-box{
-    background-color: red;
+
+.footer .west-02 {
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    left: 50%;
+    margin-left: -198px;
+    top: 356px;
+    background-image: url("../images/footer-west_02.png");
+    -webkit-animation: west01 1.4s steps(8) infinite;
+    -moz-animation: west01 1.4s steps(8) infinite;
+    -ms-animation: west01 1.4s steps(8) infinite;
+    animation: west01 1.4s steps(8) infinite;
+}
+
+@keyframes west02 {
+    from {
+        background-position: 0;
+    }
+
+    to {
+        background-position: -1360px;
+    }
+}
+
+.footer .west-03 {
+    position: absolute;
+    width: 170px;
+    height: 240px;
+    left: 50%;
+    margin-left: -11px;
+    top: 326px;
+    background-image: url("../images/footer-west_03.png");
+    -webkit-animation: west02 1.4s steps(8) infinite;
+    -moz-animation: west02 1.4s steps(8) infinite;
+    -ms-animation: west02 1.4s steps(8) infinite;
+    animation: west02 1.4s steps(8) infinite;
+}
+
+
+@keyframes west03 {
+    from {
+        background-position: 0;
+    }
+
+    to {
+        background-position: -1680px;
+    }
+}
+
+.footer .west-04 {
+    position: absolute;
+    width: 210px;
+    height: 200px;
+    left: 50%;
+    margin-left: 198px;
+    top: 372px;
+    background-image: url("../images/footer-west_04.png");
+    -webkit-animation: west03 1.4s steps(8) infinite;
+    -moz-animation: west03 1.4s steps(8) infinite;
+    -ms-animation: west03 1.4s steps(8) infinite;
+    animation: west03 1.4s steps(8) infinite;
+}
+
+
+/* 中间分享部分 */
+.footer .share-box {
     display: block;
     width: 100%;
     height: 34px;
@@ -3430,17 +3529,298 @@ ol {
     z-index: 10;
     color: #333;
     margin-bottom: 23px;
-    
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 23px;
+}
+
+.footer .NIE-share {
+    margin: 0 auto;
+    width: 327px;
+    height: 100%;
+}
+
+.footer .NIE-share-txt {
+    line-height: 30px;
+    height: 30px;
+    float: left;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.footer .NIE-share-iconBtn {
+    float: left;
+    font-size: 0;
+}
+
+.footer .NIE-share-iconBtn li {
+    /* width: 63px; */
+    height: 30px;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+}
+
+.footer .NIE-share-iconBtn li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #333;
+    margin: 0 4px;
+    height: auto;
+    font-weight: 400;
+    text-align: left;
+    font-style: normal;
+    overflow: hidden;
+
+}
+
+.footer .NIE-share-iconBtn li a:hover {
+    color: #a70d01;
+}
+
+/* 微信部分 */
+.footer .NIE-share-iconBtn .iconfont {
+    font-family: "iconfont";
+    font-size: 24px;
+    float: left;
+    /* vertical-align: sub; */
+    height: 30px;
+    line-height: 30px;
+
+}
+
+.footer .NIE-share-iconBtn em {
+    display: inline-block;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+
 }
 
 
-.footer .NIE-copyRight{
-    background-color: lime;
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 3px;
+}
+
+/* 
+    第二种引入方法；
+  @font-face {
+    font-family: 'iconfont';
+    src: url('iconfont.eot');
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+    url('iconfont.woff') format('woff'),
+    url('iconfont.ttf') format('truetype'),
+    url('iconfont.svg#iconfont') format('svg');
+  };
+
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  } */
+
+.icon-weimingming-:before {
+    content: "\e76b";
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+.icon-yixin:before {
+    content: "\e609";
+    /* height: 30px;
+    line-height: 30px; */
+    display: inline-block;
+}
+
+.icon-yixin {
+    line-height: 25px !important;
+}
+
+.icon-xingzhuang8:before {
+    content: "\e666";
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+.icon-gengduo1:before {
+    content: "\e68f";
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+/* -------------矢量图标------------------ */
+@font-face {
+    font-family: "iconfont";
+    src: url('iconfont.eot?t=1541736871886');
+    /* IE9*/
+    src: url('iconfont.eot?t=1541736871886#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAATAAAsAAAAAByAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY94UldY21hcAAAAYAAAABLAAABcOiTuetnbHlmAAABzAAAAQkAAAEka8DwqmhlYWQAAALYAAAALwAAADYTNZlLaGhlYQAAAwgAAAAcAAAAJAfeA4NobXR4AAADJAAAAAgAAAAICAAAAGxvY2EAAAMsAAAABgAAAAYAkgAAbWF4cAAAAzQAAAAgAAAAIAETAGZuYW1lAAADVAAAAUUAAAJtPlT+fXBvc3QAAAScAAAAIgAAADZLUzkVeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeZz/PZm7438AQw9zA0AAUZgTJAQDuBwy7eJxjYGBgZWBgYAZiHSBmYWBgDGFgZAABP6AoI1icmYELLM7CoARWwwISf579/z+MBPJZwCQDIxvDKOABkzJQHjisIJiBEQAxFQsZAHicY2BnYPi/ivk6cxiDAIM6gzGDDYMrgz9DJAODqrg6H6OyHqO6HaO5HKM4H6Oqkj4juzlcQE2Zj5FdRJxNmI2BXYxB3IzBXI2BUYlNRMzIzERNHESAOEB9ImLGIJ46hGXHqMb0X9BRSEUwopCJqTAiuISZUe9fjZiIVrCErhEjc3tqVKsQD3d4ERM7d/iJf99ZWRk5Txxn5GRl/ffjXwefqKiMgMBMPgEBGVHR+5x8fJxA5kROfn5OPn5GgY02KqzsTMleXslMQFLTzZKFQ9tTIdAoooSJKdabiSknSEqCkSmA9d+34xCTuY6fYOT891IAaKaMgA2EKmbkE+YDIkYozcAAADNbNp8AAAB4nGNgZGBgAOJqScM/8fw2Xxm4WRhA4Aa31nIE/X8VCwNzGJDLwcAEEgUAAt8I6gB4nGNgZGBgbvjfwBDDwgACQJKRARUwAQBHCAJrBAAAAAQAAAAAAAAAAJIAAAABAAAAAgBaAAcAAAAAAAIAAAAKAAoAAAD/AAAAAAAAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAiZGJkZmBpzw1MzczLx2EdRkYAC3nBOoAAA==') format('woff'),
+        url('iconfont.ttf?t=1541736871886') format('truetype'),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url('iconfont.svg?t=1541736871886#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('iconfont.eot?t=1541744047409');
+    /* IE9*/
+    src: url('iconfont.eot?t=1541744047409#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAR4AAsAAAAABrwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8xkf7Y21hcAAAAYAAAABLAAABcOcxtcVnbHlmAAABzAAAAMgAAADIoiB3cGhlYWQAAAKUAAAALgAAADYTNdCYaGhlYQAAAsQAAAAcAAAAJAfeA4NobXR4AAAC4AAAAAgAAAAICAAAAGxvY2EAAALoAAAABgAAAAYAZAAAbWF4cAAAAvAAAAAgAAAAIAEPAEduYW1lAAADEAAAAUUAAAJtPlT+fXBvc3QAAARYAAAAHgAAAC/oenlweJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByecT7jZG7438AQw9zAcBwozAiSAwDhDAw8eJxjYGBgZWBgYAZiHSBmYWBgDGFgZAABP6AoI1icmYELLM7CoARWwwISf8b5/z+MBPJZwCQDIxvDKOABkzJQHjisIJiBEQA+7AmNAAADAAD/OQPvAwQACwAiADoAAAEGAAcWABc2ADcmABMGJicuAS8BMy4BNT4BNx4BFw4BBx4BAzE2NS4BJw4BBxQWFyMOASMiJxcWFz4BAgrO/u4FBQESzs4BEQYG/u89adY8LEsfAwIoLQO+j4+9BAFURwUtQAcCYUpKYQItJQEVRiwMDAI9SmWWAwMF/u/Oz/7vBQUBEc/OARH83SkfGA0xIgEtckGPvQQEvY9bky4IHQEPGBpKYgICYkovTRckKwIBIQECcgAAeJxjYGRgYADim5nOofH8Nl8ZuFkYQOAGt9t6BP3fkoWBGSTBwcAEEgUABWkIiAAAeJxjYGRgYG7438AQw8IAAkCSkQEVMAEARwgCawQAAAAEAAAAAAAAAABkAAAAAQAAAAIAOwADAAAAAAACAAAACgAKAAAA/wAAAAAAAHicZY9NTsMwEIVf+gekEqqoYIfkBWIBKP0Rq25YVGr3XXTfpk6bKokjx63UA3AejsAJOALcgDvwSCebNpbH37x5Y08A3OAHHo7fLfeRPVwyO3INF7gXrlN/EG6QX4SbaONVuEX9TdjHM6bCbXRheYPXuGL2hHdhDx18CNdwjU/hOvUv4Qb5W7iJO/wKt9Dx6sI+5l5XuI1HL/bHVi+cXqnlQcWhySKTOb+CmV7vkoWt0uqca1vEJlODoF9JU51pW91T7NdD5yIVWZOqCas6SYzKrdnq0AUb5/JRrxeJHoQm5Vhj/rbGAo5xBYUlDowxQhhkiMro6DtVZvSvsUPCXntWPc3ndFsU1P9zhQEC9M9cU7qy0nk6T4E9XxtSdXQrbsuelDSRXs1JErJCXta2VELqATZlV44RelzRiT8oZ0j/AAlabsgAAAB4nGNgYoAALgbsgImRiZGZgbUysyIzj4EBAA2kAkwAAA==') format('woff'),
+        url('iconfont.ttf?t=1541744047409') format('truetype'),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url('iconfont.svg?t=1541744047409#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('iconfont.eot?t=1541744989155');
+    /* IE9*/
+    src: url('iconfont.eot?t=1541744989155#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAUoAAsAAAAAB5QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY83EhYY21hcAAAAYAAAABLAAABcOeOttxnbHlmAAABzAAAAXEAAAGY9zX2gGhlYWQAAANAAAAALwAAADYTNdi3aGhlYQAAA3AAAAAcAAAAJAfeA4NobXR4AAADjAAAAAgAAAAICAAAAGxvY2EAAAOUAAAABgAAAAYAzAAAbWF4cAAAA5wAAAAgAAAAIAEUAIxuYW1lAAADvAAAAUUAAAJtPlT+fXBvc3QAAAUEAAAAJAAAADViShzVeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByepT1LY27438AQw9zA0AAUZgTJAQDtFQyveJxjYGBgZWBgYAZiHSBmYWBgDGFgZAABP6AoI1icmYELLM7CoARWwwISf5b2/z+MBPJZwCQDIxvDKOABkzJQHjisIJiBEQAiZQsBAHicTU7NShtRFD7n3MyZGWfmzrSZ3Gt+TCWQO6ELmybNhIhMsCKViCCBWAi0urIbFVS6bt6kTyB213fossts6rIv0dQLboTDOXw/nO8DD+D/ogRiAQF0YAdmcAYX8BW+ATgGshyGCjSDYDPMjSvRjm6iVrmFmSkoM6z7bhN7+Ri3MGtxqnRP6UxiqvrWmLpP6vBtPsgHW4hssoKUlmgtmtXTJ9cU2ESJxmXzzhIqZYLl6oEZN5dL3GRePdxXiamzPzmnTiji77P5z2xjr1YWTlRpff6BiFE5tHvc9aX0G218HyRJMJ6SsGSsYkKim9Wfjzf23N0S3V4erzvo6f68Xn+9KygMWARBL1Fp8lKpxbPgpS1CMy+tNLqVV1e8fUinkxLvTw72RCmmN9VqzRFrUejJ7hhlOcJ24xfG6wlNiygSYRKsCRHHJ9f//ooPo9GRX4y2T34nZ0wtWVOt7MsnJ/TJjzwcUNxQhC/qKcAje75BcwAAAHicY2BkYGAAYst7T0zj+W2+MnCzMIDADW6vWAT9v4GFgbkByOVgYAKJAgAPBwkFAHicY2BkYGBu+N/AEMPCAAJAkpEBFTABAEcIAmsEAAAABAAAAAAAAAAAzAAAAAEAAAACAIAACAAAAAAAAgAAAAoACgAAAP8AAAAAAAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICJkYmRmYG7IjMvvSqjNDEv3YKBAQAowASc') format('woff'),
+        url('iconfont.ttf?t=1541744989155') format('truetype'),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url('iconfont.svg?t=1541744989155#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url('iconfont.eot?t=1541745681330');
+    /* IE9*/
+    src: url('iconfont.eot?t=1541745681330#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAR8AAsAAAAABvgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8fEiBY21hcAAAAYAAAABVAAABhmaR0NpnbHlmAAAB2AAAALQAAADcEbcMPGhlYWQAAAKMAAAALgAAADYTNd4faGhlYQAAArwAAAAcAAAAJAfeA4RobXR4AAAC2AAAAAwAAAAMDAAAAGxvY2EAAALkAAAACAAAAAgAQABubWF4cAAAAuwAAAAeAAAAIAEPADRuYW1lAAADDAAAAUUAAAJtPlT+fXBvc3QAAARUAAAAJgAAADy8IZm6eJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByesT3rZ27438AQw9zA0AAUZgTJAQDoQAx4eJztkMENgDAMAy8p5IEYhAcD8WKlbtk1ipvCFli6WHHyMrACRZxiAbsxhi6llnlhy3zJn5Ab3qLV3uFzyXSLdNcIfu05j3fz0dZkNNvqBH8A/D0PmgAAAHicXY29DoIwFIXvpbYmOhC0lEkTaII7fw7Gp9HFgXfgNXwoYO9C4uRAZGJgoFhNTNTt5Hwn5wMLYCpmQApYwg4AGcwFeBnsQ1hLl7MgPKIMwiQ7YJpkkdhgHAnOLFC6oRR9pdCnVDei5Fte2pzbn0AKU6uv2Xj74e8AL/+VdORs/N6f33dlKtM4jV3fWlT6YY5WVYUOY7q76Clv2xyRnKjuqlp3hjq1oeO97/NhAHgCztk+43icY2BkYGAAYl/Olinx/DZfGbhZGEDgBrevIIL+38DCwNwA5HIwMIFEAd98B7EAAHicY2BkYGBu+N/AEMPCAAJAkpEBFTADAEcJAmwEAAAABAAAAAQAAAAAAAAAAEAAbnicY2BkYGBgZtBgYGIAARDJBYQMDP/BfAYADLEBRAAAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAmZGJkZmRhYE9PTUvPaU0nwNKGzIwAABFLgYuAAA=') format('woff'),
+        url('iconfont.ttf?t=1541745681330') format('truetype'),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+        url('iconfont.svg?t=1541745681330#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+/* -------------矢量图标------------------ */
+
+
+
+/* 版权块部分 */
+.footer .NIE-copyRight {
     border-top: solid 1px #a0b7c7;
     width: 968px;
     height: 179px;
     margin: 0 auto;
     padding: 20px 0 40px;
     color: #3c3c3c;
-    
+}
+
+.nie-cn-part1 {
+    width: 840px;
+    height: 48px;
+    /* background-color: red; */
+    margin: 0 auto;
+}
+
+.nie-cn-logo {
+    width: 313px;
+    height: 48px;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 0;
+    float: left
+}
+
+.nie-cn-logo a {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+    color: #3c3c3c;
+}
+
+.nie-cn-logo>.a01>img {
+    padding-top: 5px;
+    border: 0;
+    vertical-align: middle;
+}
+
+.nie-cn-logo>.a02>img {
+    padding: 5px 15px 0 0;
+    border: 0;
+    vertical-align: middle;
+}
+
+.nie-cn-logo>.a03>img {
+    padding: 5px 15px 0 0;
+    width: 31px;
+    height: 31px;
+}
+
+/* 右侧公司介绍等文字部分 */
+.nie-cn-nav {
+    float: left
+}
+
+.nie-cn-nav a,
+.nie-cn-nav i {
+    font-style: normal;
+    color: #3c3c3c;
+}
+
+.nie-cn-nav a:hover {
+    text-decoration: underline;
+}
+
+.nie-cn-nav-i2 {
+    height: 28px;
+    line-height: 28px;
+}
+
+.nie-cn-nav {
+    position: relative;
+}
+
+.nie-cn-guardianship {
+    display: inline-block;
+    color: #fff!important;
+    background-color: #610000;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 3px;
+    top: 21px;
+}
+
+/* 大结尾啦啦啦啦啦啦 */
+
+.nie-cn-part2 {
+    width: 840px;
+    padding-top: 10px;
+    height: 96px;
+    /* background-color: lime; */
+    margin: 0 auto;
+    line-height: 24px;
+    color: #3c3c3c;
+}
+.nie-cn-part2 a{
+    color: #3c3c3c;
+}
+ .nie-cn-part2 span {
+    display: inline-block;
+    vertical-align: top;
 }
