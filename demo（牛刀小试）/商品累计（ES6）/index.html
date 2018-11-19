@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="price.css" />
+</head>
+
+<body onselectstart="return false;">
+	<div class="wrap">
+		<div class="box">
+			<ul class="list" id="list">
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+				<li>
+					<i></i>
+					<em>0</em>
+					<i></i>
+					<span>
+						单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+					</span>
+				</li>
+			</ul>
+			<div class="info">
+				<span>商品合计：<em>0</em>件</span>
+				<span>共花费了：<em>0</em>元</span>
+				<br />
+				<br />
+				<span>其中最贵的商品单价是：<em>0</em>元</span>
+			</div>
+		</div>
+	</div>
+	<script>
+		/* 		function Calculate() {
+			this.list = document.getElementsByClassName('list');
+			this.em = list.getElementsByTagName('em');
+			this.li = list.getElementsByTagName('li');
+			this.info = document.getElementsByClassName('info');
+			this.Total_dollar = this.info[0].firstElementChild.nextElementSibling.firstElementChild;
+			this.Total_pieces = this.info[0].firstElementChild.firstElementChild;
+			this.expensive_goods = this.info[0].lastElementChild.firstElementChild;
+			//console.log(expensive); //最贵商品
+			//Total/Sub-total/Grand Total  合计/小计/总计
+			//思路：for 循环和隔行变色类似，单数点击双数点击不同，点个累加，
+			// console.log(em[0].parentNode)//整条li
+			// console.log(em[0].previousElementSibling)//整条li
+			// console.log(em[0].nextElementSibling)//整条li
+		}
+
+		//------------  “共花费了：”   输出结果--------------
+		Calculate.prototype.dollar = function () {
+			var dollar = 0; //不能用this dollar 设置变量会挂在构造函数上。
+			for (let j = 0; j < this.em.length; j++) {
+				dollar += Number(this.li[j].getElementsByTagName('strong')[1].innerHTML.match(/\d+.\d|\d+/g))
+			}
+			this.Total_dollar.innerHTML = dollar;
+		}
+
+		//------------   “商品合计：”  输出结果--------------
+		Calculate.prototype.pieces = function () {
+			var number = 0;; //不能用this dollar 设置变量会挂在构造函数上。
+			for (let j = 0; j < this.em.length; j++) {
+				number = Number(this.em[j].innerHTML) + number
+				// console.log( Number(this.em[j].innerHTML))
+			}
+			// console.log(this.info[0].firstElementChild.firstElementChild)
+			this.Total_pieces.innerHTML = number;
+		}
+		//------------  增加按钮  点击事件--------------
+		Calculate.prototype.plus_calculate = function () {
+			for (let i = 0; i < this.em.length; i++) {
+				let that = this; //遇到函数，指针被改变了存下原来的this
+				this.em[i].nextElementSibling.num = 0; //在外面每个对象添加自定义属性
+				this.em[i].nextElementSibling.onclick = function () {
+					this.num++
+					that.em[i].innerHTML = this.num;
+					that.li[i].getElementsByTagName('strong')[1].innerHTML = Number(that.li[i].getElementsByTagName('strong')[0].innerText
+						.match(
+							/\d+\W\d|\d+/g).join('')) * this.num + '元'
+					console.log(that)
+					that.dollar(); //需要在点击事件中调用方法，才可以触发
+					that.pieces();
+					that.expensivence()
+				}
+			}
+		}
+		//------------  减少按钮  点击事件--------------
+		Calculate.prototype.reduce_calculate = function () {
+			for (let i = 0; i < this.em.length; i++) {
+				this.em[i].previousElementSibling.reduce_num = 0;
+				var that = this; //遇到函数，指针被改变了存下原来的this
+				this.em[i].previousElementSibling.onclick = function () {
+					if (that.em[i].innerHTML > 0) {
+						that.em[i].innerHTML -= 1;
+						that.em[i].nextElementSibling.num -= 1;
+						//对小计进行重新进行赋值
+						that.li[i].getElementsByTagName('strong')[1].innerHTML = Number(that.li[i].getElementsByTagName('strong')[0].innerText
+							.match(
+								/\d+\W\d|\d+/g).join('')) * that.em[i].nextElementSibling.num + '元';
+						that.dollar();
+						that.pieces();
+						that.expensivence()
+					}
+				}
+			}
+		}
+		//------------ “  其中最贵的商品单价是： ”  输出结果--------------
+
+		Calculate.prototype.expensivence = function () {
+			var arrary = []; //不放在外面会出现五个数组，值一次一次得出，5个空间地址 [0] [0] [0]  [0]  [0] 
+			for (let j = 0; j < this.em.length; j++) {
+				arrary.push(Number(this.li[j].getElementsByTagName('strong')[1].innerHTML.match(/\d+.\d|\d+/g)))
+			}
+			var newarrary = arrary.sort(function (a, b) { //注意单纯sort（） 只能拍0-9采用ASCII编码！！！
+				return a - b
+			});
+			var newpieces = newarrary[newarrary.length - 1];
+			this.expensive_goods.innerHTML = newpieces;
+
+			console.log(newarrary)
+
+			//把最大的数字反向转化回去
+			for (let z = 0; z < this.em.length; z++) {
+				if (!this.newpiece) { //不设置的话，newpieces初始值0会导致进入下面判断。
+					newpiece = 30
+				}
+				if (!Boolean(newpieces % Number(this.li[z].lastElementChild.firstElementChild.innerHTML.match(/\d+.\d|\d+/g)))) {
+					// alert(Number(li[z].lastElementChild.firstElementChild.innerHTML.match(/\d+.\d|\d+/g)))
+					this.expensive_goods.innerHTML = Number(this.li[z].lastElementChild.firstElementChild.innerHTML.match(
+						/\d+.\d|\d+/g));
+				}
+
+			}
+		}
+		let t = new Calculate();
+		t.plus_calculate();
+		t.reduce_calculate();
+		t.dollar();
+		t.pieces();
+		t.expensivence(); */
+		//plus 加 减 minus
+	</script>
+
+
+	<script>
+		// --------------------------------ES6面向对象-------------------------------
+		// -------------------------------第一个类上半部分--------------------------
+
+		//~~~~~~~~~~~~~~~~~老师~~~~~~~上下分两类太难写啦！！！！！！！！~~~~~~~~~~~~~~
+		
+		class IndividualStatistics { //class开头写,
+			constructor(ele, i) { //当使用new来创建对象，会自动调用这个函数
+				this.list = document.getElementsByClassName(ele); //ele=list
+				this.li = this.list[0].getElementsByTagName("li")[i]; //i  为啥不能this.li[0]
+				this.reduceButton = this.li.firstElementChild; //获取+按钮
+				this.number = this.reduceButton.nextElementSibling; //个数显示框
+				this.addButton = this.number.nextElementSibling; //获取-按钮
+				this.clicks = 0;
+				this.unitPrice = parseFloat(this.li.getElementsByTagName("strong")[0].innerHTML); //获取单价
+				this.subtotal = this.li.getElementsByTagName("strong")[1]; //获取小记输出框
+			}
+			//增加按钮的点击事件 
+			plusCalculate() { //共享的方法（方法会挂载到原型身上）
+				this.addButton.onclick = () => {
+					this.clicks++;
+					this.number.innerHTML = this.clicks;
+					this.subtotal.innerHTML = this.unitPrice * this.clicks + "元";
+				}
+
+			}
+			//减少按钮的点击事件 
+			reduceCalculate() {
+				this.reduceButton.onclick = () => {
+					this.clicks--;
+					if (this.clicks < 0) {
+						this.clicks = 0;
+					}
+					this.number.innerHTML = this.clicks;
+					this.subtotal.innerHTML = this.unitPrice * this.clicks + "元";
+				}
+
+			}
+
+		}
+		const list = document.getElementsByTagName('li');
+
+		for (i = 0; i < list.length; i++) {
+			let upperHalf = new IndividualStatistics("list", i);
+			upperHalf.plusCalculate(); //zl
+			upperHalf.reduceCalculate(); //zl
+		}
+
+
+		//-----------------------第二个类下半部分即统计部分-------------------------
+		// 需要继承过来一部分属性，以便统计使用;
+		class OverallStatistics extends IndividualStatistics { //报错
+			constructor(ele, i) {
+				// 不写是默认添加了;
+				super(ele, i); //子类B的构造函数之中的super()，代表调用父类的构造函数。
+				this.info = document.getElementsByClassName("info");
+				this.totalNumber = this.info[0].getElementsByTagName("em")[0];
+				this.totalMoney = this.info[0].getElementsByTagName("em")[1];
+				this.expensivePrice = this.info[0].getElementsByTagName("em")[2];
+			}
+
+			quantityStatistics() {
+				this.addButton.onclick = () => {
+					this.clicks++;
+					this.number.innerHTML = this.clicks;
+					this.subtotal.innerHTML = this.unitPrice * this.clicks + "元";
+					this.getNumber();
+					this.zuigui()
+				}
+				this.reduceButton.onclick = () => {
+					this.clicks--;
+					if (this.clicks < 0) {
+						this.clicks = 0;
+					}
+					this.number.innerHTML = this.clicks;
+					this.subtotal.innerHTML = this.unitPrice * this.clicks + "元";
+					this.getNumber()
+					this.zuigui()
+				}
+			};
+			getNumber() {
+				let num = 0;
+				let money = 0;
+				for (let n = 0; n < list.length; n++) {
+					num += document.getElementsByTagName("em")[n].innerHTML * 1;
+					money += parseFloat(document.getElementsByTagName("li")[n].getElementsByTagName("strong")[1].innerHTML);
+				}
+				this.totalNumber.innerHTML = num;
+				this.totalMoney.innerHTML = money;
+			};
+
+			zuigui() {
+			let arr = [];
+				for (let n = 0; n < list.length; n++) {
+					if(parseFloat(document.getElementsByTagName("li")[n].getElementsByTagName("strong")[1].innerHTML)){
+						arr.push(parseFloat(document.getElementsByTagName("li")[n].getElementsByTagName("strong")[0].innerHTML));
+						arr.sort((a,b)=>{return a-b});
+					}
+				}
+				if(arr.length==0){
+					this.expensivePrice.innerHTML=0
+				}else{
+					this.expensivePrice.innerHTML=arr[arr.length-1];
+				}		
+			};
+		}
+		for (i = 0; i < list.length; i++) {
+			let lowerHalf = new OverallStatistics("list", i);
+			lowerHalf.quantityStatistics()
+		}
+	</script>
+</body>
+
+</html>
