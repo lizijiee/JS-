@@ -44,7 +44,7 @@ html,body{
 	width:136px;
 	height:36px;
 	margin:18px 0 0 28px;
-	background: url(../img/tt.jpg);
+	/* background: url(../img/tt.jpg); */
 
 }
 .title a{
@@ -669,4 +669,8 @@ html,body{
 .footer p {
 	margin: 0;
 	color: red;
+}
+
+.hide{
+	display: none;
 }
