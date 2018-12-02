@@ -22,7 +22,7 @@ let myTools = (function () {
     /* 
         通过id找到他爹数据
     */
-    function getParent(id) {
+    function getParent(id) {//找爹
         //两种情况：
         //    1.是错误的;(undefined)
         //    2.本身为最大父级即没有爹;(data[id].pid==-1没有爹)
@@ -33,7 +33,7 @@ let myTools = (function () {
         通过id找到他爹的爹
     */
     //逻辑很重要,一层一层查找可以用while循环，没有限制;    
-    function getGrandParent(id) {
+    function getParentS(id) {//包含自身以上所有等级
         //找爹把每次pid作为下一次的id，循环到底
         let parentArr = [];
         let aa = data[id];
@@ -42,6 +42,7 @@ let myTools = (function () {
             // parentArr.push(aa);
             aa = getParent(aa.id); //找到爹，让爹等于儿子，再查找;
         }
+        return  parentArr
     }
 
     function addAttr(attr, value) {
@@ -54,52 +55,14 @@ let myTools = (function () {
     return {
         getChild,
         getParent,
-        getGrandParent,
+        getParentS,
         addAttr
     } //这里必须用对象包一下
 })()
 const {
     getChild,
     getParent,
-    getGrandParent,
+    getParentS,
     addAttr
 } = myTools; //myTools返回值就是一个对象;
-
-
-let A={
-    name:"lizi",
-    a:this.age,
-    ss:function(){
-        console.log(this)
-    }
-    
-}
-
-let B={
-   age:11111,
-    fn:function(){
-        console.log(this)
-    }
-}
-A.bind(B)
-console.log(A.a)
-
-object.prototype.toString = function(){
-    ...
-  
-
-        retrun  [object Object]
-    
-        retrun  [object Array]
-    
-    ````
-    
-}
-
-
-object.prototype.toString.call(****);
-
-
-// A.ss.bind(B)();
-// A.ss()
 
