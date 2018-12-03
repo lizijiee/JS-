@@ -69,9 +69,9 @@ class NewFolder {
                     this.check();
                 }
                 this.render(tempId)
-                
 
-              this.Menurender(tempId);
+
+                this.Menurender(tempId);
                 this.click(this.fItem)
                 return false
             }
@@ -98,8 +98,11 @@ class NewFolder {
                         // arr.slice(-1)  [6]   arr.slice(-2)  (2) [5, 6]
                         // 根据点击菜单关面包屑
                         this.Menurender(ele.id);
-                        this.render(ele.id)
-                        this.click(this.fItem)
+                        this.render(ele.id);
+                        this.click(this.fItem);
+                        this.checkall.className = ""; //先把全选清空 
+                        this.check();
+                        // this.selectAll();
                     }
                     this.breadNav.appendChild(a);
                 } else {
@@ -107,7 +110,7 @@ class NewFolder {
                     span.innerHTML = ele.title;
                     this.breadNav.appendChild(span);
                 }
-                this.check();//调用勾选事件
+                this.check(); //调用勾选事件
             })
         }
     }
@@ -115,14 +118,12 @@ class NewFolder {
         let arr = []
         Array.from(this.checkI).forEach(ele => {
             ele.onclick = (ev) => {
-                console.log(1111111111111);
-
-                if(ev.target.className){
-                    ev.target.className="";
-                    ev.path[1].className="file-item "
-                }else{
-                     ev.target.className="checked"; 
-                     ev.path[1].className="file-item active"
+                if (ev.target.className) {
+                    ev.target.className = "";
+                    ev.path[1].className = "file-item "
+                } else {
+                    ev.target.className = "checked";
+                    ev.path[1].className = "file-item active"
                 }
                 for (let i = 0; i < this.checkI.length; i++) {
                     arr.push(this.checkI[i].className)
@@ -137,29 +138,35 @@ class NewFolder {
     selectAll() {
         this.checkall.onclick = ev => {
             // arr.every(ele => ele) ? onoff=true :onoff=true;//return不用写，查类型
+            console.log(this.fItem.length)
+            if (!this.fItem.length) {
+                return
+            }else{
             if (!ev.target.className) {
                 ev.target.className = "checked";
                 for (let i = 0; i < this.checkI.length; i++) {
                     this.checkI[i].className = "checked";
-                    this.checkI[i].parentNode.className="file-item active"
+                    this.checkI[i].parentNode.className = "file-item active"
                 }
 
             } else {
                 ev.target.className = "";
                 for (let i = 0; i < this.checkI.length; i++) {
                     this.checkI[i].className = "";
-                    this.checkI[i].parentNode.className="file-item"
+                    this.checkI[i].parentNode.className = "file-item"
                 }
             }
             this.check()
+        }
+           
         }
     }
     // judgeResult(){
     //     if(){
     //     }
     // }
-    treeNav(){//treeNavigation
-            console.log(22)
+    treeNav() { //treeNavigation
+        console.log(22)
     }
 }
 let newFolder = new NewFolder;
