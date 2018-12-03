@@ -399,6 +399,8 @@ html,body{
 	border:1px solid #54afdc;
 	box-shadow: 0px 0px 10px #d6e8f4;
 }
+
+
 .folders .file-item:hover i{
 	border:1px solid #d1d8de;
 }
