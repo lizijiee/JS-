@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500">您的浏览器不支持canvas标签，请您更换浏览器！</canvas>
+    <!--支持<canvas>的浏览器会只渲染<canvas>标签，而忽略其中的替代内容。不支持 <canvas> 的浏览器则 会直接渲染替代内容。-->
+    <script>
+        // 第一步：设置canvas尺寸;
+        // 第二步：渲染;
+           // 1.字母随机;
+           // 2.渲染背景颜色;
+           // 3.循环所有内容，将内容填入;
+        // 第三步:随机生成颜色;
+        if (canvas.getContext) {
+            class meteorShowers {
+                constructor() {
+                    this.can = document.getElementById("canvas"); 
+                    this.ctx = this.can.getContext("2d");
+                    //获得渲染上下文和它的绘画功能。
+                    // getContext('2d') 方法让我们拿到一个CanvasRenderingContext2D对象， 所有的绘图操作都需要通过这个对象完成。
+                    this.s = window.screen; //获取电脑屏幕
+                    // 设置画布尺寸:
+                    this.w = this.can.width = this.s.width;
+                    this.h = this.can.height = this.s.height;
+                    this.words = Array(255).join("1").split("");
+                    //Array()   []    Array(100) length:100  Array(1, 2,3,4);   [1, 2, 3, 4]
+                    //数组转字符串 arr.join()  默认为","  George,John,Thomas
+
+                    //绘制文本            
+                    //ctx.fillStyle = "#fff";            
+                    //ctx.fillText("玄武",200,200);
+                    //text需要绘制的文本内容 x,y绘制;开始的坐标位置;      
+                    //['',''].join("1") -> "a1b"
+                }
+                init() {
+                    // ctx.fillStyle; 图形的背景填充颜色
+                    // ctx.fillRect;  绘制矩形
+                    // 设置背景颜色，尺寸
+                    this.ctx.fillStyle = "rgba(0,0,0,0.05)"; //设置图形的填充颜色
+                    this.ctx.fillRect(0, 0, this.w, this.h) //绘制矩形0,0 绘制的起点坐标 w,h矩形的宽高 
+                }
+                render() {
+                    //文字填充：this.ctx.fillText  属性；
+                    //原理创建一个数组让数组随机数字；
+                    // 随机内容：
+                    // 十进制Unicode编码范围
+                    //65-90 A-Z  97-122 a-z  48-57 数字0-9  19968-40869  汉字
+                    let text = String.fromCharCode(65 + Math.ceil(Math.random() * 57)); //字母随机
+                    this.ctx.fillStyle = this.color();
+                    this.words.map(
+                        function (y, index, arr) { // 第三个参数为整个数组
+                            //数组里面每个元素的一个映射   不改变原数组
+                            let x = index * 10;
+                            this.ctx.fillText(text, x, y)
+                            //在指定(x,y)位置填充指定文本
+                            //fillText(text, x, y [, maxWidth])  在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的.
+                            this.words[index] = (y > 748 + Math.random() * 452) ? 0 : y + 10;
+                            // console.log(words[index])
+                        }, this
+                    )
+                }
+                color() {
+                    var r = Math.ceil(Math.random() * 255);
+                    var g = Math.ceil(Math.random() * 255);
+                    var b = Math.ceil(Math.random() * 255);
+                    return "rgb(" + r + "," + g + "," + b + ")"
+                }
+            }
+            let running = new meteorShowers;
+
+            setInterval(function () {
+                running.init();
+                running.render();
+            }, 100)
+        } else {
+            console.log("canvas-unsupported code here");
+        }
+
+
+
+
+
+        //封装一个函数来生成随机颜色            
+        //方法一: rgb 0-255             
+        function color1() { //Math.ceil()向上取整  100.1 -> 101                //Math.floor()向下取整 100.9 -> 100     
+            var r = Math.ceil(Math.random() * 255);
+            var g = Math.ceil(Math.random() * 255);
+            var b = Math.ceil(Math.random() * 255);
+            return "rgb(" + r + "," + g + "," + b + ")"
+        }
+
+        //方法二: 十六进制  0-9 a-f  
+        function color2() {
+            var colors = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
+            var color = '';
+            for (var i = 0; i < 6; i++) {
+                var n = Math.ceil(Math.random() * 15);
+                color += '' + colors[n];
+            }
+            return "#" + color;
+        }
+        //console.log(color2());
+        //方法三 : 十六进制 进制转换  ffffff
+        //随机生成一个 0-16777215的值然后再转换为十六进制
+        function color3() { //toString(16) 转换为十六进制                
+            var color = Math.ceil(Math.random() * 16777215).toString(16); //若果生成的随机数长度小于六位的话就需要往前面补零                //000001 
+            while (color.length < 6) {
+                color = "0" + color;
+            }
+            return "#" + color;
+        }
+        //console.log(color3());            
+        //方法四: 装逼用      
+        function color4() {
+            return "#" + (function (color) {
+                return new Array(7 - color.length).join("0") + color
+            })((Math.random() * 0x1000000 << 0).toString(16))
+        };
+    </script>
+</body>
+
+</html>
