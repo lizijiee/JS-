@@ -9,3 +9,9 @@ npm中文文档：https://www.npmjs.cn/
 webpack4.0实战那些事儿:https://segmentfault.com/a/1190000014112145?utm_source=channel-newest&tdsourcetag=s_pcqq_aiomsg
 
 博客园黑客帝国片头文字流星雨:https://www.cnblogs.com/zijie-li/p/10188138.html
+
+Node.js v10.14.2 文档:http://nodejs.cn/api/querystring.html#querystring_querystring_parse_str_sep_eq_options
+
+Node.js Express 框架:http://www.runoob.com/nodejs/nodejs-express-framework.html
+
+使用webpack2.0 搭建前端项目:https://www.cnblogs.com/doudoujun/p/6405534.html
