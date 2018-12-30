@@ -1,0 +1,8 @@
+1. 项目初始化：npm init   (npm init -yes);
+
+2. 安装express：  出现node_modules就算是安装好了;package.json 中出现 package.json
+node_modules是根据package.json生成的
+
+3.创建一个服务引包
+
+4.采用node.js运行app.js，查看代码
