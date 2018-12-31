@@ -8,7 +8,7 @@ app.use("./test",require("./test_insert"));
 let router=ex.Router();
  
 router.get("/",(req,res,)=>{
-    console.log(req.sql)
+    // console.log(req.sql)
     res.send({code:0,data:req.sql})
 });
 

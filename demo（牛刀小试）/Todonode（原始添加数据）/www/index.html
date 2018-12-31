@@ -146,12 +146,73 @@
 		</table>
 	</section>
 </body>
+<script src="../axios.js"> </script>
+
 <script>
+	document.onclick = function () {
+		// console.log(11)
+
+		// 因为params是添加到url的请求字符串中的,用于get请求。
+		// 而data是添加到请求体（ body）中的,用于post请求。
+
+		// axios.get("./getdata")
+		// 	.then(
+		// 		response => {
+		// 			console.log(response) //{data: {…}, status: 200, statusText: "OK", headers: {…}, config: {…}, …}
+		// 			console.log(response.data) //{code: 0, data: Array(5)}
+		// 		}
+		// 	)
+		// 	.catch(error => {
+		// 		console.log(error);
+		// 	});
+
+		// 		axios.get('/user', {
+		//     params: {
+		//       ID: 12345
+		//     }
+		//   })
+		//   .then(function (response) {
+		//     console.log(response);
+		//   })
+		//   .catch(function (error) {
+		//     console.log(error);
+		//   });
+
+		let data = {
+			"code": "1234",
+			"name": "yyyy"
+		};
+		axios.post(`/deletes`, data)
+			// .then(res => {
+			// 	console.log('res=>', res);
+			// })
+
+		// axios.post('/deletes', {
+		// 	arr: '[1,2,3]',
+		// }) //这种可以
+		// .then(function (response) {
+		// 	console.log(response);
+		// })
+		// .catch(function (error) {
+		// 	console.log(error);
+		// });
+		// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+
+		// axios({
+		// 	method: 'post',
+		// 	url: '/deletes',
+		// 	data: {
+		// 		arr: '123',
+		// 	}
+		// })
+		// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+	}
+
 	// 相当于在页面上输入getdata;
 	class Point {
 		getData() {
 			this.fetch('/getdata')
-			
 			// fetch("/getdata")
 			// 	.then(e => e.json())
 			// 	.then(
@@ -196,7 +257,7 @@
 					`
 			});
 			tbody.innerHTML = temp;
-			
+
 		};
 		addData(ev) {
 			// 第一种改变this方法：
@@ -328,8 +389,12 @@
 	example.deletes();
 	example.checkedAll();
 	example.sort();
-	setTimeout(()=>{example.selectJudge()},300)
- 	//下面列表中功能部分!
+	setTimeout(() => {
+		example.selectJudge()
+	}, 300)
+
+
+	//下面列表中功能部分!
 	class Point_Control {
 		delete(ev, url) {
 			if (ev.target.value === '删除') {
@@ -379,10 +444,11 @@
 		}
 		total() {
 			tbody.onclick = click.bind(this);
+
 			function click(ev) {
 				// switch 修改方法;后面要用函数包一下
 				console.dir(ev.target.type)
-  				if (ev.target.type === "button") {//因为利用冒泡了，所以判断下点击的是谁
+				if (ev.target.type === "button") { //因为利用冒泡了，所以判断下点击的是谁
 					// 代替switch方法
 					console.log(1111111111)
 					let mapSum = {
@@ -397,17 +463,6 @@
 	}
 	let control = new Point_Control;
 	control.total();
-
-
-
-
-
-
-
-
-
-
-
 	/* 
 		querystring.parse(str[, sep[, eq[, options]]])
 		查询字符串 'foo=bar&abc=xyz&abc=123'
