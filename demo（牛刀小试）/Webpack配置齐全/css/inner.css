@@ -1,0 +1,28 @@
+/* body{
+    background:url('../1.jpg') no-repeat;
+} */
+#box{
+    background:lime;
+    border: 10px solid #000;
+}
+
+ul li:nth-of-type(1){
+    width:200px;
+    height:200px;
+    background:url('../img/10000.jpg') no-repeat;
+    background-position: center;
+}
+ul li:nth-of-type(2){
+    width:100px;
+    height:100px;
+    background:url('../img/101.jpg') no-repeat;
+    background-position: center;
+    margin-top:30px; 
+}
+
+ul li:nth-of-type(4){
+    width:300px;
+    height:100px;
+    background:url('../img/3.jpg') no-repeat;
+    background-position: center;
+}
