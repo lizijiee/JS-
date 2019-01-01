@@ -17,3 +17,5 @@ Node.js Express 框架:http://www.runoob.com/nodejs/nodejs-express-framework.htm
 使用webpack2.0 搭建前端项目:https://www.cnblogs.com/doudoujun/p/6405534.html
 
 全球视野的H5、WebGL和WebVR作品分享平台，以虚拟魔力升华真实体验: http://techbrood.com/
+
+axios中文文档： https://www.jianshu.com/p/7a9fbcbb1114;
