@@ -68,6 +68,9 @@ const obj = {
                         // outputPath:'../images',
                         // publicPath:'/images'
 
+                        // webpack中output之path和publicPath详解
+                        // https://blog.csdn.net/qq_39207948/article/details/80631435
+
                         //单独的创建一个文件夹，它的路径
                         //路径基于出口路径
                         outputPath: './images',
