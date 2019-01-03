@@ -19,3 +19,5 @@ Node.js Express 框架:http://www.runoob.com/nodejs/nodejs-express-framework.htm
 全球视野的H5、WebGL和WebVR作品分享平台，以虚拟魔力升华真实体验: http://techbrood.com/
 
 axios中文文档： https://www.jianshu.com/p/7a9fbcbb1114;
+
+Vue <script>引入地址：https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js
