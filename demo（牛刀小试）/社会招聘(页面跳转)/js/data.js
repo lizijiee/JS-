@@ -607,6 +607,6 @@ var data = { //招聘信息数据
 
       ]
     }
-    
-
   }
+
+// export {data} ;
