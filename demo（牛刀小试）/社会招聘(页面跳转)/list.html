@@ -190,9 +190,10 @@
 			<li><span>校园招聘</span>campus</li>
 		</ul>
 		<div id="right">
-			<list></list>
-			<!-- <ul id="rightList"> -->
-				<!-- <li>
+			<list :exp="site"></list>
+				<!-- 
+						<ul id="rightList">
+					<li>
 						<span class="num">01</span>
 						<div class="list">
 							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
@@ -219,48 +220,31 @@
 							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
 							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
 						</div>
-					</li> -->
-			<!-- </ul> -->
-			<nav id="nav">
-				<!-- <a href="javascript:;">&lt;</a>
-					<a class="active" href="javascript:;">1</a>
-					<a href="javascript:;">2</a>
-					<a href="javascript:;">3</a>
-					<a href="javascript:;">4</a>
-					<a href="javascript:;">&gt;</a> -->
-			</nav>
+					</li></ul> -->
+			
+			<listnav>	</listnav>		
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
 
 	<script src="js/data.js"></script>
+	<script src="js/rightList.js"></script>
+	<script src="js/footerNav.js"></script>
+
 	<script>
-		let obj={
-			template:`
-		
-			<ul id="rightList"> 
-				 <li>
-						岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话	
-				</li>
-			</ul>		
-			`
-		}
-		Vue.component(
-			"list",obj
-		)
 		new Vue({
-			el:"#right",
-			data:{
-				infomation:data
+			el: "#right",
+			data: {
+				site: "待父向子_传数据",
 			}
 		})
+
 
 		/*
 			渲染导航
 			<li><span>社会招聘</span>society</li>
 			<li class="active"><span>校园招聘</span>campus</li>
 		*/
-
 
 		// import data from './js/data'//需要用webpack转ES6语法
 
@@ -270,6 +254,32 @@
 		// 		// data就是我们请求的repos
 		// 		console.log(data)
 		// 	});//需要开服务器才能使用
+
+
+		/*
+		数据监控
+		
+		<div id = "app">
+ 		<p style = "font-size:25px;">计数器: {{ counter }}</p>
+ 		<button @click = "counter++" style = "font-size:25px;">点我</button>
+		</div>
+		<script type = "text/javascript">
+ 		var vm = new Vue({
+  			  el: '#app',
+   		   data: {
+     			  counter: 1
+   				 }
+ 		});
+ 		vm.$watch('counter', function(nval, oval) {
+   						 alert('11111111');
+		 }); */
+		 
+
+		// 千米和米之间单位换算 http://www.runoob.com/vue2/vue-watch.html
+		// http://www.runoob.com/vue2/vue-watch.html
+		// 深入浅出浏览器渲染原理  https://zhuanlan.zhihu.com/p/53913989
+		// 浅析前端页面渲染机制	https://blog.csdn.net/buzhibujuell/article/details/68952370
+
 	</script>
 </body>
 
