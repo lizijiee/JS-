@@ -23,3 +23,5 @@ axios中文文档： https://www.jianshu.com/p/7a9fbcbb1114;
 Vue <script>引入地址：https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js
 
 Vue API:  https://cn.vuejs.org/v2/api/index.html#props
+
+ve-charts:  https://vueblocks.github.io/ve-charts/#/base-options
