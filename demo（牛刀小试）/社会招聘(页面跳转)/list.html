@@ -185,9 +185,9 @@
 
 <body>
 	<div id="content">
-		<listleft :exp="site" @changetype="change" ></listleft>
+		<listleft :exp="site" @changetype="change" :data="transData"></listleft>
 		<div id="right">
-			<list :exp="site" :listed="num"   ></list>
+			<list :exp="site" :listed="num"   :data="transData"></list>
 			<!-- 
 						<ul id="rightList">
 					<li>
@@ -219,7 +219,7 @@
 						</div>
 					</li></ul> -->
 
-			<listnav :exp="site"  @changepage="getPage" > </listnav>
+			<listnav :exp="site"  @changepage="getPage" :data="transData"> </listnav>
 			<!-- 页码部分 -->
 		</div>
 	</div>
@@ -236,6 +236,7 @@
 			data: {
 				site: "sh", //点击后改变为xy(校园)
 				num: 4, //点击后改变为xy(校园)
+				transData:data
 			},
 			// watch: {
 				// site: function () {

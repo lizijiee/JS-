@@ -1,23 +1,21 @@
 
 let transfer = {
-    props: ['exp'],
+    props: ['exp',"data"],
     template: `
              <nav id="nav">
-             
-  					<a href="javascript:;"   @mousedown="moveMin" @mouseup="mouseup" :class="{active:colorL}">&lt;</a>
+                    {{colorL}}
+  					<a href="javascript:;"   @mousedown="moveMin"  :class="{active:colorL}">&lt;</a>
                     <a  href="javascript:;" 
                     v-for="(val,key) in pageClick()"
                     @click="changeC(val)" 
                     :class="{active:num===0?num=val=1:num==val}"  
                     @changepage:setPage(num,page)
                     >{{val}}</a>
-                    <a href="javascript:;"   @mousedown="moveAdd"  @mouseup="mouseup" :class="{active:colorR}">&gt;</a>
-                    {{hash}}
+                    <a href="javascript:;"   @mousedown="moveAdd"  @mouseup="mouseup($event)" :class="{active:colorR}">&gt;</a>
 				</nav>
     `,
     data() {
         return {
-            footer_data: data, //从全局继承过来的数据变量
             page: 4, //每页存放内容数量
             num: 0,
             hash: 0,
@@ -28,28 +26,37 @@ let transfer = {
     methods: {
         changeC(C) {
             // 每次点击改变某个数值，在class处增加对数值的判断;
-                this.num = C,
-                window.location.hash = "#page" + C,
-                this.hash = window.location.hash.match(/\d/)[0],
-                this.setPage(this.num,this.page)
+                this.num = C;
+                window.location.hash = "#page" + C;
+                this.hash = window.location.hash.match(/\d/)[0];
+                this.setPage(this.num,this.page);
         },
         pageClick() {
             // 返回值为一共有几页;
-             return this.footer_data[this.exp].text.length % this.page == 0 ? this.footer_data[this.exp].text.length / this.page : ~~(this.footer_data[this.exp].text.length / this.page) + 1
+             return this.data[this.exp].text.length % this.page == 0 ? this.data[this.exp].text.length / this.page : ~~(this.data[this.exp].text.length / this.page) + 1
         },
-        moveMin() {
-            this.num == 1 ? this.num = 1 : this.num--;
-            this.colorL = true;
+        moveMin(ev) {
+             this.num == 1 ? this.num = 1 : this.num--;
+            this.colorL=true;
             // this.color=true;
-            this.changeC(this.num)
+            this.changeC(this.num);
+            setTimeout(()=>{this.mouseup(ev)},300)
         },
-        mouseup() {
-            this.colorL = this.colorR = false;
-        },
-        moveAdd() {
+        moveAdd(ev) {
             this.num == this.pageClick() ? this.num == this.pageClick() : this.num++;
             this.colorR = true;
+            // this.$nextTick(function () {
+                // DOM 现在更新了
+                // `this` 绑定到当前实例
+                // console.log(1111)
+                // this.mouseup(ev)
+            //   })
             this.changeC(this.num)
+            setTimeout(()=>{this.mouseup(ev)},300)
+        },
+        mouseup() {
+            // 点击以后会跑给绑定到父级上面利用冒泡;
+                this.colorL = this.colorR = false;
         },
         setPage(num,page){
             // 子集里面去传参给父级，执行父级函数
@@ -105,6 +112,6 @@ Vue.component(
     "listnav", transfer
 )
 // 7%2==0?7/2:~~(7/2)+1;
-// {{footer_data.sh.text.length}}
-//   {{ v-for="(val,key) in footer_data.sh.text"}}
+// {{data.sh.text.length}}
+//   {{ v-for="(val,key) in data.sh.text"}}
 // <a class="active" href="javascript:;">1</a>

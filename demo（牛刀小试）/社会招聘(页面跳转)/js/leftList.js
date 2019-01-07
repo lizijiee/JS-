@@ -1,8 +1,8 @@
 let objL = {
-    props: ['exp',],
+    props: ['exp',"data"],
     template: `
     <ul id="leftList">
-            <li v-for="(val,key) in left_data.list" 
+            <li v-for="(val,key) in data.list" 
             :class="{active:num===0?num==key:num==key}"  
             @click="changeC(key,val)" 
             @change:changeFn(val.name,$event)
@@ -13,7 +13,6 @@ let objL = {
 	// <li><span>校园招聘</span>campus</li>
     data() {
         return {
-            left_data: data,
             num: 0,
         }
     },
