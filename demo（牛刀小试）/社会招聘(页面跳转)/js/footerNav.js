@@ -1,30 +1,16 @@
+
 let transfer = {
-    created(){
-        if(!window.location.hash){
-            //如果hash不存在
-            console.log(window.location.hash);
-        }else{
-            //如果hash存在
-            switch(window.location.hash){
-                case "#page1":
-                    console.log("#page1")
-                    break;
-                case "#page2":
-                console.log("#page2");
-                console.log(this.num)
-                    break;
-                }
-        };
-        window.onhashchange
-     },
+    props: ['exp'],
     template: `
              <nav id="nav">
-        moveMin() { //a=this.num
+             
   					<a href="javascript:;"   @mousedown="moveMin" @mouseup="mouseup" :class="{active:colorL}">&lt;</a>
                     <a  href="javascript:;" 
                     v-for="(val,key) in pageClick()"
                     @click="changeC(val)" 
-                    :class="{active:num===0?num=val=1:num==val}"  >{{val}}</a>
+                    :class="{active:num===0?num=val=1:num==val}"  
+                    @changepage:setPage(num,page)
+                    >{{val}}</a>
                     <a href="javascript:;"   @mousedown="moveAdd"  @mouseup="mouseup" :class="{active:colorR}">&gt;</a>
                     {{hash}}
 				</nav>
@@ -44,13 +30,14 @@ let transfer = {
             // 每次点击改变某个数值，在class处增加对数值的判断;
                 this.num = C,
                 window.location.hash = "#page" + C,
-                this.hash = window.location.hash.match(/\d/)[0]
+                this.hash = window.location.hash.match(/\d/)[0],
+                this.setPage(this.num,this.page)
         },
         pageClick() {
             // 返回值为一共有几页;
-             return this.footer_data.sh.text.length % this.page == 0 ? this.footer_data.sh.text.length / this.page : ~~(this.footer_data.sh.text.length / this.page) + 1
+             return this.footer_data[this.exp].text.length % this.page == 0 ? this.footer_data[this.exp].text.length / this.page : ~~(this.footer_data[this.exp].text.length / this.page) + 1
         },
-        moveMin() {  
+        moveMin() {
             this.num == 1 ? this.num = 1 : this.num--;
             this.colorL = true;
             // this.color=true;
@@ -63,8 +50,47 @@ let transfer = {
             this.num == this.pageClick() ? this.num == this.pageClick() : this.num++;
             this.colorR = true;
             this.changeC(this.num)
+        },
+        setPage(num,page){
+            // 子集里面去传参给父级，执行父级函数
+            this.$emit('changepage',num,page)
         }
     },
+    mounted: function () {
+        // window.onhashchange是不是应该放在这里
+        window.onhashchange = () => {
+            let address = {
+                "#sh": () => {
+                    this.num = 1
+                },
+                "#xy": () => {
+                    this.num = 1
+                },
+                "#page1": () => {
+                    this.num = 1
+                },
+                "#page2": () => {
+                    this.num = 2
+                },
+                "#page3": () => {
+                    this.num = 3
+                },
+            };
+            // console.log(window.location.hash);
+            address[window.location.hash]();
+            this.pageClick();
+        }
+    },
+
+    // beforeUpdate: function () {
+    //     console.log("beforeUpdata")
+    // },
+    // updated: function () {
+    //     console.log("已经updated")
+    // }
+
+
+
     // watch: {
     //     window:function (val) {
     //       this.fullName = val + ' ' + this.lastName

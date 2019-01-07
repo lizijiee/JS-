@@ -185,13 +185,10 @@
 
 <body>
 	<div id="content">
-		<ul id="leftList">
-			<li class="active"><span>社会招聘</span>society</li>
-			<li><span>校园招聘</span>campus</li>
-		</ul>
+		<listleft :exp="site" @changetype="change" ></listleft>
 		<div id="right">
-			<list :exp="site"></list>
-				<!-- 
+			<list :exp="site" :listed="num"   ></list>
+			<!-- 
 						<ul id="rightList">
 					<li>
 						<span class="num">01</span>
@@ -221,23 +218,48 @@
 							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
 						</div>
 					</li></ul> -->
-			
-			<listnav>	</listnav>		
+
+			<listnav :exp="site"  @changepage="getPage" > </listnav>
+			<!-- 页码部分 -->
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
 
 	<script src="js/data.js"></script>
+	<script src="js/leftList.js"></script>
 	<script src="js/rightList.js"></script>
 	<script src="js/footerNav.js"></script>
 
 	<script>
-		new Vue({
-			el: "#right",
+		var vm = new Vue({
+			el: "#content",
 			data: {
-				site: "待父向子_传数据",
+				site: "sh", //点击后改变为xy(校园)
+				num: 4, //点击后改变为xy(校园)
+			},
+			// watch: {
+				// site: function () {
+				// 	 console.log("site数值被改变了传到子集")
+				// 	 this.num=4
+ 				// }
+			// },
+			methods:{
+				change:function(val){
+					this.num=4,
+					vm.site = val.lx
+				 },
+				 getPage:function(a,b){//接收传送过来的数据
+						this.num=a*b
+					// console.log(this.num)
+ 				 }
 			}
 		})
+		vm.$watch('site', function (newValue, oldValue) {
+			// 这个回调将在 vm.kilometers 改变后调用
+			
+		});
+		; //这样来触发watch
+
 
 
 		/*
@@ -273,12 +295,11 @@
  		vm.$watch('counter', function(nval, oval) {
    						 alert('11111111');
 		 }); */
-		 
+
 		// 千米和米之间单位换算 http://www.runoob.com/vue2/vue-watch.html
 		// http://www.runoob.com/vue2/vue-watch.html
 		// 深入浅出浏览器渲染原理  https://zhuanlan.zhihu.com/p/53913989
 		// 浅析前端页面渲染机制	https://blog.csdn.net/buzhibujuell/article/details/68952370
-
 	</script>
 </body>
 
