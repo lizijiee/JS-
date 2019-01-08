@@ -33,7 +33,8 @@ let transfer = {
         },
         pageClick() {
             // 返回值为一共有几页;
-             return this.data[this.exp].text.length % this.page == 0 ? this.data[this.exp].text.length / this.page : ~~(this.data[this.exp].text.length / this.page) + 1
+            return Math.ceil(this.data[this.exp].text.length/this.page)
+            //  return this.data[this.exp].text.length % this.page == 0 ? this.data[this.exp].text.length / this.page : ~~(this.data[this.exp].text.length / this.page) + 1
         },
         moveMin(ev) {
              this.num == 1 ? this.num = 1 : this.num--;

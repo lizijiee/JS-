@@ -185,9 +185,11 @@
 
 <body>
 	<div id="content">
+
 		<listleft :exp="site" @changetype="change" :data="transData"></listleft>
 		<div id="right">
-			<list :exp="site" :listed="num"   :data="transData"></list>
+
+			<list :exp="site" :listed="num" :data="transData"></list>
 			<!-- 
 						<ul id="rightList">
 					<li>
@@ -224,6 +226,7 @@
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 	<script src="js/data.js"></script>
 	<script src="js/leftList.js"></script>
@@ -231,7 +234,8 @@
 	<script src="js/footerNav.js"></script>
 
 	<script>
-		var vm = new Vue({
+		const router=new VueRouter
+ 		var vm = new Vue({
 			el: "#content",
 			data: {
 				site: "sh", //点击后改变为xy(校园)
@@ -251,14 +255,20 @@
 				 },
 				 getPage:function(a,b){//接收传送过来的数据
 						this.num=a*b
-					// console.log(this.num)
+					// console.log(this.router)
  				 }
+			},
+			mounted:function(){
+				// console.log(this)
 			}
+
 		})
 		vm.$watch('site', function (newValue, oldValue) {
 			// 这个回调将在 vm.kilometers 改变后调用
 			
 		});
+		
+		// console.log(new VueRouter)
 		; //这样来触发watch
 
 
