@@ -27,3 +27,5 @@ Vue API:  https://cn.vuejs.org/v2/api/index.html#props
 ve-charts:  https://vueblocks.github.io/ve-charts/#/base-options
 
 Element-logo(vue组件)： http://element-cn.eleme.io/#/zh-CN
+
+Vue Router： https://router.vuejs.org/zh/installation.html
