@@ -221,7 +221,7 @@
 						</div>
 					</li></ul> -->
 
-			<listnav :exp="site"  @changepage="getPage" :data="transData"> </listnav>
+			<listnav :exp="site" @changepage="getPage" :data="transData"> </listnav>
 			<!-- 页码部分 -->
 		</div>
 	</div>
@@ -234,40 +234,55 @@
 	<script src="js/footerNav.js"></script>
 
 	<script>
-		const router=new VueRouter
- 		var vm = new Vue({
+		const router = new VueRouter
+		var vm = new Vue({
 			el: "#content",
 			data: {
 				site: "sh", //点击后改变为xy(校园)
-				num: 4, //点击后改变为xy(校园)
-				transData:data
+				num: 4, //每页list显示数量
+				transData: data
 			},
 			// watch: {
-				// site: function () {
-				// 	 console.log("site数值被改变了传到子集")
-				// 	 this.num=4
- 				// }
+			// site: function () {
+			// 	 console.log("site数值被改变了传到子集")
+			// 	 this.num=4
+			// }
 			// },
-			methods:{
-				change:function(val){
-					this.num=4,
-					vm.site = val.lx
-				 },
-				 getPage:function(a,b){//接收传送过来的数据
-						this.num=a*b
-					// console.log(this.router)
- 				 }
+			methods: {
+				change: function (val) {
+					this.num = 4,
+						vm.site = val.lx
+				},
+				getPage: function (a, b) { //接收传送过来的数据
+					this.num = a * b
+				}
 			},
-			mounted:function(){
-				// console.log(this)
+			mounted: function () {
+				window.onhashchange = () => {
+					// 1.可以通过site改变改变右侧列表内容；
+					// 2.左侧列表靠点击触发触发在num身上,应该用site控制
+					console.log(11)
+					console.log(window.location.href)
+
+					// if (new RegExp("page").test(window.location.hash)) {
+					// 	let index = window.location.hash.match(/\d+/g)[0];
+					// 	index[0] > this.pageClick() ? this.num = this.pageClick() : this.num = index[0];
+					// 	this.setPage(this.num, this.page)
+					// } else {
+					// 	this.num = 1;
+					// 	// this.exp=window.location.hash
+					// 	console.log(this.exp);
+					// 	this.setPage(this.num, this.page)
+					// }
+				}
 			}
 
 		})
 		vm.$watch('site', function (newValue, oldValue) {
 			// 这个回调将在 vm.kilometers 改变后调用
-			
+
 		});
-		
+
 		// console.log(new VueRouter)
 		; //这样来触发watch
 

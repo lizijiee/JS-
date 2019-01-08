@@ -135,21 +135,15 @@
 			<a href="javascript:;">投个简历</a>
 		</div>
 		<div id="title">
-			<p>前端开发工程师</p>
-			<div class="simple">18k-25k<span>/</span>北京<span>/</span>经验3-5年<span>/</span>本科及以上<span>/</span>2名 <time>2014-04-10</time></div>
+			<p>{{Info.zw}}</p>
+			<div class="simple">18k-25k<span>/</span>{{Info.dd}}<span>/</span>{{Info.jy}}<span>/</span>{{Info.xl}}<span>/</span>{{Info.rs}}名
+				<time>{{Info.sj.join("-")}}</time></div>
 		</div>
 		<div id="bottom">
-			<!-- <dl>
-							<dt>岗位要求：</dt>
-							<dd>1.  熟练使用JavaScript/CSS/HTML，熟悉HTML5 / CSS3；</dd>
-							<dd>2.  熟悉JavaScript的核心技术，包括并不限于AJAX、DOM、BOM、JSON等；</dd>
-							<dd>3.  熟悉ES5 / ES6规范，并且有实践经验；</dd>
-							<dd>4.  熟悉Web标准，能够开发通用的Web组件，对HTML语义化有深刻理解；</dd>
-							<dd>5.  熟悉前端模块化开发方案，对前端工程化有深刻理解，熟悉任一一种前端构建工具，包括Webpack、Grunt、Gulp等；</dd>
-							<dd>6.  有前端性能优化经验，包括语言层面和架构层面；</dd>
-							<dd>7.  对前后端分离有深入的理解和具体的实践；</dd>
-							<dd>8.  了解任一一种流行的前端框架，包括但不限于React、Vue、Angular等；</dd>
-						</dl> -->
+			<dl>
+				<dt>{{Info.info[0].t}}</dt>
+				<dd v-for="(val,key) in Info.info[0].l">{{val}}</dd>
+			</dl>
 		</div>
 
 	</div>
@@ -159,26 +153,23 @@
 	<script>
 		/*
 		通过search值去获取对应的数据
-	*/
+		*/
 		console.log(data)
 		var vm = new Vue({
 			el: "#content",
 			data: {
 				transData: data,
+				Info: "",
+				detailInfo: ""
 			},
 			created: function () {
-				console.log(window.location.search.split("="))
-				console.log(window.location.search.match(/\w+/g))
-
-				// let parmas = new URLSearchParams();
-				// parmas.append("name", "李子杰");
-				// parmas.append("age", "18");
-
+				let index = window.location.search.match(/\w+/g);
+				let obj = {};
+				obj[index[0]] = index[1];
+				obj[index[2]] = index[3];
+				this.Info = this.transData[obj.lx].text[obj.id];
 			}
-
-
 		})
-
 
 
 		// JSON.parse(body);
