@@ -164,7 +164,7 @@
 			},
 			created: function () {
 				let index = window.location.search.match(/\w+/g);
-				let obj = {};
+				let obj = {};//创建对象
 				obj[index[0]] = index[1];
 				obj[index[2]] = index[3];
 				this.Info = this.transData[obj.lx].text[obj.id];

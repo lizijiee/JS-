@@ -185,114 +185,88 @@
 
 <body>
 	<div id="content">
-
+		<!-- 社会、校园招聘组件 -->
 		<listleft :exp="site" @changetype="change" :data="transData"></listleft>
+		<!-- changetype:对子集组件点击传送过来的参数 -->
+		<!-- 
+			****子向父传参(两句话)****
+			1.父组件写自定义事件名及处理函数@changetype="change".
+			2.子组件函数及事件名任意,$emit传送中名称与父级自定义名相同(this.$emit(自定义的事件名,参数)).
+		-->
 		<div id="right">
-
+			<!-- 主列表组件 -->
 			<list :exp="site" :listed="num" :data="transData"></list>
-			<!-- 
-						<ul id="rightList">
-					<li>
-						<span class="num">01</span>
-						<div class="list">
-							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
-							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
-						</div>
-					</li>
-					<li>
-						<span class="num">02</span>
-						<div class="list">
-							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
-							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
-						</div>
-					</li>
-					<li>
-						<span class="num">03</span>
-						<div class="list">
-							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
-							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
-						</div>
-					</li>
-					<li>
-						<span class="num">04</span>
-						<div class="list">
-							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
-							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
-						</div>
-					</li></ul> -->
-
-			<listnav :exp="site" @changepage="getPage" :data="transData"> </listnav>
 			<!-- 页码部分 -->
+			<listnav :exp="site" @changepage="getPage" :data="transData" :urlnum="urlPage"> </listnav>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
 	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 	<script src="js/data.js"></script>
-	<script src="js/leftList.js"></script>
-	<script src="js/rightList.js"></script>
-	<script src="js/footerNav.js"></script>
+	<script src="js/leftList.js"></script> <!-- 社会、校园招聘组件 -->
+	<script src="js/rightList.js"></script> <!-- 主列表组件 -->
+	<script src="js/footerNav.js"></script> <!-- 页码部分组件 -->
 
 	<script>
-		const router = new VueRouter
+		/* 
+			作业思路：
+				1.分三部分组件,总数据公用.
+				2.子组件点击触发类型类型.
+				3.
+				4.
+			难点：
+				1.两个分组件数据交互方法：***子组件向父传值***，将值再传给另一子组件。
+				2.公共数据data或者lx类型(社会或校园),挂在父组件上所有子组件共有，***父向子传递(参数)***。(应用:子组件触发函数并传参，父组件接收并修改父组件属性值,在传递下去，在子组件中应用)
+				3.重点(难点)：Vue中调用、钩子函数及自动绑定影响范围广回调次数多,***应提前设计好逻辑再写代码，否则容易出现乱调用,重复绑定(数值多次改变问题)***
+				4.***同一个变量在不同子组件中也只能watch一次***
+		
+		*/
 		var vm = new Vue({
 			el: "#content",
 			data: {
 				site: "sh", //点击后改变为xy(校园)
 				num: 4, //每页list显示数量
-				transData: data
+				transData: data, //引入的数据
+				urlPage: 1, //url地址栏中输入的page
+				pagesum: "" //页码总页数
 			},
-			// watch: {
-			// site: function () {
-			// 	 console.log("site数值被改变了传到子集")
-			// 	 this.num=4
-			// }
-			// },
 			methods: {
 				change: function (val) {
+				// @changetype="change" 用于左侧招聘类型子组件传参,控制选定颜色变化,并设置哈希值.
 					this.num = 4,
-						vm.site = val.lx
+					this.site = val.lx
+					window.location.hash = "lx=" + this.site
 				},
 				getPage: function (a, b) { //接收传送过来的数据
+				//@changepage="getPage" 用于底部列表点击后,传参(:listed="num")至主列表组件
 					this.num = a * b
 				}
 			},
-			mounted: function () {
+			created: function () {//mounted只是触发了一次别指望干别的事情 
 				window.onhashchange = () => {
+					// 思路：
 					// 1.可以通过site改变改变右侧列表内容；
 					// 2.左侧列表靠点击触发触发在num身上,应该用site控制
-					console.log(11)
-					console.log(window.location.href)
-
-					// if (new RegExp("page").test(window.location.hash)) {
-					// 	let index = window.location.hash.match(/\d+/g)[0];
-					// 	index[0] > this.pageClick() ? this.num = this.pageClick() : this.num = index[0];
-					// 	this.setPage(this.num, this.page)
-					// } else {
-					// 	this.num = 1;
-					// 	// this.exp=window.location.hash
-					// 	console.log(this.exp);
-					// 	this.setPage(this.num, this.page)
-					// }
+					let index = new RegExp("&page=").test(window.location.hash)	// 检查设置的页码hash是否存在
+					//将url中的lx获取到并进行设置
+					this.site = window.location.hash.match(/\w+/g)[1]//结果为数组["lx", "xy", "page", "3"]
+					if (index) {
+						this.urlPage = window.location.hash.match(/\d+/g)[0];
+						this.pagesum = Math.ceil(this.transData[this.site].text.length / 4)
+						// 判断页码是否到头了，如果到头设一个固定值;
+						this.urlPage > this.pagesum ? this.urlPage = this.pagesum : this.urlPage = this.urlPage;
+					} else if (index) {
+						// 如果没有page说明是在首页,让底部页码显示为第一页
+ 						this.urlPage = 1;
+					}
 				}
 			}
-
 		})
-		vm.$watch('site', function (newValue, oldValue) {
-			// 这个回调将在 vm.kilometers 改变后调用
-
-		});
-
-		// console.log(new VueRouter)
-		; //这样来触发watch
+	
 
 
-
-		/*
-			渲染导航
-			<li><span>社会招聘</span>society</li>
-			<li class="active"><span>校园招聘</span>campus</li>
-		*/
+		//导入数据的两种方法 
 
 		// import data from './js/data'//需要用webpack转ES6语法
 
@@ -302,25 +276,6 @@
 		// 		// data就是我们请求的repos
 		// 		console.log(data)
 		// 	});//需要开服务器才能使用
-
-
-		/*
-		数据监控
-		
-		<div id = "app">
- 		<p style = "font-size:25px;">计数器: {{ counter }}</p>
- 		<button @click = "counter++" style = "font-size:25px;">点我</button>
-		</div>
-		<script type = "text/javascript">
- 		var vm = new Vue({
-  			  el: '#app',
-   		   data: {
-     			  counter: 1
-   				 }
- 		});
- 		vm.$watch('counter', function(nval, oval) {
-   						 alert('11111111');
-		 }); */
 
 		// 千米和米之间单位换算 http://www.runoob.com/vue2/vue-watch.html
 		// http://www.runoob.com/vue2/vue-watch.html
