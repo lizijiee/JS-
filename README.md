@@ -29,3 +29,5 @@ ve-charts:  https://vueblocks.github.io/ve-charts/#/base-options
 Element-logo(vue组件)： http://element-cn.eleme.io/#/zh-CN
 
 Vue Router： https://router.vuejs.org/zh/installation.html
+
+Vue CLI 3： https://cli.vuejs.org/zh/guide/
