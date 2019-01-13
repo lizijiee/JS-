@@ -33,3 +33,5 @@ Vue Router： https://router.vuejs.org/zh/installation.html
 Vue CLI 3： https://cli.vuejs.org/zh/guide/
 
 Vuex：https://vuex.vuejs.org/zh/guide/
+
+hexo： https://hexo.io/zh-cn/docs/setup
