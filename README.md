@@ -37,3 +37,5 @@ Vuex：https://vuex.vuejs.org/zh/guide/
 hexo： https://hexo.io/zh-cn/docs/setup
 
 VueJS中学习使用Vuex详解:  https://segmentfault.com/a/1190000015782272
+
+stylus中文版参考文档之插值(Interpolation):  https://www.zhangxinxu.com/jq/stylus/interpolation.php
