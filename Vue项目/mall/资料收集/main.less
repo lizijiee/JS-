@@ -1,0 +1,150 @@
+@charset "utf-8";
+//声明变量
+@width: 100%;
+@height: 100px;
+@color: red;
+@border_width:30px;
+/* 
+  我是会被编译的
+*/
+//不会被编译的，尽量用这个
+//混合(mixin)变量
+//-例如:.border{border:solid 10px red;}
+//带参数的混合
+//- .border-radius(@radius){css代码}
+// 可设定默认值
+// border-radius(@radius:5px){css代码}
+
+.container{
+   width: @width;
+   height: @height;
+   background-color: @color;
+  .test(50px);
+   margin-bottom: 5px;
+}
+
+.container2{
+  width: @width;
+  height: @height;
+  // background-color: @color;
+  margin-bottom: 5px;
+  .border_02(30px)
+}
+
+.container3{
+  width: @width;
+  height: @height;
+  // background-color: @color;
+  margin-bottom: 5px;
+  .border
+};
+
+
+.border{
+  border:solid 1px pink;
+};
+.border_02(@border_width){
+  border:solid @border_width black;
+}
+//设置默认值
+.test(@border_width:10px){
+  border:solid @border_width yellow;
+}
+// 混合主要用在兼容性
+.border_radius(@radius:5px){
+  -webkit-border-radius:@radius;
+  -mox-border-radius:@radius;
+  border-radius: @radius;
+}
+.radius_test{
+  width: 100px;
+  height: 40px;
+  background-color: green;
+  .border_radius();
+}
+
+
+//匹配模式
+//根据传入数值不同匹配不同样式
+.triangle(bottom,@w:5px,@c:#ccc){
+      border-width: @w;
+      border-color: @c transparent transparent transparent;border-style: solid dashed dashed dashed;}
+.triangle(left,@w:5px,@c:#ccc){
+      border-width: @w;
+      border-color: transparent @c transparent transparent;border-style: dashed solid dashed dashed;
+}
+.triangle(right, @w:5px,@c:#ccc){
+      border-width: @w;
+      border-color: transparent transparent transparent @c;border-style: dashed dashed dashed solid;
+}
+
+.pos(r){
+position: relative;}
+.pos(a){
+position: absơlute;}
+.pos(f){
+position: fixed;}
+.pipe{
+width:200px;
+height: 200px;
+// background-color: #fff;
+}
+.sanjiao{
+  background-color: lime;
+   .pipe
+};
+
+// less 运算
+
+@test_01:300px;
+.box_02{
+width:(@test_01 - 20)*5;
+color:#ccc;
+}
+
+// 嵌套
+//&代表它上一层选择器，可以用在加hover之类的
+.list{
+  width: 600px;
+  margin: 30px auto;
+  padding: 0;
+  list-style: none;
+  li{
+    height: 30px;
+    line-height: 30px;
+    background-color: pink;
+    margin-bottom: 5px;
+    padding:0 20px;
+  }
+  a{
+    float: left;
+  }
+  span{
+    float: right;
+  }
+}
+// @arguments变量
+// @arguments包含了所有传递进来的参数。
+//如果你不想单独处理每一个参数的话就可以像这样写：
+.border_arg(@width: 4px,@color: red,@xx:solid){
+   border:@arguments;
+}
+
+ .test_arguments{
+    height: 150px;
+    .border_arg(7px);
+    //测试成功
+ }
+//避免编译
+//  有时候我们需要输出一些不正确的CSS语法或者使用- -些LESS不认识的专有语法。
+// -要输出这样的值我们可以在字符串前加上一个~
+// .例如: width:~' calc(100% - 35)'
+
+.test_03{
+  width: ~'calc(300px-30px)'
+}
+// !important
+// 所有后面都会被加上!important
+.test_important{
+  .border_radius()!important
+}
