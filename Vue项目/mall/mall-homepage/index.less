@@ -1,11 +1,24 @@
 @charset "utf-8";
 @border: 1px solid #dcdfe6;
-@100:100%
+@100:100%;
+@width_right: calc(~'100% - 180px');
+@zhanwei:lime;
+@border_box:border-box;
+@float_left:float-left;
 *{
     margin: 0;
 }
 html,body{
     height: @100;
+}
+.clearfix:after {
+    display: block;
+    height: 0;
+    content: "";
+    clear: both;
+    overflow:hidden;
+    visibility:hidden;
+    font-size:0;
 }
 ul{
     list-style: none
@@ -27,7 +40,7 @@ ul{
   float: left;
   width: @100;
   margin-left:180px;
-  width: calc(~'100% - 180px');
+  width:@width_right;
   height:50px;
 }
 
@@ -35,13 +48,71 @@ ul{
     width: @100;
     height:50px;
     border-bottom: 1px solid #e6e6e6;
-    box-sizing: border-box;
+    box-sizing: @border_box;
     background: lime;
 }
 .app-main{
     width: @100;
-    margin: 40px 120px 0 120px;
+     .app-container{
+        margin: 40px 120px 0 120px;
+        padding: 20px;
+    }
+    .total-layout {
+ /* 
+ 当元素不存在width属性或者（width：auto）的时候，负margin会增加元素的宽度，看下下面的例子
+ */
+        margin: 0 -10px;
+        height: 100px;
+        overflow: hidden;
+      }
+     .total-frame{
+        width:25%;
+        height:@100;
+        float: left;
+        padding: 0 10px;
+        box-sizing: @border_box;
+     }
+     .total-frame div{
+        height:@100;
+        background:@zhanwei;
+        padding: 20px;
+        box-sizing: @border_box;  
+    }
+     .un-handle-layout{
+         margin-top:20px;
+         background: @zhanwei;
+         box-sizing: border-box;
+         width: @100;
+         height: 210px;
+     }
+     .overview-layout{
+         margin:20px  -10px 0 -10px;
+        box-sizing: border-box;
+         height: 186px;
+     }
+     
+     .overview-warpper{
+            height: @100;
+            width: 50%;
+            float: left;
+            box-sizing:@border_box;
+     }
+     .overview-warpper div{
+         height: @100;
+         padding: 0 10px;
+         border: @border;
+         box-sizing:@border_box;
+         margin: 0 10px;
+         background: @zhanwei;
+     }
+     .statistics-layout{
+        margin-top:20px;
+        box-sizing: border-box;
+        width: @100;
+        height: 480px;
+        border: @border;
+        background: @zhanwei;
+     }
  }
-table{
-    background: red;
-}
+
+ 
