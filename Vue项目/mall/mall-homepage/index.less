@@ -5,20 +5,32 @@
 @zhanwei:lime;
 @border_box:border-box;
 @float_left:float-left;
+
+.fl(){float: left;};
+.fr(){float: right;};
+.color-danger(){color: #f56c6c;};
+
 *{
     margin: 0;
 }
 
+/* 
+    矢量图标的使用方法：
+        1.下载文件找到iconfont.svg文件，复制里面的svg标签整体
+        2.下载文件找到iconfont.css,使用@font-face和.iconfont标签内容中写Unicode编码
+*/
 
-@font-face {
-    font-family: 'iconfont';
-    src: url('iconfont.eot');
-    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
-        url('iconfont.woff2') format('woff2'),
-        url('iconfont.woff') format('woff'),
-        url('iconfont.ttf') format('truetype'),
-        url('iconfont.svg#iconfont') format('svg');
+
+@font-face {font-family: "iconfont";
+    src: url('iconfont.eot?t=1547862903071'); /* IE9 */
+    src: url('iconfont.eot?t=1547862903071#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAJsAAsAAAAABiwAAAIgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAosSAE2AiQDCAsGAAQgBYRtBzsbeQXInpo8KdIy5NgQaKwEZAhHBNF+v9l798XxpBrpnkUTGQ+NkEiQqF46pRKSZ/Lf/2nL3bGGxuX5blnFWmrazvx2py9NbzyP0ygDQoJw9ATPEKBEq/H3iXunf0wOZD6gXPegsSZNGkBdHFCge2AUWQGF3DB2wQt8TKBulGW2dfv8Bnsye1Ugrqsigb1CVJZZoSqUGw5mca+kmm7TN3AXfT/+BLFHUirYLbunNzmcf3JKirs7CQgxAjpeQoFlIBOHjdltC8EkC/XslklwrMbgU7cbeMRRnYL9dXZ9EwzDXPDJWylAgseiDLcmbSHKN7l5pSKc46MtHnngHEWLpxSjXwWHD2dFp/5XGxl8eFtFjmyYH1S38wXfrx44kA2t7U5ZUzeOJ+XjttXV0YWDff6m2gYvVgxVgxP8FSMZClXTZGaXUdKwgrKqVdQtuTve0E8sRK5h0SdA6PGFpO0dhR4/ZGZ/UTLkH2U9sUDdcXBhw2xUBwklSjmmG6wy7o3r1YO48YWKqU0kr42kHyRjlUDf8cqFO+pJltgyLotA1aAR7vAWPEdtyzgI15SpU6oOoeuapjc5GXdwYJMgCUVyKLWBKhnWM8FkdVD5/AtSmLQS0tFXV/1AxKiaHfkc3gDyztQP6nuUV0ZLhYBSBjIE66BbMI+0WgwNzfNqJKMc5YT0IOQ6o8xQk7O9pfu7U1Bn21M4+wq9l1XSK092xsPGdwIAAAA=') format('woff2'),
+    url('iconfont.woff?t=1547862903071') format('woff'),
+    url('iconfont.ttf?t=1547862903071') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('iconfont.svg?t=1547862903071#iconfont') format('svg'); /* iOS 4.1- */
   }
+
+
 
   .iconfont {
     font-family: "iconfont" !important;
@@ -76,26 +88,37 @@ ul{
     width: 17px;
     height: 17px;
     display:inline-block;
-    background-color: lime;
     margin-right: 16px;
     vertical-align: middle;
+    position: relative;
+    // background-color: azure;
 }
+.menu-logo .icon{
+    position: absolute;
+    width: 17px;
+    height: 17px;
+}
+
 .menu-item span{
     vertical-align: middle;
     font-size: 14px;
-
 }
+
+ 
 .menu-icon-arrow{
-    // background-color: red;
-    // position: absolute;
-    // top: 50%;
-    // right: 20px;
-    // margin-top: -7px;
+    line-height: 12px;
+   color:rgb(144, 147, 153);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -7px;
     font-size: 12px;
     vertical-align: middle;
-    float: right;
+    // float: right;
  }
-.main-container{
+ 
+
+ .main-container{
   float: left;
   width: @100;
   margin-left:180px;
@@ -103,13 +126,36 @@ ul{
   height:50px;
 }
 
-.menubar{
+/* 顶部菜单样式 */
+.menu-bar{
     width: @100;
     height:50px;
     border-bottom: 1px solid #e6e6e6;
     box-sizing: @border_box;
-    background: lime;
+    font-size: 0;
+    .hamburger-container{
+            width: 20px;
+            height: 50px;
+            line-height: 50px;
+            float: left;
+            padding: 0 10px;
+            .icon{
+                vertical-align: middle;
+            }
+    }
+    span{
+        font-weight: 400;
+        color: #97a8be;
+        cursor: text;
+        font-size:14px;
+        line-height: 50px;
+    }
+    
 }
+/* 主内容区域样式 */
+/* 
+ 当元素不存在width属性或者（width：auto）的时候，负margin会增加元素的宽度，看下下面的例子
+ */
 .app-main{
     width: @100;
      .app-container{
@@ -117,12 +163,9 @@ ul{
         padding: 20px;
     }
     .total-layout {
- /* 
- 当元素不存在width属性或者（width：auto）的时候，负margin会增加元素的宽度，看下下面的例子
- */
         margin: 0 -10px;
         height: 100px;
-        overflow: hidden;
+        
       }
      .total-frame{
         width:25%;
@@ -133,16 +176,60 @@ ul{
      }
      .total-frame div{
         height:@100;
-        background:@zhanwei;
         padding: 20px;
+        border: @border;
         box-sizing: @border_box;  
+        position: relative;
+        .total-title{
+            position: absolute;
+            font-size: 16px;
+            color: #909399;
+            right: 6px;
+            top: -10px;
+        }
+        .total-value{
+          position: absolute;
+          font-size: 18px;
+          color: #606266;
+          left: 90px;
+          top:20px;
+        }
     }
      .un-handle-layout{
          margin-top:20px;
-         background: @zhanwei;
+        border:@border;
          box-sizing: border-box;
          width: @100;
          height: 210px;
+         .layout-title{
+            color: #606266;
+            padding: 15px 20px;
+            background: #f2f6fc;
+            font-weight: 700;
+        }
+        .un-handle-content{
+            padding: 20px 40px;
+            .el-row{
+                .un-handle-item-warpper{
+                    width: calc(100/3%);
+                    box-sizing: @border_box;
+                    padding-left: 10px;
+                     padding-right: 10px;
+                    .fl();
+                .un-handle-item{
+                    height: 18.4px;
+                    padding:10px;
+                    border-bottom: 1px solid #ebeef5;
+                    font-size: 16px;
+                    color: #606266;
+                    .color-danger{
+                        .color-danger
+                    }
+                }
+            }
+            }
+           
+        }
      }
      .overview-layout{
          margin:20px  -10px 0 -10px;
@@ -151,19 +238,47 @@ ul{
      }
      
      .overview-warpper{
-            height: @100;
             width: 50%;
             float: left;
             box-sizing:@border_box;
+          
+            .layout-title{
+                border:
+                color: #606266;
+                padding: 15px 20px;
+                background: #f2f6fc;
+                font-weight: 700;
+                margin: 0 10px; 
+                border: @border;
+                border-bottom:0 
+            }
+            .layout-content{
+                margin: 0 10px; 
+                border: @border;
+                border-top:0; 
+                .el-row {
+                    padding-left: 0px;
+                    font-size: 24px;
+                     text-align: center;
+                     .color-danger();
+                     box-sizing: border-box;
+                   overflow: hidden;
+                    li{
+                        .fl();
+                        width:25%;
+                    }
+                }
+                .black-color{
+                    color: #606266;
+                    li{
+                        // margin-top: 10px;
+                        font-size: 16px;
+                         color: #606266;
+                    }
+                }
+            }
      }
-     .overview-warpper div{
-         height: @100;
-         padding: 0 10px;
-         border: @border;
-         box-sizing:@border_box;
-         margin: 0 10px;
-         background: @zhanwei;
-     }
+      
      .statistics-layout{
         margin-top:20px;
         box-sizing: border-box;
@@ -171,6 +286,10 @@ ul{
         height: 480px;
         border: @border;
         background: @zhanwei;
+        img{
+            width: @100;
+            height: @100;
+        }
      }
  }
 
