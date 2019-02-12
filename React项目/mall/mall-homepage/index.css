@@ -46,7 +46,7 @@ ul {
 .scroll-container {
   width: 180px;
   height: 100%;
-  background: #304156;
+  background: #001529;
   float: left;
   position: fixed;
 }
@@ -56,7 +56,10 @@ ul {
   box-sizing: border-box;
   vertical-align: middle;
 }
-.menu-item {
+.menu-item:hover {
+  background: #304156;
+}
+.menu-item div {
   height: 56px ;
   padding: 0 20px;
   line-height: 56px;
@@ -64,7 +67,7 @@ ul {
   color: #bfcbd9;
   position: relative;
 }
-.menu-logo {
+.menu-item .menu-logo {
   width: 17px;
   height: 17px;
   display: inline-block;
@@ -72,14 +75,27 @@ ul {
   vertical-align: middle;
   position: relative;
 }
-.menu-logo .icon {
+.menu-item span {
+  vertical-align: middle;
+  font-size: 14px;
+}
+.menu-item .menu-logo .icon {
   position: absolute;
   width: 17px;
   height: 17px;
 }
-.menu-item span {
-  vertical-align: middle;
-  font-size: 14px;
+.menu-item .el-menu {
+  background: #000c17;
+  padding-left: 0px;
+}
+.menu-item .el-menu li {
+  color: rgba(255, 255, 255, 0.65);
+  height: 50px;
+  line-height: 50px;
+  padding-left: 40px;
+}
+.menu-item .el-menu :hover {
+  background: #304156;
 }
 .menu-icon-arrow {
   line-height: 12px;

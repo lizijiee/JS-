@@ -66,7 +66,7 @@ ul{
 .scroll-container{
     width: 180px;
     height: @100;
-    background: #304156;
+    background: #001529;
     float: left;
     position: fixed;
 }
@@ -75,34 +75,55 @@ ul{
     padding-left: 0;
     box-sizing: @border_box;
     vertical-align: middle;
+    
 }
-.menu-item{
-    height:56px ;
-    padding: 0 20px;
-    line-height: 56px;
-    font-size: 0;
-    color: rgb(191, 203, 217);
-    position: relative;
+.menu-item:hover {
+    background:rgb(48, 65, 86) 
 }
-.menu-logo{
-    width: 17px;
-    height: 17px;
-    display:inline-block;
-    margin-right: 16px;
-    vertical-align: middle;
-    position: relative;
-    // background-color: azure;
-}
-.menu-logo .icon{
-    position: absolute;
-    width: 17px;
-    height: 17px;
+ 
+
+.menu-item {
+    div{
+        height:56px ;
+        padding: 0 20px;
+        line-height: 56px;
+        font-size: 0;
+        color: rgb(191, 203, 217);
+        position: relative;
+    }
+    .menu-logo{
+        width: 17px;
+        height: 17px;
+        display:inline-block;
+        margin-right: 16px;
+        vertical-align: middle;
+        position: relative;
+        // background-color: azure;
+    }
+    span{
+        vertical-align: middle;
+        font-size: 14px;
+    }
+    .menu-logo .icon{
+        position: absolute;
+        width: 17px;
+        height: 17px;
+    }
+    .el-menu{
+        background: #000c17;
+        padding-left: 0px;
+    }
+    .el-menu li{
+        color: rgba(255, 255, 255, 0.65);
+        height: 50px;
+        line-height: 50px;
+        padding-left:40px; 
+    }
+    .el-menu :hover{
+        background:rgb(48, 65, 86) 
+  }
 }
 
-.menu-item span{
-    vertical-align: middle;
-    font-size: 14px;
-}
 
  
 .menu-icon-arrow{
