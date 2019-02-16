@@ -63,8 +63,7 @@
                     <li class="menu-item">
                         <div>
                         <i class="menu-logo">
-
-                            <svg t="1547879079701" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            <svg t="1547879079701" class="icon"   viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 p-id="9532" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="17">
                                 <defs>
                                     <style type="text/css"></style>
@@ -75,12 +74,12 @@
 
 
                         </i>
-                        <span>商品管理</span>
+                        <span>菜品管理</span>
                         <i class="menu-icon-arrow iconfont">&#xe668;</i>
                     </div>
                     <ul class="el-menu">
-                            <li>商品列表</li>
-                            <li>添加商品</li>
+                            <li>菜品列表</li>
+                            <li>添加菜品</li>
                         </ul>
                     </li>
                     <li class="menu-item">
@@ -165,7 +164,7 @@
                     </div>
                     <span>首页</span>
                 </div>
-                <section class="clerk-info"><!-- 员工信息组件 -->
+                <section class="member-info"><!-- 员工信息组件 -->
                    <div class="app-container">
                         <div class="el-serch-wrap">
                                 <div class="el-title-body">
@@ -177,7 +176,7 @@
                         </div>
                             <div class="el-form-item">
                                 <span>输入检索:</span>
-                                <input type="text" placeholder="请输入姓名"  >
+                                <input type="text" placeholder="请输入菜品"  >
                             </div>
                         </div>
                             </div> 
@@ -192,8 +191,9 @@
                         <main class="table-container"> 
                             <table  cellpadding="0" cellspacing="0">
                                     <thead>
-                                <tr><th>会员姓名</th><th>联系电话</th><th>会员卡号</th>
-                                    <th>会员卡类型</th><th>开卡时间</th><th>有效期</th>
+                                <tr><th>
+                                    <input type="checkbox" class="input-type"/></th><th>会员姓名</th><th>联系电话</th><th>会员卡号</th>
+                                    <th>开卡时间</th>
                                     <th>会员状态</th>
                                     <th>初始密码</th><th>余额</th>
                                     <th>操作</th>
@@ -202,39 +202,16 @@
                             </thead>
                             <tbody>
                        <tr>
-                                    <td>1</td><td>王树奎</td><td>男</td><td>370883197708183034</td><td>1989/03/12</td><td>43</td>
-                                    <td>2000/05/12</td><td>厨师</td>
-                                    <td>在职</td>
+                           <td><input type="checkbox" class="input-type"/></td>
+                                    <td>飞翔的小猪</td><td>13703286655</td><td>201805102134</td> <td>1989/03/12</td> 
+                                    <td>正常</td><td>12345678</td>
+                                    <td>￥50</td>
                                     </td><td>
                                         <button>编辑</button>
                                         <button>删除</button>
                                         </td>
                             </tr>
-                            <tr>
-                                    <td>1</td><td>王树奎</td><td>男</td><td>370883197708183034</td><td>1989/03/12</td><td>43</td>
-                                    <td>2000/05/12</td><td>厨师</td>
-                                    <td>在职</td>
-                                    </td><td>
-                                        <button>编辑</button>
-                                        <button>删除</button>
-                                        </td>
-                            </tr> <tr>
-                                    <td>1</td><td>王树奎</td><td>男</td><td>370883197708183034</td><td>1989/03/12</td><td>43</td>
-                                    <td>2000/05/12</td><td>厨师</td>
-                                    <td>在职</td>
-                                    </td><td>
-                                        <button>编辑</button>
-                                        <button>删除</button>
-                                        </td>
-                            </tr> <tr>
-                                    <td>1</td><td>王树奎</td><td>男</td><td>370883197708183034</td><td>1989/03/12</td><td>43</td>
-                                    <td>2000/05/12</td><td>厨师</td>
-                                    <td>在职</td>
-                                    </td><td>
-                                        <button>编辑</button>
-                                        <button>删除</button>
-                                        </td>
-                            </tr>
+                       
  </tbody>
 
                             </table>

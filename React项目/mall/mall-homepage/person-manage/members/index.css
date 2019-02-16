@@ -270,27 +270,27 @@ ul {
   width: 100%;
   height: 100%;
 }
-.clerk-info .app-container {
+.member-info .app-container {
   vertical-align: middle;
   padding: 20px;
 }
-.clerk-info .app-container .el-serch-wrap {
+.member-info .app-container .el-serch-wrap {
   margin-top: 20px;
   border: 1px solid #ebeef5;
   background-color: #fff;
   color: #303133;
   border-radius: 4px;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body {
+.member-info .app-container .el-serch-wrap .el-title-body {
   padding: 20px;
   vertical-align: middle;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body .doc-logo {
+.member-info .app-container .el-serch-wrap .el-title-body .doc-logo {
   display: inline-block !important;
   line-height: 20px;
   vertical-align: middle;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body .add {
+.member-info .app-container .el-serch-wrap .el-title-body .add {
   float: right;
   padding: 9px 15px;
   font-size: 12px;
@@ -306,16 +306,16 @@ ul {
   outline: 0;
   margin: 0;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body .el-form-item {
+.member-info .app-container .el-serch-wrap .el-title-body .el-form-item {
   margin: 15px 10px 18px 55px ;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body .el-form-item span {
+.member-info .app-container .el-serch-wrap .el-title-body .el-form-item span {
   font-size: 14px;
   line-height: 32px;
   color: #606266;
   padding-right: 12px;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body .el-form-item input {
+.member-info .app-container .el-serch-wrap .el-title-body .el-form-item input {
   height: 32px;
   line-height: 32px;
   background-color: #fff;
@@ -325,27 +325,27 @@ ul {
   font-size: 12px;
   padding: 0 15px;
 }
-.clerk-info .app-container .el-serch-wrap .el-title-body .el-form-item input::-webkit-input-placeholder {
+.member-info .app-container .el-serch-wrap .el-title-body .el-form-item input::-webkit-input-placeholder {
   color: #dcdfe6;
   font-size: 12px;
 }
-.clerk-info .app-container .el-title {
+.member-info .app-container .el-title {
   margin-top: 20px;
   border: 1px solid #ebeef5;
   background-color: #fff;
   color: #303133;
   border-radius: 4px;
 }
-.clerk-info .app-container .el-title .el-title-body {
+.member-info .app-container .el-title .el-title-body {
   padding: 20px;
   vertical-align: middle;
 }
-.clerk-info .app-container .el-title .el-title-body .doc-logo {
+.member-info .app-container .el-title .el-title-body .doc-logo {
   display: inline-block !important;
   line-height: 20px;
   vertical-align: middle;
 }
-.clerk-info .app-container .el-title .el-title-body .add {
+.member-info .app-container .el-title .el-title-body .add {
   float: right;
   padding: 7px 15px;
   font-size: 12px;
@@ -364,29 +364,106 @@ ul {
   margin: 0;
   transition: .1s;
 }
-.clerk-info .app-container .table-container {
+.member-info .app-container .table-container {
   margin-top: 20px ;
   border-right: 1px solid #ebeef5;
   border-bottom: 1px solid #ebeef5;
   width: 100%;
 }
-.clerk-info .app-container .table-container table th {
+.member-info .app-container .table-container table {
+  width: 100%;
+}
+.member-info .app-container .table-container table th {
   padding: 12px 0;
   border-left: 1px solid #ebeef5;
   border-top: 1px solid #ebeef5;
-  width: 100px;
+  width: 10%;
   color: #909399;
 }
-.clerk-info .app-container .table-container table th:nth-child(4),
-.clerk-info .app-container .table-container table th:nth-child(6),
-.clerk-info .app-container .table-container table th:nth-last-child(1) {
-  width: 200px;
+.member-info .app-container .table-container table th .input-type {
+  width: 13px;
+  height: 13px;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-block;
+  margin: 0 2px 2px 0;
+  cursor: pointer;
+  outline: none;
+  vertical-align: middle;
+  border: 1px solid #e2e2e2;
 }
-.clerk-info .app-container .table-container table td {
+.member-info .app-container .table-container table th .input-type:checked {
+  border: 1px solid #409eff;
+  background-color: #409eff;
+}
+.member-info .app-container .table-container table th .input-type:checked::before {
+  content: "";
+  display: block;
+  position: relative;
+  width: 3px;
+  height: 6px;
+  left: 34%;
+  top: 9%;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(45deg);
+  background: none;
+}
+.member-info .app-container .table-container table th .input-type:hover {
+  transition: 0.25s;
+  border-color: #409eff;
+}
+.member-info .app-container .table-container table th:nth-last-child(1) {
+  width: 13%;
+}
+.member-info .app-container .table-container table th:nth-last-child(2) {
+  width: 8%;
+}
+.member-info .app-container .table-container table th:nth-child(1) {
+  width: 5%;
+}
+.member-info .app-container .table-container table td {
   padding: 12px 0;
   border-left: 1px solid #ebeef5;
   border-top: 1px solid #ebeef5;
   text-align: center;
   font-size: 14px;
   color: #303133;
+}
+.member-info .app-container .table-container table td .input-type {
+  width: 13px;
+  height: 13px;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-block;
+  margin: 0 2px 2px 0;
+  cursor: pointer;
+  outline: none;
+  vertical-align: middle;
+  border: 1px solid #e2e2e2;
+}
+.member-info .app-container .table-container table td .input-type:checked {
+  border: 1px solid #409eff;
+  background-color: #409eff;
+}
+.member-info .app-container .table-container table td .input-type:checked::before {
+  content: "";
+  display: block;
+  position: relative;
+  width: 3px;
+  height: 6px;
+  left: 34%;
+  top: 9%;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(45deg);
+  background: none;
+}
+.member-info .app-container .table-container table td .input-type:hover {
+  transition: 0.25s;
+  border-color: #409eff;
 }
