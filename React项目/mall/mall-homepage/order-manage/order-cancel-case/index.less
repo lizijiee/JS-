@@ -214,8 +214,7 @@ ul {
  当元素不存在width属性或者（width：auto）的时候，负margin会增加元素的宽度，看下下面的例子
  */
 .app-main {
-    width: @100;
-
+    width:@100;
     .app-container {
         margin: 40px 120px 0 120px;
         padding: 20px;
@@ -558,16 +557,15 @@ ul {
 
             // 中间部分
             .table-container {
-                margin-top: 20px;
                 // .bd(@border-color);
                 // border:3px solid red;
                 border-right: 1px solid @border-color;
                 border-bottom: 1px solid @border-color;
-                width: 100%;
+                width:80%;
+                margin: 20px auto 20px;
 
                 table {
                     width: 100%;
-
                     th {
                         padding: 12px 0;
                         border-left: 1px solid@border-color;
@@ -618,15 +616,15 @@ ul {
                     }
 
                     th:nth-last-child(3) {
-                        width: 5%;
+                        width: 10%;
                     }
 
                    
                     th:nth-child(2) {
-                        width: 5%;
+                        width: 4%;
                     }
                     th:nth-child(1) {
-                        width: 5%;
+                        width: 3%;
                     }
 
                     td {

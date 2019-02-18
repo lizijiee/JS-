@@ -399,10 +399,10 @@ ul {
   transition: .1s;
 }
 .member-info .app-container .el-serch-wrap .table-container {
-  margin-top: 20px;
   border-right: 1px solid #ebeef5;
   border-bottom: 1px solid #ebeef5;
-  width: 100%;
+  width: 80%;
+  margin: 20px auto 20px;
 }
 .member-info .app-container .el-serch-wrap .table-container table {
   width: 100%;
@@ -451,13 +451,13 @@ ul {
   border-color: #409eff;
 }
 .member-info .app-container .el-serch-wrap .table-container table th:nth-last-child(3) {
-  width: 5%;
+  width: 10%;
 }
 .member-info .app-container .el-serch-wrap .table-container table th:nth-child(2) {
-  width: 5%;
+  width: 4%;
 }
 .member-info .app-container .el-serch-wrap .table-container table th:nth-child(1) {
-  width: 5%;
+  width: 3%;
 }
 .member-info .app-container .el-serch-wrap .table-container table td {
   padding: 12px 0;

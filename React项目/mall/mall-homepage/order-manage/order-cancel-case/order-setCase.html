@@ -6,13 +6,12 @@
     <title>Document</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.8.1/less.min.js"></script>
     <link rel="stylesheet" href="./index.css">
-
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.min.css">
+     <link href="https://cdn.bootcss.com/bootstrap-switch/4.0.0-alpha.1/css/bootstrap-switch.min.css" rel="stylesheet">
+    <!-- switch开关  -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 
+    
 
 </head>
 
@@ -207,43 +206,35 @@
                                     <thead>
                                         <tr>
            <th> <input type="checkbox" class="input-type" /></th>
-                                            <th>服务单号</th>
-                                            <th>用户账号</th>
-                                            <th>处理人员</th>
-                                            <th>申请时间</th>
-                                            <th>处理时间</th>
-                                            <th>退款金额</th>
-                                            <th>申请状态</th>
+                                            <th>编号</th>
+                                            <th>退货原因</th>
+                                            <th>是否显示</th>
                                             <th>操作</th>
                                          </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><input type="checkbox" class="input-type" /></td>
-                                            <td>2</td>
-                                            <td>test</td>
-                                            <td>李旭</td>
-                                            <td>2018-09-17 12:24:27</td>
-                                            <td>2018-09-18 10:15:20</td>
-                                            <td>￥50</td>
-                                            <td>已完成</td>
+                                            <td><input type="checkbox" class="input-type" />
+                                            </td>
+                                            <td>1</td>
+                                            <td>点错菜，重新下单</td>
+                                            <!-- <td>地址、电话信息有误</td>
+                                            <td>计划有变，不想要了</td>
+                                            <td>菜品质量有问题</td>
+                                            <td>配送速度过麦</td>
+                                            <td>没有给承诺优惠</td>
+                                            -->
+                <td>
+                        <input name="status" type="checkbox" data-size="small">  
+                               
+                           
+                </td>
                                             <td>
                                                 <button type="button" class="btn btn-default">Left</button>
+                                                <button type="button" class="btn btn-default">Right</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td><input type="checkbox" class="input-type" /></td>
-                                            <td>2</td>
-                                            <td>test</td>
-                                            <td>李旭</td>
-                                            <td>2018-09-17 12:24:27</td>
-                                            <td>2018-09-18 10:15:20</td>
-                                            <td>￥50</td>
-                                            <td>已完成</td>
-                                            <td>
-                                                <button type="button" class="btn btn-default">Left</button>
-                                            </td>
-                                        </tr>
+                                         
                                     </tbody>
 
                                 </table>
@@ -255,9 +246,9 @@
         </div>
     </div>
     </div>
+ 
 
-
-
+ 
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/js/bootstrap-select.min.js"></script>
@@ -266,7 +257,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/js/bootstrap-select.min.js"></script>
 
- 
+
 </body>
 
 </html>
