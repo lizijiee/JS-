@@ -8,11 +8,12 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content'
 import './index.css';
+
+
 if(module.hot)
 {
     module.hot.accept();
 }
-
 
 class MallProject extends React.Component {
   state = {
@@ -26,20 +27,21 @@ class MallProject extends React.Component {
 
   render() {
     return (
-      <Layout style={{height:" 100%",border:" 1px solid rgb(230, 230, 230)"}}>
+      <Layout style={{border:" 1px solid rgb(230, 230, 230)"}}>
        <Sidebar 
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
        />
-        <Layout  style={{ background: 'rgb(240, 242, 245)'}}>
+    <Layout  style={{ background: 'rgb(240, 242, 245)'}}>
           <Header 
           toggle={this.toggle}
           collapsed={this.state.collapsed}
           >
           </Header>
-          <Content />
+
+          <Content style={{height:"1290px"}}/>
         </Layout>
       </Layout>
     );

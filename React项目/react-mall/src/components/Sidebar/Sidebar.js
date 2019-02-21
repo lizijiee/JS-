@@ -3,15 +3,10 @@ import { Layout, Menu, Icon} from 'antd';
 import IconFont from '../../iconfont/font';
 import '../../index.css';
 
-
 let { Sider} = Layout;
 const SubMenu = Menu.SubMenu;
 
- 
 export default class SiderBar extends Component {
-    constructor(props) {
-        super(props)
-       }
    render() {
     return (
          <Sider 
@@ -20,7 +15,8 @@ export default class SiderBar extends Component {
         collapsed={this.props.collapsed}
          style={{background:"white"}}>
         <div className="logo"> 
-        <IconFont type='mall-logo-cat' style={{fontSize:'40px',float: "left",margin:"0 25px 0  5px"}}/> <IconFont type="mall-logo-github" style={{fontSize:'50px',marginTop:"-4px",float: "left"}}/>
+        <IconFont type='mall-logo-cat' style={{fontSize:'40px',float: "left",margin:"0 25px 0  5px"}}/>
+         <IconFont type="mall-logo-github" style={{fontSize:'50px',marginTop:"-4px",float: "left"}}/>
         </div>
         {/* 首页内容 */}
         <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
