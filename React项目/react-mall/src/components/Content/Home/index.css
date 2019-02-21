@@ -151,3 +151,28 @@ li {
   float: left;
   height: 100%;
 }
+.app-main .statistics-layout .el-col .order-sum {
+  padding: 0;
+  text-align: left;
+}
+.app-main .statistics-layout .el-col .order-sum .order-item {
+  margin-top: 20px;
+}
+.app-main .statistics-layout .el-col .order-sum .order-item > :first-child {
+  color: #909399;
+  font-size: 14px;
+  margin: 0;
+}
+.app-main .statistics-layout .el-col .order-sum .order-item > :nth-child(2) {
+  color: #606266;
+  font-size: 24px;
+  padding: 10px 0px;
+  margin: 0;
+}
+.app-main .statistics-layout .el-col .order-sum .order-item > :nth-last-child(1) {
+  color: #c0c4cc;
+  font-size: 14px;
+}
+.app-main .statistics-layout .el-col .order-sum .order-item > :nth-last-child(1) > :first-child {
+  color: #67c23a!important;
+}

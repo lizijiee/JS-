@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.less' ;
 import IconFont from '../../../iconfont/font';
 import Echart from './Echarts/Echarts'
+import { relative, isAbsolute } from 'path';
 export default class Temp extends Component {
   render() {
     return (
@@ -164,11 +165,36 @@ export default class Temp extends Component {
             <div className="statistics-layout">
                <div className="layout-title">订单统计</div>
                <div className="el-row">
-               <div className="el-col" style={{width:"180px",borderRight:"1px solid #dcdfe6"}}>
-               fsafdsaf-----------------
+               <div className="el-col" style={{width:"180px",borderRight:"1px solid #dcdfe6",padding:20}}>
+                <ul className="order-sum">
+                   <li className="order-item" style={{ marginTop:0}} >
+                       <p>本月订单合计</p>
+                       <p>3400</p>
+                       <p>
+                       <span>+10% </span>
+                       <span>同比上月</span>
+                       </p>
+                   </li>
+                   <li className="order-item" >
+                       <p>本月订单合计</p>
+                       <p>3400</p>
+                       <p>
+                       <span>+10% </span>
+                       <span>同比上月</span>
+                       </p>
+                   </li>
+                   <li className="order-item" >
+                       <p>本月订单合计</p>
+                       <p>3400</p>
+                       <p>
+                       <span>+10% </span>
+                       <span>同比上月</span>
+                       </p>
+                   </li>
+               </ul>
                </div> 
-               <div className="el-col">
-              <Echart  />
+               <div className="el-col" style={{position:"relative"}}>
+                 <Echart />
                </div>
                </div>
             </div>

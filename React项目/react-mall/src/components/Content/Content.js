@@ -17,7 +17,6 @@ export default class Temp extends Component {
       }}
         >
          <Home/>
-
         </Content>
     )
   }

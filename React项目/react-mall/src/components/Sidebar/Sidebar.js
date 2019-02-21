@@ -20,7 +20,7 @@ export default class SiderBar extends Component {
         </div>
         {/* 首页内容 */}
         <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
-        <Menu.Item key="1">
+        <Menu.Item key="1" >
           <Icon type="home"  />
            <span>首页</span>
          </Menu.Item>

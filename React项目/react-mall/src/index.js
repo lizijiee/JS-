@@ -40,7 +40,6 @@ class MallProject extends React.Component {
           collapsed={this.state.collapsed}
           >
           </Header>
-
           <Content style={{height:"1290px"}}/>
         </Layout>
       </Layout>

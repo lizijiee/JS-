@@ -5,9 +5,12 @@
 @border_box:border-box;
 @float_left:float-left;
 
+
+
 .fl(){float: left;};
 .fr(){float: right;};
 .color-danger(){color: #f56c6c;};
+.color-success(){color: #67c23a!important;};
 
 *{
     margin: 0;
@@ -167,6 +170,32 @@ li{
         .el-col{
             float: left;
             height: 100%;
+            .order-sum{
+                padding: 0;
+                text-align: left;
+                .order-item{
+                    margin-top: 20px;
+                }
+                .order-item>:first-child{
+                    color: rgb(144, 147, 153);
+                    font-size: 14px;
+                    margin: 0;
+                   
+                }   
+                .order-item>:nth-child(2){
+                    color: rgb(96, 98, 102);
+                    font-size: 24px;
+                    padding: 10px 0px;
+                    margin: 0;
+                }   
+                .order-item>:nth-last-child(1){
+                    color: rgb(192, 196, 204);
+                    font-size: 14px;
+                    &>:first-child{
+                       .color-success()
+                    }
+                } 
+            }
         }
      }
  }
