@@ -13,6 +13,7 @@ li {
 }
 .app-main .app-container {
   margin: 40px 120px 0 120px;
+  height: 100%;
 }
 .app-main .total-layout {
   margin: 0 -10px;

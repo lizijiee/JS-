@@ -193,8 +193,8 @@ export default class Temp extends Component {
                    </li>
                </ul>
                </div> 
-               <div className="el-col" style={{position:"relative"}}>
-                 <Echart />
+               <div className="el-col" style={{width:"calc(100% - 180px)"}} >
+                 <Echart/>
                </div>
                </div>
             </div>
