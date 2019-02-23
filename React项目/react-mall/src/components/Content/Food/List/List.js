@@ -122,7 +122,7 @@ export default class Temp extends Component {
                                     <td>￥50</td>
                                     <td>
                                         <p><span style={{paddingRight:15}}>热销:</span> <Switch size="default" /></p>
-                                        <p><span style={{paddingRight:15}}>新品:</span><Switch size="default"/></p>
+                                        <p><span style={{paddingRight:15}}>新品:</span><Switch size="default" /></p>
                                         <p><span style={{paddingRight:15}}>优惠:</span><Switch size="default"/></p>
                                     </td>
                                     <td>

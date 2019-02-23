@@ -142,3 +142,11 @@ p {
 .food-info .app-container .table-container table td p {
   margin-bottom: 6px !important;
 }
+.ant-switch {
+  min-width: 40px;
+  height: 20px;
+}
+.ant-switch::after {
+  width: 16px;
+  height: 16px;
+}
