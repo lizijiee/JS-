@@ -6,7 +6,7 @@ import './Member.less';
 export default class componentName extends Component {
     render() {
         return (
-            <section className="clerk-info">
+            <section className="clerk-list">
                 {/*   员工信息组件  */}
                 <div className="app-container">
                     <div className="el-serch-wrap">

@@ -1,7 +1,4 @@
 // ---------------店员列表组件;
-.fr() {
-    float: right;
-}
 
 .p(@p) {
     padding: @p
@@ -26,6 +23,9 @@
 .bd(@color) {
     border: 1px solid @color;
 }
+.fr() {
+    float: right;
+}
 
 //边框
 // 浮动
@@ -48,9 +48,11 @@
     margin: 20px 0 0 16px;
     height: 100%;
     padding: 10px 40px 0 40px;
+
     .app-container {
         .va();
         padding: 10px 20px 20px 20px;
+
         .el-serch-wrap {
             margin-top: 0;
             .bd(@border-color);
@@ -163,19 +165,24 @@
             border-bottom: 1px solid @border-color;
             width: 100%;
             text-align: center;
+
             table {
                 th {
                     padding: 12px 0;
                     border-left: 1px solid@border-color;
                     border-top: 1px solid@border-color;
-                    width: 100px;
+                    width: 7%;
                     color: #909399
                 }
 
-                th:nth-child(4),
-                th:nth-child(6),
-                th:nth-last-child(1) {
-                    width: 200px;
+                thead {
+                    th:nth-of-type(10) {
+                        width: 13%;
+                        // th:nth-child(6),
+                        // th:nth-last-child(1) {
+                        //     width: 350px!important;
+                        //     color: red
+                    }
                 }
 
                 td {

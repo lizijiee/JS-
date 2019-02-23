@@ -109,13 +109,11 @@
   padding: 12px 0;
   border-left: 1px solid #ebeef5;
   border-top: 1px solid #ebeef5;
-  width: 100px;
+  width: 7%;
   color: #909399;
 }
-.clerk-info .app-container .table-container table th:nth-child(4),
-.clerk-info .app-container .table-container table th:nth-child(6),
-.clerk-info .app-container .table-container table th:nth-last-child(1) {
-  width: 200px;
+.clerk-info .app-container .table-container table thead th:nth-of-type(10) {
+  width: 13%;
 }
 .clerk-info .app-container .table-container table td {
   padding: 12px 0;

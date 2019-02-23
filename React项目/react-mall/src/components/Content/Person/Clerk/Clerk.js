@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import "./Clerk.less";
 import { Button, Pagination } from 'antd';
 import IconFont from '../../../../iconfont/font'
 import './Clerk.less'

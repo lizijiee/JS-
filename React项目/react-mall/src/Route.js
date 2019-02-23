@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import {Route ,Switch } from 'react-router-dom'
 import Home from './components/Content/Content';
 import Clerk from './components/Content/Person/Clerk/Clerk'
 import Member from './components/Content/Person/Member/Member'
-
+import List from './components/Content/Food/List/List'
+import Add from './components/Content/Food/Add/Add'
 // 路由表
 class App extends Component {
     render() {
@@ -22,10 +23,10 @@ class App extends Component {
                     render={() => { return <Member /> } }/>
                 <Route
                     path="/food/list"
-                    render={() => <h3>菜品列表</h3>} />
+                    render={() =>  { return <List /> }} />
                 <Route
                     path="/food/add"
-                    render={() => <h3>菜品添加</h3>} />
+                    render={() =>  { return <Add /> }}/>
                 <Route
                     path="/orders/list"
                     render={() => <h3>订单列表</h3>} />

@@ -1,16 +1,14 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 // import 'antd/dist/antd.css';
-import { Layout, Menu, Icon, Breadcrumb } from 'antd';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { Layout } from 'antd';
+import { BrowserRouter as Router } from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import App from './App';
-import IconFont from './iconfont/font';
+import Route from './Route';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 // import Home from './components/Content/Content';
-import Person from './components/Content/Person/Clerk/Clerk';
 import './index.css';
 
 const history = createBrowserHistory()
@@ -53,7 +51,7 @@ class MallProject extends React.Component {
                 collapsed={this.state.collapsed}
               >
               </Header>
-              <App />
+                <Route />
             </Layout>
           </Layout>
         </Fragment >
