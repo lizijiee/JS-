@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Pagination, Checkbox } from 'antd';
 import IconFont from '../../../../iconfont/font'
-// import './Member.less';
+import './Member.less';
 
 export default class componentName extends Component {
     render() {
@@ -49,87 +49,92 @@ export default class componentName extends Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><Checkbox /></td>
-                                    <td>飞翔的小猪</td><td>13703286655</td><td>201805102134</td> <td>1989/03/12</td>
-                                    <td>正常</td><td>12345678</td>
+                                    <td>
+                                        <Checkbox />
+                                    </td>
+                                    <td>飞翔的小猪</td>
+                                    <td>13703286655</td>
+                                    <td>201805102134</td>
+                                    <td>1989/03/12</td>
+                                    <td>正常</td>
+                                    <td>12345678</td>
                                     <td>￥50</td>
                                     <td>
-                                        <Button
-                                            type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            编辑</Button>
-                                        <Button
-                                            type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            删除</Button>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox /></td>
-                                    <td>飞翔的小猪</td><td>13703286655</td><td>201805102134</td> <td>1989/03/12</td>
-                                    <td>正常</td><td>12345678</td>
+                                    <td>
+                                        <Checkbox />
+                                    </td>
+                                    <td>飞翔的小猪</td>
+                                    <td>13703286655</td>
+                                    <td>201805102134</td>
+                                    <td>1989/03/12</td>
+                                    <td>正常</td>
+                                    <td>12345678</td>
                                     <td>￥50</td>
                                     <td>
-                                        <Button
-                                            type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            编辑</Button>
-                                        <Button
-                                            type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            删除</Button>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox /></td>
-                                    <td>飞翔的小猪</td><td>13703286655</td><td>201805102134</td> <td>1989/03/12</td>
-                                    <td>正常</td><td>12345678</td>
+                                    <td>
+                                        <Checkbox />
+                                    </td>
+                                    <td>飞翔的小猪</td>
+                                    <td>13703286655</td>
+                                    <td>201805102134</td>
+                                    <td>1989/03/12</td>
+                                    <td>正常</td>
+                                    <td>12345678</td>
                                     <td>￥50</td>
                                     <td>
-                                        <Button
-                                            type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            编辑</Button>
-                                        <Button
-                                            type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            删除</Button>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox /></td>
-                                    <td>飞翔的小猪</td><td>13703286655</td><td>201805102134</td> <td>1989/03/12</td>
-                                    <td>正常</td><td>12345678</td>
+                                    <td>
+                                        <Checkbox />
+                                    </td>
+                                    <td>飞翔的小猪</td>
+                                    <td>13703286655</td>
+                                    <td>201805102134</td>
+                                    <td>1989/03/12</td>
+                                    <td>正常</td>
+                                    <td>12345678</td>
                                     <td>￥50</td>
                                     <td>
-                                        <Button
-                                            type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            编辑</Button>
-                                        <Button
-                                            type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            删除</Button>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><Checkbox /></td>
-                                    <td>飞翔的小猪</td><td>13703286655</td><td>201805102134</td> <td>1989/03/12</td>
-                                    <td>正常</td><td>12345678</td>
+                                    <td>
+                                        <Checkbox />
+                                    </td>
+                                    <td>飞翔的小猪</td>
+                                    <td>13703286655</td>
+                                    <td>201805102134</td>
+                                    <td>1989/03/12</td>
+                                    <td>正常</td>
+                                    <td>12345678</td>
                                     <td>￥50</td>
                                     <td>
-                                        <Button
-                                            type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            编辑</Button>
-                                        <Button
-                                            type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>
-                                            删除</Button>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
                                     </td>
                                 </tr>
-
                             </tbody>
-
                         </table>
                     </main>
                     <Pagination defaultCurrent={1} total={500} style={{
-                        marginTop: 20, marginRight: 0, marginTop: 25,
-                        right: 150,
-                        position: "absolute"
+                        marginTop: 20, marginRight: 30, marginTop: 25, float: "right"
                     }} />,
-
-        </div>
+                </div>
             </section>
         )
     }

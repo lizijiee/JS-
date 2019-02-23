@@ -125,14 +125,10 @@ export default class Temp extends Component {
                 </tr>
               </tbody>
             </table>
-            <Pagination defaultCurrent={1} total={500} style={{
-            marginTop: 20, marginRight: 0, marginTop: 25,
-            right: 150,
-            position: "absolute"
-          }} />,
           </main>
-          
-
+          <Pagination defaultCurrent={1} total={500} style={{
+            marginTop: 20, marginRight: 30, marginTop: 25, float: "right"
+        }} />,
         </div>
       </section>
     )
