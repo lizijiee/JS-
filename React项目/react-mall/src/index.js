@@ -12,8 +12,7 @@ import Header from './components/Header/Header';
 import './index.css';
 
 const history = createBrowserHistory()
-let { Content } = Layout;
-
+ 
 if (module.hot) {
   module.hot.accept();
 }
@@ -32,8 +31,6 @@ class MallProject extends React.Component {
   }
 
   render() {
-    console.log(1111)
-
     return (
       <Router>
         <Fragment >

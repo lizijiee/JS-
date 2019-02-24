@@ -6,9 +6,6 @@ import Home from './Home/Home';
 let { Content} = Layout;
 
 export default class Temp extends Component {
-  constructor(){
-    super()
-   }
   render() {
     return (
         <Content 

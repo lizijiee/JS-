@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  AreaChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,Area
+  AreaChart,   XAxis, YAxis, CartesianGrid, Tooltip, Legend,Area
 } from 'recharts';
 import './Echart.less'
 
@@ -54,8 +54,8 @@ export default class Example extends PureComponent {
         <CartesianGrid strokeDasharray="3 3"   />
         <Tooltip />
         <Legend style={{fontSize:20}}/>
-        <Area  yAxisId="left"  type="monotone" dataKey="销售额" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" type="monotone"  activeDot={{ r: 5 }}/>
-        <Area yAxisId="right" type="monotone" dataKey="订单" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" type="monotone" activeDot={{ r: 5 }} />
+        <Area  yAxisId="left"  type="monotone" dataKey="销售额" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"   activeDot={{ r: 5 }}/>
+        <Area yAxisId="right" type="monotone" dataKey="订单" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)"   activeDot={{ r: 5 }} />
       </AreaChart>
     );
   }

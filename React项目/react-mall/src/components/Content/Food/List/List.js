@@ -29,7 +29,7 @@ export default class Temp extends Component {
                             <span>菜品类型:</span>
                             <Select
                                     showSearch
-                                    placeholder="菜品类型:"
+                                    placeholder="菜品类型"
                                     style={{ width: 170,color:"#606266",fontSize:12 }}
                                 >
                                     <Option value="特色汤面">特色汤面</Option>
@@ -40,7 +40,7 @@ export default class Temp extends Component {
                                 </Select>,
                             </div>
                             <div className="el-form-item">
-                            <span>菜品类型:</span>
+                            <span>上架状态:</span>
                             <Select
                                     showSearch
                                     placeholder="上架状态"
@@ -78,7 +78,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} /></td>
+                                    <td><img src={jiding} alt="菜品"/></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -95,7 +95,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} /></td>
+                                    <td><img src={jiding} alt="菜品"/></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -112,7 +112,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} /></td>
+                                    <td><img src={jiding} alt="菜品"/></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -129,7 +129,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} /></td>
+                                    <td><img src={jiding} alt="菜品"/></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -146,7 +146,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} /></td>
+                                    <td><img src={jiding} alt="菜品"/></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -164,7 +164,7 @@ export default class Temp extends Component {
                         </table>
                     </main>
                     <Pagination defaultCurrent={1} total={500} style={{
-                        marginTop: 20, marginRight: 30, marginTop: 25, float: "right"
+                          marginRight: 30, marginTop: 25, float: "right"
                     }} />,
         </div>
             </section>

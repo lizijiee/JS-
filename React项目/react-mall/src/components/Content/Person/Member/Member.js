@@ -132,7 +132,7 @@ export default class componentName extends Component {
                         </table>
                     </main>
                     <Pagination defaultCurrent={1} total={500} style={{
-                        marginTop: 20, marginRight: 30, marginTop: 25, float: "right"
+                        marginTop: 20, marginRight: 30,  float: "right"
                     }} />,
                 </div>
             </section>

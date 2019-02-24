@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.less' ;
 import IconFont from '../../../iconfont/font';
 import Echart from './Echarts/Echarts'
-import { relative, isAbsolute } from 'path';
 export default class Temp extends Component {
   render() {
     return (

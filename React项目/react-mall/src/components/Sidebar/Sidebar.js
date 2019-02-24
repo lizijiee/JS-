@@ -1,8 +1,8 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import { Layout, Menu, Icon} from 'antd';
 import IconFont from '../../iconfont/font';
 import '../../index.css';
-import { BrowserRouter as Router, Route, Link,BrowserRouter} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 let { Sider} = Layout;
 const SubMenu = Menu.SubMenu;
