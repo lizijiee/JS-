@@ -40,7 +40,7 @@ p {
             background-color: #fff;
             color: #303133;
             border-radius: 4px;
-
+            overflow: hidden;
             .el-title-body {
                 .p(20px);
                 .va();
@@ -70,8 +70,8 @@ p {
                 }
 
                 .el-form-item {
-                    margin: 15px 10px 18px 55px;
-
+                    margin: 15px 25px 55px 35px;
+                    float: left;
                     span {
                         font-size: 14px;
                         line-height: 32px;
@@ -199,6 +199,7 @@ p {
 
 
 .ant-switch {
+    // 组件样式修改
     min-width: 40px;
     height: 20px;
 
@@ -206,4 +207,25 @@ p {
         width: 16px;
         height: 16px;
     }
+   
+}
+.ant-select-selection-selected-value {
+    text-indent: 1em!important;
+}
+
+.ant-select-selection__rendered {
+    // color: rgb(220, 223, 230);
+    font-size: 12px;
+    margin: 0!important;
+}
+.ant-select-selection__placeholder{
+    text-indent: 1em
+}
+.ant-select-arrow{
+    padding-right: 0!important;
+}
+.ant-select-arrow-icon{
+        svg{
+            height: 0.7em;
+        }
 }

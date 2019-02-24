@@ -16,6 +16,7 @@ p {
   background-color: #fff;
   color: #303133;
   border-radius: 4px;
+  overflow: hidden;
 }
 .food-info .app-container .el-serch-wrap .el-title-body {
   padding: 20px;
@@ -43,7 +44,8 @@ p {
   margin: 0;
 }
 .food-info .app-container .el-serch-wrap .el-title-body .el-form-item {
-  margin: 15px 10px 18px 55px;
+  margin: 15px 25px 55px 35px;
+  float: left;
 }
 .food-info .app-container .el-serch-wrap .el-title-body .el-form-item span {
   font-size: 14px;
@@ -149,4 +151,20 @@ p {
 .ant-switch::after {
   width: 16px;
   height: 16px;
+}
+.ant-select-selection-selected-value {
+  text-indent: 1em!important;
+}
+.ant-select-selection__rendered {
+  font-size: 12px;
+  margin: 0!important;
+}
+.ant-select-selection__placeholder {
+  text-indent: 1em;
+}
+.ant-select-arrow {
+  padding-right: 0!important;
+}
+.ant-select-arrow-icon svg {
+  height: 0.7em;
 }
