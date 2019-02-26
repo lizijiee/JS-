@@ -17,14 +17,11 @@
 .food-add .food-add-wrap .form-wrap {
   margin-top: 50px;
 }
-.food-add .food-add-wrap .form-wrap .stepOne {
-  margin-top: 50px;
-}
-.food-add .food-add-wrap .form-wrap .stepOne ul {
+.food-add .food-add-wrap .form-wrap ul {
   line-height: 50px;
   height: 50px;
 }
-.food-add .food-add-wrap .form-wrap .stepOne ul .sort p {
+.food-add .food-add-wrap .form-wrap ul .sort p {
   width: 120px;
   float: left;
   text-align: right;
@@ -32,11 +29,11 @@
   color: #606266;
   font-weight: 400;
 }
-.food-add .food-add-wrap .form-wrap .stepOne ul .sort p::before {
+.food-add .food-add-wrap .form-wrap ul .sort p::before {
   content: "*";
   color: #f56c6c;
   margin-right: 4px;
 }
-.food-add .food-add-wrap .form-wrap .stepOne ul .sort .ant-input {
+.food-add .food-add-wrap .form-wrap ul .sort .ant-input {
   width: 300px;
 }

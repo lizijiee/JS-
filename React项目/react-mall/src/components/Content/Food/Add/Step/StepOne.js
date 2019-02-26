@@ -103,13 +103,10 @@ class StepOne extends Component {
       //   {  message: '输入内容不能为空' },
       // ],
     });
-    
    const formItemLayout = {//样式
       labelCol: { span: 7 },
       wrapperCol: { span: 12 },
     }; 
-   
- 
     return (
        <Form >
         <FormItem

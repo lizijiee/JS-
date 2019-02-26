@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "./Step/Add.less";
 import { Steps, Button, message, Form } from 'antd';
-import StepOne from './Step/Step';
+import StepOne from './Step/StepOne';
 import StepTwo from './Step/StepTwo';
 
 const Step = Steps.Step;
@@ -35,6 +35,7 @@ class Temp extends Component {
             // 上述代码的第二个参数是一个回调函数，在setState() 的异步操作结束并且组件已经重新渲染的时候执行。
             this.props.form.setFieldsValue( this.state.data) 
         })
+        console.log(this.state)
       }
     //  componentWillUnmounting(){
     //     console.log(11111111111111)
