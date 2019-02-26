@@ -4,8 +4,11 @@ import {Route ,Switch } from 'react-router-dom'
 import Home from './components/Content/Content';
 import Clerk from './components/Content/Person/Clerk/Clerk'
 import Member from './components/Content/Person/Member/Member'
-import List from './components/Content/Food/List/List'
+import FoodList from './components/Content/Food/List/List'
 import Add from './components/Content/Food/Add/Add'
+import OrderList from './components/Content/Order/List/List'
+import OrderHandle from './components/Content/Order/Handle/Handle'
+import OrderCause from './components/Content/Order/Cause/Cause'
 // 路由表
 class App extends Component {
     render() {
@@ -23,19 +26,19 @@ class App extends Component {
                     render={() => { return <Member /> } }/>
                 <Route
                     path="/food/list"
-                    render={() =>  { return <List /> }} />
+                    render={() =>  { return <FoodList /> }} />
                 <Route
                     path="/food/add"
                     render={() =>  { return <Add /> }}/>
                 <Route
                     path="/orders/list"
-                    render={() => <h3>订单列表</h3>} />
+                    render={() =>{ return <OrderList /> }} />
                 <Route
                     path="/orders/handle"
-                    render={() => <h3>订单处理</h3>} />
+                    render={() => {return <OrderHandle/>}} />
                 <Route
                     path="/orders/cause"
-                    render={() => <h3>订单原因设置</h3>} />
+                    render={() => {return <OrderCause/>}} />
                 <Route
                     path="/sale/home"
                     render={() => <h3>首页宣传</h3>} />

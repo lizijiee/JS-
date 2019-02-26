@@ -3,6 +3,7 @@ import "./Step/Add.less";
 import { Steps, Button, message, Form } from 'antd';
 import StepOne from './Step/StepOne';
 import StepTwo from './Step/StepTwo';
+import StepThree from './Step/StepThree';
 
 const Step = Steps.Step;
 const steps = [{
@@ -12,7 +13,7 @@ const steps = [{
     title: '填写菜品促销',
     content: 'Second-content',
 }, {
-    title: 'Finish',
+    title: '填写商品属性',
     content: 'Last-content',
 }];
 
@@ -21,22 +22,37 @@ class Temp extends Component {
         super()
         this.state = {
             current: 0,
-            data: {}
+            data: {comment: "",
+            loading: "",
+            name: "",
+            price: "",
+            promot: "",
+            radioButton: "",
+            select: "",
+            switch1: false,
+            switch2: false,
+            textarea:  "",
+            upload:""
+        }
         };
     }
     next() {
         const current = this.state.current + 1;
-        this.setState({ current });
+        this.setState({ current })
+        setTimeout(() => {
+            // this.props.form.setFieldsValue(this.state.data)
+        }, 2000);
     }
 
     prev() {
         const current = this.state.current - 1;
-        this.setState({current},function(){
+        this.setState({ current }, function () {
             // 上述代码的第二个参数是一个回调函数，在setState() 的异步操作结束并且组件已经重新渲染的时候执行。
-            this.props.form.setFieldsValue( this.state.data) 
+
+
         })
-        console.log(this.state)
-      }
+
+    }
     //  componentWillUnmounting(){
     //     console.log(11111111111111)
     //   // this.props.form.setFieldsValue( this.state.data) 
@@ -47,17 +63,19 @@ class Temp extends Component {
         // e.preventDefault();
         // console.log(this.props.form.getFieldError("name"))
         this.props.form.validateFields((errors, values) => {
+            // console.log(values)
+            //values 参数为当前表单所有Items内数值
             if (!!errors) {
                 message.error('验证失败!')
                 // console.log(this.state)
                 return;
-            }           
-            //   let data = Object.assign({}, this.state.data, this.props.form.getFieldsValue())
-            // this.setState(data)
+            }
+            let data = Object.assign({}, this.state.data, this.props.form.getFieldsValue())
+            console.log(data)
             this.setState({
-                 data:this.props.form.getFieldsValue()
+                data: data
             })
-            console.log(this.state)
+
             this.next()
         });
     };
@@ -67,13 +85,13 @@ class Temp extends Component {
     selest(params) {
         switch (params) {
             case 0:
-                return <StepOne props={this.props} handleSubmit={this.handleSubmit} />;
+                return <StepOne props={this.props} handleSubmit={this.handleSubmit} state={this.state} />;
                 break;
             case 1:
-                return <StepTwo props={this.props}/> ;
+                return <StepTwo props={this.props} state={this.state} />;
                 break;
             case 2:
-                // return <StepThree/> ;
+                return <StepThree props={this.props} state={this.state} />;
                 break;
         }
     }
@@ -103,16 +121,24 @@ class Temp extends Component {
                                 }}
                                 onClick={(e) => {
                                     this.handleSubmit(e)
-                                }}>下一步，填写商品信息</Button>
+                                }}>下一步，{steps[current].title}</Button>
+                            // 下一步，填写商品信息
                         }
                         {
                             current === steps.length - 1
-                            && <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+                            && <Button
+                                style={{ marginLeft: 450 }}
+                                type="primary"
+                                onClick={(e) => {
+                                    message.success('Processing complete!')
+                                    this.handleSubmit(e)
+                                }
+                                }>完成，提交菜品</Button>
                         }
                         {
                             current > 0
                             && (
-                                <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+                                <Button style={{ marginLeft: 8, position: "absolute", bottom: 0, left: 0 }} onClick={() => this.prev()}>
                                     Previous
                                 </Button>
                             )
@@ -121,6 +147,13 @@ class Temp extends Component {
                 </div>
             </main>
         )
+    }
+
+    componentWillUpdate() {
+        console.log(this.state)
+    }
+    componentDidUpdate() {
+        console.log(this.state)
     }
 }
 

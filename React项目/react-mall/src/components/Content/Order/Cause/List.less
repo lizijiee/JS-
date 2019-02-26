@@ -1,0 +1,226 @@
+.va() {
+    vertical-align: middle;
+}
+
+p {
+    margin-bottom: 0px
+}
+
+.p(@p) {
+    padding: @p
+}
+
+@border-color: #ebeef5;
+
+.bd(@color) {
+    border: 1px solid @color;
+}
+
+.lh(@lh) {
+    line-height: @lh
+}
+
+.fr() {
+    float: right;
+}
+
+.order-cause {
+    background: #fff;
+    margin: 20px 0 0 16px;
+    height: 100%;
+    padding: 10px 40px 40px 40px;
+
+    .app-container {
+        .va();
+        padding: 10px 20px 20px 20px;
+
+        .el-serch-wrap {
+            margin-top: 0;
+            .bd(@border-color);
+            background-color: #fff;
+            color: #303133;
+            border-radius: 4px;
+            overflow: hidden;
+
+            .el-title-body {
+                .p(20px);
+                .va();
+
+                .doc-logo {
+                    display: inline-block !important;
+                    .lh(20px);
+                    .va();
+                }
+
+                .add {
+                    // 使用组件此处要删除
+                    .fr();
+                    padding: 9px 15px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                    display: inline-block;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    background: #409eff;
+                    border: 1px solid #dcdfe6;
+                    color: #fff;
+                    text-align: center;
+                    box-sizing: border-box;
+                    outline: 0;
+                    margin: 0;
+                }
+
+                .el-form-item {
+                    margin: 15px 25px 55px 35px;
+                    float: left;
+
+                    span {
+                        font-size: 14px;
+                        line-height: 32px;
+                        color: #606266;
+                        padding-right: 12px;
+                    }
+
+                    input {
+                        height: 32px;
+                        line-height: 32px;
+                        background-color: #fff;
+                        border-radius: 4px;
+                        border: 1px solid #dcdfe6;
+                        box-sizing: border-box; //  color: red;
+                        font-size: 12px;
+                        padding: 0 15px;
+                    }
+
+                    input::-webkit-input-placeholder {
+                        color: rgb(220, 223, 230);
+                        font-size: 12px
+                    }
+                }
+            }
+        }
+
+        .el-title {
+            margin-top: 15px;
+            .bd(@border-color);
+            background-color: #fff;
+            color: #303133;
+            border-radius: 4px;
+
+            .el-title-body {
+                .p(20px);
+                .va();
+
+                .doc-logo {
+                    display: inline-block !important;
+                    .lh(20px);
+                    .va();
+                }
+
+                .add {
+                    // 使用组件此处要删除
+                    .fr();
+                    padding: 7px 15px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                    display: inline-block;
+                    line-height: 1;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    background: #fff;
+                    border: 1px solid #dcdfe6;
+                    color: #606266;
+                    -webkit-appearance: none;
+                    text-align: center;
+                    box-sizing: border-box;
+                    outline: 0;
+                    margin: 0;
+                    transition: .1s;
+                }
+            }
+        }
+
+        // 中间部分
+        .table-container {
+            margin-top: 15px; // .bd(@border-color);
+            // border:3px solid red;
+            border-right: 1px solid @border-color;
+            border-bottom: 1px solid @border-color;
+            width: 100%;
+            text-align: center;
+
+            table {
+                th {
+                    padding: 12px 0;
+                    border-left: 1px solid@border-color;
+                    border-top: 1px solid@border-color;
+                    width: 7%;
+                    color: #909399
+                }
+
+                thead {
+
+                    th:nth-of-type(1),
+                    th:nth-of-type(2){
+                        width: 5%;
+                    }
+                }
+
+                td {
+                    padding: 12px 0;
+                    border-left: 1px solid@border-color;
+                    border-top: 1px solid @border-color;
+                    text-align: center;
+                    font-size: 14px;
+                    color: #303133;
+
+                    img {
+                        width: 100px;
+                        height: 80px;
+                    }
+
+                    p {
+                        margin-bottom: 6px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.ant-switch {
+    // 组件样式修改
+    min-width: 40px;
+    height: 20px;
+
+    &::after {
+        width: 16px;
+        height: 16px;
+    }
+
+}
+
+.ant-select-selection-selected-value {
+    text-indent: 1em !important;
+}
+
+.ant-select-selection__rendered {
+    // color: rgb(220, 223, 230);
+    font-size: 12px;
+    margin: 0 !important;
+}
+
+.ant-select-selection__placeholder {
+    text-indent: 1em
+}
+
+.ant-select-arrow {
+    padding-right: 0 !important;
+}
+
+.ant-select-arrow-icon {
+    svg {
+        height: 0.7em;
+    }
+}
