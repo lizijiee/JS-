@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "./Step/Add.less";
 import { Steps, Button, message, Form } from 'antd';
 import StepOne from './Step/Step';
+import StepTwo from './Step/StepTwo';
 
 const Step = Steps.Step;
 const steps = [{
@@ -20,7 +21,7 @@ class Temp extends Component {
         super()
         this.state = {
             current: 0,
-            data:{}
+            data: {}
         };
     }
     next() {
@@ -30,9 +31,15 @@ class Temp extends Component {
 
     prev() {
         const current = this.state.current - 1;
-        this.setState({ current })
-        // console.log(this.state)
-    }
+        this.setState({current},function(){
+            // 上述代码的第二个参数是一个回调函数，在setState() 的异步操作结束并且组件已经重新渲染的时候执行。
+            this.props.form.setFieldsValue( this.state.data) 
+        })
+      }
+    //  componentWillUnmounting(){
+    //     console.log(11111111111111)
+    //   // this.props.form.setFieldsValue( this.state.data) 
+    //  }
 
     handleSubmit(e) {
         //表单内容提交组件,校验并获取一组输入域的值与 Error	
@@ -41,23 +48,28 @@ class Temp extends Component {
         this.props.form.validateFields((errors, values) => {
             if (!!errors) {
                 message.error('验证失败!')
-                // console.log('Errors in form!!!');
+                // console.log(this.state)
                 return;
-            }
-            this.next()
-          let data = Object.assign({}, this.state.data, this.props.form.getFieldsValue())
+            }           
+            //   let data = Object.assign({}, this.state.data, this.props.form.getFieldsValue())
             // this.setState(data)
-            console.log(this.props.form.getFieldsValue())
+            this.setState({
+                 data:this.props.form.getFieldsValue()
+            })
+            console.log(this.state)
+            this.next()
         });
     };
-
+    // componentWillReceiveProps() {
+    //     console.log(this.props.form.getFieldsValue())
+    // }
     selest(params) {
         switch (params) {
             case 0:
                 return <StepOne props={this.props} handleSubmit={this.handleSubmit} />;
                 break;
             case 1:
-                // return <StepTwo/> ;
+                return <StepTwo props={this.props}/> ;
                 break;
             case 2:
                 // return <StepThree/> ;
@@ -78,13 +90,13 @@ class Temp extends Component {
                         {/* 分步组件 */}
                         {this.selest(current)}
                     </div>
-                    <div className="steps-action" style={{position: "relative"}}>
+                    <div className="steps-action" style={{ position: "relative" }}>
                         {
                             current < steps.length - 1
                             && <Button
                                 type="primary"
                                 style={{
-                                    position:"absolute",
+                                    position: "absolute",
                                     right: -15,
                                     top: -32
                                 }}

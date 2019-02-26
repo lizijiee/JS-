@@ -94,9 +94,14 @@ class StepOne extends Component {
 
 
     const textareaProps = getFieldProps('textarea', {//textarea 为ID
-      rules: [//判断条件
-        {  message: '输入内容不能为空' },
-      ],
+      // rules: [//判断条件
+      //   {  message: '输入内容不能为空' },
+      // ],
+    });
+    const priceProps = getFieldProps('price', {//textarea 为ID
+      // rules: [//判断条件
+      //   {  message: '输入内容不能为空' },
+      // ],
     });
     
    const formItemLayout = {//样式
@@ -138,12 +143,20 @@ class StepOne extends Component {
           {...formItemLayout}
           label="菜品价格："
         >
+         {/*
+          给input设置名字和规则方法    之  其二
+         {getFieldDecorator('note', {
+            rules: [{ required: true, message: 'Please input your note!' }],
+          })(
+            <Input />
+          )} */}
           <InputNumber
             style={{ width: 320 }}
             type="textarea"
             // placeholder="菜品名称"
-            id="textarea"
-            name="textarea"
+            id="price"
+            name="price"
+            {...textareaProps}
           />
         </FormItem>
 
@@ -152,9 +165,13 @@ class StepOne extends Component {
           label="菜品介绍："
           {...formItemLayout}
         >
-            <Input id="control-textarea" style={{
+            <textarea id="control-textarea" style={{
             borderRadius: 6, textAlign: "left", verticalAlign: "top", border: "1px solid #d9d9d9", fontSize: 14, lineHeight: "20px", textIndent: "1em"
-          }} placeholder="Please enter..." cols="45" rows="4"   />
+          }} 
+          {...priceProps}
+          placeholder="Please enter..." 
+          cols="45" 
+          rows="4"/>
          </FormItem>
 
         <ButtonGroup style={{ borderRadius: 15,marginTop: 30}}>
