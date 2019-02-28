@@ -9,6 +9,8 @@ import Add from './components/Content/Food/Add/Add'
 import OrderList from './components/Content/Order/List/List'
 import OrderHandle from './components/Content/Order/Handle/Handle'
 import OrderCause from './components/Content/Order/Cause/Cause'
+import Advertise from './components/Content/Marketing/Advertise/Advertise'
+import Hot from './components/Content/Marketing/Hot/Hot'
 // 路由表
 class App extends Component {
     render() {
@@ -41,10 +43,10 @@ class App extends Component {
                     render={() => {return <OrderCause/>}} />
                 <Route
                     path="/sale/home"
-                    render={() => <h3>首页宣传</h3>} />
+                    render={() =>  <Advertise /> } />
                 <Route
                     path="/sale/new"
-                    render={() => <h3>新品推荐</h3>} />
+                    render={() => <Hot />} />
                 <Route
                     path="/sale/hot"
                     render={() => <h3>热销推荐</h3>} />
