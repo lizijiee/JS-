@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Pagination, Switch, Checkbox, Select } from 'antd';
 import IconFont from '../../../../iconfont/font'
-import './List.less';
+import './Hot.less';
  
 const Option = Select.Option;
 
@@ -71,7 +71,50 @@ export default class Temp extends Component {
                                         <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
                                         <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
                                     </td>
-                                </tr>                     
+                                </tr>
+                                <tr>
+                                    <td>< Checkbox /></td>
+                                    <td>1</td>
+                                     <td>宫保鸡丁</td>
+                                     <td> <Switch size="default" /></td>
+                                    <td>
+                                        推荐中
+                                    </td>
+                                    <td>40</td>
+                                    <td>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
+                                    </td>
+                                </tr>     
+                                <tr>
+                                    <td>< Checkbox /></td>
+                                    <td>1</td>
+                                     <td>宫保鸡丁</td>
+                                     <td> <Switch size="default" /></td>
+                                    <td>
+                                        推荐中
+                                    </td>
+                                    <td>40</td>
+                                    <td>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
+                                    </td>
+                                </tr>     
+                                <tr>
+                                    <td>< Checkbox /></td>
+                                    <td>1</td>
+                                     <td>宫保鸡丁</td>
+                                     <td> <Switch size="default" /></td>
+                                    <td>
+                                        推荐中
+                                    </td>
+                                    <td>40</td>
+                                    <td>
+                                        <Button type="primary" size="small" style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>编辑</Button>
+                                        <Button type="primary" size="small" style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}>删除</Button>
+                                    </td>
+                                </tr>     
+                                                     
                             </tbody>
                         </table>
                     </main>

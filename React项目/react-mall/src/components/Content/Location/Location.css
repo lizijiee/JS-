@@ -1,0 +1,78 @@
+.location {
+  background: #fff;
+  margin: 20px 0 0 16px;
+  height: calc(-70%);
+  padding: 120px 40px 0 40px;
+  -webkit-animation-direction: alternate;
+  /* Safari 和 Chrome */
+}
+.location .wrap {
+  font-size: 13px;
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+}
+.location .wrap span {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.location .wrap span a {
+  text-decoration: none;
+  animation: mymove infinite;
+  animation-duration: 2s;
+}
+@mymove {
+  0% {
+    opacity: 1;
+    color: #f35626;
+  }
+  25% {
+    opacity: 1;
+    color: #feab3a;
+  }
+  50% {
+    opacity: 1;
+    color: red;
+  }
+  75% {
+    opacity: 1;
+    color: #1ac450ed ed;
+  }
+  100% {
+    opacity: 1;
+    color: #f35626;
+  }
+}
+@-webkit-keyframes mymove {
+  /* Safari and Chrome */
+  0% {
+    opacity: 1;
+    color: #f35626;
+  }
+  25% {
+    opacity: 1;
+    color: #feab3a;
+  }
+  50% {
+    opacity: 1;
+    color: red;
+  }
+  75% {
+    opacity: 1;
+    color: #1ac450ed ed;
+  }
+  100% {
+    opacity: 1;
+    color: #f35626;
+  }
+}
+.location .wrap p {
+  margin-top: 4px;
+}
+.location .wrap img {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 100px;
+  width: 100px;
+}

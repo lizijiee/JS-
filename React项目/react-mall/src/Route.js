@@ -10,7 +10,12 @@ import OrderList from './components/Content/Order/List/List'
 import OrderHandle from './components/Content/Order/Handle/Handle'
 import OrderCause from './components/Content/Order/Cause/Cause'
 import Advertise from './components/Content/Marketing/Advertise/Advertise'
+import New from './components/Content/Marketing/New/New'
 import Hot from './components/Content/Marketing/Hot/Hot'
+import Discount from './components/Content/Marketing/Discount/Discount'
+import Combos from './components/Content/Marketing/Combos/Combos'
+import Location from './components/Content/Location/Location'
+
 // 路由表
 class App extends Component {
     render() {
@@ -46,19 +51,19 @@ class App extends Component {
                     render={() =>  <Advertise /> } />
                 <Route
                     path="/sale/new"
-                    render={() => <Hot />} />
+                    render={() => <New />} />
                 <Route
                     path="/sale/hot"
-                    render={() => <h3>热销推荐</h3>} />
+                    render={() => <Hot />} />
                 <Route
                     path="/sale/deals"
-                    render={() => <h3>优惠推荐</h3>} />
+                    render={() => <Discount />} />
                 <Route
                     path="/sale/combo"
-                    render={() => <h3>套餐推荐</h3>} />
+                    render={() => <Combos />} />
                 <Route
                     path="/address"
-                    render={() => <h3>项目地址</h3>} />
+                    render={() => <Location />} />
             </Switch>
         );
     }
