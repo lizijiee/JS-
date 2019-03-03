@@ -1,0 +1,301 @@
+{
+    "ClerkData": [
+              {
+                        "num": 1,
+                        "name": "冯杰",
+                        "sex": "男",
+                        "cardNum": "52000019770924228X",
+                        "birthday": "1992-02-10",
+                        "age": 30,
+                        "hiredate": "1997-04-17",
+                        "jobTitle": "餐饮部主管",
+                        "state": "在职"
+              },
+              {
+                        "num": 2,
+                        "name": "郑秀兰",
+                        "sex": "男",
+                        "cardNum": "140000201602124345",
+                        "birthday": "2017-08-17",
+                        "age": 27,
+                        "hiredate": "1982-07-24",
+                        "jobTitle": "厨师长",
+                        "state": "离职"
+              },
+              {
+                        "num": 3,
+                        "name": "许伟",
+                        "sex": "女",
+                        "cardNum": "430000200708212276",
+                        "birthday": "2016-12-29",
+                        "age": 25,
+                        "hiredate": "2000-08-06",
+                        "jobTitle": "餐饮部主管",
+                        "state": "在职"
+              },
+              {
+                        "num": 4,
+                        "name": "陆静",
+                        "sex": "女",
+                        "cardNum": "140000201202208013",
+                        "birthday": "2005-07-31",
+                        "age": 32,
+                        "hiredate": "2016-04-09",
+                        "jobTitle": "厨师长",
+                        "state": "离职"
+              },
+              {
+                        "num": 5,
+                        "name": "唐军",
+                        "sex": "男",
+                        "cardNum": "640000200302233471",
+                        "birthday": "2015-09-29",
+                        "age": 27,
+                        "hiredate": "2011-03-27",
+                        "jobTitle": "迎宾员",
+                        "state": "离职"
+              },
+              {
+                        "num": 6,
+                        "name": "孙超",
+                        "sex": "女",
+                        "cardNum": "360000199506294724",
+                        "birthday": "2017-02-14",
+                        "age": 30,
+                        "hiredate": "1987-06-15",
+                        "jobTitle": "服务员",
+                        "state": "离职"
+              },
+              {
+                        "num": 7,
+                        "name": "薛静",
+                        "sex": "男",
+                        "cardNum": "210000201512024728",
+                        "birthday": "2011-11-06",
+                        "age": 35,
+                        "hiredate": "1979-02-17",
+                        "jobTitle": "厨师",
+                        "state": "离职"
+              },
+              {
+                        "num": 8,
+                        "name": "史超",
+                        "sex": "男",
+                        "cardNum": "630000199102210323",
+                        "birthday": "1991-03-07",
+                        "age": 24,
+                        "hiredate": "1974-04-24",
+                        "jobTitle": "传菜员领班",
+                        "state": "在职"
+              },
+              {
+                        "num": 9,
+                        "name": "曹涛",
+                        "sex": "男",
+                        "cardNum": "330000199207041529",
+                        "birthday": "2016-12-02",
+                        "age": 23,
+                        "hiredate": "1986-09-04",
+                        "jobTitle": "迎宾员",
+                        "state": "在职"
+              },
+              {
+                        "num": 10,
+                        "name": "黄强",
+                        "sex": "女",
+                        "cardNum": "340000199003307788",
+                        "birthday": "1988-06-07",
+                        "age": 33,
+                        "hiredate": "1974-03-29",
+                        "jobTitle": "餐饮部领班",
+                        "state": "离职"
+              },
+              {
+                        "num": 11,
+                        "name": "夏明",
+                        "sex": "男",
+                        "cardNum": "230000197301120220",
+                        "birthday": "1970-06-05",
+                        "age": 29,
+                        "hiredate": "1971-12-29",
+                        "jobTitle": "迎宾员领班",
+                        "state": "在职"
+              },
+              {
+                        "num": 12,
+                        "name": "阎明",
+                        "sex": "女",
+                        "cardNum": "530000201809258992",
+                        "birthday": "1994-03-23",
+                        "age": 27,
+                        "hiredate": "1976-06-21",
+                        "jobTitle": "迎宾员领班",
+                        "state": "在职"
+              },
+              {
+                        "num": 13,
+                        "name": "孔勇",
+                        "sex": "女",
+                        "cardNum": "810000197108265282",
+                        "birthday": "1988-01-20",
+                        "age": 24,
+                        "hiredate": "1982-04-13",
+                        "jobTitle": "迎宾员领班",
+                        "state": "在职"
+              },
+              {
+                        "num": 14,
+                        "name": "姜桂英",
+                        "sex": "男",
+                        "cardNum": "340000199404116819",
+                        "birthday": "1980-07-22",
+                        "age": 25,
+                        "hiredate": "1993-08-09",
+                        "jobTitle": "餐饮部领班",
+                        "state": "在职"
+              },
+              {
+                        "num": 15,
+                        "name": "秦杰",
+                        "sex": "女",
+                        "cardNum": "360000199411196929",
+                        "birthday": "1989-12-14",
+                        "age": 27,
+                        "hiredate": "1979-08-31",
+                        "jobTitle": "餐饮部领班",
+                        "state": "离职"
+              },
+              {
+                        "num": 16,
+                        "name": "阎勇",
+                        "sex": "男",
+                        "cardNum": "460000201201253650",
+                        "birthday": "2010-11-07",
+                        "age": 29,
+                        "hiredate": "2001-11-16",
+                        "jobTitle": "传菜员领班",
+                        "state": "离职"
+              },
+              {
+                        "num": 17,
+                        "name": "范平",
+                        "sex": "女",
+                        "cardNum": "620000197603076643",
+                        "birthday": "1976-04-17",
+                        "age": 29,
+                        "hiredate": "1987-04-23",
+                        "jobTitle": "餐饮部主管",
+                        "state": "离职"
+              },
+              {
+                        "num": 18,
+                        "name": "熊敏",
+                        "sex": "女",
+                        "cardNum": "320000201804135855",
+                        "birthday": "2003-06-27",
+                        "age": 31,
+                        "hiredate": "2011-06-11",
+                        "jobTitle": "传菜员",
+                        "state": "离职"
+              },
+              {
+                        "num": 19,
+                        "name": "范涛",
+                        "sex": "女",
+                        "cardNum": "140000201301133993",
+                        "birthday": "1970-07-30",
+                        "age": 28,
+                        "hiredate": "1984-12-18",
+                        "jobTitle": "餐饮部领班",
+                        "state": "离职"
+              },
+              {
+                        "num": 20,
+                        "name": "唐涛",
+                        "sex": "男",
+                        "cardNum": "630000200311223361",
+                        "birthday": "1995-05-24",
+                        "age": 32,
+                        "hiredate": "2000-07-12",
+                        "jobTitle": "厨师",
+                        "state": "离职"
+              },
+              {
+                        "num": 21,
+                        "name": "金强",
+                        "sex": "男",
+                        "cardNum": "81000019921019183X",
+                        "birthday": "2017-07-15",
+                        "age": 23,
+                        "hiredate": "2003-01-14",
+                        "jobTitle": "餐饮部副经理",
+                        "state": "在职"
+              },
+              {
+                        "num": 22,
+                        "name": "汪强",
+                        "sex": "男",
+                        "cardNum": "150000198305206173",
+                        "birthday": "1976-10-04",
+                        "age": 21,
+                        "hiredate": "1991-06-02",
+                        "jobTitle": "厨师",
+                        "state": "在职"
+              },
+              {
+                        "num": 23,
+                        "name": "廖艳",
+                        "sex": "女",
+                        "cardNum": "990000198206182328",
+                        "birthday": "2006-03-22",
+                        "age": 31,
+                        "hiredate": "1973-04-20",
+                        "jobTitle": "传菜员领班",
+                        "state": "离职"
+              },
+              {
+                        "num": 24,
+                        "name": "范敏",
+                        "sex": "男",
+                        "cardNum": "330000197411154628",
+                        "birthday": "2018-01-08",
+                        "age": 19,
+                        "hiredate": "1992-11-09",
+                        "jobTitle": "餐饮部经理",
+                        "state": "在职"
+              },
+              {
+                        "num": 25,
+                        "name": "程芳",
+                        "sex": "男",
+                        "cardNum": "630000201806141231",
+                        "birthday": "1994-06-07",
+                        "age": 25,
+                        "hiredate": "2012-07-29",
+                        "jobTitle": "餐饮部副经理",
+                        "state": "离职"
+              },
+              {
+                        "num": 26,
+                        "name": "杜军",
+                        "sex": "男",
+                        "cardNum": "640000199805068169",
+                        "birthday": "2002-04-07",
+                        "age": 34,
+                        "hiredate": "2004-11-16",
+                        "jobTitle": "餐饮部领班",
+                        "state": "离职"
+              },
+              {
+                        "num": 27,
+                        "name": "谭艳",
+                        "sex": "男",
+                        "cardNum": "150000201502257775",
+                        "birthday": "1975-11-16",
+                        "age": 33,
+                        "hiredate": "1992-06-30",
+                        "jobTitle": "传菜员",
+                        "state": "在职"
+              }
+    ]
+}
