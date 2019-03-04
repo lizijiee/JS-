@@ -3,11 +3,22 @@ import { Layout, Menu, Icon} from 'antd';
 import IconFont from '../../iconfont/font';
 import '../../index.css';
 import { Link } from 'react-router-dom'
+import createBrowserHistory from 'history/createBrowserHistory'
+
+// import { url } from 'inspector';
 
 let { Sider} = Layout;
 const SubMenu = Menu.SubMenu;
+// const history = createBrowserHistory()
 
 export default class SiderBar extends Component {
+      //  constructor(props, context) {
+      //       super(props, context);
+      // };
+      // shouldComponentUpdate( ){
+      //       // console.log(history)
+      //       return true
+      // }
    render() {
     return (
     <Sider 

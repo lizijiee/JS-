@@ -26,17 +26,29 @@ class App extends Component {
                     exact
                     component={Home} />
                 <Route
+                    path="/pers"
+                    exact
+                    render={(props) => { return <Clerk /> }} />
+                <Route
                     path="/pers/clerks"
                     render={(props) => { return <Clerk /> }} />
                 <Route
                     path="/pers/member"
                     render={() => { return <Member /> } }/>
                 <Route
+                    path="/food"
+                    exact
+                    render={() =>  { return <FoodList /> }} />
+                <Route
                     path="/food/list"
                     render={() =>  { return <FoodList /> }} />
                 <Route
                     path="/food/add"
                     render={() =>  { return <Add /> }}/>
+                <Route
+                    path="/orders"
+                    exact
+                    render={() =>{ return <OrderList /> }} />
                 <Route
                     path="/orders/list"
                     render={() =>{ return <OrderList /> }} />
@@ -46,6 +58,10 @@ class App extends Component {
                 <Route
                     path="/orders/cause"
                     render={() => {return <OrderCause/>}} />
+                <Route
+                    path="/sale"
+                    exact
+                    render={() =>  <Advertise /> } />
                 <Route
                     path="/sale/home"
                     render={() =>  <Advertise /> } />
