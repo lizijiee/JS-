@@ -43,8 +43,19 @@ class App extends Component {
                     path="/pers/clerks"
                     render={(props) => { return <Clerk /> }} />
                 <Route
-                    path="/pers/clerks?num=:id"
-                    render={(props) => { return <Clerk /> }} />
+                    path="/pers/clerksDetails"
+                    render={({location:{search}}) => {
+                        //'?num=1'  -> let [,data]['','num=1']
+                        // console.log(11111111111111)
+
+                        // let [,data] = search.split('?');
+                        return <div>21312321</div>
+                        // if(data.split('=').length === 2){
+                        //     return <div>21312321</div>
+                        // }
+                        // console.log(data.split('='))
+                        
+                    }} />
                     {/*  href={`/orders/clerks?num=${ele.num}`} */}
                 <Route
                     path="/pers/member"

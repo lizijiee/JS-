@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Button, Pagination } from 'antd';
 import IconFont from '../../../../iconfont/font';
 import { Link} from 'react-router-dom';
+import createHistory from "history/createBrowserHistory"
 import './Clerk.less';
+const history = createHistory()
 
 export default class Temp extends Component {
   constructor() { //构造函数
@@ -23,8 +25,9 @@ export default class Temp extends Component {
         })
   }
   EditClick(e,link){
-    // e.preventDefault();
-      console.log(e,link)
+      // e.preventDefault();
+      console.log(this.props,e);
+      history.push('/pers/clerksDetails?num='+e);
   }
   ClerksInfo() {
     if (this.state.data) {
@@ -54,9 +57,11 @@ export default class Temp extends Component {
             <Button 
             type="primary" 
             size="small" 
-            // href={`/orders/clerks?num=${ele.num}`}
+
+            // href={`/pers/clerksDetails?num=${ele.num}`}
+
             ghost="true"
-            onClick={this.EditClick}
+            onClick={this.EditClick.bind(this,ele.num)}
             style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
             >
                  <span>编辑</span>

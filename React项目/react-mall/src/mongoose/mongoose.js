@@ -5332,14 +5332,12 @@ app.use(static(
 app.use(bodyParser()); //POST传送过来数据格式转换,再router.get之前
  */
 router.get('/pers/clerks', async (ctx) => {
-    let arr = await Shop.find({: 1})
+    let arr = await Shop.find({id: 1})
     ctx.body = {
         code: 0,
         data: arr,
         msg: "成功"
 }
-
-
    /*  
    switch (params.act) {
         case "clerks":
