@@ -54,7 +54,6 @@ export default class D extends Component {
         if(this.state.pathSnippets.length!=(index+1)){
           return (
             <Breadcrumb.Item key={url}>
-          
               <Link to={url}   style={{color:"black",fontWeight:600}}>
                {breadcrumbNameMap[url]}
               </Link>

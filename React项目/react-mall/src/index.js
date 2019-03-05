@@ -18,20 +18,20 @@ if (module.hot) {
 }
 
 class MallProject extends React.Component {
-  state = {
-    collapsed: false,
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      collapsed: false,
+    };
+  }
+  
   toggle = () => {
     this.setState({
       collapsed: !this.state.collapsed,
     });
   }
-  componentWillMount() {
-    console.log(history)
-  }
-
   render() {
-    return (
+       return (
       <Router>
         <Fragment >
           <Layout style={{ height: "100%" }}>
@@ -40,6 +40,7 @@ class MallProject extends React.Component {
               collapsible
               collapsed={this.state.collapsed}
               onCollapse={this.onCollapse}
+              props
             />
             <Layout
               style={{ background: 'rgb(240, 242, 245)', position: 'relative' }}>
@@ -48,7 +49,7 @@ class MallProject extends React.Component {
                 collapsed={this.state.collapsed}
               >
               </Header>
-                <Route />
+                <Route/>
             </Layout>
           </Layout>
         </Fragment >

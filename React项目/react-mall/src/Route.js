@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Route ,Switch } from 'react-router-dom'
+import { Route, Switch, Redirect, IndexRedirect } from 'react-router-dom'
 import Home from './components/Content/Content';
 import Clerk from './components/Content/Person/Clerk/Clerk'
 import Member from './components/Content/Person/Member/Member'
@@ -18,6 +18,9 @@ import Location from './components/Content/Location/Location'
 
 // 路由表
 class App extends Component {
+    componentDidMount() {
+        // console.log(this.props)
+    }
     render() {
         return (
             <Switch>
@@ -25,46 +28,57 @@ class App extends Component {
                     path="/"
                     exact
                     component={Home} />
-                <Route
-                    path="/pers"
-                    exact
-                    render={(props) => { return <Clerk /> }} />
+
+                <Redirect exact 
+                from="/pers" 
+                to= {
+                    {
+                        pathname:"/pers/clerks",  
+                        // search:"p1=1&p2=2",  
+                        // state:{"name":"kiramario","age":26} 
+                    }
+                }  />
+
                 <Route
                     path="/pers/clerks"
                     render={(props) => { return <Clerk /> }} />
                 <Route
+                    path="/pers/clerks?num=:id"
+                    render={(props) => { return <Clerk /> }} />
+                    {/*  href={`/orders/clerks?num=${ele.num}`} */}
+                <Route
                     path="/pers/member"
-                    render={() => { return <Member /> } }/>
+                    render={() => { return <Member /> }} />
                 <Route
                     path="/food"
                     exact
-                    render={() =>  { return <FoodList /> }} />
+                    render={() => { return <FoodList /> }} />
                 <Route
                     path="/food/list"
-                    render={() =>  { return <FoodList /> }} />
+                    render={() => { return <FoodList /> }} />
                 <Route
                     path="/food/add"
-                    render={() =>  { return <Add /> }}/>
+                    render={() => { return <Add /> }} />
                 <Route
                     path="/orders"
                     exact
-                    render={() =>{ return <OrderList /> }} />
+                    render={() => { return <OrderList /> }} />
                 <Route
                     path="/orders/list"
-                    render={() =>{ return <OrderList /> }} />
+                    render={() => { return <OrderList /> }} />
                 <Route
                     path="/orders/handle"
-                    render={() => {return <OrderHandle/>}} />
+                    render={() => { return <OrderHandle /> }} />
                 <Route
                     path="/orders/cause"
-                    render={() => {return <OrderCause/>}} />
+                    render={() => { return <OrderCause /> }} />
                 <Route
                     path="/sale"
                     exact
-                    render={() =>  <Advertise /> } />
+                    render={() => <Advertise />} />
                 <Route
                     path="/sale/home"
-                    render={() =>  <Advertise /> } />
+                    render={() => <Advertise />} />
                 <Route
                     path="/sale/new"
                     render={() => <New />} />
