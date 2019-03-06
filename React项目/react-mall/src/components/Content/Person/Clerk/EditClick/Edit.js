@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {
-  Form, Select, InputNumber, Button, Input
+  Form, Select, Modal, Button, Input
 } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import './Edit.less';
 
 const { Option } = Select;
+const confirm = Modal.confirm;
 const FormItem = Form.Item;
 const ButtonGroup = Button.Group;
 const title = ["姓名", "身份证号", "出生年月", "年龄", "入职时间", "职位"];
@@ -25,18 +26,33 @@ class Temp extends Component {
   //     }, 800);
   //   }
   // };
+  /* 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+      console.log(err, values)
+      // if (!err) {
+      //   console.log('Received values of form: ', values);
+      // }
     });
   }
-  handlePageClick(){
+   */
+  handlePageClick() {
     console.log(this.props.history.go(-1))
   }
 
+  showConfirm() {
+    confirm({
+      title: 'Do you Want to delete these items?',
+      content: 'Some descriptions',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  }
 
   render() {
     //路由携带过来的数据
@@ -101,10 +117,13 @@ class Temp extends Component {
                 {getFieldDecorator(TempArr[index],
                   {
                     initialValue: this.props.location.state[0][TempArr[index]],
-                    rules: [
-                      { required: true, min: 1, message: '输入内容至少为 1 个字符' },
-                      { validator: this.userExists }
-                    ]
+                    rules: [{
+                      required: true,
+                      min: 1,
+                      message: '输入内容至少为 1 个字符',
+                      pattern: new RegExp(/.+/g),
+                      // { validator: this.userExists }
+                    }]
                   })(
                     <Input />
                   )}
@@ -112,22 +131,26 @@ class Temp extends Component {
             )}
             <FormItem
               style={{
-                display: "inline-block", marginRight: 10, marginTop: 10,marginLeft: 160
-                , fontSize: 13, borderRadius: 5,textIndent:"100px"
+                display: "inline-block", marginRight: 10, marginTop: 10, marginLeft: 160
+                , fontSize: 13, borderRadius: 5, textIndent: "100px"
               }}>
               <Button
                 ghost="true"
                 type="primary"
-                onClick={this.handlePageClick.bind(this)}	
-                >
+                onClick={this.handlePageClick.bind(this)}
+              >
                 返回</Button>
             </FormItem>
             <FormItem
               style={{ display: "inline-block", marginTop: 10 }}
             >
               <Button
+                type="primary"
+                htmlType="submit"
                 style={{ display: "inline-block" }}
-                type="primary">提交</Button>
+                onClick={this.showConfirm.bind(this)}
+              >
+                提交</Button>
             </FormItem>
           </Form >
         </div>
