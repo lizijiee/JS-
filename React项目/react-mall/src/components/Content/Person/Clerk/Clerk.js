@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import { Button, Pagination } from 'antd';
 import IconFont from '../../../../iconfont/font';
-import { Link} from 'react-router-dom';
-import createHistory from "history/createBrowserHistory"
+import { Link,withRouter} from 'react-router-dom';
 import './Clerk.less';
+import createHistory from "history/createBrowserHistory"
 const history = createHistory()
 
-export default class Temp extends Component {
+ class Temp extends Component {
   constructor() { //构造函数
     super();
     this.state = {
       data: '',
       listItems: '',
-      current: 1
+      current: 1,
+      // date:""
     }
   }
   getData() { //请求数据函数
@@ -24,10 +25,21 @@ export default class Temp extends Component {
           this.setState({ ...data })
         })
   }
-  EditClick(e,link){
+async EditClick(index,link){
       // e.preventDefault();
-      console.log(this.props,e);
-      history.push('/pers/clerksDetails?num='+e);
+      console.log(index);
+         // pathname:'/pers/clerksDetails?num='+index,
+        // state:this.state.data[0].result[0].ClerkData.filter(e=>e.num==index)
+        // let vcode =[{aa:1}]
+     await this.props.history.push({ 
+          pathname: "/pers/clerksDetails", 
+          state: this.state.data[0].result[0].ClerkData.filter(e=>e.num==index),
+          search:'?num='+index
+         });
+      // this.props.history.push('/pers/clerksDetails?num='+index);
+      // this.props.history.push('/pers/clerksDetails?num='+index);
+      // this.props.location.state=1111
+      // console.log(this.props)
   }
   ClerksInfo() {
     if (this.state.data) {
@@ -57,9 +69,7 @@ export default class Temp extends Component {
             <Button 
             type="primary" 
             size="small" 
-
             // href={`/pers/clerksDetails?num=${ele.num}`}
-
             ghost="true"
             onClick={this.EditClick.bind(this,ele.num)}
             style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
@@ -98,7 +108,7 @@ export default class Temp extends Component {
   } 
   */
   render() {
-    //分页组件提取出来，先进行一步数据是否获得到的判断，因为render渲染多次，前几次没有数据
+     //分页组件提取出来，先进行一步数据是否获得到的判断，因为render渲染多次，前几次没有数据
     let Page = null;
     let { data } = this.state;
     if (data) {
@@ -161,3 +171,5 @@ export default class Temp extends Component {
     )
   }
 }
+export default withRouter(Temp)
+// export default Temp

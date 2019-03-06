@@ -9,6 +9,7 @@ const breadcrumbNameMap = {
   "/": "首页",
   '/pers': '人员',
   "/pers/clerks": "店员列表",
+  "/pers/clerksDetails":"店员列表",
   "/pers/member": "会员列表",
   "/food": "菜品",
   "/food/list": "菜品列表",

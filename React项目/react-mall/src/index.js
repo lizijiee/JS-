@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 // import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router,withRouter} from 'react-router-dom'
 import createBrowserHistory from 'history/createBrowserHistory'
 
 import Route from './Route';
@@ -11,13 +11,12 @@ import Header from './components/Header/Header';
 // import Home from './components/Content/Content';
 import './index.css';
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
  
 if (module.hot) {
   module.hot.accept();
-}
-
-class MallProject extends React.Component {
+};
+ class MallProject extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -32,7 +31,7 @@ class MallProject extends React.Component {
   }
   render() {
        return (
-      <Router>
+      <Router >
         <Fragment >
           <Layout style={{ height: "100%" }}>
             <Sidebar
@@ -49,18 +48,16 @@ class MallProject extends React.Component {
                 collapsed={this.state.collapsed}
               >
               </Header>
-                <Route/>
+                <Route history/>
             </Layout>
           </Layout>
         </Fragment >
       </Router>
-
-
     );
   }
 }
 
-ReactDOM.render(<MallProject />, document.getElementById('container'));
+ReactDOM.render(<MallProject/> , document.getElementById('container'));
 
 
 

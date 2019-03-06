@@ -7,7 +7,6 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const ButtonGroup = Button.Group;
 
-
 /* 
     antd 表单使用
     resetFields() 重置表单内数据
@@ -25,9 +24,9 @@ const ButtonGroup = Button.Group;
      
 */
 class StepOne extends Component {
-  constructor() {//传入的props需要在constructor接收一下
-    super()
-  }
+  // constructor() {//传入的props需要在constructor接收一下
+  //   super()
+  // }
   handleReset(e) {
     //resetFields重置表单内容
     e.preventDefault();
@@ -145,7 +144,7 @@ class StepOne extends Component {
           label="菜品价格："
         >
           {/*
-          给input设置名字和规则方法    之  其二
+          给input设置名字和规则方法  之 其二
          {getFieldDecorator('note', {
             rules: [{ required: true, message: 'Please input your note!' }],
           })(

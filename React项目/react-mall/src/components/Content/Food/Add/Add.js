@@ -46,11 +46,11 @@ class Temp extends Component {
 
     prev() {
         const current = this.state.current - 1;
-        this.setState({ current }, function () {
+        this.setState({ current }, 
+            // function () {
             // 上述代码的第二个参数是一个回调函数，在setState() 的异步操作结束并且组件已经重新渲染的时候执行。
-
-
-        })
+        // }
+        )
 
     }
     //  componentWillUnmounting(){

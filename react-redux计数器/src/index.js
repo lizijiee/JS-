@@ -46,7 +46,6 @@ const render=()=> ReactDOM.render(
         <Route 
             path="/About" 
             component={About} /> 
-         
       </div>         
     </Router>
 </Provider> 

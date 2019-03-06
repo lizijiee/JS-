@@ -1,0 +1,11 @@
+.clerk-info {
+  background: #fff;
+  height: 100%;
+  padding: 10px 40px 0 40px;
+}
+.clerk-info .wrap {
+  margin: 30px 15%;
+  padding: 40px 80px 50px;
+  width: 800px;
+  border: 1px solid #ebeef5;
+}
