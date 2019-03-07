@@ -5150,6 +5150,7 @@ router.post('/pers', async (ctx) => {
                 }, {
                     $pull: {
                         ClerkData: {
+                            // 删除时候需要对num类型进行判断
                             num: parseInt(req.num)
                         }
                     }

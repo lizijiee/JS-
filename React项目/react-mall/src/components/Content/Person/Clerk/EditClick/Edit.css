@@ -27,3 +27,6 @@
 .ant-modal-confirm-body > .anticon {
   font-size: 60px;
 }
+.ant-modal-content .ant-form-item {
+  margin-bottom: 0;
+}
