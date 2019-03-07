@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Form, Select, Modal, Button, Input
+  Form, Select, Modal, Button, Input, message
 } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import './Edit.less';
@@ -10,6 +10,13 @@ const confirm = Modal.confirm;
 const FormItem = Form.Item;
 const ButtonGroup = Button.Group;
 const title = ["姓名", "身份证号", "出生年月", "年龄", "入职时间", "职位"];
+const success = () => {
+  message.success('The information is changed');
+};
+
+const error = () => {
+  message.error('Operation fails');
+};
 
 class Temp extends Component {
   // userExists(rule, value, callback) {
@@ -40,18 +47,63 @@ class Temp extends Component {
   handlePageClick() {
     console.log(this.props.history.go(-1))
   }
+  isObjectValueEqual(a, b) {
+    //1.判断数据提交前后两对象value数值是否相等,
+    //2.相等的话返回true,进行数据请求,不想等的话返回不相等的key和value新对象
+    //3.取对象a和b的属性名
+    let aProps = Object.keys(a);
+    // let bProps = Object.keys(b);  a、b的key值相同
+    //判断属性名的length是否一致
+    //表单两次提交内容对比不需要对length进行判断
+
+    //循环取出属性名，再判断属性值是否一致
+    for (var i = 0; i < aProps.length; i++) {
+      var propName = aProps[i];
+      if (a[propName] + "" !== b[propName] + "") {
+        //因为数据类型不一致所以转一下，不对数据类型进行判断
+        return false;//如果进入这里下面return不会执行
+      }
+    }
+    return true;
+  }
 
   showConfirm() {
+    console.log(this.isObjectValueEqual)
+    confirm.bind(this)
     confirm({
-      title: 'Do you Want to delete these items?',
-      content: 'Some descriptions',
-      onOk() {
-        console.log('OK');
+      wrapClassName: '提示',
+      title: '提示:',
+      content: '是否提交数据',
+      okText: '确认',
+      cancelText: '取消',
+      icon: "info-circle",
+      bodyStyle: {
+        ".ant-modal-confirm-btns": { marginTop: 0 }
       },
-      onCancel() {
+      onOk: async () => { // 箭头函数解决this
+        if (!this.isObjectValueEqual(this.props.form.getFieldsValue(), this.props.location.state[0])) {//表单内容修改后,进入判断。 
+          //思路：把num=？ 传入后台在后台进行查找相应的内容         
+          await fetch(`http://localhost:2000/pers/clerks`, {
+            method: 'POST'
+          })
+            .then(res => res.json()).then(
+              data => {
+                // this.setState({ ...data })
+                console.log(data)
+              })
+        } else { //进行修改直接跳转到列表页
+          success();
+          this.props.history.push({  //退回到列表页
+            pathname: "/pers/clerks",
+          });
+        }
+      },
+      /* 
+      onCancel() {  //取消回调函数
         console.log('Cancel');
-      },
-    });
+      }, 
+      */
+    })
   }
 
   render() {

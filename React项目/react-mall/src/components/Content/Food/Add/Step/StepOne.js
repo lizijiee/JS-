@@ -21,7 +21,6 @@ const ButtonGroup = Button.Group;
      isFieldValidating	判断一个输入控件是否在校验状态（可以扔到help里面）
      两种报错方法 validateFields和rule中的min判断条件
      min默认为 name is require 使用message进行修改
-     
 */
 class StepOne extends Component {
   // constructor() {//传入的props需要在constructor接收一下
@@ -56,9 +55,9 @@ class StepOne extends Component {
   //          ["菜品名至少为 1个字符"]  message 
   // };
   render() {
-    
-    // 子组件不能修改，但是还需要数值改变！！！！怎样处理，直接在对象里面搞个数值太low了
 
+    // 子组件不能修改，但是还需要数值改变！！！！怎样处理，直接在对象里面搞个数值太low了
+    
     const data = this.props.state.data;
     console.log(data)
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.props.form;

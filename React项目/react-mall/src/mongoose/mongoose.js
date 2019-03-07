@@ -28,24 +28,24 @@ const Shop = require("./Shop"); //导入Person类,new 一下  save一下搞定
 mongoose.connect("mongodb://localhost:27017")
 
 //解决跨域问题；
-app.use(async(ctx, next) => {
-        
+app.use(async (ctx, next) => {
+
     //指定服务器端允许进行跨域资源访问的来源域。可以用通配符*表示允许任何域的JavaScript访问资源，但是在响应一个携带身份信息(Credential)的HTTP请求时，必需指定具体的域，不能用通配符
     ctx.set("Access-Control-Allow-Origin", "*");
 
     //可选。它的值是一个布尔值，表示是否允许客户端跨域请求时携带身份信息(Cookie或者HTTP认证信息)。默认情况下，Cookie不包括在CORS请求之中。当设置成允许请求携带cookie时，需要保证"Access-Control-Allow-Origin"是服务器有的域名，而不能是"*";如果没有设置这个值，浏览器会忽略此次响应。
     ctx.set("Access-Control-Allow-Credentials", true);
-    
+
     //指定服务器允许进行跨域资源访问的请求方法列表，一般用在响应预检请求上
     ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
-    
+
     //必需。指定服务器允许进行跨域资源访问的请求头列表，一般用在响应预检请求上
     ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
     // ctx.set("X-Powered-By", ' 3.2.1');
-    
+
     //告诉客户端返回数据的MIME的类型，这只是一个标识信息,并不是真正的数据文件的一部分
     ctx.set("Content-Type", "application/json;charset=utf-8");
-    
+
     //如果不设置mode，直接设置content-type为application/json，则fetch会默认这是跨域模式（mode:'cors'），在跨域POST之前，客户端会先发一条OPTIONS请求来”探探路”，如果服务器允许，再继续POST数据。对于这种OPTIONS请求，需要在服务器配置允许接受OPTIONS请求，这样写就是直接允许了所有的OPTIONS请求，也可以按照需求来判断OPTIONS请求中更详细的信息
     if (ctx.request.method == "OPTIONS") {
         ctx.response.status = 200
@@ -67,30 +67,29 @@ db.on('connected', function (err) {
     } else {
         console.log('连接数据库成功！');
         const ShopData = new Shop( //new 一下导入的Shop类
-            {   
-                "id":2,
+            {
+                "id": 2,
                 "resultcode": "200", //返回码
                 "reason": "查询成功", //返回说明
-                "result":[
-                    {
-                    "name":"无忧小馆",//店名
-                    "city":"北京",
-                    "area":"市中心",
-                    "address":"东城区景山前街4号故宫博物馆",
-                    "phone":"010-56294969",
-                    "photos":"http://i3.s2.dpfile.com/2010-12-20/6201691_b.jpg(249x249)/thumb.jpg",//图片URL
-                    "tags":"农家乐,北京",
-                    "all_remarks":"4",//总点评数,
-                    "very_good_remarks":"3",//非常好
-                    "good_remarks":"1",//好评
-                    "common_remarks":"1",//普通
-                    "bad_remarks":"0",//差
-                    "very_bad_remarks":"0",//非常差
-                    "product_rating":"",//产品评分
-                    "environment_rating":"",//环境评分
-                    "service_rating":"",//	服务评分
-                    "recommended_products":"",//推荐产品
-                    "recommended_dishes":"",//推荐菜色
+                "result": [{
+                    "name": "无忧小馆", //店名
+                    "city": "北京",
+                    "area": "市中心",
+                    "address": "东城区景山前街4号故宫博物馆",
+                    "phone": "010-56294969",
+                    "photos": "http://i3.s2.dpfile.com/2010-12-20/6201691_b.jpg(249x249)/thumb.jpg", //图片URL
+                    "tags": "农家乐,北京",
+                    "all_remarks": "4", //总点评数,
+                    "very_good_remarks": "3", //非常好
+                    "good_remarks": "1", //好评
+                    "common_remarks": "1", //普通
+                    "bad_remarks": "0", //差
+                    "very_bad_remarks": "0", //非常差
+                    "product_rating": "", //产品评分
+                    "environment_rating": "", //环境评分
+                    "service_rating": "", //	服务评分
+                    "recommended_products": "", //推荐产品
+                    "recommended_dishes": "", //推荐菜色
                     "data": {
                         "outOfRange": 0,
                         "mtWmPoiId": "1004349214165273",
@@ -105,8 +104,7 @@ db.on('connected', function (err) {
                             "deliveryTime": 37,
                             "deliveryMsg": "由美团快送提供配送服务",
                             "minFee": 20,
-                            "activityList": [
-                                {
+                            "activityList": [{
                                     "actDesc": "满30减10;满58减15;满88减18",
                                     "actType": 0,
                                     "iconUrl": "http://p0.meituan.net/xianfu/f8bc8dffdbc805878aa3801a33f563cd1001.png"
@@ -125,15 +123,13 @@ db.on('connected', function (err) {
                             "shipping_time": "09:56-21:50"
                         },
                         "pageCategoryList": [],
-                        "categoryList": [
-                            {
+                        "categoryList": [{
                                 "tag": "100",
                                 "activityTag": "",
                                 "iconUrl": "http://p1.meituan.net/aichequan/87f966955f693102d67daf2ec44b58411361.png",
                                 "categoryName": "热销",
                                 "categoryType": 1,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "压锅大丰收",
                                         "unit": "",
                                         "spuId": 1201373859,
@@ -148,22 +144,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336012483,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,//畅销商品
-                                                "minPurchaseNum": -1,//最小购买数量
-                                                "restrict": -1,
-                                                "originPrice": 39.99,
-                                                "currentPrice": 39.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336012483,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0, //畅销商品
+                                            "minPurchaseNum": -1, //最小购买数量
+                                            "restrict": -1,
+                                            "originPrice": 39.99,
+                                            "currentPrice": 39.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -189,22 +183,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336096497,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 19.9,
-                                                "currentPrice": 19.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336096497,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 19.9,
+                                            "currentPrice": 19.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -230,22 +222,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 2,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336023148,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 12.9,
-                                                "currentPrice": 12.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336023148,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 12.9,
+                                            "currentPrice": 12.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -271,22 +261,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 1,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335848750,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": -1,
-                                                "minPurchaseNum": -1,
-                                                "restrict": 1,
-                                                "originPrice": 16.9,
-                                                "currentPrice": 11.49,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "6.8折 限1份",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335848750,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": -1,
+                                            "minPurchaseNum": -1,
+                                            "restrict": 1,
+                                            "originPrice": 16.9,
+                                            "currentPrice": 11.49,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "6.8折 限1份",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "6.8折 限1份",
                                         "activityPolicy": {
@@ -312,22 +300,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335713168,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23.99,
-                                                "currentPrice": 23.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335713168,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23.99,
+                                            "currentPrice": 23.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -353,22 +339,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 1,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335690548,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": -1,
-                                                "minPurchaseNum": -1,
-                                                "restrict": 1,
-                                                "originPrice": 36.9,
-                                                "currentPrice": 29.52,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "8折 限1份",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335690548,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": -1,
+                                            "minPurchaseNum": -1,
+                                            "restrict": 1,
+                                            "originPrice": 36.9,
+                                            "currentPrice": 29.52,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "8折 限1份",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "8折 限1份",
                                         "activityPolicy": {
@@ -394,22 +378,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335998730,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 14.9,
-                                                "currentPrice": 14.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335998730,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 14.9,
+                                            "currentPrice": 14.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -435,22 +417,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348697240,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348697240,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -476,22 +456,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348637209,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348637209,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -517,22 +495,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348695782,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348695782,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -553,8 +529,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "http://p0.meituan.net/aichequan/45662b4d1968fd75bff38de23f6d62641421.png",
                                 "categoryName": "折扣",
                                 "categoryType": 2,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "外婆菜炒鸡蛋",
                                         "unit": "",
                                         "spuId": 1201455991,
@@ -569,22 +544,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 1,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335839141,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": -1,
-                                                "minPurchaseNum": -1,
-                                                "restrict": 1,
-                                                "originPrice": 23,
-                                                "currentPrice": 17.94,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "7.8折 限1份",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335839141,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": -1,
+                                            "minPurchaseNum": -1,
+                                            "restrict": 1,
+                                            "originPrice": 23,
+                                            "currentPrice": 17.94,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "7.8折 限1份",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "7.8折 限1份",
                                         "activityPolicy": {
@@ -610,22 +583,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 1,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335690548,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": -1,
-                                                "minPurchaseNum": -1,
-                                                "restrict": 1,
-                                                "originPrice": 36.9,
-                                                "currentPrice": 29.52,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "8折 限1份",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335690548,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": -1,
+                                            "minPurchaseNum": -1,
+                                            "restrict": 1,
+                                            "originPrice": 36.9,
+                                            "currentPrice": 29.52,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "8折 限1份",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "8折 限1份",
                                         "activityPolicy": {
@@ -651,22 +622,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 1,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335848750,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": -1,
-                                                "minPurchaseNum": -1,
-                                                "restrict": 1,
-                                                "originPrice": 16.9,
-                                                "currentPrice": 11.49,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "6.8折 限1份",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335848750,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": -1,
+                                            "minPurchaseNum": -1,
+                                            "restrict": 1,
+                                            "originPrice": 16.9,
+                                            "currentPrice": 11.49,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "6.8折 限1份",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "6.8折 限1份",
                                         "activityPolicy": {
@@ -687,8 +656,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "金手勺炒菜",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "蒜蓉西兰花",
                                         "unit": "",
                                         "spuId": 1393437680,
@@ -703,22 +671,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1571474669,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 0,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1571474669,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 0,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -728,13 +694,11 @@ db.on('connected', function (err) {
                                             }
                                         },
                                         "statusDesc": "",
-                                        "productLabelPictureList": [
-                                            {
-                                                "pictureUrl": "http://p0.meituan.net/aichequan/a6118176c9bf22b6066fe4eba95c75d41341.png",
-                                                "width": "60",
-                                                "height": "30"
-                                            }
-                                        ]
+                                        "productLabelPictureList": [{
+                                            "pictureUrl": "http://p0.meituan.net/aichequan/a6118176c9bf22b6066fe4eba95c75d41341.png",
+                                            "width": "60",
+                                            "height": "30"
+                                        }]
                                     },
                                     {
                                         "spuName": "菠菜炒鸡蛋",
@@ -751,22 +715,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424504809,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23.9,
-                                                "currentPrice": 23.9,
-                                                "boxFee": 0,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424504809,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23.9,
+                                            "currentPrice": 23.9,
+                                            "boxFee": 0,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -792,22 +754,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424545868,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 22.9,
-                                                "currentPrice": 22.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424545868,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 22.9,
+                                            "currentPrice": 22.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -833,22 +793,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424651361,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 26,
-                                                "currentPrice": 26,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424651361,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 26,
+                                            "currentPrice": 26,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -874,22 +832,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424464923,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.9,
-                                                "currentPrice": 24.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424464923,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.9,
+                                            "currentPrice": 24.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -915,22 +871,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424545109,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 22.9,
-                                                "currentPrice": 22.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424545109,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 22.9,
+                                            "currentPrice": 22.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -956,22 +910,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424650617,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28,
-                                                "currentPrice": 28,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424650617,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28,
+                                            "currentPrice": 28,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -997,22 +949,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424688681,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 21.9,
-                                                "currentPrice": 21.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424688681,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 21.9,
+                                            "currentPrice": 21.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1038,22 +988,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1397012941,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23,
-                                                "currentPrice": 23,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1397012941,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23,
+                                            "currentPrice": 23,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1079,22 +1027,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1392344625,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 26.9,
-                                                "currentPrice": 26.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1392344625,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 26.9,
+                                            "currentPrice": 26.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1120,22 +1066,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1371930370,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 22.9,
-                                                "currentPrice": 22.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1371930370,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 22.9,
+                                            "currentPrice": 22.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1161,22 +1105,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335857768,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 26.9,
-                                                "currentPrice": 26.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335857768,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 26.9,
+                                            "currentPrice": 26.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1202,22 +1144,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335896913,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23,
-                                                "currentPrice": 23,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335896913,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23,
+                                            "currentPrice": 23,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1243,22 +1183,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335915859,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28.9,
-                                                "currentPrice": 28.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335915859,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28.9,
+                                            "currentPrice": 28.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1284,22 +1222,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335932721,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 21.9,
-                                                "currentPrice": 21.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335932721,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 21.9,
+                                            "currentPrice": 21.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1325,22 +1261,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335984130,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 19.9,
-                                                "currentPrice": 19.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335984130,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 19.9,
+                                            "currentPrice": 19.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1366,22 +1300,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335915348,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 34.9,
-                                                "currentPrice": 34.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335915348,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 34.9,
+                                            "currentPrice": 34.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1407,22 +1339,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335931430,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 39.99,
-                                                "currentPrice": 39.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335931430,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 39.99,
+                                            "currentPrice": 39.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1448,22 +1378,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335983687,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 39,
-                                                "currentPrice": 39,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335983687,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 39,
+                                            "currentPrice": 39,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1489,22 +1417,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335784148,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28.9,
-                                                "currentPrice": 28.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335784148,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28.9,
+                                            "currentPrice": 28.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1530,22 +1456,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335912490,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28.9,
-                                                "currentPrice": 28.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335912490,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28.9,
+                                            "currentPrice": 28.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1571,22 +1495,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335982626,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 39.9,
-                                                "currentPrice": 39.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335982626,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 39.9,
+                                            "currentPrice": 39.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1612,22 +1534,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335920631,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335920631,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1653,22 +1573,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335713168,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23.99,
-                                                "currentPrice": 23.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335713168,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23.99,
+                                            "currentPrice": 23.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1694,22 +1612,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335911081,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28.9,
-                                                "currentPrice": 28.9,
-                                                "boxFee": 2,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335911081,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28.9,
+                                            "currentPrice": 28.9,
+                                            "boxFee": 2,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1735,22 +1651,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335980676,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 32,
-                                                "currentPrice": 32,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335980676,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 32,
+                                            "currentPrice": 32,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1776,22 +1690,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335909496,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 32,
-                                                "currentPrice": 32,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335909496,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 32,
+                                            "currentPrice": 32,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1817,22 +1729,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335909354,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.99,
-                                                "currentPrice": 24.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335909354,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.99,
+                                            "currentPrice": 24.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1858,22 +1768,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335836707,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28,
-                                                "currentPrice": 28,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335836707,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28,
+                                            "currentPrice": 28,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1899,22 +1807,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335979271,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23.9,
-                                                "currentPrice": 23.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335979271,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23.9,
+                                            "currentPrice": 23.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1940,22 +1846,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335780417,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 26,
-                                                "currentPrice": 26,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335780417,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 26,
+                                            "currentPrice": 26,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -1981,22 +1885,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335908145,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25,
-                                                "currentPrice": 25,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335908145,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25,
+                                            "currentPrice": 25,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2022,22 +1924,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335779838,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 32,
-                                                "currentPrice": 32,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335779838,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 32,
+                                            "currentPrice": 32,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2063,22 +1963,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335907271,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 32,
-                                                "currentPrice": 32,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335907271,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 32,
+                                            "currentPrice": 32,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2104,22 +2002,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335925097,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335925097,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2145,22 +2041,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335976207,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335976207,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2186,22 +2080,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335778406,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25,
-                                                "currentPrice": 25,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335778406,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25,
+                                            "currentPrice": 25,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2227,22 +2119,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335975113,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 21.9,
-                                                "currentPrice": 21.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335975113,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 21.9,
+                                            "currentPrice": 21.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2268,22 +2158,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335904029,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 36,
-                                                "currentPrice": 36,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335904029,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 36,
+                                            "currentPrice": 36,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2309,22 +2197,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335973334,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23,
-                                                "currentPrice": 23,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335973334,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23,
+                                            "currentPrice": 23,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2350,22 +2236,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335972609,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 19.9,
-                                                "currentPrice": 19.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335972609,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 19.9,
+                                            "currentPrice": 19.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2391,22 +2275,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335829017,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335829017,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2432,22 +2314,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335828170,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 27.9,
-                                                "currentPrice": 27.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335828170,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 27.9,
+                                            "currentPrice": 27.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2473,22 +2353,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335899894,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 22.9,
-                                                "currentPrice": 22.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335899894,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 22.9,
+                                            "currentPrice": 22.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2514,22 +2392,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335898994,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 22.9,
-                                                "currentPrice": 22.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335898994,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 22.9,
+                                            "currentPrice": 22.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2555,22 +2431,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335969043,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 23,
-                                                "currentPrice": 23,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335969043,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 23,
+                                            "currentPrice": 23,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2596,22 +2470,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335761890,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.99,
-                                                "currentPrice": 24.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335761890,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.99,
+                                            "currentPrice": 24.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2637,22 +2509,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335707078,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28,
-                                                "currentPrice": 28,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335707078,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28,
+                                            "currentPrice": 28,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2678,22 +2548,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335825386,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335825386,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2719,22 +2587,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335897354,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 22.9,
-                                                "currentPrice": 22.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335897354,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 22.9,
+                                            "currentPrice": 22.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2760,22 +2626,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335823445,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335823445,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2801,22 +2665,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335964560,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28,
-                                                "currentPrice": 28,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335964560,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28,
+                                            "currentPrice": 28,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2842,22 +2704,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335963721,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.9,
-                                                "currentPrice": 24.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335963721,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.9,
+                                            "currentPrice": 24.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2878,8 +2738,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "金手勺特色菜",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "毛氏红烧肉",
                                         "unit": "",
                                         "spuId": 1276717465,
@@ -2894,22 +2753,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1424465619,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 49,
-                                                "currentPrice": 49,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1424465619,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 49,
+                                            "currentPrice": 49,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2935,22 +2792,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1367446073,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 32.9,
-                                                "currentPrice": 32.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1367446073,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 32.9,
+                                            "currentPrice": 32.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -2976,22 +2831,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1367266728,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 32.9,
-                                                "currentPrice": 32.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1367266728,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 32.9,
+                                            "currentPrice": 32.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3017,22 +2870,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1362495895,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 39.8,
-                                                "currentPrice": 39.8,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1362495895,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 39.8,
+                                            "currentPrice": 39.8,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3058,22 +2909,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335583056,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 42.9,
-                                                "currentPrice": 42.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335583056,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 42.9,
+                                            "currentPrice": 42.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3099,22 +2948,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335936323,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 36.99,
-                                                "currentPrice": 36.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335936323,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 36.99,
+                                            "currentPrice": 36.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3140,22 +2987,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335866551,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 36.99,
-                                                "currentPrice": 36.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335866551,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 36.99,
+                                            "currentPrice": 36.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3181,33 +3026,27 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335917800,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 36.9,
-                                                "currentPrice": 36.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
-                                        "spuAttrList": [
-                                            {
-                                                "spuAttrName": "温度",
-                                                "spuAttrValueList": [
-                                                    {
-                                                        "attrId": 450872504,
-                                                        "attrValue": "热"
-                                                    }
-                                                ]
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335917800,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 36.9,
+                                            "currentPrice": 36.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
+                                        "spuAttrList": [{
+                                            "spuAttrName": "温度",
+                                            "spuAttrValueList": [{
+                                                "attrId": 450872504,
+                                                "attrValue": "热"
+                                            }]
+                                        }],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
                                             "discountByCount": {
@@ -3232,22 +3071,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335788184,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 36.9,
-                                                "currentPrice": 36.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335788184,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 36.9,
+                                            "currentPrice": 36.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3273,22 +3110,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336004719,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 38.9,
-                                                "currentPrice": 38.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336004719,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 38.9,
+                                            "currentPrice": 38.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3314,22 +3149,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335692309,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 38.9,
-                                                "currentPrice": 38.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335692309,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 38.9,
+                                            "currentPrice": 38.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3355,22 +3188,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335544719,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 39.9,
-                                                "currentPrice": 39.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335544719,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 39.9,
+                                            "currentPrice": 39.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3391,49 +3222,45 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "辣炒小海鲜",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
-                                        "spuName": "辣炒花蛤",
-                                        "unit": "",
-                                        "spuId": 1212301435,
-                                        "tag": "86179214",
-                                        "activityTag": "",
-                                        "littleImageUrl": "http://p0.meituan.net/xianfudwm/b8a248ad4f6706596cb6eb0bff1d5fb6207116.jpg",
-                                        "bigImageUrl": "http://p0.meituan.net/xianfudwm/b8a248ad4f6706596cb6eb0bff1d5fb6207116.jpg",
-                                        "saleVolume": 9,
+                                "spuList": [{
+                                    "spuName": "辣炒花蛤",
+                                    "unit": "",
+                                    "spuId": 1212301435,
+                                    "tag": "86179214",
+                                    "activityTag": "",
+                                    "littleImageUrl": "http://p0.meituan.net/xianfudwm/b8a248ad4f6706596cb6eb0bff1d5fb6207116.jpg",
+                                    "bigImageUrl": "http://p0.meituan.net/xianfudwm/b8a248ad4f6706596cb6eb0bff1d5fb6207116.jpg",
+                                    "saleVolume": 9,
+                                    "originPrice": 29.9,
+                                    "currentPrice": 29.9,
+                                    "spuDesc": "",
+                                    "praiseNum": 0,
+                                    "sellStatus": 0,
+                                    "activityType": 0,
+                                    "skuList": [{
+                                        "skuId": 1348801885,
+                                        "spec": "",
+                                        "soldStatus": 0,
+                                        "realStock": -1,
+                                        "activityStock": 0,
+                                        "minPurchaseNum": -1,
+                                        "restrict": -1,
                                         "originPrice": 29.9,
                                         "currentPrice": 29.9,
-                                        "spuDesc": "",
-                                        "praiseNum": 0,
-                                        "sellStatus": 0,
-                                        "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348801885,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 29.9,
-                                                "currentPrice": 29.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
-                                        "spuAttrList": [],
-                                        "spuPromotionInfo": "",
-                                        "activityPolicy": {
-                                            "discountByCount": {
-                                                "count": 0,
-                                                "discount": 1
-                                            }
-                                        },
-                                        "statusDesc": ""
-                                    }
-                                ],
+                                        "boxFee": 1,
+                                        "skuPromotionInfo": "",
+                                        "count": 0
+                                    }],
+                                    "spuAttrList": [],
+                                    "spuPromotionInfo": "",
+                                    "activityPolicy": {
+                                        "discountByCount": {
+                                            "count": 0,
+                                            "discount": 1
+                                        }
+                                    },
+                                    "statusDesc": ""
+                                }],
                                 "end": true,
                                 "nextPageIndex": 0
                             },
@@ -3443,8 +3270,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "特色干锅",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "干锅四季豆",
                                         "unit": "",
                                         "spuId": 1212308957,
@@ -3459,22 +3285,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348815728,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 26.9,
-                                                "currentPrice": 26.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348815728,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 26.9,
+                                            "currentPrice": 26.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3500,22 +3324,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348744055,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.9,
-                                                "currentPrice": 24.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348744055,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.9,
+                                            "currentPrice": 24.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3541,22 +3363,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348891340,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 38.9,
-                                                "currentPrice": 38.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348891340,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 38.9,
+                                            "currentPrice": 38.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3582,22 +3402,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348854091,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.9,
-                                                "currentPrice": 24.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348854091,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.9,
+                                            "currentPrice": 24.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3623,22 +3441,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348782517,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.9,
-                                                "currentPrice": 24.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348782517,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.9,
+                                            "currentPrice": 24.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3664,22 +3480,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348891257,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 21.9,
-                                                "currentPrice": 21.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348891257,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 21.9,
+                                            "currentPrice": 21.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3705,22 +3519,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348712302,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 47,
-                                                "currentPrice": 47,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348712302,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 47,
+                                            "currentPrice": 47,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3746,22 +3558,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348743928,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 49.9,
-                                                "currentPrice": 49.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348743928,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 49.9,
+                                            "currentPrice": 49.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3787,22 +3597,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348712248,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 36,
-                                                "currentPrice": 36,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348712248,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 36,
+                                            "currentPrice": 36,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3828,22 +3636,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348891149,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 24.9,
-                                                "currentPrice": 24.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348891149,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 24.9,
+                                            "currentPrice": 24.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3869,22 +3675,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348743857,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 25.9,
-                                                "currentPrice": 25.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348743857,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 25.9,
+                                            "currentPrice": 25.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3905,8 +3709,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "金手勺压锅菜",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "压锅豆腐",
                                         "unit": "",
                                         "spuId": 1201469395,
@@ -3921,22 +3724,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335996042,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 28.9,
-                                                "currentPrice": 28.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335996042,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 28.9,
+                                            "currentPrice": 28.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -3962,22 +3763,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336012483,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 39.99,
-                                                "currentPrice": 39.99,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336012483,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 39.99,
+                                            "currentPrice": 39.99,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4003,22 +3802,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336011794,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 38.9,
-                                                "currentPrice": 38.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336011794,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 38.9,
+                                            "currentPrice": 38.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4039,8 +3836,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "汤类",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "白菜豆腐汤",
                                         "unit": "",
                                         "spuId": 1201414434,
@@ -4055,22 +3851,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335998730,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 14.9,
-                                                "currentPrice": 14.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335998730,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 14.9,
+                                            "currentPrice": 14.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4096,22 +3890,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336087786,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 14.9,
-                                                "currentPrice": 14.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336087786,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 14.9,
+                                            "currentPrice": 14.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4137,22 +3929,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1335871869,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 14.9,
-                                                "currentPrice": 14.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1335871869,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 14.9,
+                                            "currentPrice": 14.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4178,22 +3968,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336086810,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 14.9,
-                                                "currentPrice": 14.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336086810,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 14.9,
+                                            "currentPrice": 14.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4214,8 +4002,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "盖浇饭",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "尖椒肉丝盖饭",
                                         "unit": "",
                                         "spuId": 1212446710,
@@ -4230,22 +4017,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348697379,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348697379,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4271,22 +4056,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348697240,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348697240,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4312,22 +4095,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348770117,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 17.9,
-                                                "currentPrice": 17.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348770117,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 17.9,
+                                            "currentPrice": 17.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4353,22 +4134,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348638186,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348638186,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4394,22 +4173,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348696001,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348696001,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4435,22 +4212,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348802277,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 17.9,
-                                                "currentPrice": 17.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348802277,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 17.9,
+                                            "currentPrice": 17.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4476,22 +4251,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348637489,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 16.9,
-                                                "currentPrice": 16.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348637489,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 16.9,
+                                            "currentPrice": 16.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4517,22 +4290,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348695846,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348695846,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4558,22 +4329,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348695782,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348695782,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4599,22 +4368,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 1,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348674515,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348674515,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4640,22 +4407,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348730333,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348730333,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4681,22 +4446,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348730321,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348730321,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4722,22 +4485,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348637209,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348637209,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4763,22 +4524,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1348730288,
-                                                "spec": "",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 17.9,
-                                                "currentPrice": 17.9,
-                                                "boxFee": 1.5,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1348730288,
+                                            "spec": "",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 17.9,
+                                            "currentPrice": 17.9,
+                                            "boxFee": 1.5,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4799,8 +4558,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "凉菜",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "风味木耳",
                                         "unit": "份",
                                         "spuId": 1201640229,
@@ -4815,22 +4573,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336099650,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": 1000,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336099650,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": 1000,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4856,22 +4612,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336169166,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": 999,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336169166,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": 999,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4897,22 +4651,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336025720,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": 998,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 15.9,
-                                                "currentPrice": 15.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336025720,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": 998,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 15.9,
+                                            "currentPrice": 15.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4938,22 +4690,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336044677,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": 1000,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 16.9,
-                                                "currentPrice": 16.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336044677,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": 1000,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 16.9,
+                                            "currentPrice": 16.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -4979,22 +4729,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336168131,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336168131,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5020,22 +4768,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336097459,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 18.9,
-                                                "currentPrice": 18.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336097459,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 18.9,
+                                            "currentPrice": 18.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5061,22 +4807,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336044007,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 16.9,
-                                                "currentPrice": 16.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336044007,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 16.9,
+                                            "currentPrice": 16.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5102,22 +4846,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336043866,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 16.9,
-                                                "currentPrice": 16.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336043866,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 16.9,
+                                            "currentPrice": 16.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5143,22 +4885,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336096497,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 19.9,
-                                                "currentPrice": 19.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336096497,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 19.9,
+                                            "currentPrice": 19.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5179,8 +4919,7 @@ db.on('connected', function (err) {
                                 "iconUrl": "",
                                 "categoryName": "主食",
                                 "categoryType": 0,
-                                "spuList": [
-                                    {
+                                "spuList": [{
                                         "spuName": "蛋炒饭",
                                         "unit": "份",
                                         "spuId": 1201516738,
@@ -5195,22 +4934,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 2,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336023148,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 12.9,
-                                                "currentPrice": 12.9,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336023148,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 12.9,
+                                            "currentPrice": 12.9,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5236,22 +4973,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 0,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336095624,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 13,
-                                                "currentPrice": 13,
-                                                "boxFee": 1,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336095624,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 13,
+                                            "currentPrice": 13,
+                                            "boxFee": 1,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5277,22 +5012,20 @@ db.on('connected', function (err) {
                                         "praiseNum": 6,
                                         "sellStatus": 0,
                                         "activityType": 0,
-                                        "skuList": [
-                                            {
-                                                "skuId": 1336165173,
-                                                "spec": "(份)",
-                                                "soldStatus": 0,
-                                                "realStock": -1,
-                                                "activityStock": 0,
-                                                "minPurchaseNum": -1,
-                                                "restrict": -1,
-                                                "originPrice": 3,
-                                                "currentPrice": 3,
-                                                "boxFee": 0,
-                                                "skuPromotionInfo": "",
-                                                "count": 0
-                                            }
-                                        ],
+                                        "skuList": [{
+                                            "skuId": 1336165173,
+                                            "spec": "(份)",
+                                            "soldStatus": 0,
+                                            "realStock": -1,
+                                            "activityStock": 0,
+                                            "minPurchaseNum": -1,
+                                            "restrict": -1,
+                                            "originPrice": 3,
+                                            "currentPrice": 3,
+                                            "boxFee": 0,
+                                            "skuPromotionInfo": "",
+                                            "count": 0
+                                        }],
                                         "spuAttrList": [],
                                         "spuPromotionInfo": "",
                                         "activityPolicy": {
@@ -5315,7 +5048,7 @@ db.on('connected', function (err) {
                     },
                     "code": 0,
                     "msg": "成功"
-             }]
+                }]
             }, {
                 //不将版本号存入数据库
                 versionKey: false
@@ -5331,38 +5064,21 @@ app.use(static(
 ))
 app.use(bodyParser()); //POST传送过来数据格式转换,再router.get之前
  */
-router.get('/pers/clerks', async (ctx) => {
-    let arr = await Shop.find({id: 1})
-    ctx.body = {
-        code: 0,
-        data: arr,
-        msg: "成功"
-}
-   /*  
-   switch (params.act) {
-        case "clerks":
-            try {
-            let arr = await Shop.find({id: 2})//没有设置则匹配所有数据
-                console.log(arr)
-                ctx.body = {
-                    code: 0,
-                    data: arr,
-                    msg: "成功"
-                }
-            } catch (error) {
-                ctx.body = {
-                    code: 1,
-                    msg: "找不到"
-                }
-            }
-            break;
-    }
-     */
-});
+/* 
+    ------------------       人员管理部分后台接口     -------------------
+*/
+// router.get('clerks', async (ctx) => {
+//     let arr = await Shop.find({id: 1})
+//     ctx.body = {
+//         code: 0,
+//         data: arr,
+//         msg: "成功"
+// }})
 
-
-
-
+/* 
+ find方法总结： 
+    没有设置则匹配所有数据
+*/
 router.get('/pers/:act', async (ctx) => {
     let req = ctx.request.query; //对象
     // console.log(ctx.request.path) //pers/131232
@@ -5371,15 +5087,17 @@ router.get('/pers/:act', async (ctx) => {
     switch (params.act) {
         case "clerks":
             try {
-               // db.col.find({"data":{$gt:1}}).pretty()
-            let arr = await Shop.find({id: 2})//没有设置则匹配所有数据
-             // let arr=  Shop.find().then(function (result) {
-            // console.log(result); //没有设置则匹配所有数据
-            //     });
-            // let data1=await Data.find((e)=>{e==="banner"});
-            //  Shop.find({'content.label': value}, function (err, comment) {
-            //     console.log(comment)
-            // })
+                // db.col.find({"data":{$gt:1}}).pretty()
+                let arr = await Shop.find({
+                    id: 1
+                }) //没有设置则匹配所有数据
+                // let arr=  Shop.find().then(function (result) {
+                // console.log(result); 
+                //     });
+                // let data1=await Data.find((e)=>{e==="banner"});
+                //  Shop.find({'content.label': value}, function (err, comment) {
+                //     console.log(comment)
+                // })
                 console.log(arr)
                 ctx.body = {
                     code: 0,
@@ -5396,6 +5114,103 @@ router.get('/pers/:act', async (ctx) => {
     }
 });
 
+router.get('/pers', async (ctx) => {
+    let req = ctx.request.query; //对象
+    console.log(req)
+    // console.log(ctx)  // { act:'22132'}
+    /* 
+         思路整理：
+         1.前端修改后发到后端;
+         2.后端将所有内容获取到以后：
+         3.pull模糊匹配到后,删除原来的;
+         4.再根据前端发过来的新生成一条;(num唯一不变)
+    */
+    switch (req.act) {
+        case "editClerks":
+            try {
+                // 修改数据时候注意修改Schema中类
+                /* 
+                 操作数据:
+                          1. 删除原来数据 
+                          2. 添加新数据 
+                           
+                */
+                // 删除旧数据
+                Shop.update({  
+                    "id": "1"
+                }, {
+                    $pull: {
+                        ClerkData: {
+                            num: 1
+                        }
+                    }
+                });
+
+                // 添加新数据
+                // Shop.update({
+                //     "id": "1"
+                // }, {
+                //     $pull: {
+                //         ClerkData: {
+                //             num:1
+                //         }
+                //     }
+                // });
+                // 修改数据
+
+                // Shop.update(
+                //     {id:1},
+                //     {$set:{
+                //         ClerkData: {
+                // "num": 1,
+                // "name": "冯杰",
+                // "sex": "男",
+                // "cardNum": "52000019770924228X",
+                // "birthday": "1992-02-10",
+                // "age": 30,
+                // "hiredate": "1997-04-17",
+                // "jobTitle": "餐饮部主管",
+                // "state": "在职"
+                //         }
+                //     }}
+                // )
+                /*  
+                 */
+
+                let arr = await Shop.find({
+                    id: 1
+                })
+                // ,{'ClerkData.num': value},
+                ctx.body = arr;
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+            /*  
+             case "act=editClerks":
+                  try {
+                      let arr = await Shop.find({
+                          id: 1
+                      })
+                      console.log(arr)
+                      ctx.body = {
+                          code: 0,
+                          data: arr,
+                          msg: "成功"
+                      }
+                  } catch (error) {
+                      ctx.body = {
+                          code: 1,
+                          msg: "找不到"
+                      }
+                  }
+                  break; 
+            */
+    }
+});
 
 app.use(router.routes());
 app.listen(2000, () => {

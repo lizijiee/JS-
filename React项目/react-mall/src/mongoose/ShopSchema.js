@@ -4,6 +4,7 @@ const Shop=new mongoose.Schema({//Schema构造函数
     resultcode:String,//返回状态码
     reason:String,//返回说明
     id:Number,//返回说明
-    result:Array,
+    num:String,
+    ClerkData:Array
 });
 module.exports=Shop;

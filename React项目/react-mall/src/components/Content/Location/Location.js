@@ -11,7 +11,7 @@ export default class componentName extends Component {
             <section className="location">
                 {/*   员工信息组件  */}
                 <div className="wrap">
-                     <span  className="flash"><a href="https://github.com/lizijiee/JS-/tree/master/%E4%BD%9C%E5%93%81/mall" target=
+                     <span  className="flash"><a href="https://github.com/lizijiee/JS-/tree/master/React%E9%A1%B9%E7%9B%AE/react-mall" target=
                      "_blank"> 项目地址</a></span>
                     <p >
                         <img src={ImgUrl}  />
