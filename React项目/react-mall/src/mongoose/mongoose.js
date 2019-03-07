@@ -5098,7 +5098,6 @@ router.get('/pers/:act', async (ctx) => {
                 //  Shop.find({'content.label': value}, function (err, comment) {
                 //     console.log(comment)
                 // })
-                console.log(arr)
                 ctx.body = {
                     code: 0,
                     data: arr,
@@ -5114,74 +5113,64 @@ router.get('/pers/:act', async (ctx) => {
     }
 });
 
-router.get('/pers', async (ctx) => {
-    let req = ctx.request.query; //对象
-    console.log(req)
-    // console.log(ctx)  // { act:'22132'}
-    /* 
+/* 
          思路整理：
          1.前端修改后发到后端;
          2.后端将所有内容获取到以后：
          3.pull模糊匹配到后,删除原来的;
          4.再根据前端发过来的新生成一条;(num唯一不变)
-    */
+*/
+/* 
+         操作数据:
+                  1. 删除原来数据 
+                  2. 添加新数据 
+         坑汇总：
+                1. 修改数据时候注意修改Schema中类
+                2. async 数据更新前(Shop.updatem)必须加  await  
+*/
+app.use(bodyParser()) //Fetch中 POST传送过来数据格式转换,再router.get之前
+
+router.post('/pers', async (ctx) => {
+    let req = ctx.request.query; //对象
     switch (req.act) {
         case "editClerks":
             try {
-                // 修改数据时候注意修改Schema中类
-                /* 
-                 操作数据:
-                          1. 删除原来数据 
-                          2. 添加新数据 
-                           
+                /*  
+                  步骤:
+                      1.拿到num,添加到对象中; //req.num
+                      2.删除数据库中原数据;
+                      3.将新数据添加进去;
                 */
-                // 删除旧数据
-                Shop.update({  
-                    "id": "1"
+                // 1.操作要加入数据库的对象
+                let obj = ctx.request.body
+                obj.num = parseInt(req.num)
+                // 2.删除原来数据  
+                await Shop.update({
+                    "id": 1,
                 }, {
                     $pull: {
                         ClerkData: {
-                            num: 1
+                            num: parseInt(req.num)
                         }
                     }
                 });
-
-                // 添加新数据
-                // Shop.update({
-                //     "id": "1"
-                // }, {
-                //     $pull: {
-                //         ClerkData: {
-                //             num:1
-                //         }
-                //     }
-                // });
-                // 修改数据
-
-                // Shop.update(
-                //     {id:1},
-                //     {$set:{
-                //         ClerkData: {
-                // "num": 1,
-                // "name": "冯杰",
-                // "sex": "男",
-                // "cardNum": "52000019770924228X",
-                // "birthday": "1992-02-10",
-                // "age": 30,
-                // "hiredate": "1997-04-17",
-                // "jobTitle": "餐饮部主管",
-                // "state": "在职"
-                //         }
-                //     }}
-                // )
-                /*  
-                 */
-
+                // 3.将对象添加到数据库中,添加修改后数据。
+                await Shop.update({
+                    "id": "1"
+                }, {
+                    $push: {
+                        ClerkData:obj
+                    }
+                });
+      /* ------------------------------------------- */
                 let arr = await Shop.find({
                     id: 1
                 })
-                // ,{'ClerkData.num': value},
-                ctx.body = arr;
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
             } catch (error) {
                 ctx.body = {
                     code: 1,
@@ -5189,26 +5178,6 @@ router.get('/pers', async (ctx) => {
                 }
             }
             break;
-            /*  
-             case "act=editClerks":
-                  try {
-                      let arr = await Shop.find({
-                          id: 1
-                      })
-                      console.log(arr)
-                      ctx.body = {
-                          code: 0,
-                          data: arr,
-                          msg: "成功"
-                      }
-                  } catch (error) {
-                      ctx.body = {
-                          code: 1,
-                          msg: "找不到"
-                      }
-                  }
-                  break; 
-            */
     }
 });
 
@@ -5216,3 +5185,51 @@ app.use(router.routes());
 app.listen(2000, () => {
     console.log('app started at port 2000...');
 })
+/* 
+
+// 删除旧数据
+await Shop.update({
+    "id": 1,
+}, {
+    $pull: {
+        ClerkData: {
+            "name": 21321321,
+            "n2321321me": 21321321,
+            "nghfghgfdhe": 21321321,
+        }
+    }
+});
+// 添加新数据
+await Shop.update({
+    "id": "1"
+}, {
+    $push: {
+        ClerkData: {
+            num: 1
+        }
+    }
+});
+// 修改数据
+await Shop.update({
+    "id": 1,
+    "ClerkData.num": 1
+}, {
+    $set: {
+        "ClerkData.$.sex": "女",
+    }
+});
+await Shop.update({
+    "id": 1
+}, {
+    $set: {
+        ClerkData: {
+            // 会覆盖原有ClerkDate数值,
+            // 可以用做在第一层添加新属性,
+            // 注意Schema中
+            "ClerkData.$.name": 00000,
+            "ClerkData.$.n2321321me": 11111,
+            "ClerkData.$.nghfghgfdhe": 22222,
+        }
+    }
+});
+ */

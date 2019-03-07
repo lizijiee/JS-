@@ -68,8 +68,6 @@ class Temp extends Component {
   }
 
   showConfirm() {
-    console.log(this.isObjectValueEqual)
-    confirm.bind(this)
     confirm({
       wrapClassName: '提示',
       title: '提示:',
@@ -81,22 +79,39 @@ class Temp extends Component {
         ".ant-modal-confirm-btns": { marginTop: 0 }
       },
       onOk: async () => { // 箭头函数解决this
-        if (!this.isObjectValueEqual(this.props.form.getFieldsValue(), this.props.location.state[0])) {//表单内容修改后,进入判断。 
-          //思路：把num=？ 传入后台在后台进行查找相应的内容         
-          await fetch(`http://localhost:2000/pers/clerks`, {
-            method: 'POST'
-          })
-            .then(res => res.json()).then(
+ 
+        if (!this.isObjectValueEqual(this.props.form.getFieldsValue(), this.props.location.state[0])) {
+
+          //表单内容修改后,进入判断。 
+          //思路：把num=？ 传入后台在后台进行查找相应的内容  
+          
+          //post 请求发送body时请求头必须改为'Content-Type': 'application/json'
+         
+          // 请求默认为： Content-Type: application/x-www-form-urlencoded 
+          // json中使用aplication请求头导致坑  { '{"state":"离职","jobTitle":"迎宾员"}': '' }
+          await fetch(`http://localhost:2000/pers?act=editClerks&&num=${this.props.location.state[0].num}`,
+          {
+            method: 'POST',
+            // mode: 'cors',
+            // credentials: 'include', // cookie
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(this.props.form.getFieldsValue())
+          }
+          )
+            .then(res => res.json())
+            .then(
               data => {
                 // this.setState({ ...data })
                 console.log(data)
               })
         } else { //进行修改直接跳转到列表页
           success();
-          this.props.history.push({  //退回到列表页
-            pathname: "/pers/clerks",
-          });
         }
+        this.props.history.push({  //退回到列表页
+          pathname: "/pers/clerks",
+        });
       },
       /* 
       onCancel() {  //取消回调函数

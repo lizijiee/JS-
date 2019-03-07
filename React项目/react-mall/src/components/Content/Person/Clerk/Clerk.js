@@ -29,11 +29,11 @@ async EditClick(index,link){
       // e.preventDefault();
       console.log(index);
          // pathname:'/pers/clerksDetails?num='+index,
-        // state:this.state.data[0].result[0].ClerkData.filter(e=>e.num==index)
+        // state:this.state.data[0].ClerkData.filter(e=>e.num==index)
         // let vcode =[{aa:1}]
      await this.props.history.push({ 
           pathname: "/pers/clerksDetails", 
-          state: this.state.data[0].result[0].ClerkData.filter(e=>e.num==index),
+          state: this.state.data[0].ClerkData.filter(e=>e.num==index),
           search:'?num='+index
          });
       // this.props.history.push('/pers/clerksDetails?num='+index);
@@ -43,16 +43,17 @@ async EditClick(index,link){
   }
   ClerksInfo() {
     if (this.state.data) {
-      // console.log(this.state.data[0].result[0].ClerkData.filter((e) =>
+      console.log(this.state.data)
+      // console.log(this.state.data[0].ClerkData.filter((e) =>
       //   e.num >= 1 + 5 * (this.state.current - 1) && e.num <= 5 * this.state.current
       // ))
 
       // [32, 33, 16, 40].filter((a)=> a<40&a>20)
 
-      // this.setState({page:this.state.data[0].result[0].ClerkData.length})
+      // this.setState({page:this.state.data[0].ClerkData.length})
       // this.setState({page:20});
       // console.log(this.state.page)
-      this.state.listItems = this.state.data[0].result[0].ClerkData.filter((e) =>
+      this.state.listItems = this.state.data[0].ClerkData.filter((e) =>
         e.num >= 1 + 5 * (this.state.current - 1) && e.num <= 5 * this.state.current
       ).map((ele) =>
         <tr key={ele.num} id={ele.num}>
@@ -115,7 +116,7 @@ async EditClick(index,link){
         Page = <Pagination
         defaultCurrent={1}
         pageSize={5}
-        total={data[0].result[0].ClerkData.length}
+        total={data[0].ClerkData.length}
         onChange={this.ChangePage.bind(this)}
         style={{
           marginRight: 30, marginTop: 25, float: "right"
