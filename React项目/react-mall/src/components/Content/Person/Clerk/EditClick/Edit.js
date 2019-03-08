@@ -79,7 +79,6 @@ class Temp extends Component {
         ".ant-modal-confirm-btns": { marginTop: 0 }
       },
       onOk: async () => { // 箭头函数解决this
- 
         if (!this.isObjectValueEqual(this.props.form.getFieldsValue(), this.props.location.state[0])) {
 
           //表单内容修改后,进入判断。 
@@ -127,7 +126,6 @@ class Temp extends Component {
 
     //获取对象中的所有keys数值;
     let arr = Object.keys(this.props.location.state[0])
-
     //对所有keys数值进行过滤;
     let TempArr = arr.filter((currentValue, index) => currentValue != "num" && currentValue != "sex" && currentValue != "state")
     const { getFieldProps, getFieldError, isFieldValidating, getFieldDecorator } = this.props.form;

@@ -5160,16 +5160,77 @@ router.post('/pers', async (ctx) => {
                     "id": "1"
                 }, {
                     $push: {
-                        ClerkData:obj
+                        ClerkData: obj
                     }
                 });
-      /* ------------------------------------------- */
+                /* ------------------------------------------- */
                 let arr = await Shop.find({
                     id: 1
                 })
                 ctx.body = {
                     code: 0,
                     data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+            //---------------------    添加数据     ----------------------- 
+        case "addClerks":
+            try {
+                // 1.操作要加入数据库的对象
+                let obj = ctx.request.body; //存储前端对象
+                console.log(obj)
+                let arr = await Shop.find({ //查找所有数据
+                    id: 1
+                })
+                arr[0].ClerkData.sort((a, b) => a.num - b.num) // 改变原数组,将数组按照num数值排序,方便num+1
+                obj.num = parseInt(arr[0].ClerkData[arr[0].ClerkData.length - 1].num + 1)
+
+                await Shop.update({
+                    "id": "1"
+                }, {
+                    $push: {
+                        ClerkData: obj
+                    }
+                });
+                let realArr = await Shop.find({
+                    id: 1
+                })
+                ctx.body = {
+                    code: 0,
+                    data: realArr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+        case "deleteClerks":
+            try {
+                let obj = ctx.request.body; //存储前端对象
+                await Shop.update({
+                    "id": "1"
+                }, {
+                    $pull: {
+                        ClerkData: {
+                            num: parseInt(obj.num)
+                        }
+                    }
+                });
+                let realArr = await Shop.find({
+                    id: 1
+                })
+                ctx.body = {
+                    code: 0,
+                    data: realArr,
                     msg: "成功"
                 }
             } catch (error) {

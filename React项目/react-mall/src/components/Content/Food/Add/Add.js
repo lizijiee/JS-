@@ -71,7 +71,6 @@ class Temp extends Component {
                 return;
             }
             let data = Object.assign({}, this.state.data, this.props.form.getFieldsValue())
-            console.log(data)
             this.setState({
                 data: data
             })
