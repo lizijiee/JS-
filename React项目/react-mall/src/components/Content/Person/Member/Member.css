@@ -105,6 +105,13 @@
   width: 100%;
   text-align: center;
 }
+.clerk-list .app-container .table-container table thead tr {
+  height: 50px;
+  background: #bfbfbf1c 1c;
+}
+.clerk-list .app-container .table-container table tbody tr:hover {
+  background: #098bd912;
+}
 .clerk-list .app-container .table-container table th {
   padding: 12px 0;
   border-left: 1px solid #ebeef5;

@@ -170,8 +170,19 @@
             border-bottom: 1px solid @border-color;
             width: 100%;
             text-align: center;
-
             table {
+               thead{//搞组件样式
+                    tr{
+                       height: 50px;
+                       background:#bfbfbf1c
+                    }
+                }
+                tbody{
+                    tr:hover{
+                        background: #098bd912;
+                    }
+                }
+
                 th {
                     padding: 12px 0;
                     border-left: 1px solid@border-color;

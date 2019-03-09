@@ -1,58 +1,69 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 // import 'antd/dist/antd.css';
-import { Layout } from 'antd';
 import { BrowserRouter as Router,withRouter} from 'react-router-dom'
-import createBrowserHistory from 'history/createBrowserHistory'
-
 import Route from './Route';
+
+import { Layout } from 'antd';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
-// import Home from './components/Content/Content';
 import './index.css';
+//redux 部分
+import {applyMiddleware,createStore} from 'redux'; 
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import {reducer} from './redux/reducers'
+// import {couter} from './reducers.js'   //导入函数
 
-const history = createBrowserHistory();
- 
-if (module.hot) {
+if (module.hot) {//跟新时候页面不刷新,不闪烁;
   module.hot.accept();
 };
- class MallProject extends React.Component {
-  constructor(props){
-    super(props)
+
+// redux布局部分;
+const middleware = [ thunk ];
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+)
+
+
+class MallProject extends React.Component {
+  constructor(){
+    super()
     this.state = {
       collapsed: false,
     };
-  }
-  
-  toggle = () => {
+}
+  toggle = () => {  //控制折叠
     this.setState({
       collapsed: !this.state.collapsed,
     });
   }
   render() {
        return (
+        <Provider store={store}>
       <Router >
-        <Fragment >
-          <Layout style={{ height: "100%" }}>
-            <Sidebar
+        <Fragment > {/* 临时框,页面结构不显示 */}
+          <Layout style={{ height: "100%" }}>{/* 布局组件 */}
+            <Sidebar 
               trigger={null}
               collapsible
-              collapsed={this.state.collapsed}
-              onCollapse={this.onCollapse}
+              collapsed={this.state.collapsed} //控制折叠
               props
-            />
+            />  {/* 左侧菜单栏 */}
             <Layout
               style={{ background: 'rgb(240, 242, 245)', position: 'relative' }}>
               <Header
                 toggle={this.toggle}
                 collapsed={this.state.collapsed}
-              >
+              >{/* 头部菜单栏 */}
               </Header>
-                <Route history/>
+                <Route /> {/* 路由组件 => 里面为主内容页 */}
             </Layout>
           </Layout>
         </Fragment >
       </Router>
+      </Provider> 
     );
   }
 }
