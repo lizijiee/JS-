@@ -52,7 +52,7 @@ App.propTypes={
 //使用connect
 function mapStateToProps(state) { // tiger
   return {
-      value: state // tiger
+      num: state.num // tiger
   }
 }
 //需要触发什么行为

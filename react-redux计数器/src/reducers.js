@@ -10,7 +10,6 @@ function couter (state,action){
             return state
         }
     }
-
 export {couter}
 
 /* 测试 */
