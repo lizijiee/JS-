@@ -1,0 +1,32 @@
+.clerk-info {
+  background: #fff;
+  height: 100%;
+  padding: 10px 40px 0 40px;
+}
+.clerk-info .wrap {
+  margin: 20px 15% 0px;
+  padding: 30px 80px 20px;
+  width: 800px;
+  border: 1px solid #ebeef5;
+}
+.clerk-info .wrap .ant-form-item {
+  margin-bottom: 0;
+}
+.ant-modal-confirm-title {
+  font-weight: 550 !important;
+}
+.ant-modal-confirm-btns {
+  margin-top: 10px !important;
+}
+.ant-modal-confirm-body .ant-modal-confirm-content {
+  margin-top: 8px;
+  margin-left: 38px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 15px;
+}
+.ant-modal-confirm-body > .anticon {
+  font-size: 60px;
+}
+.ant-modal-content .ant-form-item {
+  margin-bottom: 0;
+}

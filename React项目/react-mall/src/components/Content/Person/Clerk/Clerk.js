@@ -38,13 +38,13 @@ class Temp extends Component {
     //挂载前,请求数据函数
     this.getData();
   }
-  async EditClick(index, link) {
+   EditClick(index, link) {
     // e.preventDefault();
     console.log(index);
     // pathname:'/pers/clerksDetails?num='+index,
     // state:this.state.data[0].ClerkData.filter(e=>e.num==index)
     // let vcode =[{aa:1}]
-    await this.props.history.push({
+     this.props.history.push({//将此条完整人员信息藏在state中
       pathname: "/pers/clerksDetails",
       state: this.state.data[0].ClerkData.filter(e => e.num == index),
       search: '?num=' + index
@@ -80,7 +80,7 @@ class Temp extends Component {
           <Button
             type="primary"
             size="small"
-            onClick={this.deleteInfo.bind(this, ele.num)}
+            onClick={()=>{this.deleteInfo(ele.num)}}
             style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
           >删除</Button>
         </td>
@@ -97,11 +97,15 @@ class Temp extends Component {
       } else {
         // 如果为完整数据对数据进行筛选后显示;
         // 根据页码判断后结果,显示内容;
-        this.listItems = data[0].ClerkData.filter((e) =>
-          e.num >= 1 + 5 * (this.state.current - 1) && e.num <= 5 * this.state.current
+        this.listItems = data[0].ClerkData.filter((e,index) =>
+        index >= 5 * (this.state.current - 1) && index < 5 * this.state.current
         ).map(this.renderFunc)
+        if(!this.listItems.length){
+          let temp= this.state.current*1
+          this.setState({ current:temp-1 })
+        }
       }
-      return (<tbody>{this.listItems}</tbody>)
+      return (<tbody >{this.listItems}</tbody>)
     }
   }
   ChangePage(page) {//<Pagination/>组件自带回调函数
@@ -129,7 +133,7 @@ class Temp extends Component {
          2. 使用filter把不符合条件的过滤掉,剩下符合条件内容;   this.state.data[0].ClerkData.filter((ele)=>ele.name==="李旭");
          3. 让母数据的ClerkData直接等于筛选后的子数据,解决渲染方法没法操作问题;
     */
-    let value = document.getElementById("indexName").value
+    let value = document.getElementById("indexName").value.trim();
     let result = this.state.storeData[0].ClerkData.filter((ele) => ele.name === value)
 
     if (result.length) {
@@ -137,7 +141,7 @@ class Temp extends Component {
       temp[0].ClerkData = result;
       this.setState({ data: temp }, () => {
         this.ClerksInfo(this.state.data)
-        console.log(this.state.data)
+        // console.log(this.state.data)
       })
     } else {
       this.error()
@@ -153,8 +157,8 @@ class Temp extends Component {
     });
   }
   deleteInfo(num) {
-    console.log(num)
     let obj = { num };
+    // console.log(JSON.stringify(obj))
     fetch(`http://localhost:2000/pers?act=deleteClerks`,
       {
         method: 'POST',
@@ -195,13 +199,12 @@ class Temp extends Component {
           .then(res => res.json())
           .then(data => {
             // 后台返回数据后页面是否渲染???
-            console.log(data)
-            this.setState({
+             this.setState({
               data: data.data,
               storeData: data.data
             })
           })
-        console.log(this.state)
+        // console.log(this.state)
         message.success('Successfully!')
         this.setState({
           visible: false,
@@ -229,7 +232,7 @@ class Temp extends Component {
   render() {
     let Page = null;
     let { data } = this.state;
-    const { getFieldProps, getFieldError, isFieldValidating, getFieldDecorator } = this.props.form;
+    const {resetFields, getFieldDecorator } = this.props.form;
     //  --------------------    表单部分    ---------------
     const formItemLayout = {//样式
       // span是整体左移 pull是label左移   
@@ -297,7 +300,10 @@ class Temp extends Component {
                 <div>
                   <IconFont type="mall-doc-glass" style={{ fontSize: 16, marginRight: 5 }} />
                   <span>筛选检索</span>
-                  <Button className="btn" onClick={this.handleSearchClick.bind(this)} >查询结果</Button>
+                  <Button 
+                  className="btn" 
+                  onClick={()=>{this.handleSearchClick()}}
+                  >查询结果</Button>
                   <Button
                     className="btn"
                     style={{ color: "#1890ff", marginRight: 20 }}
@@ -320,6 +326,7 @@ class Temp extends Component {
               <button className="add" onClick={this.addInfo.bind(this)}>添加人员信息</button>
 
               <Modal
+                afterClose={ () => resetFields()}
                 title="店员信息添加"
                 visible={this.state.visible}
                 onOk={this.handleOk}
@@ -331,7 +338,7 @@ class Temp extends Component {
             </div>
           </div>
           <main className="table-container">
-            <table cellPadding="0" cellSpacing="0">
+            <table cellPadding="0" cellSpacing="0" style={{width:"100%"}}>
               <thead>
                 <tr>
                   <th>工号</th>

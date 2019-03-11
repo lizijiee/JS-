@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, Redirect} from 'react-router-dom'
+import { Route, Switch, Redirect,withRouter} from 'react-router-dom'
 import Home from './components/Content/Content';
 import Clerk from './components/Content/Person/Clerk/Clerk'
 import ClerkEdit from './components/Content/Person/Clerk/EditClick/Edit'
+import MemberEdit from './components/Content/Person/Member/EditClick/Edit'
 
 import Member from './components/Content/Person/Member/Member'
 import FoodList from './components/Content/Food/List/List'
@@ -59,6 +60,16 @@ class App extends Component {
                     path="/pers/member"
                     render={() => { return <Member /> }} />
                 <Route
+                    path="/pers/memberDetails"
+                    render={({location:{search}}) => {
+                        let temp=""
+                        let [,data] = search.split('?');
+                        if(data.split('=').length === 2){
+                            temp= <MemberEdit/>
+                        }
+                        return temp
+                    }} />
+                <Route
                     path="/food"
                     exact
                     render={() => { return <FoodList /> }} />
@@ -108,7 +119,7 @@ class App extends Component {
     }
 }
 
-export default App
+export default  App
 // 作用：把不是通过路由切换过来的组件中，将react-router-dom 的 history、location、match 三个对象传入props对象上
  
 /* 

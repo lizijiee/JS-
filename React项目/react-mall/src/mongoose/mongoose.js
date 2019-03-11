@@ -380,16 +380,8 @@ app.use(static(
 ))
 app.use(bodyParser()); //POST传送过来数据格式转换,再router.get之前
  */
-/* 
-    ------------------       人员管理部分后台接口     -------------------
-*/
-// router.get('clerks', async (ctx) => {
-//     let arr = await Shop.find({id: 1})
-//     ctx.body = {
-//         code: 0,
-//         data: arr,
-//         msg: "成功"
-// }})
+
+ //   ------------------       人员管理部分后台接口     -------------------
 
 /* 
  find方法总结： 
@@ -477,6 +469,7 @@ router.get('/pers/:act', async (ctx) => {
         router.post('/pers', async (ctx) => {
             let req = ctx.request.query; //对象
             switch (req.act) {
+    /* --------------------------  店员信息操作    --------------------- */
                 case "editClerks":
                     try {
                         /*  
@@ -523,7 +516,7 @@ router.get('/pers/:act', async (ctx) => {
                         }
                     }
                     break;
-                    //---------------------    添加数据     ----------------------- 
+  //---------------------    添加     ----------------------- 
                 case "addClerks":
                     try {
                         // 1.操作要加入数据库的对象
@@ -557,6 +550,7 @@ router.get('/pers/:act', async (ctx) => {
                         }
                     }
                     break;
+//---------------------    删除     ----------------------- 
                 case "deleteClerks":
                     try {
                         let obj = ctx.request.body; //存储前端对象
@@ -571,6 +565,74 @@ router.get('/pers/:act', async (ctx) => {
                         });
                         let realArr = await Shop.find({
                             id: 1
+                        })
+                        ctx.body = {
+                            code: 0,
+                            data: realArr,
+                            msg: "成功"
+                        }
+                    } catch (error) {
+                        ctx.body = {
+                            code: 1,
+                            msg: "找不到"
+                        }
+                    }
+                    break;
+/* -----------------------------  会员信息操作    ----------------------- */
+                    case "editMember":
+                    try {
+                        console.log( ctx.request.body )
+                        let obj = ctx.request.body
+                        obj.Id = parseInt(obj.Id)
+                        await User.update({ // 2.删除原来数据  
+                            "id": 3,
+                        }, {
+                            $pull: {
+                                UsersData: {
+                                    // 删除时候需要对num类型进行判断
+                                    Id: obj.Id
+                                }
+                            }
+                        });
+                        await User.update({ // 3.添加。
+                            "id": 3,
+                        }, {
+                            $push: {
+                                UsersData: obj
+                            }
+                        });
+                        let arr = await User.find({
+                            id: 3
+                        })
+                        console.log(arr)
+
+                        ctx.body = {
+                            code: 0,
+                            data: arr,
+                            msg: "成功"
+                        }
+                    } catch (error) {
+                        ctx.body = {
+                            code: 1,
+                            msg: "找不到"
+                        }
+                    }
+                    break; 
+/* -----------------------------  删除操作    ----------------------- */
+                    case "deleteMember":
+                    try {
+                       let obj = ctx.request.body; 
+                        await User.update({
+                            "id": 3
+                        }, {
+                            $pull: {
+                                UsersData: {
+                                    Id: parseInt(obj.Id)
+                                }
+                            }
+                        });
+                        let realArr = await User.find({
+                            id: 3
                         })
                         ctx.body = {
                             code: 0,

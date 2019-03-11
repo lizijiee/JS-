@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 // import 'antd/dist/antd.css';
-import { BrowserRouter as Router,withRouter} from 'react-router-dom'
+import { BrowserRouter as Router} from 'react-router-dom'
 import Route from './Route';
 
 import { Layout } from 'antd';
@@ -68,7 +68,7 @@ class MallProject extends React.Component {
   }
 }
 
-ReactDOM.render(<MallProject/> , document.getElementById('container'));
+ReactDOM.render( <MallProject/>, document.getElementById('container'));
 
 
 

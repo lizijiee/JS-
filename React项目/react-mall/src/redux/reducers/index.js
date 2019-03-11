@@ -14,7 +14,7 @@ const initState = {
 const reducer= (state=initState,action)=>{ 
        state = JSON.parse(JSON.stringify(state));//initState为复合类型需要深克隆一下;
         switch(action.type){
-            case "SET_DATA_MEMBER"://请求数据后对redux进行赋值,可以写语句
+             case "SET_DATA_MEMBER"://请求数据后对redux进行赋值,可以写语句
                 // let {memberData}=action.data;
                 state.memberData=action.data;
              break;

@@ -2,8 +2,8 @@
 import * as types from '../constants/actionTypes'; //注释在此文件中
 
 export const setMemberInfo = data => ({
-    type: types.SET_DATA_MEMBER,
-    data
+  type: types.SET_DATA_MEMBER,
+  data
 })
 
 // export const requestPosts = subreddit => ({
@@ -11,13 +11,12 @@ export const setMemberInfo = data => ({
 //     subreddit
 // })
 
-export const fetchPosts = subreddit => dispatch => {
-    // dispatch(getMemberInfo(subreddit))
-    return fetch(`http://localhost:2000/pers/member`, {
-            method: 'GET',
-        })
-        .then(res => res.json())
-        .then(data => dispatch(setMemberInfo(data)))//dispatch(receivePosts(subreddit, json))
+export const fetchMemmberInfo = subreddit => dispatch => { //请求会员信息数据
+  return fetch(`http://localhost:2000/pers/member`, {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data => dispatch(setMemberInfo(data)))
 }
 
 
