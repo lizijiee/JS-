@@ -25,7 +25,8 @@ class Temp extends Component {
     fetch(`http://localhost:2000/pers/clerks`, {
       method: 'GET'
     })
-      .then(res => res.json()).then(
+      .then(res => res.json())
+      .then(
         data => {
           this.setState({
             data: data.data,
@@ -107,7 +108,7 @@ class Temp extends Component {
     this.setState({ current: page })// 使用setState的 "回调函数" 解决异步问题
 
     // setState为异步  上面console以后 => setState为异步 => 先执行下面console 
-
+    
     // 解决this.setState可能会引发不必要的渲染(renders) 
     // https://www.cnblogs.com/lgp142332/p/7270047.html
   }
