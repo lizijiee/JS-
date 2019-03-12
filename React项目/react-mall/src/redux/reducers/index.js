@@ -21,7 +21,7 @@ const reducer= (state=initState,action)=>{
         }
         return state;
     }
-    export  {reducer}
+  export  {reducer}
 /* 测试 */
 
 /* 

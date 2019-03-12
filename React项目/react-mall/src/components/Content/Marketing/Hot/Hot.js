@@ -8,7 +8,7 @@ const Option = Select.Option;
 export default class Temp extends Component {
     render() {
         return (
-            <section className="food-info">
+            <section className="food-info-hot">
                 {/*   员工信息组件  */}
                 <div className="app-container">
                     <div className="el-serch-wrap">
@@ -89,7 +89,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                     <td>宫保鸡丁</td>
+                                     <td>宫</td>
                                      <td> <Switch size="default" /></td>
                                     <td>
                                         推荐中

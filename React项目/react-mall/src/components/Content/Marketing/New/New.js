@@ -8,7 +8,7 @@ const Option = Select.Option;
 export default class Temp extends Component {
     render() {
         return (
-            <section className="food-info">
+            <section className="food-info-new">
                 {/*   员工信息组件  */}
                 <div className="app-container">
                     <div className="el-serch-wrap">

@@ -110,6 +110,13 @@ p {
   width: 100%;
   text-align: center;
 }
+.order-cause .app-container .table-container table thead tr {
+  height: 60px;
+  background: #bfbfbf1c 1c;
+}
+.order-cause .app-container .table-container table tbody tr:hover {
+  background: #098bd912;
+}
 .order-cause .app-container .table-container table th {
   padding: 12px 0;
   border-left: 1px solid #ebeef5;

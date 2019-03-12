@@ -226,6 +226,7 @@ class Temp extends Component {
   handleResetClick() {
     document.getElementById("indexName").value = ""
     this.setState({ current: 1 })
+    
     this.getData()//如果结果不存在重新请求数据,也可以提前把数据存在
   }
 

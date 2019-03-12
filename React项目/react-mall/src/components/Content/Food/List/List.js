@@ -21,7 +21,7 @@ export default class Temp extends Component {
                             </div>
                             <div className="el-form-item">
                                 <span>输入检索:</span>
-                                <input type="text" placeholder="请输入姓名">
+                                <input type="text" placeholder="请输入菜名">
                                 </input>
                                 
                             </div>

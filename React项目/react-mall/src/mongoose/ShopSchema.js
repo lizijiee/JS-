@@ -7,7 +7,9 @@ const ShopSchema=new mongoose.Schema({//Schema构造函数
     num:String,
     ClerkData:Array, //员工数据
     // UsersData:Array,   //员工数据
-    // Data:Array,
+    result:Array,
+    esultcode: String,
+    
 });
 const UserSchema=new mongoose.Schema({//Schema构造函数
     //定义文档的结构和属性

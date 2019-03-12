@@ -387,7 +387,7 @@ app.use(bodyParser()); //POST传送过来数据格式转换,再router.get之前
  find方法总结： 
     没有设置则匹配所有数据
 */
-router.get('/pers/:act', async (ctx) => {
+router.get('/pers/:act', async (ctx) => {  //用于查找,首次渲染的接口
             let req = ctx.request.query; //对象
             let params = ctx.params
             switch (params.act) {
@@ -447,7 +447,35 @@ router.get('/pers/:act', async (ctx) => {
                            */
                         break;
                     }
-            });
+});
+
+router.get('/food/:act', async (ctx) => {  //food组件接口
+    let req = ctx.request.query; //对象
+    let params = ctx.params
+    switch (params.act) {
+        case "list":
+            try {
+                // await Shop.update({
+                //     id: 2,
+                //     "ClerkData.num": 1
+                // }, {
+                //     $set: {
+                //         "ClerkData.$.sex": "女",
+                //     }
+                // });
+                let arr = await Shop.find({ //没有设置则匹配所有数据
+                    id: 2
+                })
+                ctx.body = arr
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+            }
+});
 
         /* 
                  思路整理：
@@ -466,7 +494,7 @@ router.get('/pers/:act', async (ctx) => {
         */
         app.use(bodyParser()) //Fetch中 POST传送过来数据格式转换,再router.get之前
 
-        router.post('/pers', async (ctx) => {
+        router.post('/pers', async (ctx) => { //用于写编辑的接口
             let req = ctx.request.query; //对象
             switch (req.act) {
     /* --------------------------  店员信息操作    --------------------- */
@@ -648,6 +676,8 @@ router.get('/pers/:act', async (ctx) => {
                     break;
             }
         });
+
+
 
         app.use(router.routes()); app.listen(2000, () => {
             console.log('app started at port 2000...');

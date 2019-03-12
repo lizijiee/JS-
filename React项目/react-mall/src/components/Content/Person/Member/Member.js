@@ -31,7 +31,7 @@ async handleSearchClick() {
   let value = document.getElementById("indexName").value.trim();//获取输入值
   let {storeData} = this.state;
   let  transData = storeData.data[0].UsersData.filter((ele)=>ele.user===value)
-  console.log(storeData.data[0].UsersData.filter((ele)=>ele.user===value))
+  // console.log(storeData.data[0].UsersData.filter((ele)=>ele.user===value))
  
   if(!transData.length){
     const  error = () => {
@@ -40,8 +40,9 @@ async handleSearchClick() {
     error()
   await  this.props.fetchMemmberInfo()
   this.setState({
-    storeData:this.props.data
-})
+    storeData:this.props.data,
+    current:1
+  })
   }else{
   ;//筛选出结果
      storeData.data[0].UsersData=transData
@@ -50,6 +51,12 @@ async handleSearchClick() {
     })
   }
 }
+async handleResetClick() {
+  document.getElementById("indexName").value = ""
+  await  this.props.fetchMemmberInfo()
+  this.setState({ current: 1,storeData:this.props.data })// 如果结果不存在重新请求数据,也可以提前把数据存在
+  console.log(this.state.storeData)
+ }
 
  //-------------------------- 底部页码组件部分(以下) --------------------
     /* 
@@ -151,7 +158,6 @@ async handleSearchClick() {
      if (!Array.isArray(this.state.storeData)) {//拿到数据
             // Object.prototype.toString.call(value)
       let {storeData:data} = this.state;//解构赋值
-          console.log(data)
 
         if (data.data[0].UsersData.length === 1) {
           //只有一条数据,渲染条件,数据格式也在这里进行修改;
@@ -177,12 +183,24 @@ async handleSearchClick() {
                     <div className="el-serch-wrap">
                         <div className="el-title-body">
                             <div>
-                                <IconFont type="mall-doc-glass" style={{ fontSize: 16, marginRight: 5 }} />
+                                <IconFont 
+                                type="mall-doc-glass" 
+                                style={{ fontSize: 16, marginRight: 5 }} />
                                 <span>筛选检索</span>
                                 <button className="add"
                                 onClick={()=>{this.handleSearchClick()}}
                                 >查询结果</button>
-                            </div>
+                                 <Button
+                    className="btn"
+                    style={{ 
+                     color: "#1890ff", 
+                     float:"right",
+                     marginRight: 20,
+                    }}
+                     ghost
+                    onClick={this.handleResetClick.bind(this)}
+                  >重置</Button>
+                     </div>
                             <div className="el-form-item">
                                 <span>输入检索:</span>
                                 <input type="text" placeholder="请输入姓名" id="indexName">
@@ -212,7 +230,7 @@ async handleSearchClick() {
                                     <th>操作</th>
                                 </tr>
                             </thead>
-                            <tbody>{ Items }</tbody>
+                            <tbody>{Items}</tbody>
                              </table>
                     </main>
                     {this.renderPage(this.props.data)}

@@ -40,6 +40,23 @@
   outline: 0;
   margin: 0;
 }
+.clerk-list .app-container .el-serch-wrap .el-title-body .btn {
+  float: right;
+  padding: 9px 15px;
+  font-size: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #409eff;
+  border: 1px solid #dcdfe6;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  height: 35px;
+}
 .clerk-list .app-container .el-serch-wrap .el-title-body .el-form-item {
   margin: 15px 10px 18px 55px;
 }
