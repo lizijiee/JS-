@@ -71,301 +71,299 @@ db.on('connected', function (err) {
         console.log('连接数据库成功！');
         const Users = new User( //new 一下导入的Shop类
             {
-                "id" : 3,
-                "UsersData": [
-                          {
-                                    "Id": 1,
-                                    "user": "金芳",
-                                    "phoneNum": 14493285722,
-                                    "vipNum": 4953,
-                                    "registerTime": "2018-3-8",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 664.8
-                          },
-                          {
-                                    "Id": 2,
-                                    "user": "傅勇",
-                                    "phoneNum": 14584461519,
-                                    "vipNum": 11711,
-                                    "registerTime": "2018-2-1",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 263.3
-                          },
-                          {
-                                    "Id": 3,
-                                    "user": "朱芳",
-                                    "phoneNum": 14738320089,
-                                    "vipNum": 13144,
-                                    "registerTime": "2018-2-1",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 909.6
-                          },
-                          {
-                                    "Id": 4,
-                                    "user": "高艳",
-                                    "phoneNum": 14928991841,
-                                    "vipNum": 241,
-                                    "registerTime": "2018-2-1",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 252.2
-                          },
-                          {
-                                    "Id": 5,
-                                    "user": "史秀英",
-                                    "phoneNum": 13738290349,
-                                    "vipNum": 3980,
-                                    "registerTime": "2018-2-8",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 482.2
-                          },
-                          {
-                                    "Id": 6,
-                                    "user": "万敏",
-                                    "phoneNum": 14406927717,
-                                    "vipNum": 8144,
-                                    "registerTime": "2018-3-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 290.2
-                          },
-                          {
-                                    "Id": 7,
-                                    "user": "黄静",
-                                    "phoneNum": 14555242307,
-                                    "vipNum": 994,
-                                    "registerTime": "2018-2-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 459.3
-                          },
-                          {
-                                    "Id": 8,
-                                    "user": "龙秀兰",
-                                    "phoneNum": 13807753825,
-                                    "vipNum": 3824,
-                                    "registerTime": "2018-3-8",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 980.3
-                          },
-                          {
-                                    "Id": 9,
-                                    "user": "沈勇",
-                                    "phoneNum": 14491368424,
-                                    "vipNum": 13527,
-                                    "registerTime": "2018-3-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 727.7
-                          },
-                          {
-                                    "Id": 10,
-                                    "user": "黄芳",
-                                    "phoneNum": 14118944018,
-                                    "vipNum": 5552,
-                                    "registerTime": "2018-3-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 141.2
-                          },
-                          {
-                                    "Id": 11,
-                                    "user": "阎平",
-                                    "phoneNum": 13827958496,
-                                    "vipNum": 416,
-                                    "registerTime": "2018-2-2",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 692.1
-                          },
-                          {
-                                    "Id": 12,
-                                    "user": "顾霞",
-                                    "phoneNum": 14408163895,
-                                    "vipNum": 9937,
-                                    "registerTime": "2018-3-8",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 873.6
-                          },
-                          {
-                                    "Id": 13,
-                                    "user": "沈强",
-                                    "phoneNum": 14115131596,
-                                    "vipNum": 10432,
-                                    "registerTime": "2018-2-1",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 865.8
-                          },
-                          {
-                                    "Id": 14,
-                                    "user": "孙洋",
-                                    "phoneNum": 15013489087,
-                                    "vipNum": 2913,
-                                    "registerTime": "2018-3-2",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 966.3
-                          },
-                          {
-                                    "Id": 15,
-                                    "user": "傅艳",
-                                    "phoneNum": 14476756448,
-                                    "vipNum": 4021,
-                                    "registerTime": "2018-3-8",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 628.2
-                          },
-                          {
-                                    "Id": 16,
-                                    "user": "周伟",
-                                    "phoneNum": 14919070943,
-                                    "vipNum": 7616,
-                                    "registerTime": "2018-3-1",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 970.2
-                          },
-                          {
-                                    "Id": 17,
-                                    "user": "何秀英",
-                                    "phoneNum": 14681014075,
-                                    "vipNum": 8369,
-                                    "registerTime": "2018-2-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 936.3
-                          },
-                          {
-                                    "Id": 18,
-                                    "user": "林洋",
-                                    "phoneNum": 14599398338,
-                                    "vipNum": 3018,
-                                    "registerTime": "2018-2-1",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 857.6
-                          },
-                          {
-                                    "Id": 19,
-                                    "user": "宋杰",
-                                    "phoneNum": 14134536679,
-                                    "vipNum": 150,
-                                    "registerTime": "2018-3-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 178.6
-                          },
-                          {
-                                    "Id": 20,
-                                    "user": "叶超",
-                                    "phoneNum": 13933320017,
-                                    "vipNum": 5510,
-                                    "registerTime": "2018-2-1",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 567.7
-                          },
-                          {
-                                    "Id": 21,
-                                    "user": "杨磊",
-                                    "phoneNum": 14537556359,
-                                    "vipNum": 1113,
-                                    "registerTime": "2018-3-8",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 695.8
-                          },
-                          {
-                                    "Id": 22,
-                                    "user": "宋洋",
-                                    "phoneNum": 14018848629,
-                                    "vipNum": 4259,
-                                    "registerTime": "2018-2-8",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 981.3
-                          },
-                          {
-                                    "Id": 23,
-                                    "user": "叶丽",
-                                    "phoneNum": 13891949695,
-                                    "vipNum": 11592,
-                                    "registerTime": "2018-3-8",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 679.2
-                          },
-                          {
-                                    "Id": 24,
-                                    "user": "毛磊",
-                                    "phoneNum": 14475698138,
-                                    "vipNum": 4915,
-                                    "registerTime": "2018-2-1",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 281.1
-                          },
-                          {
-                                    "Id": 25,
-                                    "user": "陆涛",
-                                    "phoneNum": 14231345729,
-                                    "vipNum": 6940,
-                                    "registerTime": "2018-3-2",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 609.8
-                          },
-                          {
-                                    "Id": 26,
-                                    "user": "邱敏",
-                                    "phoneNum": 13917655599,
-                                    "vipNum": 11305,
-                                    "registerTime": "2018-3-8",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 416.4
-                          },
-                          {
-                                    "Id": 27,
-                                    "user": "康秀兰",
-                                    "phoneNum": 14587784942,
-                                    "vipNum": 4355,
-                                    "registerTime": "2018-2-1",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 282.4
-                          },
-                          {
-                                    "Id": 28,
-                                    "user": "马杰",
-                                    "phoneNum": 13755918702,
-                                    "vipNum": 5483,
-                                    "registerTime": "2018-3-2",
-                                    "state": "注销",
-                                    "password": "12345678",
-                                    "balance": 708.4
-                          },
-                          {
-                                    "Id": 29,
-                                    "user": "朱勇",
-                                    "phoneNum": 14226281544,
-                                    "vipNum": 12306,
-                                    "registerTime": "2018-2-1",
-                                    "state": "正常",
-                                    "password": "12345678",
-                                    "balance": 676.6
-                          }
+                "id": 3,
+                "UsersData": [{
+                        "Id": 1,
+                        "user": "金芳",
+                        "phoneNum": 14493285722,
+                        "vipNum": 4953,
+                        "registerTime": "2018-3-8",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 664.8
+                    },
+                    {
+                        "Id": 2,
+                        "user": "傅勇",
+                        "phoneNum": 14584461519,
+                        "vipNum": 11711,
+                        "registerTime": "2018-2-1",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 263.3
+                    },
+                    {
+                        "Id": 3,
+                        "user": "朱芳",
+                        "phoneNum": 14738320089,
+                        "vipNum": 13144,
+                        "registerTime": "2018-2-1",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 909.6
+                    },
+                    {
+                        "Id": 4,
+                        "user": "高艳",
+                        "phoneNum": 14928991841,
+                        "vipNum": 241,
+                        "registerTime": "2018-2-1",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 252.2
+                    },
+                    {
+                        "Id": 5,
+                        "user": "史秀英",
+                        "phoneNum": 13738290349,
+                        "vipNum": 3980,
+                        "registerTime": "2018-2-8",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 482.2
+                    },
+                    {
+                        "Id": 6,
+                        "user": "万敏",
+                        "phoneNum": 14406927717,
+                        "vipNum": 8144,
+                        "registerTime": "2018-3-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 290.2
+                    },
+                    {
+                        "Id": 7,
+                        "user": "黄静",
+                        "phoneNum": 14555242307,
+                        "vipNum": 994,
+                        "registerTime": "2018-2-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 459.3
+                    },
+                    {
+                        "Id": 8,
+                        "user": "龙秀兰",
+                        "phoneNum": 13807753825,
+                        "vipNum": 3824,
+                        "registerTime": "2018-3-8",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 980.3
+                    },
+                    {
+                        "Id": 9,
+                        "user": "沈勇",
+                        "phoneNum": 14491368424,
+                        "vipNum": 13527,
+                        "registerTime": "2018-3-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 727.7
+                    },
+                    {
+                        "Id": 10,
+                        "user": "黄芳",
+                        "phoneNum": 14118944018,
+                        "vipNum": 5552,
+                        "registerTime": "2018-3-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 141.2
+                    },
+                    {
+                        "Id": 11,
+                        "user": "阎平",
+                        "phoneNum": 13827958496,
+                        "vipNum": 416,
+                        "registerTime": "2018-2-2",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 692.1
+                    },
+                    {
+                        "Id": 12,
+                        "user": "顾霞",
+                        "phoneNum": 14408163895,
+                        "vipNum": 9937,
+                        "registerTime": "2018-3-8",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 873.6
+                    },
+                    {
+                        "Id": 13,
+                        "user": "沈强",
+                        "phoneNum": 14115131596,
+                        "vipNum": 10432,
+                        "registerTime": "2018-2-1",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 865.8
+                    },
+                    {
+                        "Id": 14,
+                        "user": "孙洋",
+                        "phoneNum": 15013489087,
+                        "vipNum": 2913,
+                        "registerTime": "2018-3-2",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 966.3
+                    },
+                    {
+                        "Id": 15,
+                        "user": "傅艳",
+                        "phoneNum": 14476756448,
+                        "vipNum": 4021,
+                        "registerTime": "2018-3-8",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 628.2
+                    },
+                    {
+                        "Id": 16,
+                        "user": "周伟",
+                        "phoneNum": 14919070943,
+                        "vipNum": 7616,
+                        "registerTime": "2018-3-1",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 970.2
+                    },
+                    {
+                        "Id": 17,
+                        "user": "何秀英",
+                        "phoneNum": 14681014075,
+                        "vipNum": 8369,
+                        "registerTime": "2018-2-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 936.3
+                    },
+                    {
+                        "Id": 18,
+                        "user": "林洋",
+                        "phoneNum": 14599398338,
+                        "vipNum": 3018,
+                        "registerTime": "2018-2-1",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 857.6
+                    },
+                    {
+                        "Id": 19,
+                        "user": "宋杰",
+                        "phoneNum": 14134536679,
+                        "vipNum": 150,
+                        "registerTime": "2018-3-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 178.6
+                    },
+                    {
+                        "Id": 20,
+                        "user": "叶超",
+                        "phoneNum": 13933320017,
+                        "vipNum": 5510,
+                        "registerTime": "2018-2-1",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 567.7
+                    },
+                    {
+                        "Id": 21,
+                        "user": "杨磊",
+                        "phoneNum": 14537556359,
+                        "vipNum": 1113,
+                        "registerTime": "2018-3-8",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 695.8
+                    },
+                    {
+                        "Id": 22,
+                        "user": "宋洋",
+                        "phoneNum": 14018848629,
+                        "vipNum": 4259,
+                        "registerTime": "2018-2-8",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 981.3
+                    },
+                    {
+                        "Id": 23,
+                        "user": "叶丽",
+                        "phoneNum": 13891949695,
+                        "vipNum": 11592,
+                        "registerTime": "2018-3-8",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 679.2
+                    },
+                    {
+                        "Id": 24,
+                        "user": "毛磊",
+                        "phoneNum": 14475698138,
+                        "vipNum": 4915,
+                        "registerTime": "2018-2-1",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 281.1
+                    },
+                    {
+                        "Id": 25,
+                        "user": "陆涛",
+                        "phoneNum": 14231345729,
+                        "vipNum": 6940,
+                        "registerTime": "2018-3-2",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 609.8
+                    },
+                    {
+                        "Id": 26,
+                        "user": "邱敏",
+                        "phoneNum": 13917655599,
+                        "vipNum": 11305,
+                        "registerTime": "2018-3-8",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 416.4
+                    },
+                    {
+                        "Id": 27,
+                        "user": "康秀兰",
+                        "phoneNum": 14587784942,
+                        "vipNum": 4355,
+                        "registerTime": "2018-2-1",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 282.4
+                    },
+                    {
+                        "Id": 28,
+                        "user": "马杰",
+                        "phoneNum": 13755918702,
+                        "vipNum": 5483,
+                        "registerTime": "2018-3-2",
+                        "state": "注销",
+                        "password": "12345678",
+                        "balance": 708.4
+                    },
+                    {
+                        "Id": 29,
+                        "user": "朱勇",
+                        "phoneNum": 14226281544,
+                        "vipNum": 12306,
+                        "registerTime": "2018-2-1",
+                        "state": "正常",
+                        "password": "12345678",
+                        "balance": 676.6
+                    }
                 ]
-      }
-            , {
+            }, {
                 //不将版本号存入数据库
                 versionKey: false
             }
@@ -381,92 +379,33 @@ app.use(static(
 app.use(bodyParser()); //POST传送过来数据格式转换,再router.get之前
  */
 
- //   ------------------       人员管理部分后台接口     -------------------
+//   ------------------       人员管理部分后台接口     -------------------
 
 /* 
  find方法总结： 
     没有设置则匹配所有数据
 */
-router.get('/pers/:act', async (ctx) => {  //用于查找,首次渲染的接口
-            let req = ctx.request.query; //对象
-            let params = ctx.params
-            switch (params.act) {
-                case "clerks":
-                    try {
-                        let arr = await Shop.find({ //没有设置则匹配所有数据
-                            id: 1
-                        })
-                        // let arr=  Shop.find().then(function (result) {
-                        // console.log(result); 
-                        //     });
-                        // let data1=await Data.find((e)=>{e==="banner"});
-                        //  Shop.find({'content.label': value}, function (err, comment) {
-                        //     console.log(comment)
-                        // })
-                        ctx.body = {
-                            code: 0,
-                            data: arr,
-                            msg: "成功"
-                        }
-                    } catch (error) {
-                        ctx.body = {
-                            code: 1,
-                            msg: "找不到"
-                        }
-                    }
-                    break;
-                case "member":
-                    try {       
-                        let arr = await User.find({
-                           "id": 3
-                        }) 
-                        ctx.body = {
-                                code: 0,
-                                data: arr,
-                                msg: "成功"
-                            }
-                        }
-                        catch (error) {
-                            ctx.body = {
-                                code: 1,
-                                msg: "找不到"
-                            }
-                        }
-                        /*  
-                          //第一层: 用户层面(UsersData)删除操作
-                          await User.update({
-                               "id": 3,
-                           }, {
-                               $pull: {
-                                   UsersData: {
-                                       // 删除时候需要对num类型进行判断
-                                       Id: parseInt(1)
-                                   }
-                               }
-                           }); 
-                           */
-                        break;
-                    }
-});
-
-router.get('/food/:act', async (ctx) => {  //food组件接口
+router.get('/pers/:act', async (ctx) => { //用于查找,首次渲染的接口
     let req = ctx.request.query; //对象
     let params = ctx.params
     switch (params.act) {
-        case "list":
+        case "clerks":
             try {
-                // await Shop.update({
-                //     id: 2,
-                //     "ClerkData.num": 1
-                // }, {
-                //     $set: {
-                //         "ClerkData.$.sex": "女",
-                //     }
-                // });
                 let arr = await Shop.find({ //没有设置则匹配所有数据
-                    id: 2
+                    id: 1
                 })
-                ctx.body = arr
+                // let arr=  Shop.find().then(function (result) {
+                // console.log(result); 
+                //     });
+                // let data1=await Data.find((e)=>{e==="banner"});
+                //  Shop.find({'content.label': value}, function (err, comment) {
+                //     console.log(comment)
+                // })
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
             } catch (error) {
                 ctx.body = {
                     code: 1,
@@ -474,259 +413,314 @@ router.get('/food/:act', async (ctx) => {  //food组件接口
                 }
             }
             break;
+        case "member":
+            try {
+                let arr = await User.find({
+                    "id": 3
+                })
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
             }
+            /*  
+              //第一层: 用户层面(UsersData)删除操作
+              await User.update({
+                   "id": 3,
+               }, {
+                   $pull: {
+                       UsersData: {
+                           // 删除时候需要对num类型进行判断
+                           Id: parseInt(1)
+                       }
+                   }
+               }); 
+               */
+            break;
+    }
 });
 
-        /* 
-                 思路整理：
-                 1.前端修改后发到后端;
-                 2.后端将所有内容获取到以后：
-                 3.pull模糊匹配到后,删除原来的;
-                 4.再根据前端发过来的新生成一条;(num唯一不变)
-        */
-        /* 
-                 操作数据:
-                          1. 删除原来数据 
-                          2. 添加新数据 
-                 坑汇总：
-                        1. 修改数据时候注意修改Schema中类
-                        2. async 数据更新前(Shop.updatem)必须加  await  
-        */
-        app.use(bodyParser()) //Fetch中 POST传送过来数据格式转换,再router.get之前
-
-        router.post('/pers', async (ctx) => { //用于写编辑的接口
-            let req = ctx.request.query; //对象
-            switch (req.act) {
-    /* --------------------------  店员信息操作    --------------------- */
-                case "editClerks":
-                    try {
-                        /*  
-                          步骤:
-                              1.拿到num,添加到对象中; //req.num
-                              2.删除数据库中原数据;
-                              3.将新数据添加进去;
-                        */
-                        // 1.操作要加入数据库的对象
-                        let obj = ctx.request.body
-                        obj.num = parseInt(req.num)
-                        // 2.删除原来数据  
-                        await Shop.update({
-                            "id": 1,
-                        }, {
-                            $pull: {
-                                ClerkData: {
-                                    // 删除时候需要对num类型进行判断
-                                    num: parseInt(req.num)
-                                }
-                            }
-                        });
-                        // 3.将对象添加到数据库中,添加修改后数据。
-                        await Shop.update({
-                            "id": "1"
-                        }, {
-                            $push: {
-                                ClerkData: obj
-                            }
-                        });
-                        /* ------------------------------------------- */
-                        let arr = await Shop.find({
-                            id: 1
-                        })
-                        ctx.body = {
-                            code: 0,
-                            data: arr,
-                            msg: "成功"
-                        }
-                    } catch (error) {
-                        ctx.body = {
-                            code: 1,
-                            msg: "找不到"
-                        }
-                    }
-                    break;
-  //---------------------    添加     ----------------------- 
-                case "addClerks":
-                    try {
-                        // 1.操作要加入数据库的对象
-                        let obj = ctx.request.body; //存储前端对象
-                        console.log(obj)
-                        let arr = await Shop.find({ //查找所有数据
-                            id: 1
-                        })
-                        arr[0].ClerkData.sort((a, b) => a.num - b.num) // 改变原数组,将数组按照num数值排序,方便num+1
-                        obj.num = parseInt(arr[0].ClerkData[arr[0].ClerkData.length - 1].num + 1)
-
-                        await Shop.update({
-                            "id": "1"
-                        }, {
-                            $push: {
-                                ClerkData: obj
-                            }
-                        });
-                        let realArr = await Shop.find({
-                            id: 1
-                        })
-                        ctx.body = {
-                            code: 0,
-                            data: realArr,
-                            msg: "成功"
-                        }
-                    } catch (error) {
-                        ctx.body = {
-                            code: 1,
-                            msg: "找不到"
-                        }
-                    }
-                    break;
-//---------------------    删除     ----------------------- 
-                case "deleteClerks":
-                    try {
-                        let obj = ctx.request.body; //存储前端对象
-                        await Shop.update({
-                            "id": "1"
-                        }, {
-                            $pull: {
-                                ClerkData: {
-                                    num: parseInt(obj.num)
-                                }
-                            }
-                        });
-                        let realArr = await Shop.find({
-                            id: 1
-                        })
-                        ctx.body = {
-                            code: 0,
-                            data: realArr,
-                            msg: "成功"
-                        }
-                    } catch (error) {
-                        ctx.body = {
-                            code: 1,
-                            msg: "找不到"
-                        }
-                    }
-                    break;
-/* -----------------------------  会员信息操作    ----------------------- */
-                    case "editMember":
-                    try {
-                        console.log( ctx.request.body )
-                        let obj = ctx.request.body
-                        obj.Id = parseInt(obj.Id)
-                        await User.update({ // 2.删除原来数据  
-                            "id": 3,
-                        }, {
-                            $pull: {
-                                UsersData: {
-                                    // 删除时候需要对num类型进行判断
-                                    Id: obj.Id
-                                }
-                            }
-                        });
-                        await User.update({ // 3.添加。
-                            "id": 3,
-                        }, {
-                            $push: {
-                                UsersData: obj
-                            }
-                        });
-                        let arr = await User.find({
-                            id: 3
-                        })
-                        console.log(arr)
-
-                        ctx.body = {
-                            code: 0,
-                            data: arr,
-                            msg: "成功"
-                        }
-                    } catch (error) {
-                        ctx.body = {
-                            code: 1,
-                            msg: "找不到"
-                        }
-                    }
-                    break; 
-/* -----------------------------  删除操作    ----------------------- */
-                    case "deleteMember":
-                    try {
-                       let obj = ctx.request.body; 
-                        await User.update({
-                            "id": 3
-                        }, {
-                            $pull: {
-                                UsersData: {
-                                    Id: parseInt(obj.Id)
-                                }
-                            }
-                        });
-                        let realArr = await User.find({
-                            id: 3
-                        })
-                        ctx.body = {
-                            code: 0,
-                            data: realArr,
-                            msg: "成功"
-                        }
-                    } catch (error) {
-                        ctx.body = {
-                            code: 1,
-                            msg: "找不到"
-                        }
-                    }
-                    break;
-            }
-        });
-
-
-
-        app.use(router.routes()); app.listen(2000, () => {
-            console.log('app started at port 2000...');
-        })
-        /* 
-
-        // 删除旧数据
-        await Shop.update({
-            "id": 1,
-        }, {
-            $pull: {
-                ClerkData: {
-                    "name": 21321321,
-                    "n2321321me": 21321321,
-                    "nghfghgfdhe": 21321321,
+router.get('/food/:act', async (ctx) => { //food组件接口
+    let req = ctx.request.query; //对象
+    let params = ctx.params
+    switch (params.act) {
+        case "list":
+            try {
+                let arr = await Shop.find({ //没有设置则匹配所有数据
+                    pid: 3
+                })
+                ctx.body = {
+                    data: arr,
+                    code: 0,
+                    msg: "查找成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
                 }
             }
-        });
-        // 添加新数据
-        await Shop.update({
-            "id": "1"
-        }, {
-            $push: {
-                ClerkData: {
-                    num: 1
+            break;
+    }
+});
+
+/* 
+         思路整理：
+         1.前端修改后发到后端;
+         2.后端将所有内容获取到以后：
+         3.pull模糊匹配到后,删除原来的;
+         4.再根据前端发过来的新生成一条;(num唯一不变)
+*/
+/* 
+         操作数据:
+                  1. 删除原来数据 
+                  2. 添加新数据 
+         坑汇总：
+                1. 修改数据时候注意修改Schema中类
+                2. async 数据更新前(Shop.updatem)必须加  await  
+*/
+app.use(bodyParser()) //Fetch中 POST传送过来数据格式转换,再router.get之前
+
+router.post('/pers', async (ctx) => { //用于写编辑的接口
+    let req = ctx.request.query; //对象
+    switch (req.act) {
+        /* --------------------------  店员信息操作    --------------------- */
+        case "editClerks":
+            try {
+                /*  
+                  步骤:
+                      1.拿到num,添加到对象中; //req.num
+                      2.删除数据库中原数据;
+                      3.将新数据添加进去;
+                */
+                // 1.操作要加入数据库的对象
+                let obj = ctx.request.body
+                obj.num = parseInt(req.num)
+                // 2.删除原来数据  
+                await Shop.update({
+                    "id": 1,
+                }, {
+                    $pull: {
+                        ClerkData: {
+                            // 删除时候需要对num类型进行判断
+                            num: parseInt(req.num)
+                        }
+                    }
+                });
+                // 3.将对象添加到数据库中,添加修改后数据。
+                await Shop.update({
+                    "id": "1"
+                }, {
+                    $push: {
+                        ClerkData: obj
+                    }
+                });
+                /* ------------------------------------------- */
+                let arr = await Shop.find({
+                    id: 1
+                })
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
                 }
             }
-        });
-        // 修改数据
-        await Shop.update({
-            "id": 1,
-            "ClerkData.num": 1
-        }, {
-            $set: {
-                "ClerkData.$.sex": "女",
-            }
-        });
-        await Shop.update({
-            "id": 1
-        }, {
-            $set: {
-                ClerkData: {
-                    // 会覆盖原有ClerkDate数值,
-                    // 可以用做在第一层添加新属性,
-                    // 注意Schema中
-                    "ClerkData.$.name": 00000,
-                    "ClerkData.$.n2321321me": 11111,
-                    "ClerkData.$.nghfghgfdhe": 22222,
+            break;
+            //---------------------    添加     ----------------------- 
+        case "addClerks":
+            try {
+                // 1.操作要加入数据库的对象
+                let obj = ctx.request.body; //存储前端对象
+                console.log(obj)
+                let arr = await Shop.find({ //查找所有数据
+                    id: 1
+                })
+                arr[0].ClerkData.sort((a, b) => a.num - b.num) // 改变原数组,将数组按照num数值排序,方便num+1
+                obj.num = parseInt(arr[0].ClerkData[arr[0].ClerkData.length - 1].num + 1)
+
+                await Shop.update({
+                    "id": "1"
+                }, {
+                    $push: {
+                        ClerkData: obj
+                    }
+                });
+                let realArr = await Shop.find({
+                    id: 1
+                })
+                ctx.body = {
+                    code: 0,
+                    data: realArr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
                 }
             }
-        });
-         */
+            break;
+            //---------------------    删除     ----------------------- 
+        case "deleteClerks":
+            try {
+                let obj = ctx.request.body; //存储前端对象
+                await Shop.update({
+                    "id": "1"
+                }, {
+                    $pull: {
+                        ClerkData: {
+                            num: parseInt(obj.num)
+                        }
+                    }
+                });
+                let realArr = await Shop.find({
+                    id: 1
+                })
+                ctx.body = {
+                    code: 0,
+                    data: realArr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+            /* -----------------------------  会员信息操作    ----------------------- */
+        case "editMember":
+            try {
+                console.log(ctx.request.body)
+                let obj = ctx.request.body
+                obj.Id = parseInt(obj.Id)
+                await User.update({ // 2.删除原来数据  
+                    "id": 3,
+                }, {
+                    $pull: {
+                        UsersData: {
+                            // 删除时候需要对num类型进行判断
+                            Id: obj.Id
+                        }
+                    }
+                });
+                await User.update({ // 3.添加。
+                    "id": 3,
+                }, {
+                    $push: {
+                        UsersData: obj
+                    }
+                });
+                let arr = await User.find({
+                    id: 3
+                })
+                console.log(arr)
+
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+            /* -----------------------------  删除操作    ----------------------- */
+        case "deleteMember":
+            try {
+                let obj = ctx.request.body;
+                await User.update({
+                    "id": 3
+                }, {
+                    $pull: {
+                        UsersData: {
+                            Id: parseInt(obj.Id)
+                        }
+                    }
+                });
+                let realArr = await User.find({
+                    id: 3
+                })
+                ctx.body = {
+                    code: 0,
+                    data: realArr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+    }
+});
+
+
+
+app.use(router.routes());
+app.listen(2000, () => {
+    console.log('app started at port 2000...');
+})
+/* 
+
+// 删除旧数据
+await Shop.update({
+    "id": 1,
+}, {
+    $pull: {
+        ClerkData: {
+            "name": 21321321,
+            "n2321321me": 21321321,
+            "nghfghgfdhe": 21321321,
+        }
+    }
+});
+// 添加新数据
+await Shop.update({
+    "id": "1"
+}, {
+    $push: {
+        ClerkData: {
+            num: 1
+        }
+    }
+});
+// 修改数据
+await Shop.update({
+    "id": 1,
+    "ClerkData.num": 1
+}, {
+    $set: {
+        "ClerkData.$.sex": "女",
+    }
+});
+await Shop.update({
+    "id": 1
+}, {
+    $set: {
+        ClerkData: {
+            // 会覆盖原有ClerkDate数值,
+            // 可以用做在第一层添加新属性,
+            // 注意Schema中
+            "ClerkData.$.name": 00000,
+            "ClerkData.$.n2321321me": 11111,
+            "ClerkData.$.nghfghgfdhe": 22222,
+        }
+    }
+});
+ */

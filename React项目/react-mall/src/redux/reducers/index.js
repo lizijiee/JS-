@@ -1,7 +1,8 @@
 import * as types from '../constants/actionTypes'; //注释在此文件中
 
 const initState = {
-  memberData:{}  // 店内会员信息;
+  memberData:{},  // 店内会员信息;
+  foodData:{},    // 所有菜品数据;   
 }
 /* 
   state 初始值分别为简单类型和复合类型;
@@ -14,9 +15,11 @@ const initState = {
 const reducer= (state=initState,action)=>{ 
        state = JSON.parse(JSON.stringify(state));//initState为复合类型需要深克隆一下;
         switch(action.type){
-             case "SET_DATA_MEMBER"://请求数据后对redux进行赋值,可以写语句
-                // let {memberData}=action.data;
+             case types.SET_DATA_MEMBER://请求数据后对redux进行赋值,可以写语句
                 state.memberData=action.data;
+             break;
+             case types.GET_DATA_FOOD:
+                state.foodData=action.data;
              break;
         }
         return state;

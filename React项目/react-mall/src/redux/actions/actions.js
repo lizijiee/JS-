@@ -5,18 +5,24 @@ export const setMemberInfo = data => ({
   type: types.SET_DATA_MEMBER,
   data
 })
-
-// export const requestPosts = subreddit => ({
-//     type: types.REQUEST_POSTS,
-//     subreddit
-// })
+export const getFoodInfo = data => ({
+  type: types.GET_DATA_FOOD,
+  data
+})
 
 export const fetchMemmberInfo = subreddit => dispatch => { //请求会员信息数据
   return fetch(`http://localhost:2000/pers/member`, {
       method: 'GET',
     })
     .then(res => res.json())
-    .then(data => dispatch(setMemberInfo(data)))
+    .then(data => dispatch(setMemberInfo(data))) 
+}
+export const fetchFoodInfo = () => dispatch => { //请求会员信息数据
+  return fetch(`http://localhost:2000/food/list`, {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then(data => dispatch(getFoodInfo(data)))
 }
 
 

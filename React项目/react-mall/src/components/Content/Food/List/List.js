@@ -2,11 +2,47 @@ import React, { Component } from 'react'
 import { Button, Pagination, Switch, Checkbox, Select } from 'antd';
 import IconFont from '../../../../iconfont/font'
 import './List.less';
+import { withRouter } from 'react-router-dom';
 import jiding from './img/mall-food-list-gongbao.jpg'
+
+//  -----------------     redux      ----------
+import * as actionCreators from '../../../../redux/actions/actions';
+import { connect } from 'react-redux'
+import { bindActionCreators } from "redux"
+import { reject } from 'q';
 
 const Option = Select.Option;
 
-export default class Temp extends Component {
+class Temp extends Component {
+    constructor() {
+        super()
+        this.Page = null  //用于包装Pagination组件;
+        this.state = {
+            current: 1,
+            storeData: [],
+        }
+    }
+    async componentDidMount() {//重复工作尽量用生命周期
+        await this.props.fetchFoodInfo()  //!!!!!!! 终点请求数据异步,拿不到
+        // console.log(this.props.data.data)
+        let temp = []
+        let categoryName=[]
+         for(let ele of this.props.data.data){
+            // console.log(ele.categoryName)//存下类名称
+                console.log(ele.spuList)
+                for(let item of ele.spuList ){
+                        item.categoryName=ele.categoryName
+                        temp.push(item)
+                        // console.log(temp.concat(temp))
+                        // console.log(item)
+                }
+    }
+        console.log(temp)
+    
+         //     this.setState({
+        //         storeData:this.props.data
+        //    })    
+    }
     render() {
         return (
             <section className="food-info">
@@ -23,14 +59,14 @@ export default class Temp extends Component {
                                 <span>输入检索:</span>
                                 <input type="text" placeholder="请输入菜名">
                                 </input>
-                                
+
                             </div>
                             <div className="el-form-item">
-                            <span>菜品类型:</span>
-                            <Select
+                                <span>菜品类型:</span>
+                                <Select
                                     showSearch
                                     placeholder="菜品类型"
-                                    style={{ width: 170,color:"#606266",fontSize:12 }}
+                                    style={{ width: 170, color: "#606266", fontSize: 12 }}
                                 >
                                     <Option value="特色汤面">特色汤面</Option>
                                     <Option value="酒水饮料">酒水饮料</Option>
@@ -40,11 +76,11 @@ export default class Temp extends Component {
                                 </Select>,
                             </div>
                             <div className="el-form-item">
-                            <span>上架状态:</span>
-                            <Select
+                                <span>上架状态:</span>
+                                <Select
                                     showSearch
                                     placeholder="上架状态"
-                                    style={{ width: 170,color:"#606266",fontSize:12,marginRight:"0!imoprtant"}}>
+                                    style={{ width: 170, color: "#606266", fontSize: 12, marginRight: "0!imoprtant" }}>
                                     <Option value="热销">热销</Option>
                                     <Option value="买过">买过</Option>
                                     <Option value="优惠">优惠</Option>
@@ -78,7 +114,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} alt="菜品"/></td>
+                                    <td><img src={jiding} alt="菜品" /></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -95,7 +131,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} alt="菜品"/></td>
+                                    <td><img src={jiding} alt="菜品" /></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -112,7 +148,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} alt="菜品"/></td>
+                                    <td><img src={jiding} alt="菜品" /></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -129,7 +165,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} alt="菜品"/></td>
+                                    <td><img src={jiding} alt="菜品" /></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -146,7 +182,7 @@ export default class Temp extends Component {
                                 <tr>
                                     <td>< Checkbox /></td>
                                     <td>1</td>
-                                    <td><img src={jiding} alt="菜品"/></td>
+                                    <td><img src={jiding} alt="菜品" /></td>
                                     <td>宫保鸡丁</td>
                                     <td style={{ padding: "0 5px", textAlign: "left", textIndent: '1em' }}> 宫保鸡丁（Kung Pao Chicken），是一道闻名中外的特色传统名菜。鲁菜、川菜、贵州菜中都有收录，原料、做法有差别。</td>
                                     <td>￥50</td>
@@ -164,10 +200,13 @@ export default class Temp extends Component {
                         </table>
                     </main>
                     <Pagination defaultCurrent={1} total={500} style={{
-                          marginRight: 30, marginTop: 25, float: "right"
+                        marginRight: 30, marginTop: 25, float: "right"
                     }} />,
         </div>
             </section>
         )
     }
 }
+export default withRouter(connect(
+    state => { return { data: state.foodData } },//将redux变量赋值到组件,成组件变量Data
+    dispatch => bindActionCreators(actionCreators, dispatch))(Temp))
