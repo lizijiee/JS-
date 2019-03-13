@@ -24,7 +24,7 @@ p {
     float: right;
 }
 
-.food-info {
+.food-info-list {
     background: #fff;
     margin: 20px 0 0 16px;
     // height: 100%;
@@ -41,6 +41,7 @@ p {
             color: #303133;
             border-radius: 4px;
             overflow: hidden;
+
             .el-title-body {
                 .p(20px);
                 .va();
@@ -72,6 +73,7 @@ p {
                 .el-form-item {
                     margin: 15px 25px 55px 35px;
                     float: left;
+
                     span {
                         font-size: 14px;
                         line-height: 32px;
@@ -148,35 +150,36 @@ p {
             text-align: center;
 
             table {
-                th {
-                    padding: 12px 0;
-                    border-left: 1px solid@border-color;
-                    border-top: 1px solid@border-color;
-                    width: 7%;
-                    color: #909399
-                }
-
                 thead {
+                    tr {
+                        height: 70px;
+                        background: #bfbfbf1c;
 
-                    th:nth-of-type(1),
-                    th:nth-of-type(2),
-                    th:nth-of-type(6),
-                    th:nth-of-type(4) {
-                        width: 3%;
-                    }
+                        &hover {
+                            background: #098bd912;
+                        }
 
-                    th:nth-of-type(4) {
-                        width: 4%;
-                    }
+                        th {
+                            padding: 12px 0;
+                            border-left: 1px solid @border-color;
+                            border-top: 1px solid @border-color;
+                            width: 7%;
+                            color: #909399;
+                        }
 
-                    th:nth-of-type(5) {
-                        width: 12%;
-                        padding: 0 12px;
+                        th:nth-of-type(1) {
+                            width: 4%;
+                        }
+
+                        th:nth-of-type(8),
+                        th:nth-of-type(3),
+                        th:nth-of-type(9) {
+                            width: 9%;
+                        }
                     }
                 }
-
                 td {
-                    padding: 12px 0;
+                    padding: 20px 0;
                     border-left: 1px solid@border-color;
                     border-top: 1px solid @border-color;
                     text-align: center;
@@ -207,25 +210,29 @@ p {
         width: 16px;
         height: 16px;
     }
-   
+
 }
+
 .ant-select-selection-selected-value {
-    text-indent: 1em!important;
+    text-indent: 1em !important;
 }
 
 .ant-select-selection__rendered {
     // color: rgb(220, 223, 230);
     font-size: 12px;
-    margin: 0!important;
+    margin: 0 !important;
 }
-.ant-select-selection__placeholder{
+
+.ant-select-selection__placeholder {
     text-indent: 1em
 }
-.ant-select-arrow{
-    padding-right: 0!important;
+
+.ant-select-arrow {
+    padding-right: 0 !important;
 }
-.ant-select-arrow-icon{
-        svg{
-            height: 0.7em;
-        }
+
+.ant-select-arrow-icon {
+    svg {
+        height: 0.7em;
+    }
 }

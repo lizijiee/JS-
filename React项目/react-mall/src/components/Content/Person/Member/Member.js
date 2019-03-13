@@ -65,6 +65,7 @@ class ClerksMember extends Component {
     复用注意：首先判断数据格式     
   */
   ChangePage(page) {
+    console.log(page)
     // 使用<Pagination/>组件自带回调函数来设置页码对应渲染内容
     this.setState({ current: page })// 注意setState为异步,回调函数问题
   }
