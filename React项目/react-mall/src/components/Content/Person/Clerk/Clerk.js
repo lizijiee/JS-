@@ -38,7 +38,7 @@ class Temp extends Component {
     //挂载前,请求数据函数
     this.getData();
   }
-   EditClick(index, link) {
+   EditClick(index) {
     // e.preventDefault();
     console.log(index);
     // pathname:'/pers/clerksDetails?num='+index,

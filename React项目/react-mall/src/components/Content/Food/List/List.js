@@ -3,7 +3,6 @@ import { Button, Pagination, Switch, Checkbox, Select } from 'antd';
 import IconFont from '../../../../iconfont/font'
 import './List.less';
 import { withRouter } from 'react-router-dom';
-import jiding from './img/mall-food-list-gongbao.jpg'
 
 //  -----------------     redux      ----------
 import * as actionCreators from '../../../../redux/actions/actions';
@@ -20,11 +19,11 @@ class Temp extends Component {
         this.itemsArr = [];
         this.state = {
             current: 1,
+            storeData: [],        // 菜品数据
+            categoryName: {},      // 菜品类名 
             indeterminate: false, // 全选按钮 中间状态控制
             checkAll: false,      // 全部选中
-            storeArr: [],         // 状态切换存储数据
-            storeData: [],        // 菜品数据
-            categoryName: {}      // 菜品类名 
+            storeArr: []         // 状态切换存储数据
         }
     }
     async componentDidMount() { // 重复工作尽量用生命周期
@@ -44,6 +43,16 @@ class Temp extends Component {
         })
     }
     /* ------------------  信息内容列表部分渲染;   ------------------- */
+    EditClick(ele, ev) {//点击编辑
+        ev.preventDefault();
+        console.log(ele);
+        this.props.history.push({//将此条完整菜品信息藏在state中
+            pathname: "/food/listDetails",
+            state: { ele, categoryName: this.state.categoryName },
+            search: '?num=' + ele.spuId
+        });
+
+    }
     renderItems = (ele, index) => {
         if (this.itemsArr.length < 5) {
             this.itemsArr.push(false)
@@ -67,15 +76,15 @@ class Temp extends Component {
                 <td>
                     <p>
                         <span style={{ paddingRight: 15 }}>热销:</span>
-                        <Switch size="default" />
+                        <Switch size="default" checked={ele.categoryName === "热销"} />
                     </p>
                     <p>
-                        <span style={{ paddingRight: 15 }}>推荐:</span>
-                        <Switch size="default" />
+                        <span style={{ paddingRight: 15 }} >推荐:</span>
+                        <Switch size="default" checked={ele.categoryName === "推荐"} />
                     </p>
                     <p>
-                        <span style={{ paddingRight: 15 }}>折扣:</span>
-                        <Switch size="default" />
+                        <span style={{ paddingRight: 15 }} >折扣:</span>
+                        <Switch size="default" checked={ele.categoryName === "折扣"} />
                     </p>
                 </td>
                 <td>
@@ -83,7 +92,7 @@ class Temp extends Component {
                         type="primary"
                         size="small"
                         ghost="true"
-                        // onClick={() => { this.EditClick(ele.Id) }}//当前点击tr的索引
+                        onClick={(ev) => { this.EditClick(ele, ev) }}//传参为tr索引
                         style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
                     >
                         <span>编辑</span>
@@ -104,7 +113,7 @@ class Temp extends Component {
             //多选框全为 => true,全选按钮为true,indeterminate为false(indeterminate中间状态)
             this.setState({
                 storeArr: this.itemsArr,  //为了render
-                checkAll: true,         
+                checkAll: true,
                 indeterminate: false
             })
         } else {
@@ -115,10 +124,10 @@ class Temp extends Component {
             })
         }
         if (!this.itemsArr.some(ele => ele === true)) {
-             //多选框全为 => false,indeterminate为false
+            //多选框全为 => false,indeterminate为false
             this.setState({
                 storeArr: this.itemsArr,
-                 indeterminate: false
+                indeterminate: false
             })
         }
     }
@@ -160,7 +169,7 @@ class Temp extends Component {
                 total={length}
                 onChange={this.ChangePage.bind(this)}
                 style={{
-                    marginRight: 30, marginTop: 25, float: "right"
+                    marginRight: 25, marginTop: 30, float: "right"
                 }} />
             return this.Page
         }
@@ -264,6 +273,27 @@ class Temp extends Component {
                             <tbody id="ItemWrap">{Items}</tbody>
                         </table>
                     </main>
+                    <Select
+                        defaultValue="批量操作"
+                        style={{
+                            marginRight: 20, marginTop: 30,
+                            float: "left", width: 150,
+                            size: "large", fontSize: 15
+                        }}
+                    /* onChange={handleChange} */
+                    >
+                        <Option value="设为热销">设为热销</Option>
+                        <Option value="设为推荐">设为推荐</Option>
+                        <Option value="设为折扣">设为折扣</Option>
+                        <Option value="批量删除">批量删除</Option>
+                    </Select>
+                    <Button
+                        type="primary"
+                        style={{
+                            marginTop: 30, fontSize: 13,
+                            height: 30, size: "large"
+                        }}
+                    >确定</Button>
                     {this.renderPage()}
                 </div>
             </section>

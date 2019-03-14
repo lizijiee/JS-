@@ -6,6 +6,7 @@ import './Add.less';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const ButtonGroup = Button.Group;
+const TextArea = Input.TextArea;
 
 /* 
     antd 表单使用
