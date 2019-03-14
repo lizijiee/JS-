@@ -52,9 +52,9 @@ export default class Temp extends Component {
       labelCol: { span: 7 },
     };
 
-    const countProps = getFieldProps('count', {//textarea 为ID
-      initialValue: storeData.count, 
-      rules: [{ pattern: new RegExp(/^\d(\.\d+)?$/, "g"), message: '请输入合理折扣数字' }]
+    const originPrice = getFieldProps('originPrice', {//textarea 为ID
+      initialValue: storeData.originPrice, 
+      // rules: [{ pattern: new RegExp(/^\d(\.\d+)?$/, "g"), message: '请输入合理折扣数字' }]
     });
 
 
@@ -86,7 +86,7 @@ export default class Temp extends Component {
               >
                 {/* style={{display: (index===this.state.currentIndex) ? "block" : "none", color:"red"}}> */}
                 <span style={{ marginLeft: (index === 0) ? 5 : null, marginRight: 8 }}>{item}</span>
-                {getFieldDecorator('switch1', {
+                {getFieldDecorator(item, {
                   valuePropName: 'checked',
                   initialValue: storeData.categoryName===item
                 })(
@@ -104,7 +104,7 @@ export default class Temp extends Component {
           <InputNumber
             style={{ width: 320, fontSize: 13 }}
             placeholder="请输入菜品原价"
-            {...countProps}
+            {...originPrice}
           />
         </FormItem>
 
@@ -147,7 +147,7 @@ export default class Temp extends Component {
           style={{ marginBottom: -10 }}
           {...formItemLayout}
         >
-          {getFieldDecorator('upload', {
+          {getFieldDecorator('url', {
             valuePropName: 'checked',
             initialValue: storeData.upload,
           })(

@@ -24,7 +24,7 @@ export default class Temp extends Component {
           style={{ lineHeight: "55px" }}
           className="rate"
         >
-          {getFieldDecorator('saleVolume', {
+          {getFieldDecorator('count', {
             initialValue: storeData.count,
           })(
             <Rate disabled style={{ marginLeft: 20 }} />

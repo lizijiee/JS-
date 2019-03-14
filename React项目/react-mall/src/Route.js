@@ -22,15 +22,26 @@ import Location from './components/Content/Location/Location'
 
 // 路由表
 class App extends Component {
-    componentDidMount() {
-        // console.log(this.props)
-    }
+
     render() {
+        // let routeArr=[
+        //         {
+        //             path:"/",
+        //             exact:true,
+        //             component:Home
+        //         }
+        // ]
         return (
             <Switch>
+                {/* {routeArr.map((ele,index)=><Route
+                    key={index}
+                    path={ele.path}
+                    exact={ele.exact}
+                    component={ele.component}
+                />)} */}
                 <Route
                     path="/"
-                    exact
+                    exact={true}
                     component={Home} />
                 <Redirect exact
                     from="/pers"

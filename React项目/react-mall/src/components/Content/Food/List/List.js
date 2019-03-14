@@ -45,7 +45,7 @@ class Temp extends Component {
     /* ------------------  信息内容列表部分渲染;   ------------------- */
     EditClick(ele, ev) {//点击编辑
         ev.preventDefault();
-        console.log(ele);
+        // console.log(ele);
         this.props.history.push({//将此条完整菜品信息藏在state中
             pathname: "/food/listDetails",
             state: { ele, categoryName: this.state.categoryName },

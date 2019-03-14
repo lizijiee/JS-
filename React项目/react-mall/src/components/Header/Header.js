@@ -5,15 +5,16 @@ import '../../index.css'
 import PropTypes from "prop-types";
 let { Header } = Layout;
 
-const breadcrumbNameMap = {
+const breadcrumbNameMap = { //配置面包屑
   "/": "首页",
   '/pers': '人员',
   "/pers/clerks": "店员列表",
   "/pers/clerksDetails":"店员列表",
   "/pers/member": "会员列表",
   "/food": "菜品",
+  "/food/listDetails": "修改菜品",
   "/food/list": "菜品列表",
-  "/food/add": "菜品添加",
+  "/food/add": "添加菜品",
   "/orders": "订单",
   "/orders/list": "订单列表",
   "/orders/handle": "订单处理",
