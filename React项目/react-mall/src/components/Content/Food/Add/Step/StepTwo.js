@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Form, Input, Select, Upload, Icon, Modal, Switch, Radio } from 'antd';
+import { Form, Input, Select, Upload, Icon, Modal, Switch, InputNumber, Row, Col } from 'antd';
 
 import './Add.less';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
 
 export default class Temp extends Component {
   state = {
@@ -12,6 +11,20 @@ export default class Temp extends Component {
     fileList: [], //设置默认上传内容
   };
   handleCancel = () => this.setState({ previewVisible: false })
+  componentDidMount() {
+    console.log()
+    // const { spuId, spuName, bigImageUrl, littleImageUrl } = this.props.state.storeData
+    // this.setState({
+    //   fileList: [{
+    //     uid: "-" + spuId,
+    //     name: spuName + '.png',
+    //     status: 'done',
+    //     url: littleImageUrl,
+    //   }],
+    // }, () => {
+    //   // console.log(this.state.fileList)
+    // })
+  }
 
   handlePreview = (file) => {
     this.setState({
@@ -25,15 +38,23 @@ export default class Temp extends Component {
 
   render() {
     const { getFieldProps, getFieldError, isFieldValidating, getFieldDecorator } = this.props.props.form;
+    // const data = this.props.state.data;
+    // const storeData = this.props.state.storeData;
+    const categoryTag = ["折扣", "热销", "推荐"]
+    // const categoryFilter = Object.values(categoryName).filter((ele) => ele != "折扣" && ele != "热销" && ele != "推荐")
+
     const formItemLayout = {//样式
       labelCol: { span: 7 },
       wrapperCol: { span: 12 },
     };
-    const data = this.props.state.data;
+    const buttonsLayout = {//样式
+      labelCol: { span: 7 },
+    };
 
-    const selectProps = getFieldProps('promot', {
-      initialValue: data.promot,
+    const originPrice = getFieldProps('originPrice', {//textarea 为ID
     });
+
+
     const { previewVisible, previewImage, fileList } = this.state;
     const uploadButton = (//添加 控制 按钮
       <div>
@@ -44,34 +65,78 @@ export default class Temp extends Component {
 
     return (
       <Form style={{ marginBottom: 40 }}>
+        <Form.Item
+          {...formItemLayout}
+          layout="inline"
+          label="推荐类型"
+          style={{ fontSize: 15, color: "rgba(0, 0, 0, 0.9)" }}
+        >
+          {
+            categoryTag.map((item, index) =>
+              <Form.Item
+                key={item}
+                {...buttonsLayout}
+                style={{
+                  fontSize: 15, color: "rgba(0, 0, 0, 0.9)",
+                  float: "left", overflow: "hiddden", width: 90, fontSize: 14,
+                }}
+              >
+                <span style={{ marginLeft: (index === 0) ? 5 : null, marginRight: 8 }}>{item}</span>
+                {getFieldDecorator(item, {
+                  valuePropName: 'checked',
+                })(
+                  <Switch />
+                )}
+              </Form.Item>
+            )
+          }
+        </Form.Item>
 
         <FormItem
           {...formItemLayout}
-          label="菜品名称："
+          label="菜品原价："
         >
-          {/* 给input设置名字和规则方法    之  其二 */}
-          {getFieldDecorator('loading', {
-            initialValue: data.loading,
+          {getFieldDecorator('originPrice', {//textarea 为ID
           })(
-            <Input />
+            <InputNumber
+              style={{ width: 320, fontSize: 13 }}
+              placeholder="请输入菜品原价"
+            />
+          )}
+
+        </FormItem>
+        
+        <FormItem
+          {...formItemLayout}
+          label="菜品销售量："
+        >
+          {getFieldDecorator('saleVolume', {
+           })(
+            <Input disabled />
           )}
         </FormItem>
 
         <FormItem
-          label="菜品类型："
+          label="菜品库存："
           {...formItemLayout}
         >
           {/* require 代表前面的 * 符号 */}
-          <Select style={{ width: 200 }}
-            {...selectProps}
-          >
-            <Option value="新品">新品</Option>
-            <Option value="热销">热销</Option>
-            <Option value="买过">买过</Option>
-            <Option value="优惠">优惠</Option>
-            <Option value="套餐">套餐</Option>
-            <Option value="为您优选">为您优选</Option>
-          </Select>
+          {getFieldDecorator('realStock', {
+            // initialValue: storeData.realStock,
+          })(
+            <Input />
+          )}
+        </FormItem>
+        <FormItem
+          label="当日库存："
+          {...formItemLayout}
+        >
+          {/* require 代表前面的 * 符号 */}
+          {getFieldDecorator('activityStock', {
+            // initialValue: storeData.activityStock,
+          })(
+            <Input />
+          )}
         </FormItem>
 
         <FormItem
@@ -79,16 +144,16 @@ export default class Temp extends Component {
           style={{ marginBottom: -10 }}
           {...formItemLayout}
         >
-          {getFieldDecorator('upload', {
+          {getFieldDecorator('url', {
             valuePropName: 'checked',
-            initialValue: data.upload,
+            // initialValue: storeData.upload,
           })(
             <div className="clearfix">
               <Upload
-                action="//jsonplaceholder.typicode.com/posts/"
+                // action="//jsonplaceholder.typicode.com/posts/"
                 listType="picture-card"
                 fileList={fileList} //
-                onPreview={this.handlePreview}//点击文件链接或预览图标时的回调
+                onPreview={this.handlePreview} //点击文件链接或预览图标时的回调
                 onChange={this.handleChange}
               >
                 {fileList.length >= 1 ? null : uploadButton}
@@ -100,26 +165,6 @@ export default class Temp extends Component {
           )}
         </FormItem>
 
-        <Form.Item
-          {...formItemLayout}
-          label="推荐类型："
-          style={{ fontSize: 15, color: "rgba(0, 0, 0, 0.9)" }}
-        >
-          新品：
-           {getFieldDecorator('switch1', { valuePropName: 'checked', initialValue: data.switch1 })(
-            <Switch style={{ marginRight: 10 }} />
-          )}
-           热销：
-        </Form.Item>
-
-        <Form.Item
-          style={{ fontSize: 15, color: "rgba(0, 0, 0, 0.9)", position: "relative" }}
-        >
-       
-          {getFieldDecorator('switch2', { valuePropName: 'checked', initialValue: data.switch2 })(
-            <Switch style={{ position: "absolute", left:320, bottom: 30 }} />
-          )}
-        </Form.Item>
       </Form >
     )
   }

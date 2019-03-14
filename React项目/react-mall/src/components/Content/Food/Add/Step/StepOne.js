@@ -24,9 +24,9 @@ const TextArea = Input.TextArea;
      min默认为 name is require 使用message进行修改
 */
 class StepOne extends Component {
-  // constructor() {//传入的props需要在constructor接收一下
-  //   super()
-  // }
+  /*  constructor(props) {//传入的props需要在constructor接收一下
+     super()
+   } */
   handleReset(e) {
     //resetFields重置表单内容
     e.preventDefault();
@@ -47,76 +47,44 @@ class StepOne extends Component {
     }
   };
 
-  componentDidMount() {
-    // this.props.onRef(this)
-  }
-  // componentWillReceiveProps() {
-  // console.log(this.props.form.getFieldError("name"))
-  //返回值     ["输入1时显示报错"]
-  //          ["菜品名至少为 1个字符"]  message 
-  // };
+  
   render() {
 
     // 子组件不能修改，但是还需要数值改变！！！！怎样处理，直接在对象里面搞个数值太low了
-    
-    const data = this.props.state.data;
-    console.log(data)
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.props.form;
     //--------------------------------需要-----------------------
-    const nameProps = getFieldProps('name', { //第一个参数为ID,第二个为options
-      initialValue: data.name,
+    const nameProps = getFieldProps('spuName', { //第一个参数为ID,第二个为options
       rules: [
-        { required: true, min: 1, message: '菜品名至少为 1 个字符' },
-        { validator: this.userExists.bind(this) },
-        ,
-        //  {
-        //    -------添加另外限制条件------------
-        //   validator(rule, value, callback, source, options) {
-        //     var errors = [];
-        //     console.log(value, "Xx") 
-        //     if (value == 1) {
-        //       callback("输入1时显示报错");
-        //     } else {
-        //       callback();
-        //       //  成功后显示在页面上的值
-        //       //  ["菜品名至少为 1 个字符", 22222]
-        //     }
-        //   }
-        // }
+        { required: true, min: 1, message: '请输入菜品名称' },
+        { validator: this.userExists.bind(this) }
       ]
     });
 
-
-    const selectProps = getFieldProps('select', {
-      initialValue: data.select,
-      rules: [
-        { required: true, message: '请选择菜品类型' },
-      ],
+    const selectProps = getFieldProps('categoryName', {//菜品类型
+      rules: [{ required: true, message: '请选择菜品类型' }]
     });
 
-    const textareaProps = getFieldProps('textarea', {//textarea 为ID
-      initialValue: data.textarea,
-      // rules: [//判断条件
-      //   {  message: '输入内容不能为空' },
-      // ],
+    const priceProps = getFieldProps('currentPrice', {//textarea 为ID
+      rules: [{ required: true, message: '请输入菜品销售价格' }]
     });
-    const priceProps = getFieldProps('price', {//textarea 为ID
-      initialValue: data.price,
-      // rules: [//判断条件
-      //   {  message: '输入内容不能为空' },
-      // ],
+    const unitProps = getFieldProps('unit', {//textarea 为ID
+      rules: [{ required: true, message: '请输入菜品单位' }]
+    });
+
+    const tagProps = getFieldProps('activityTag', {//textarea 为ID
     });
     const formItemLayout = {//样式
       labelCol: { span: 7 },
       wrapperCol: { span: 12 },
     };
+    const categoryName=["热销","推荐","折扣"]
     return (
       <Form >
         <FormItem
           {...formItemLayout}
           label="菜品名称："
           hasFeedback
-          help={isFieldValidating('name') ? '校验中...' : (getFieldError('name') || []).join(', ')}
+          help={isFieldValidating('spuName') ? '校验中...' : (getFieldError('spuName') || []).join(', ')}
         >
           <Input {...nameProps} placeholder=" 输入 宫爆鸡丁 看看"
           />
@@ -130,33 +98,32 @@ class StepOne extends Component {
           <Select style={{ width: 200 }}
             {...selectProps}
           >
-            <Option value="特色汤面">特色汤面</Option>
-            <Option value="酒水饮料">酒水饮料</Option>
-            <Option value="烧烤系列">烧烤系列</Option>
-            <Option value="美味盖饭">美味盖饭</Option>
-            <Option value="小吃，肉夹馍">小吃，肉夹馍</Option>
-            <Option value="海鲜" disabled>海鲜</Option>
+            {
+              categoryName.map((item, index) => {
+                return <Option value={item} key={item}>{item}</Option>
+              })
+            }
           </Select>
         </FormItem>
 
         <FormItem
           {...formItemLayout}
-          label="菜品价格："
+          label="菜品销售价："
         >
-          {/*
-          给input设置名字和规则方法  之 其二
-         {getFieldDecorator('note', {
-            rules: [{ required: true, message: 'Please input your note!' }],
-          })(
-            <Input />
-          )} */}
           <InputNumber
-            style={{ width: 320 }}
-            type="textarea"
-            // placeholder="菜品名称"
-            id="price"
-            name="price"
-            {...textareaProps}
+            style={{ width: 320, fontSize: 13 }}
+            placeholder="请输入菜品销售价格"
+            {...priceProps}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="菜品单位："
+        >
+          <Input
+            style={{ width: 320, fontSize: 13 }}
+            placeholder="请输入折扣"
+            {...unitProps}
           />
         </FormItem>
 
@@ -165,19 +132,15 @@ class StepOne extends Component {
           label="菜品介绍："
           {...formItemLayout}
         >
-          <textarea id="control-textarea" style={{
-            borderRadius: 6, textAlign: "left", verticalAlign: "top", border: "1px solid #d9d9d9", fontSize: 14, lineHeight: "20px", textIndent: "1em"
-          }}
-            {...priceProps}
+          <TextArea
+            {...tagProps}
             placeholder="Please enter..."
-            cols="45"
-            rows="4" />
+            // style={{marginBottom:50}}
+            cols={45}
+            rows={4}
+          />
         </FormItem>
-        <ButtonGroup style={{ borderRadius: 15, marginTop: 30 }}>
-          <Button
-            onClick={this.handleReset.bind(this)}
-            style={{ marginLeft: 400 }}>Reset</Button>
-        </ButtonGroup>
+
       </Form >
 
     );

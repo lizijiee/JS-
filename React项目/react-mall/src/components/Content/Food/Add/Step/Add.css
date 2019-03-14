@@ -36,3 +36,6 @@
 .food-add .food-add-wrap .form-wrap ul .sort .ant-input {
   width: 300px;
 }
+.food-add .food-add-wrap .form-wrap .rate label {
+  line-height: 55px;
+}

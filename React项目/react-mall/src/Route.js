@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import Home from './components/Content/Content';
-import Clerk from './components/Content/Person/Clerk/Clerk'
-import ClerkEdit from './components/Content/Person/Clerk/EditClick/Edit'
-import MemberEdit from './components/Content/Person/Member/EditClick/Edit'
-import Member from './components/Content/Person/Member/Member'
-import FoodList from './components/Content/Food/List/List'
-import FoodEdit from './components/Content/Food/List/EditClick/Edit'
+import Home from './components/Content/Content';// 首页
+import Clerk from './components/Content/Person/Clerk/Clerk'// 员工Info
+import ClerkEdit from './components/Content/Person/Clerk/EditClick/Edit' // 员工编辑
+import MemberEdit from './components/Content/Person/Member/EditClick/Edit'  // 会员编辑
+import Member from './components/Content/Person/Member/Member'  // 会员Info
+import FoodList from './components/Content/Food/List/List'  // 菜品Info
+import FoodEdit from './components/Content/Food/List/EditClick/Edit'  // 菜品编辑
 
-import Add from './components/Content/Food/Add/Add'
-import OrderList from './components/Content/Order/List/List'
+import FoodAdd from './components/Content/Food/Add/Add' // 菜品添加
+import OrderList from './components/Content/Order/List/List'    
 import OrderHandle from './components/Content/Order/Handle/Handle'
 import OrderCause from './components/Content/Order/Cause/Cause'
 import Advertise from './components/Content/Marketing/Advertise/Advertise'
@@ -100,7 +100,7 @@ class App extends Component {
                     }} />
                 <Route
                     path="/food/add"
-                    render={() => { return <Add /> }} />
+                    render={() => { return <FoodAdd /> }} />
                 <Redirect exact
                     from="/orders"
                     to={{ pathname: "/orders/list" }} />
@@ -113,9 +113,9 @@ class App extends Component {
                 <Route
                     path="/orders/cause"
                     render={() => { return <OrderCause /> }} />
-                 <Redirect exact
+                <Redirect exact
                     from="/sale"
-                    to={{ pathname: "/sale/home" }} />    
+                    to={{ pathname: "/sale/home" }} />
                 <Route
                     path="/sale/home"
                     render={() => <Advertise />} />

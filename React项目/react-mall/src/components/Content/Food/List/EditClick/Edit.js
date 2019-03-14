@@ -29,19 +29,6 @@ class Temp extends Component {
             current: 0,
             storeData: null,
             categoryName: null,
-            data: {
-                comment: "",
-                loading: "",
-                name: "",
-                price: "",
-                promot: "",
-                radioButton: "",
-                select: "",
-                switch1: false,
-                switch2: false,
-                textarea: "",
-                upload: ""
-            }
         };
     }
     next() {//下一页
@@ -95,10 +82,13 @@ class Temp extends Component {
 
     showConfirm() { //最后验证，前端验证后发给后端，进行请求
         // 先获取修改后的数值,在判断是否修改数据库
+        console.log(this.props.form.getFieldsValue())
+
         let storeData = Object.assign({}, this.state.storeData, this.props.form.getFieldsValue())
         this.setState({
             storeData
         })
+
         confirm({
             wrapClassName: '提示',
             title: '提示:',

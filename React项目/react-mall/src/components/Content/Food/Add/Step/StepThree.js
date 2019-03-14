@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Form, Input, Select, Upload, Icon, Modal, Switch, Radio } from 'antd';
+import { Form, Input, Select, Upload, Icon, Modal, Switch, Radio, Rate } from 'antd';
 import './Add.less';
 const FormItem = Form.Item;
+const TextArea = Input.TextArea;
 
 
 export default class Temp extends Component {
@@ -11,39 +12,54 @@ export default class Temp extends Component {
       labelCol: { span: 7 },
       wrapperCol: { span: 12 },
     };
-    const data = this.props.state.data;
+    const storeData = this.props.state.storeData;
+    const textareaProps = getFieldProps('spuDesc', {//textarea 为ID
+      // initialValue: storeData.spuDesc,
+    });
     return (
-      <Form >
-        <Form.Item
-          style={{ marginBottom: 30 }}
+      <Form style={{ height: "315px" }}>
+        <FormItem
           {...formItemLayout}
-          label="菜品推荐："
+          label="菜品评价："
+          style={{ lineHeight: "55px" }}
+          className="rate"
         >
-          {getFieldDecorator('radioButton',{initialValue: data.radioButton})(
-            <Radio.Group>
-              <Radio.Button value="热销推荐">热销推荐</Radio.Button>
-              <Radio.Button value="优惠推荐">优惠推荐</Radio.Button>
-              <Radio.Button value="套餐推荐">套餐推荐</Radio.Button>
-            </Radio.Group>
+          {getFieldDecorator('count', {
+            })(
+            <Rate disabled style={{ marginLeft: 20 }} />
           )}
-        </Form.Item>
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="菜品销售量："
+        >
+          {getFieldDecorator('saleVolume', {
+           })(
+            <Input disabled />
+          )}
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="菜品赞数统计："
+        >
+          {getFieldDecorator('praiseNum', {
+           })(
+            <Input disabled />
+          )}
+        </FormItem>
+
         <FormItem
           id="control-textarea"
           label="菜品备注："
-          style={{ marginBottom: 50 }}
           {...formItemLayout}
         >
-         {getFieldDecorator('comment',{
-           initialValue: data.comment}
-         )(
-          <textarea id="control-textarea" style={{
-            borderRadius: 6, textAlign: "left", verticalAlign: "top", border: "1px solid #d9d9d9", fontSize: 14, lineHeight: "20px", textIndent: "1em"
-          }}
-            // {...priceProps}
+          <TextArea
+            {...textareaProps}
             placeholder="Please enter..."
-            cols="45"
-            rows="4" />
-            )}
+            cols={45}
+            rows={4}
+          />
         </FormItem>
       </Form >
     )
