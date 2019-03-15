@@ -9,6 +9,12 @@ const ShopSchema=new mongoose.Schema({//Schema构造函数
     // UsersData:Array,   //员工数据
     result:Array,
     esultcode: String,
+    pid:Number, //父级id
+    tag:String, //类别id
+    tag:String, //类别id
+    categoryName:String,
+    // categoryType :String,
+    spuList :{type:  Array, default: []}
 });
 const UserSchema=new mongoose.Schema({//Schema构造函数
     //定义文档的结构和属性

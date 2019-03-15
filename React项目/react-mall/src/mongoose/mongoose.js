@@ -469,7 +469,53 @@ router.get('/food/:act', async (ctx) => { //food组件接口
             break;
     }
 });
-
+app.use(bodyParser())
+router.post('/food', async (ctx) => { //food组件接口
+    let req = ctx.request.query; //对象
+    switch (req.act) {
+        case "editFood":
+            try {
+                let obj = ctx.request.body
+                obj.spuId = parseInt(req.spuId)
+                
+                // 2.删除原来数据  
+                await Shop.update({
+                    tag: obj.tag,
+                }, {
+                    $pull: {
+                        spuList: {
+                            // 删除时候需要对num类型进行判断
+                            spuId: obj.spuId
+                        }
+                    }
+                });
+                // 3.将对象添加到数据库中,添加修改后数据。
+                console.log(obj)
+                await Shop.update({
+                    tag: obj.tag
+                }, {
+                    $push: {
+                        spuList: obj
+                    }
+                });
+                /* ------------------------------------------- */
+                let arr = await Shop.find({
+                    tag: obj.tag,
+                })
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+    }
+});
 /* 
          思路整理：
          1.前端修改后发到后端;
@@ -485,7 +531,7 @@ router.get('/food/:act', async (ctx) => { //food组件接口
                 1. 修改数据时候注意修改Schema中类
                 2. async 数据更新前(Shop.updatem)必须加  await  
 */
-app.use(bodyParser()) //Fetch中 POST传送过来数据格式转换,再router.get之前
+//Fetch中 POST传送过来数据格式转换,再router.get之前
 
 router.post('/pers', async (ctx) => { //用于写编辑的接口
     let req = ctx.request.query; //对象

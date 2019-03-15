@@ -246,7 +246,7 @@ class Temp extends Component {
                         <div className="el-title-body">
                             <IconFont type="mall-doc-list" style={{ fontSize: 16, marginRight: 5 }} />
                             <span>数据列表</span>
-                            {/* <button className="add">添加菜品</button> */}
+                            {/* <button className="add">添加菜0品</button> */}
                         </div>
                     </div>
                     <main className="table-container">

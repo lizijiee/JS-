@@ -100,8 +100,9 @@ class Temp extends Component {
                 ".ant-modal-confirm-btns": { marginTop: 0 }
             },
             onOk: async () => { // 箭头函数解决this
+                console.log(this.state.storeData)
                 if (!this.isObjectValueEqual(this.props.location.state.ele,this.state.storeData)) {
-                    await fetch(`http://localhost:2000/pers?act=editFood&&num=${this.state.storeData.spuId}`,
+                    await fetch(`http://localhost:2000/food?act=editFood&&spuId=${this.state.storeData.spuId}`,
                     {
                       method: 'POST',
                       // mode: 'cors',
@@ -117,7 +118,7 @@ class Temp extends Component {
                         data => {
                             success()
                           // this.setState({ ...data })
-                        //   console.log(data)
+                          console.log(data)
                         })
                 } else { //进行修改直接跳转到列表页
                     success();
