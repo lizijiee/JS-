@@ -19,6 +19,11 @@ const reducer= (state=initState,action)=>{
                 state.memberData=action.data;
              break;
              case types.GET_DATA_FOOD:
+                // console.log(action.data)
+                state.foodData=action.data;
+             break;
+             case types.SWITCH_CHANGE:
+                // console.log(action.data)
                 state.foodData=action.data;
              break;
         }

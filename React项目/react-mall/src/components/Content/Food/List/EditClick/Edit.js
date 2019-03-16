@@ -82,7 +82,7 @@ class Temp extends Component {
 
     showConfirm() { //最后验证，前端验证后发给后端，进行请求
         // 先获取修改后的数值,在判断是否修改数据库
-        console.log(this.props.form.getFieldsValue())
+        // console.log(this.props.form.getFieldsValue())
 
         let storeData = Object.assign({}, this.state.storeData, this.props.form.getFieldsValue())
         this.setState({

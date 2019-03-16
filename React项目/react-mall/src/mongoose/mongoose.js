@@ -472,12 +472,11 @@ router.get('/food/:act', async (ctx) => { //food组件接口
 app.use(bodyParser())
 router.post('/food', async (ctx) => { //food组件接口
     let req = ctx.request.query; //对象
-    switch (req.act) {
+     switch (req.act) {
         case "editFood":
             try {
                 let obj = ctx.request.body
                 obj.spuId = parseInt(req.spuId)
-                
                 // 2.删除原来数据  
                 await Shop.update({
                     tag: obj.tag,
@@ -490,7 +489,6 @@ router.post('/food', async (ctx) => { //food组件接口
                     }
                 });
                 // 3.将对象添加到数据库中,添加修改后数据。
-                console.log(obj)
                 await Shop.update({
                     tag: obj.tag
                 }, {
@@ -501,6 +499,66 @@ router.post('/food', async (ctx) => { //food组件接口
                 /* ------------------------------------------- */
                 let arr = await Shop.find({
                     tag: obj.tag,
+                })
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+        case "addMarket":
+            try {
+                let obj = ctx.request.body
+                obj.categoryName=req.categoryName
+                // console.log(obj)
+                // console.log(obj.spuId+1)
+                // console.log(parseInt(obj.spuId+1))
+                obj.spuId=obj.spuId+1
+                // console.log(obj.spuId)
+                await Shop.update({
+                    categoryName:req.categoryName
+                }, {
+                    $push: {
+                        spuList: obj
+                    }
+                });
+                let arr = await Shop.find({ //没有设置则匹配所有数据
+                    pid: 3
+                })
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    msg: "成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+        case "delMarket":
+            try {
+                let obj = ctx.request.body
+                 // 2.删除原来数据  
+                await Shop.update({
+                    categoryName:req.categoryName
+                }, {
+                    $pull: {
+                        spuList: {
+                            // 删除时候需要对num类型进行判断
+                            spuName:obj.spuName
+                        }
+                    }
+                });
+                let arr = await Shop.find({ //没有设置则匹配所有数据
+                    pid: 3
                 })
                 ctx.body = {
                     code: 0,

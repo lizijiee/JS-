@@ -9,11 +9,20 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import './index.css';
 //redux 部分
-import {applyMiddleware,createStore} from 'redux'; 
+import {applyMiddleware,createStore} from 'redux';
+
+import {composeWithDevTools } from 'redux-devtools-extension'
+//npm install redux-devtools-extension --save-dev
+
+
+
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import {reducer} from './redux/reducers'
 // import {couter} from './reducers.js'   //导入函数
+// import DevTools from './redux/DevTools/DevTools';
+
+
 
 if (module.hot) {//跟新时候页面不刷新,不闪烁;
   module.hot.accept();
@@ -21,11 +30,14 @@ if (module.hot) {//跟新时候页面不刷新,不闪烁;
 
 // redux布局部分;
 const middleware = [ thunk ];
+
 const store = createStore(
   reducer,
-  applyMiddleware(...middleware)
+  // composeWithDevTools()
+  composeWithDevTools( //redux 浏览器工具
+    applyMiddleware(...middleware)
+  )
 )
-
 
 class MallProject extends React.Component {
   constructor(){
@@ -61,6 +73,7 @@ class MallProject extends React.Component {
                 <Route /> {/* 路由组件 => 里面为主内容页 */}
             </Layout>
           </Layout>
+          {/* <DevTools /> */}
         </Fragment >
       </Router>
       </Provider> 
