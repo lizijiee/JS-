@@ -2,7 +2,8 @@ import * as types from '../constants/actionTypes'; //注释在此文件中
 
 const initState = {
   memberData:{},  // 店内会员信息;
-  foodData:{},    // 所有菜品数据;   
+  foodData:{},    // 所有菜品数据; 
+  changeFood:{}  
 }
 /* 
   state 初始值分别为简单类型和复合类型;
@@ -16,16 +17,20 @@ const reducer= (state=initState,action)=>{
        state = JSON.parse(JSON.stringify(state));//initState为复合类型需要深克隆一下;
         switch(action.type){
              case types.SET_DATA_MEMBER://请求数据后对redux进行赋值,可以写语句
-                state.memberData=action.data;
+                state.memberData=action.data;//左变量用在组件中接收,右变量action传参来
              break;
              case types.GET_DATA_FOOD:
-                // console.log(action.data)
-                state.foodData=action.data;
+                 state.foodData=action.data;
              break;
-             case types.SWITCH_CHANGE:
-                // console.log(action.data)
-                state.foodData=action.data;
+             case types.BULK_OPERATION:
+                 state.foodData=action.data; // action.data
              break;
+            //  case types.SWITCH_CHANGE:
+            //      state.changeFood= action.data;//还是修改菜品数据
+            //  break;
+            //  case types.REMOVE_MENU_ITEMS:
+            //      state.foodData=action.data;
+            //  break;
         }
         return state;
     }

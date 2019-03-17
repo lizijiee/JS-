@@ -6,6 +6,12 @@ import StepOne from './Step/StepOne';
 import StepTwo from './Step/StepTwo';
 import StepThree from './Step/StepThree';
 
+
+//  -----------------     redux      ----------
+// import * as actionCreators from '../../../../../redux/actions/actions';
+// import { connect } from 'react-redux'
+// import { bindActionCreators } from "redux"
+
 const confirm = Modal.confirm;
 const Step = Steps.Step;
 const success = () => {
@@ -83,12 +89,10 @@ class Temp extends Component {
     showConfirm() { //最后验证，前端验证后发给后端，进行请求
         // 先获取修改后的数值,在判断是否修改数据库
         // console.log(this.props.form.getFieldsValue())
-
         let storeData = Object.assign({}, this.state.storeData, this.props.form.getFieldsValue())
         this.setState({
             storeData
         })
-
         confirm({
             wrapClassName: '提示',
             title: '提示:',
@@ -100,7 +104,6 @@ class Temp extends Component {
                 ".ant-modal-confirm-btns": { marginTop: 0 }
             },
             onOk: async () => { // 箭头函数解决this
-                console.log(this.state.storeData)
                 if (!this.isObjectValueEqual(this.props.location.state.ele,this.state.storeData)) {
                     await fetch(`http://localhost:2000/food?act=editFood&&spuId=${this.state.storeData.spuId}`,
                     {
@@ -117,8 +120,8 @@ class Temp extends Component {
                       .then(
                         data => {
                             success()
-                          // this.setState({ ...data })
-                          console.log(data)
+                          this.setState({ ...data })
+                        //   console.log(data)
                         })
                 } else { //进行修改直接跳转到列表页
                     success();
@@ -153,6 +156,7 @@ class Temp extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { current } = this.state;
          return (
             <main className="food-add">
@@ -214,4 +218,10 @@ class Temp extends Component {
 }
 
 const createForm = Form.create;
-export default withRouter(createForm()(Temp))//将Form表单,通过props获取到各种方法
+
+
+// export default withRouter(connect(
+    // state => { return { data: state.foodData } },//将redux变量赋值到组件,成组件变量Data
+    // dispatch => bindActionCreators(actionCreators, dispatch))( createForm()(Temp)))
+
+export default withRouter( createForm()(Temp)   )//将Form表单,通过props获取到各种方法

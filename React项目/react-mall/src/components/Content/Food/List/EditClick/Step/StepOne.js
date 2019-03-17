@@ -138,7 +138,7 @@ class StepOne extends Component {
         >
           <Input
             style={{ width: 320, fontSize: 13 }}
-            placeholder="请输入折扣"
+            placeholder="请输入菜品单位"
             {...unitProps}
           />
         </FormItem>

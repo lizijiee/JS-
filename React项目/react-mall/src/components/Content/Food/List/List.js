@@ -4,129 +4,47 @@ import IconFont from '../../../../iconfont/font'
 import './List.less';
 import { withRouter } from 'react-router-dom';
 
-//  -----------------     redux      ----------
+/*   -----------------     redux引入部分      ------------------- */
 import * as actionCreators from '../../../../redux/actions/actions';
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
-import { reject, all } from 'q';
 
 const Option = Select.Option;
 const text = 'Are you sure to delete this task?';
 
 class Temp extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.Page = null;  //用于包装Pagination组件;
         this.itemsArr = []; //初始化数组,page切换,清空
         this.renderArr = ["热销", "推荐", "折扣"];
         this.renderData = null;        // 渲染的数据
         this.selectOption = ["设为推荐", "设为热销", "设为折扣", "批量删除"]
-        this.selectValue = ""
+        this.selectValue = null //选择内容
+        this.categoryName = {} //菜品类名
         this.state = {
             current: 1,
             storeData: [],        // 菜品数据
             categoryName: {},      // 菜品类名 
             indeterminate: false, // 全选按钮 中间状态控制
             checkAll: false,      // 全部选中
-            storeArr: []         // 状态切换存储数据
+            storeArr: [],         // 状态切换存储数据
+            booleanValue: true,   // 确认按钮disable 控制属性  
+            selecctValue:"批量操作" // 批量操作 
         }
     }
-    async componentDidMount() { // 重复工作尽量用生命周期
-        await this.props.fetchFoodInfo()  //!!!!!!! 终点请求数据异步,拿不到
-        // console.log(this.props.data)
-        this.initData(this.props.data)
-    }
-    initData(inputData) { //数据初始化,数据格式处理
-        let temp = []
-        let categoryName = {}//类名
-        // console.log(this.props.data)
-        for (let ele of inputData.data) {
-            categoryName[ele.categoryName] = ele.categoryName//存储类名
-            for (let item of ele.spuList) {//对拿回来数据处理
-                item.categoryName = ele.categoryName //类名
-                temp.push(item)
-            }
-        }
-        this.setState({
-            storeData: temp,
-            categoryName
-        })
+    async componentDidMount() {
+        // 提前计划放入redux中的数据和方法
+        await this.props.fetchFoodInfo()
+        /*  
+        问题：
+            点请求数据异步,拿不到;
+ 
+        在使用过成中将redux和state用导致变量无法更新,禁止混用;  
+         */
     }
     /* ------------------    信息内容列表部分渲染(以下)   ------------------- */
-    EditClick(ele, ev) {//点击编辑
-        ev.preventDefault();
-        // console.log(ele);
-        this.props.history.push({//将此条完整菜品信息藏在state中
-            pathname: "/food/listDetails",
-            state: { ele, categoryName: this.state.categoryName },
-            search: '?num=' + ele.spuId
-        });
-
-    }
-    fetchPackage(url, body) { //封装fetch
-        fetch(`http://localhost:2000/${url}`,
-            {
-                method: 'POST',
-                // mode: 'cors',
-                // credentials: 'include', // cookie
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            }
-        )
-            .then(res => res.json())
-            .then(
-                (data) => {
-                    console.log(data)
-                    this.props.fetchFoodInfo()
-
-                    console.log(this.props.data)
-
-                    //  this.props.fetchFoodInfo(); 
-                    //  this.initData()
-                   this.initData(data)
-                })
-    }
-    async switchChange(valid, targetName, ele) {// valid: 切换后的状态,targetName: 目标类名
-        // false 删除数据
-        // true 增加数据
-        let url = ""
-        if (valid) {
-            url = `food?act=addMarket&&categoryName=${targetName}`
-        } else {
-            url = `food?act=delMarket&&categoryName=${targetName}`
-        }
-        await this.fetchPackage(url, ele)
-
-        // await 
-
-        console.log(this.state.storeData)
-
-        // console.log(this.props)
-        // this.initData()
-        // console.log(this.state.storeData)
-        // this.setState({
-        //     storeData: temp,
-        //     categoryName
-        // })
-    }
-    async deleteInfo(inFo) {
-        let url = `food?act=delMarket&&categoryName=${inFo.categoryName}`
-        await this.fetchPackage(url, inFo)
-        this.props.fetchFoodInfo()
-        // await this.props.fetchFoodInfo()
-        // console.log(this.state.storeData)
-
-        // this.initData()    
-
-        //--------21333333333333333333333333333333333333333333---------------
-    }
     renderItems = (ele, index) => {
-        if (this.itemsArr.length < 5) {
-            this.itemsArr.push(false)
-           
-        }
         return (
             <tr key={ele.spuId} id={ele.spuId}>
                 <td>
@@ -150,48 +68,47 @@ class Temp extends Component {
                             <Switch
                                 size="default"
                                 defaultChecked={ele.categoryName === item}
-                                onChange={(valid) => this.switchChange(valid, item, ele)}
+                                onChange={async (valid) => {
+                                    await this.props.transRecommend(valid, item, ele);
+                                }}
                             />
                         </p>
                     )}
-
                 </td>
                 <td>
                     <Button
                         type="primary"
                         size="small"
                         ghost="true"
-                        onClick={(ev) => { this.EditClick(ele, ev) }}//传参为tr索引
+                        onClick={(ev) => {
+                            this.props.editClick(this.props, ele, ev)
+                        }}//传参为tr索引
                         style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
                     >
                         <span>编辑</span>
                     </Button>
-
                     <Popconfirm
                         placement="topRight"
                         title={text}
                         onConfirm={this.confirm}
                         okText="Yes"
-                        onConfirm={() => { this.deleteInfo(ele) }}
+                        onConfirm={() =>
+                            this.props.transRecommend(false, ele.categoryName, ele)
+                        }
                         cancelText="No">
                         <Button
                             type="primary"
                             size="small"
-                            // onClick={() => { this.deleteInfo(ele) }}
                             style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
                         >删除</Button>
                     </Popconfirm>
-
-
                 </td>
             </tr>)
     }
-    checkedChange = (index, ev) => { // 单个点击事件 index 为传入索引
+    checkedChange = (index, ev) => {
+        // 单个点击事件 index 为传入索引
         ev.stopPropagation()
-
-        console.log(this.itemsArr)
-
-        this.itemsArr[index] = ev.target.checked
+        this.itemsArr[index] = ev.target.checked  //改变操作复选框的数组        
         if (this.itemsArr.every(ele => ele === true)) {
             // 多选框全为 => true,全选按钮为true,indeterminate为false(indeterminate中间状态)
             this.setState({
@@ -200,7 +117,12 @@ class Temp extends Component {
                 indeterminate: false
             })
         } else {
-            this.setState({ // 存在多选框为 false
+            // console.log(this.selectValue)
+            (this.selectValue) ? this.setState({
+                storeArr: this.itemsArr,
+                checkAll: false,
+                indeterminate: true, booleanValue: false
+            }) : this.setState({ // 存在多选框为 false
                 storeArr: this.itemsArr,
                 checkAll: false,
                 indeterminate: true
@@ -215,6 +137,7 @@ class Temp extends Component {
         }
     }
     onCheckAllChange = (e) => {
+        //  全选 功能 
         if (e.target.checked) {
             this.itemsArr.forEach((ele, index) => {
                 this.itemsArr[index] = e.target.checked
@@ -232,14 +155,13 @@ class Temp extends Component {
         })
 
     }
-    confirm = () => {//气泡确认框内容
+    confirm = () => {
+        // 气泡确认框内容
         message.info('Clicked on Yes.');
     }
-
     /* ------------------    信息内容列表部分渲染(以上)   ------------------- */
 
-
-    //-------------------------- 批量操作部分(以下) --------------------
+    /* -------------------------- 批量操作部分(以下) -------------------- */
     bulkOperation = () => {
         /* 思路： 
             1.首先判断选中内容是哪些？(先看一下数组准不准,state 还是外面的准一些);
@@ -248,47 +170,91 @@ class Temp extends Component {
             4.后台接收到的是一个数组,怎样处理进行数组解构;
             5.后台进行判断,如果是一个数组一条一条增加处理？？
         */
-        let tempArr = [] // 对应
-        this.state.storeArr.forEach((ele, index) => { if (ele) { tempArr.push(this.renderData[index]) } })// 拿到索引,将点了对勾的数据push到新数组;
+        let tempArr = [] // 创建数组 
+        this.state.storeArr.forEach((ele, index) => { if (ele) { tempArr.push(this.renderData[index]) } })
+        // 拿到索引,将点了对勾的数据push到新数组;
         // 拿到选择内容再进行请求;
         // console.log(tempArr)  拿到数据以后传送给后台进行修改;
         // console.log(this.selectValue)  当下选框数组,不能为空字符串
         // console.log(this.selectOption)  ["设为推荐", "设为热销", "设为折扣", "批量删除"]
         if (this.selectValue && tempArr.length) {//select不能为空,复选框不能为空,进入判断;
-            let OperString = this.selectValue.substring(2, 4) //热销 推荐 折扣 删除  
+            let OperString = this.selectValue.substring(2, 4) //操作方式： 热销 推荐 折扣 删除  
+
+
+            let collateData = () => { //查看是否存在
+                let tempData = [];
+                let data = [...this.props.data.data]
+                for (let ele of data) {
+                    for (let item of ele.spuList) {//  将拿回来spuList数组,数据处理
+                        item.categoryName = ele.categoryName // 类名
+                        item.checked = false  //拿到数据可以加小tag方便自己操作
+                        tempData.push(item)
+                    }
+                }
+                tempData = tempData.filter((ele) => ele.categoryName == "折扣" || ele.categoryName == "热销" || ele.categoryName == "推荐"
+                )
+                return tempData
+                /* 
+                  思路整理: 
+                     拿到每个获取的信息;(操作方式用传入方式,删除就直接操作就可以了)
+                     将信息进行匹配筛选,先按照categoryName查找再根据id查找
+                     查找结果放在一个数组中,如果数组没找到添加进去,找到就禁止添加已存在 
+                */
+            }
+
+            let testExist = function* () {
+            for (let ele of tempArr) {
+                yield  collateData().filter((item) => {
+                     return ele.spuId === item.spuId && ele.categoryName === OperString
+                })
+            }
+            };
+
+             for (let ele of testExist()) { //循环原理
+                 console.log(collateData())
+                 //没有就添加,有的话警告：已经存在
+                 console.log(ele); 
+             }
+ 
+
+
+            // testExist(tempArr).then((value) => {
+            //     console.log(value)
+            // });
+
+            // console.log(spuList)
+
+            this.props.batchUpdate(tempArr, OperString) //(数据,操作方式)
         }
         tempArr = []
     }
-    handleChange = (value) => {
-        this.selectValue = value
-    }
-    //-------------------------- 批量操作部分(以下) --------------------
+    /* --------------------------  批量操作部分(以下) -------------------- */
 
-
-
-
-    //-------------------------- 底部页码组件部分(以下) --------------------
+    /* ------------------------  底部页码组件部分(以下) -------------------- */
     /* 
       组件声明变量:
            this.Page 和 this.state.current:1
-  
+
       复用注意：首先判断数据格式     
     */
     async ChangePage(page) {
         // 使用<Pagination/>组件自带回调函数来设置页码对应渲染内容
         // this.checkedChange()
         this.itemsArr = []
-        this.setState({
+         this.setState({
             current: page,
             storeArr: [],
             checkAll: false,
             indeterminate: false,
+            selecctValue:"批量操作"
+            // this.setState({selecctValue: value})
         })
         // 注意setState为异步,回调函数问题
     }
-    renderPage() { //page第二步骤;
-        if (this.state.storeData.length) {
-            let length = this.state.storeData.length;
+    renderPage(tempData) {
+        //page第二步骤;
+        if (tempData.length) {
+            let length = tempData.length;
             this.Page = <Pagination  //  底部页码组件
                 defaultCurrent={1}
                 pageSize={5}
@@ -300,23 +266,33 @@ class Temp extends Component {
             return this.Page
         }
     }
-    //-------------------------- 底部页码组件部分(以上) --------------------
-
+    /* ------------------------  底部页码组件部分(以上) -------------------- */
     render() {
-        // console.log(this.state.storeData)
         let Items = null;
-        /*        **************   渲染主要列表    ***********      */
-        if (this.state.storeData.length) { //注释:  见用户：Member组件
-            let { storeData: data } = this.state;
+        let tempData = [];
+        let data = {...this.props.data}
+        if (data.data) { // 数据格式化处理,放在一个数组内,便于渲染
+            // Object.keys()  获取对象中keys值
+            // JSON.stringify(data) == "{}" //空对象判断方法
+            for (let ele of data.data) {
+                this.categoryName[ele.categoryName] = ele.categoryName// 存储类名
+                for (let item of ele.spuList) {//  将拿回来spuList数组,数据处理
+                    item.categoryName = ele.categoryName // 类名
+                    item.checked = false  //拿到数据可以加小tag方便自己操作
+                    tempData.push(item)
+                }
+            }
+        }
+        /*      **************   渲染主要列表    ***********      */
+        if (tempData.length) { // 注释:  见用户：Member组件
+            let data = tempData;
             if (data.length === 1) {
-                // console.log(this.renderData)
                 Items = data.map(this.renderItems)
             } else {
                 this.renderData = data.filter((e, index) =>
                     index >= 5 * (this.state.current - 1) &&
                     index < 5 * this.state.current
                 )
-                // console.log(this.renderData)
                 Items = (this.renderData).map(this.renderItems)
                 if (!Items.length) {
                     let temp = this.state.current * 1
@@ -324,7 +300,9 @@ class Temp extends Component {
                     return this.state
                 }
             }
-            // this.itemsArr=Items
+            if (!this.itemsArr.length) { //itemsArr为空初始化，非空不进判断，避免重复render
+                this.itemsArr = Array(Items.length).fill(false)
+            }
         }
         return (
             <section className="food-info-list">
@@ -341,7 +319,6 @@ class Temp extends Component {
                                 <span>输入检索:</span>
                                 <input type="text" placeholder="请输入菜名">
                                 </input>
-
                             </div>
                             <div className="el-form-item">
                                 <span>菜品类型:</span>
@@ -402,17 +379,30 @@ class Temp extends Component {
                             <tbody id="ItemWrap">{Items}</tbody>
                         </table>
                     </main>
-                    <Select
-                        defaultValue="批量操作"
+                    <Select 
+                        // defaultValue= {this.state.defalutSelecctValue} //不能改变颜色
+                         placeholder= "批量操作" //默认值
+                        // <div style={{display: (index===this.state.currentIndex) ? "block" : "none", color:"red"}}>此标签是否隐藏</div>
+                        // value="21313"  
                         style={{
                             marginRight: 20, marginTop: 30,
                             float: "left", width: 150,
-                            size: "large", fontSize: 15
+                            size: "large", fontSize: 13,
+                            color: true ? "grey" : "lime"
                         }}
-                        onSelect={value => this.handleChange(value)}
+                        value={this.state.selecctValue}
+                         onSelect={value => {
+                            this.selectValue = value
+                            this.setState({selecctValue: value})
+                            if (this.itemsArr.some(ele => ele === true)) {
+                                this.setState({
+                                    booleanValue: false
+                                })
+                            }
+                        }}
                     >
                         {this.selectOption.map(item =>
-                            <Option value={item} key={item}>{item}</Option>
+                            <Option value={item} key={item} >{item}</Option>
                         )}
                     </Select>
                     <Button
@@ -421,11 +411,11 @@ class Temp extends Component {
                             marginTop: 30, fontSize: 13,
                             height: 30, size: "large"
                         }}
+                        disabled={this.state.booleanValue}
                         onClick={
-                            () => this.bulkOperation()
-                        }
+                            () => this.bulkOperation()}
                     >确定</Button>
-                    {this.renderPage()}
+                    {this.renderPage(tempData)}
                 </div>
             </section>
         )
