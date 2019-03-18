@@ -1,5 +1,8 @@
 //说明： 哪里使用那里引入此文件;
 import * as types from '../constants/actionTypes'; //注释在此文件中
+import {
+  finished
+} from 'stream';
 
 export const setMemberInfo = data => ({
   type: types.SET_DATA_MEMBER,
@@ -19,6 +22,10 @@ export const switchChange = data => ({
 // })
 export const bulkOperation = data => ({ //批量操作
   type: types.BULK_OPERATION,
+  data
+})
+export const combinedQuery = data => ({ //多重查找
+  type: types.BULK_SEARCH,
   data
 })
 
@@ -45,13 +52,13 @@ export const transRecommend = (valid, targetName, body) => dispatch => { //请�
   // valid: 切换后的状态   false 删除数据   true 增加数据
   // targetName  目标类名
   // body整条信息
- let url = ""
+  let url = ""
   if (valid) {
     url = `food?act=addMarket&&categoryName=${targetName}`
   } else {
     url = `food?act=delMarket&&categoryName=${targetName}`
   }
-  return  fetch(`http://localhost:2000/${url}`, {
+  return fetch(`http://localhost:2000/${url}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -64,39 +71,51 @@ export const transRecommend = (valid, targetName, body) => dispatch => { //请�
 }
 
 //----------------------    菜品编辑    -----------------
-export const editClick=(target,ele, ev) => dispatch =>{
-        // ev.preventDefault();
-        target.history.push({//将此条完整菜品信息藏在state中
-            pathname: "/food/listDetails",
-            state: { ele, categoryName: ele.categoryName },
-            search: '?num=' + ele.spuId
-        });
+export const editClick = (target, ele, ev) => dispatch => {
+  // ev.preventDefault();
+  target.history.push({ //将此条完整菜品信息藏在state中
+    pathname: "/food/listDetails",
+    state: {
+      ele,
+      categoryName: ele.categoryName
+    },
+    search: '?num=' + ele.spuId
+  });
 }
 
-//----------------------    批量操作   ----------------------
-//----------------------    按钮切换    -----------------
-export const  batchUpdate = (data,way) => dispatch => { //请求会员信息数据
-//  前端把操作方式和操作数据发送给后端,先进行判断如果已经存在就不要发送后端了,redux里面也有数据,判断下
-  console.log(data,way)
-  console.log(this)
+//----------------------    批量查找   ----------------------
+export const batchQuery = (require, data) => dispatch => { //请求会员信息数据
+  // 前端把操作方式和操作数据发送给后端,先进行判断如果已经存在就不要发送后端了,redux里面也有数据,判断下
+  // 三个变量就去state里面找;
+  // 两个变量,侧重推荐,选后两个的(例如：菜品类型,中进入推荐状态的)
+  // 一个变量,就不聊了
+  let result = null;
+ 
+  if (Object.keys(require).every(ele=>!!ele==true)) { 
+    // 当三个变量全选情况;   
+    // every 为true;
+    let tempData = null;
+    let recommendData = data.find(i => i.categoryName === require.recommendState)//找出选中推荐状态对应数据
+    for (let ele of data) {// 找出菜品类型选中状态,对应数据进行查找,看里面有没有输入框中输入的数据
+      if (ele.categoryName === require.categoryName) {
+        tempData = ele
+        let firstData = ele.spuList.filter((items) => {
+          return items.spuName === require.spuName.replace(/\s+/g,"")
+        })
+        if (JSON.stringify(firstData) !== "[]") {
+           // 验证菜品类型中存在后，检验在推荐状态对应数据中是否存在
+           result = recommendData.spuList.filter((ele) => ele.spuName === require.spuName.replace(/\s+/g, ""))[0]
+        } else {
+          result = null
+        }
+      }
+    }
+  }else{
+    console.log(11111111111111)
+    console.log(require)
+  }
 
-
-  // let url = ""
-  // if (valid) {
-  //   url = `food?act=batchUpdate&&categoryName=${targetName}`
-  // } else {
-  //   url = `food?act=delMarket&&categoryName=${targetName}`
-  // }
-  // return  fetch(`http://localhost:2000/${url}`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(body)
-  //   })
-  //   .then(res => res.json())
-  //   .then(
-  //     (data) => dispatch(bulkOperation(data)))
+  return dispatch(combinedQuery(result)) //新数据丢进去
 }
 
 

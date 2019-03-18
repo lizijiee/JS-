@@ -3,7 +3,7 @@ import * as types from '../constants/actionTypes'; //注释在此文件中
 const initState = {
   memberData:{},  // 店内会员信息;
   foodData:{},    // 所有菜品数据; 
-  changeFood:{}  
+  searchFood:{}   //查找后的数据 
 }
 /* 
   state 初始值分别为简单类型和复合类型;
@@ -25,6 +25,10 @@ const reducer= (state=initState,action)=>{
              case types.BULK_OPERATION:
                  state.foodData=action.data; // action.data
              break;
+             case types.BULK_SEARCH:
+                 state.foodData=action.data; 
+             break;
+             
             //  case types.SWITCH_CHANGE:
             //      state.changeFood= action.data;//还是修改菜品数据
             //  break;
