@@ -23,6 +23,8 @@ class Temp extends Component {
         this.selectOption = ["设为推荐", "设为热销", "设为折扣", "批量删除"]
         this.selectValue = null //选择内容
         this.categoryName = {} //菜品类名
+        this.initStoreData = null; //将redux传过来数据存一下作为搜索使用,redux已经改变（因为渲染）,所以将此数据再传过去
+        this.switchChecked = null
         this.state = {
             current: 1,
             storeData: [],        // 菜品数据
@@ -32,32 +34,35 @@ class Temp extends Component {
             storeArr: [],         // 状态切换存储数据
             booleanValue: true,   // 确认按钮disable 控制属性  
             selecctValue: "批量操作", // 批量操作 
-            colorBoolean: true       // 控制select下拉框颜色
+            colorBoolean: true,     // 控制select下拉框颜色
+            switchChecked: null
         }
     }
     async componentDidMount() {
         // 提前计划放入redux中的数据和方法
         // console.log(this)
         await this.props.fetchFoodInfo()
+        this.initStoreData = this.props.data
         /*  
-        问题：
-            点请求数据异步,拿不到;
+       问题：
+           点请求数据异步,拿不到;
  
-        在使用过成中将redux和state用导致变量无法更新,禁止混用;  
-         */
+       在使用过成中将redux和state用导致变量无法更新,禁止混用;  
+        */
     }
 
     /* ------------------    信息内容列表部分渲染(以下)   ------------------- */
     async handleSearchClick() {
         let booleanValue = Object.values(this.props.form.getFieldsValue()).every(ele => !!ele === false)
         if (booleanValue) {
+            //   初次未设置任何筛选内容时点击搜索,不产生结果;
             return null
         } else {
             try {
                 await this.props.batchQuery(this.props.form.getFieldsValue(), this.props.data.data)
-                // console.log(2222)
             } catch (error) {
-                // console.log(error)
+                // console.log( this.initStoreData ) // {data: Array(11), code: 0, msg: "查找成功"}
+                await this.props.batchQuery(this.props.form.getFieldsValue(), this.initStoreData.data)
             }
         }
         // booleanValue? null :
@@ -74,6 +79,44 @@ class Temp extends Component {
     /* ------------------    信息内容列表部分渲染(以下)   ------------------- */
 
     /* ------------------    信息内容列表部分渲染(以下)   ------------------- */
+    switchChange = async (valid, item, ele) => {
+
+        let screenData = this.props.data.data.filter((i) => {
+            return i.categoryName === item
+        })  //筛选后的数据
+        let confirm = screenData[0].spuList.filter(n => n.spuName === ele.spuName)
+
+        if (confirm.length) {
+            /*  this.setState({
+                 switchChecked:false
+             }) 
+            */
+           /* 
+             *******   可以设置成禁止点击,最好还是分类存放不要存放到一次    *******
+             一条数据两用的不要存放到一起！！！！！！！！
+           */
+            const success = () => {
+                message.success(`${ele.spuName} 存在 【${ele.categoryName}】 推荐中 请重新选择~ `);
+            };
+            success()
+        } else {
+
+            await this.props.transRecommend(valid, item, ele);
+            /*   this.setState({
+                switchChecked:true
+             }) 
+            */
+        }
+        /* 
+            思路整理：
+               0.判断是否存在
+               1.如果存在就提示
+               2.如果不存在true不了,设置为false
+        */
+    }
+    shouldComponentUpdate() {
+        return this.props.state === this.props.state
+    }
     renderItems = (ele, index) => {
         if (ele == null) {
             return <tr key="1"
@@ -91,7 +134,7 @@ class Temp extends Component {
             </tr>
         } else {
             return (
-                <tr key={ele.spuId} id={ele.spuId} >
+                <tr key={ele.spuId} id={ele.spuId}  >
                     <td>
                         < Checkbox
                             onChange={(ev) => { this.checkedChange(index, ev) }}//传参小难点
@@ -113,8 +156,10 @@ class Temp extends Component {
                                 <Switch
                                     size="default"
                                     defaultChecked={ele.categoryName === item}
-                                    onChange={async (valid) => {
-                                        await this.props.transRecommend(valid, item, ele);
+                                    // disabled={ele.categoryName === item}
+                                    checked={ele.categoryName === item}
+                                    onClick={(valid) => {
+                                        this.switchChange(valid, item, ele)
                                     }}
                                 />
                             </p>
@@ -292,6 +337,7 @@ class Temp extends Component {
       复用注意：首先判断数据格式     
     */
     async ChangePage(page) {
+        //  *** 改变页码 ***
         // 使用<Pagination/>组件自带回调函数来设置页码对应渲染内容
         // this.checkedChange()
         this.itemsArr = []
@@ -308,6 +354,7 @@ class Temp extends Component {
         // 注意setState为异步,回调函数问题
     }
     renderPage(tempData) {
+        //  *** 渲染底部page ***
         //page第二步骤;
         if (tempData.length) {
             let length = tempData.length;
@@ -324,32 +371,41 @@ class Temp extends Component {
     }
     /* ------------------------  底部页码组件部分(以上) -------------------- */
     render() {
+        console.log(this.switchChecked)
+
         let Items = null;
         let tempData = [];
         let data = { ...this.props.data }
         const { getFieldProps, getFieldError, isFieldValidating, getFieldDecorator } = this.props.form;
         // 初始为 {} 空对象
-        if (data.data) { // 数据格式化处理,放在一个数组内,便于渲染
+        if (data.data) {
+            // 数据格式化处理,放在一个数组内,便于渲染
             // Object.keys()  获取对象中keys值
             // JSON.stringify(data) == "{}" //空对象判断方法
             for (let ele of data.data) {
                 this.categoryName[ele.categoryName] = ele.categoryName// 存储类名
                 for (let item of ele.spuList) {//  将拿回来spuList数组,数据处理
                     item.categoryName = ele.categoryName // 类名
-                    item.checked = false  //拿到数据可以加小tag方便自己操作
+                    item.checked = false  // 拿到数据可以加小tag方便自己操作
                     tempData.push(item)
                 }
             }
         }
+
         if (JSON.stringify(this.props.data) !== "{}" && !data.data) {
+            if (Array.isArray(this.props.data)) { //如果搜索回来结果是一个数组
+                tempData = this.props.data  //把数组直接丢进去进行渲染,渲染数组弄成最深层目录一个格式,最省事了,不用再考虑格式问题,直接丢数据就可以修改.
+            } else {
+                tempData.push(this.props.data)
+            }
+
             //弄成统一格式进行渲染,比如都放在一个数组里面,总是需要改格式,有深层嵌套很麻烦。
-            tempData.push(this.props.data)
         }
         /* ------------------------         渲染主要列表       -------------------- */
 
         if (tempData.length) { // 注释:  见用户：Member组件
             let data = tempData;
-            if (data.length === 1) {
+            if (data.length < 5) {
                 Items = data.map(this.renderItems)
             } else {
                 this.renderData = data.filter((e, index) =>
@@ -449,9 +505,6 @@ class Temp extends Component {
                                 </FormItem>
 
                             </Form >
-
-
-
                         </div>
                     </div>
                     <div className="el-title">

@@ -497,6 +497,9 @@ router.post('/food', async (ctx) => { //food组件接口
                     }
                 });
                 /* ------------------------------------------- */
+
+                console.log(obj)
+
                 let arr = await Shop.find({
                     tag: obj.tag,
                 })

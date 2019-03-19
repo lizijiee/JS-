@@ -52,6 +52,7 @@ export const transRecommend = (valid, targetName, body) => dispatch => { //请�
   // valid: 切换后的状态   false 删除数据   true 增加数据
   // targetName  目标类名
   // body整条信息
+
   let url = ""
   if (valid) {
     url = `food?act=addMarket&&categoryName=${targetName}`
@@ -84,37 +85,101 @@ export const editClick = (target, ele, ev) => dispatch => {
 }
 
 //----------------------    批量查找   ----------------------
-export const batchQuery = (require, data) => dispatch => { //请求会员信息数据
+export const batchQuery = (require, data) => dispatch => { // 请求会员信息数据
   // 前端把操作方式和操作数据发送给后端,先进行判断如果已经存在就不要发送后端了,redux里面也有数据,判断下
   // 三个变量就去state里面找;
   // 两个变量,侧重推荐,选后两个的(例如：菜品类型,中进入推荐状态的)
   // 一个变量,就不聊了
   let result = null;
- 
-  if (Object.keys(require).every(ele=>!!ele==true)) { 
-    // 当三个变量全选情况;   
+  if (require.spuName) {
+    require.spuName = require.spuName.replace(/\s+/g, "") //不改变原数组
+  }
+  if (Object.values(require).every(ele => (!!ele) == true) && require.spuName !== "") {
+    // 当三个输入框都有内容,第一个input如果输入过以后,再获取会导致拿到空字符串,需要筛选出去;   
     // every 为true;
     let tempData = null;
-    let recommendData = data.find(i => i.categoryName === require.recommendState)//找出选中推荐状态对应数据
-    for (let ele of data) {// 找出菜品类型选中状态,对应数据进行查找,看里面有没有输入框中输入的数据
+    let recommendData = data.find(i => i.categoryName === require.recommendState) //找出选中推荐状态对应数据
+    for (let ele of data) { // 找出菜品类型选中状态,对应数据进行查找,看里面有没有输入框中输入的数据
       if (ele.categoryName === require.categoryName) {
         tempData = ele
         let firstData = ele.spuList.filter((items) => {
-          return items.spuName === require.spuName.replace(/\s+/g,"")
+          return items.spuName === require.spuName.replace(/\s+/g, "")
         })
         if (JSON.stringify(firstData) !== "[]") {
-           // 验证菜品类型中存在后，检验在推荐状态对应数据中是否存在
-           result = recommendData.spuList.filter((ele) => ele.spuName === require.spuName.replace(/\s+/g, ""))[0]
+          // 验证菜品类型中存在后，检验在推荐状态对应数据中是否存在
+          result = recommendData.spuList.filter((ele) => ele.spuName === require.spuName.replace(/\s+/g, ""))[0]
         } else {
           result = null
         }
       }
     }
-  }else{
-    console.log(11111111111111)
-    console.log(require)
+  } else {
+    /* 
+      思路整理：  
+         1.首先判断到底是谁存在,用filter过滤出来然后去查找,查找要求为两个都符合要求;
+         2.如果只有一个true那很好弄,直接查找, 还是要用switch;
+         3.如果是两个为true,也是直接查找把如果主食和热销在一起情况特殊点，不考虑了.
+         因为数据结构本来写的也不好
+    */
+    //把有输入内容的key数值搞出来，形成一个数组,对数组进行循环
+    let queryReal = Object.keys(require).filter((item) => !!require[item] === true)
+    // 真实查找要求,经过筛选以后的key值  ["spuName"]
+    let arr = []
+    let storeMethod = null
+    let recommendList = null
+    for (let items of data) {
+      storeMethod = {
+        // 存放方法
+        categoryName: () => {
+          // 菜品/推荐  类型存在
+          if (items.spuList.find(i => i.spuName === require.spuName)) {
+            result = items.spuList.find(i => i.spuName === require.spuName)
+          }
+          if (!require.spuName) {
+            // 菜名输入框没有内容
+            result = items.spuList
+          }
+        },
+        spuName: (item, list) => {
+          for (let item of list) {
+            // 排除推荐类型和菜品类型以后,只剩下输入搜索
+            if (item.spuName == require.spuName) {
+              // 深层循环
+              arr.push(item)
+              result = arr
+            }
+          }
+        }
+      }
+      // 菜名存在分两种另外两个是否存在,两个二选一存在用或者,
+      if (items.categoryName === require.categoryName && require.recommendState) {
+        //第二项存在并且第三项不为空
+        storeMethod.categoryName()
+      } else if (items.categoryName === require.recommendState) {
+        storeMethod.categoryName() // 推荐类型存在
+        if (require.recommendState) {
+          //  菜品类型和推荐状态都存在
+          // 1.拿到菜品类型的tag,
+          // 2.选中推荐状态的spuList从总数据中拿到
+          // 3.查看spuList是否有需要的tag,生成新数组
+          // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
+          let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
+          recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
+          // 循环生成新数组
+           //菜品类型的tag
+          let list = recommendList.filter(info => {
+            return info.tag === tag //3 get √
+          })
+           result = list
+          if (!list) {
+            result = null
+          }
+        }
+      } else {
+        storeMethod.spuName(items, items.spuList)
+      }
+    }
   }
-
   return dispatch(combinedQuery(result)) //新数据丢进去
 }
 
