@@ -91,10 +91,10 @@ class Temp extends Component {
                  switchChecked:false
              }) 
             */
-           /* 
-             *******   可以设置成禁止点击,最好还是分类存放不要存放到一次    *******
-             一条数据两用的不要存放到一起！！！！！！！！
-           */
+            /* 
+              *******   可以设置成禁止点击,最好还是分类存放不要存放到一次    *******
+              一条数据两用的不要存放到一起！！！！！！！！
+            */
             const success = () => {
                 message.success(`${ele.spuName} 存在 【${ele.categoryName}】 推荐中 请重新选择~ `);
             };
@@ -371,8 +371,6 @@ class Temp extends Component {
     }
     /* ------------------------  底部页码组件部分(以上) -------------------- */
     render() {
-        console.log(this.switchChecked)
-
         let Items = null;
         let tempData = [];
         let data = { ...this.props.data }
@@ -450,9 +448,10 @@ class Temp extends Component {
                                 layout="inline"
                                 action=""
                                 style={{
-                                    marginTop: 15,
-                                    marginBottom: 20,
-                                    marginLeft: 60
+                                    marginTop: 25,
+                                    marginBottom: 30,
+                                    marginLeft: 60,
+                                    fontSize: 12
                                 }}
                             >
                                 <FormItem
@@ -509,7 +508,7 @@ class Temp extends Component {
                     </div>
                     <div className="el-title">
                         <div className="el-title-body">
-                            <IconFont type="mall-doc-list" style={{ fontSize: 16, marginRight: 5 }} />
+                            <IconFont type="mall-doc-list" style={{ fontSize: 16, marginRight: 5, marginTop: 5 }} />
                             <span>数据列表</span>
                             {/* <button className="add">添加菜0品</button> */}
                         </div>
@@ -542,7 +541,7 @@ class Temp extends Component {
                         // defaultValue= {this.state.defalutSelecctValue} //不能改变颜色
                         placeholder="批量操作" //默认值
                         style={{
-                            marginRight: 20, marginTop: 30,
+                            marginRight: 20, marginTop: 40,
                             float: "left", width: 150,
                             size: "large",
                             color: this.state.colorBoolean ? "rgba(0, 0, 0, 0.45)" : "rgba(0, 0, 0, 1)"
@@ -569,7 +568,7 @@ class Temp extends Component {
                     <Button
                         type="primary"
                         style={{
-                            marginTop: 30, fontSize: 13,
+                            marginTop: 40, fontSize: 13,
                             height: 30, size: "large"
                         }}
                         disabled={this.state.booleanValue}

@@ -11,7 +11,7 @@ p {
   padding: 10px 20px 20px 20px;
 }
 .food-info-list .app-container .el-serch-wrap {
-  margin-top: 0;
+  margin-top: 10px;
   border: 1px solid #ebeef5;
   background-color: #fff;
   color: #303133;
@@ -21,6 +21,8 @@ p {
 .food-info-list .app-container .el-serch-wrap .el-title-body {
   padding: 20px;
   vertical-align: middle;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .food-info-list .app-container .el-serch-wrap .el-title-body .doc-logo {
   display: inline-block !important;
@@ -62,7 +64,7 @@ p {
   height: 35px;
 }
 .food-info-list .app-container .el-serch-wrap .el-title-body .el-form-item {
-  margin: 15px 25px 55px 35px;
+  margin: 25px 25px 55px 35px;
   float: left;
 }
 .food-info-list .app-container .el-serch-wrap .el-title-body .el-form-item span {
@@ -91,6 +93,8 @@ p {
   background-color: #fff;
   color: #303133;
   border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .food-info-list .app-container .el-title .el-title-body {
   padding: 20px;
@@ -128,7 +132,7 @@ p {
   text-align: center;
 }
 .food-info-list .app-container .table-container table thead tr {
-  height: 70px;
+  height: 78px;
   background: #bfbfbf1c;
 }
 .food-info-list .app-container .table-container table thead trhover {

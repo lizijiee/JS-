@@ -94,7 +94,7 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
   if (require.spuName) {
     require.spuName = require.spuName.replace(/\s+/g, "") //不改变原数组
   }
-  if (Object.values(require).every(ele => (!!ele) == true) && require.spuName !== "") {
+  if (Object.values(require).every(ele => ele) && require.spuName !== "") {
     // 当三个输入框都有内容,第一个input如果输入过以后,再获取会导致拿到空字符串,需要筛选出去;   
     // every 为true;
     let tempData = null;
@@ -122,7 +122,6 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
          因为数据结构本来写的也不好
     */
     //把有输入内容的key数值搞出来，形成一个数组,对数组进行循环
-    let queryReal = Object.keys(require).filter((item) => !!require[item] === true)
     // 真实查找要求,经过筛选以后的key值  ["spuName"]
     let arr = []
     let storeMethod = null
@@ -152,31 +151,73 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
         }
       }
       // 菜名存在分两种另外两个是否存在,两个二选一存在用或者,
-      if (items.categoryName === require.categoryName && require.recommendState) {
-        //第二项存在并且第三项不为空
-        storeMethod.categoryName()
-      } else if (items.categoryName === require.recommendState) {
-        storeMethod.categoryName() // 推荐类型存在
-        if (require.recommendState) {
-          //  菜品类型和推荐状态都存在
-          // 1.拿到菜品类型的tag,
-          // 2.选中推荐状态的spuList从总数据中拿到
-          // 3.查看spuList是否有需要的tag,生成新数组
-          // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
-          let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
-          recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
-          // 循环生成新数组
-           //菜品类型的tag
-          let list = recommendList.filter(info => {
-            return info.tag === tag //3 get √
-          })
-           result = list
-          if (!list) {
+      if (require.spuName && require.recommendState) {
+        // 1 和 3 都存在
+        if (items.categoryName === require.recommendState) {
+           if (items.spuList.filter((i) => i.spuName === require.spuName).length) {
+            result = items.spuList.filter((i) => i.spuName === require.spuName)
+          } else {
+            console.log(1111)
             result = null
           }
         }
-      } else {
-        storeMethod.spuName(items, items.spuList)
+      }
+      if (require.spuName && require.categoryName) {
+        // 1 和 2 都存在 
+        // console.log(1122)
+        console.log(items.categoryName)
+        console.log(require.categoryName)
+
+
+        if (items.categoryName === require.categoryName) {
+          let arr = items.spuList.filter((i) => i.spuName === require.spuName)
+          if (arr.length) {
+            result = arr
+          } else {
+            result = null
+          }
+        }
+      }
+      if (require.categoryName && require.recommendState) {
+        console.log(2132123123132132123)
+        //    2 和 3都存在
+
+        // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
+        // 1.拿到菜品类型的tag,
+        // 2.选中推荐状态的spuList从总数据中拿到
+        // 3.查看spuList是否有需要的tag,生成新数组
+        if (require.recommendState) {
+          let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
+          recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
+          // 循环生成新数组
+          //菜品类型的tag
+          let arr = recommendList.filter(info => {
+            return info.tag === tag //3 get √
+          })
+          if (arr.length) {
+            result = arr
+          } else {
+            result = null
+          }
+        }
+        console.log(22223333)
+      } 
+      console.log( )
+      if(Object.values(require).filter((item) => item).length===1) {
+        let queryValue = Object.values(require).filter((item) => item)[0]
+        let queryKey = Object.keys(require).filter(ele => require[ele])[0]
+
+ 
+        if (items.categoryName === queryValue) {
+          // 另外两个框存在,执行此函数
+          result = items.spuList
+        }
+        if (queryKey === "spuName") {
+          if (items.spuList.filter(i => i.spuName === queryValue).length) {
+            // 如果查找的结果存在进行赋值,不存在不进入判断内;
+            result = items.spuList.filter(i => i.spuName === queryValue)
+          }
+        }
       }
     }
   }
@@ -190,7 +231,51 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
 
 
 
-
+/* 
+      if (items.categoryName === require.categoryName && !require.recommendState) {
+            //第一项结果根据第二项可以查找到才进来
+            //第二项存在并且第三项不为空
+            if (require.spuName) {
+              //查看第二个框中是否有第一个框的内容.
+              console.log("第一个输入框存在存在~~~~~~~~")
+              // console.log(items.spuList.filter(e => e.spuName === require.spuName))
+              if (items.spuList.find(i => i.spuName === require.spuName)) {
+                result = items.spuList.find(i => i.spuName === require.spuName)
+              } else {
+                result = null
+              }
+              return 
+            } else {
+              storeMethod.categoryName()
+            }
+          } else if (items.categoryName === require.recommendState) {
+            console.log(22222222222222222)
+            storeMethod.categoryName() // 推荐类型存在
+            if (require.recommendState) {
+              console.log(3333333333333333333)
+              //  菜品类型和推荐状态都存在
+              // 1.拿到菜品类型的tag,
+              // 2.选中推荐状态的spuList从总数据中拿到
+              // 3.查看spuList是否有需要的tag,生成新数组
+              // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
+              let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
+              recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
+              // 循环生成新数组
+              //菜品类型的tag
+              let list = recommendList.filter(info => {
+                return info.tag === tag //3 get √
+              })
+              result = list
+              if (!list) {
+                result = null
+              }
+            }
+          } else {
+            console.log(4444444444444444)
+            // 只根据菜名进行搜索,  菜品类型  和   输入检索;
+            storeMethod.spuName(items, items.spuList)
+          } 
+        */
 
 
 
