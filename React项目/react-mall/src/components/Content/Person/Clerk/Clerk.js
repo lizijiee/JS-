@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Button, Pagination, Form, Modal, Input, message } from 'antd';
+import { Button, Pagination, Form, Modal, Input, message,Popconfirm } from 'antd';
 import IconFont from '../../../../iconfont/font';
 import { Link, withRouter } from 'react-router-dom';
 import './Clerk.less';
 
 const FormItem = Form.Item;
+const text = 'Are you sure to delete this task?';
 
 class Temp extends Component {
   constructor() { //构造函数
@@ -38,13 +39,13 @@ class Temp extends Component {
     //挂载前,请求数据函数
     this.getData();
   }
-   EditClick(index) {
+  EditClick(index) {
     // e.preventDefault();
     console.log(index);
     // pathname:'/pers/clerksDetails?num='+index,
     // state:this.state.data[0].ClerkData.filter(e=>e.num==index)
     // let vcode =[{aa:1}]
-     this.props.history.push({//将此条完整人员信息藏在state中
+    this.props.history.push({//将此条完整人员信息藏在state中
       pathname: "/pers/clerksDetails",
       state: this.state.data[0].ClerkData.filter(e => e.num == index),
       search: '?num=' + index
@@ -67,22 +68,26 @@ class Temp extends Component {
         <td>{ele.jobTitle}</td>
         <td>{ele.state}</td>
         <td>
-          <Button
-            type="primary"
-            size="small"
+          <span
             // href={`/pers/clerksDetails?num=${ele.num}`}
-            ghost="true"
             onClick={this.EditClick.bind(this, ele.num)}
-            style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
-          >
-            <span>编辑</span>
-          </Button>
-          <Button
-            type="primary"
-            size="small"
-            onClick={()=>{this.deleteInfo(ele.num)}}
-            style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
-          >删除</Button>
+            style={{ fontSize: 13, width: 60, height: 25, display: "inline-block", color: "#1890ff", cursor: "pointer", borderRight: "1px solid #ebeef5" }}>
+            编辑</span>
+
+          <Popconfirm
+            placement="topRight"
+            title={text}
+            okText="Yes"
+            onConfirm={() =>
+              this.deleteInfo(ele.num)
+            }
+            cancelText="No">
+            <span
+              type="primary"
+              size="small"
+              style={{ fontSize: 13, width: 60, height: 25, cursor: "pointer", color: "red", display: "inline-block" }}
+            >删除</span>
+          </Popconfirm>
         </td>
       </tr>)
   }
@@ -97,12 +102,12 @@ class Temp extends Component {
       } else {
         // 如果为完整数据对数据进行筛选后显示;
         // 根据页码判断后结果,显示内容;
-        this.listItems = data[0].ClerkData.filter((e,index) =>
-        index >= 5 * (this.state.current - 1) && index < 5 * this.state.current
+        this.listItems = data[0].ClerkData.filter((e, index) =>
+          index >= 5 * (this.state.current - 1) && index < 5 * this.state.current
         ).map(this.renderFunc)
-        if(!this.listItems.length){
-          let temp= this.state.current*1
-          this.setState({ current:temp-1 })
+        if (!this.listItems.length) {
+          let temp = this.state.current * 1
+          this.setState({ current: temp - 1 })
         }
       }
       return (<tbody >{this.listItems}</tbody>)
@@ -112,7 +117,7 @@ class Temp extends Component {
     this.setState({ current: page })// 使用setState的 "回调函数" 解决异步问题
 
     // setState为异步  上面console以后 => setState为异步 => 先执行下面console 
-    
+
     // 解决this.setState可能会引发不必要的渲染(renders) 
     // https://www.cnblogs.com/lgp142332/p/7270047.html
   }
@@ -199,7 +204,7 @@ class Temp extends Component {
           .then(res => res.json())
           .then(data => {
             // 后台返回数据后页面是否渲染???
-             this.setState({
+            this.setState({
               data: data.data,
               storeData: data.data
             })
@@ -226,14 +231,14 @@ class Temp extends Component {
   handleResetClick() {
     document.getElementById("indexName").value = ""
     this.setState({ current: 1 })
-    
+
     this.getData()//如果结果不存在重新请求数据,也可以提前把数据存在
   }
 
   render() {
     let Page = null;
     let { data } = this.state;
-    const {resetFields, getFieldDecorator } = this.props.form;
+    const { resetFields, getFieldDecorator } = this.props.form;
     //  --------------------    表单部分    ---------------
     const formItemLayout = {//样式
       // span是整体左移 pull是label左移   
@@ -301,9 +306,9 @@ class Temp extends Component {
                 <div>
                   <IconFont type="mall-doc-glass" style={{ fontSize: 16, marginRight: 5 }} />
                   <span>筛选检索</span>
-                  <Button 
-                  className="btn" 
-                  onClick={()=>{this.handleSearchClick()}}
+                  <Button
+                    className="btn"
+                    onClick={() => { this.handleSearchClick() }}
                   >查询结果</Button>
                   <Button
                     className="btn"
@@ -324,22 +329,26 @@ class Temp extends Component {
             <div className="el-title-body">
               <IconFont type="mall-doc-list" style={{ fontSize: 16, marginRight: 5 }} />
               <span>数据列表</span>
-              <button className="add" onClick={this.addInfo.bind(this)}>添加人员信息</button>
-
+              <button
+                className="add"
+                style={{ margin: -4 }}
+                onClick={this.addInfo.bind(this)}
+              >添加人员信息
+              </button>
               <Modal
-                afterClose={ () => resetFields()}
+                afterClose={() => resetFields()}
                 title="店员信息添加"
                 visible={this.state.visible}
                 onOk={this.handleOk}
                 onCancel={this.handleCancel}
               >
-               {/* 添加人员信息表单组件*/}
-               {FormElement.bind(this)()}
+                {/* 添加人员信息表单组件*/}
+                {FormElement.bind(this)()}
               </Modal>
             </div>
           </div>
           <main className="table-container">
-            <table cellPadding="0" cellSpacing="0" style={{width:"100%"}}>
+            <table cellPadding="0" cellSpacing="0" style={{ width: "100%" }}>
               <thead>
                 <tr>
                   <th>工号</th>

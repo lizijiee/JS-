@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Pagination, message } from 'antd';
+import { Button, Pagination, message, Popconfirm } from 'antd';
 import IconFont from '../../../../iconfont/font'
 import './Member.less';
 import { withRouter } from 'react-router-dom';
@@ -8,6 +8,9 @@ import { withRouter } from 'react-router-dom';
 import * as actionCreators from '../../../../redux/actions/actions';
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux"
+
+const text = 'Are you sure to delete this task?';
+
 class ClerksMember extends Component {
   constructor() {
     super()
@@ -128,21 +131,26 @@ class ClerksMember extends Component {
         <td>{ele.password}</td>
         <td>{ele.balance}</td>
         <td>
-          <Button
-            type="primary"
-            size="small"
-            ghost="true"
+          <span
             onClick={() => { this.EditClick(ele.Id) }}//当前点击tr的索引
-            style={{ marginRight: 10, fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
-          >
-            <span>编辑</span>
-          </Button>
-          <Button
-            type="primary"
-            size="small"
-            onClick={() => { this.deleteInfo(ele) }}
-            style={{ fontSize: 13, width: 60, height: 25, borderRadius: 5 }}
-          >删除</Button>
+
+            style={{ fontSize: 13, width: 60, height: 25, display: "inline-block", color: "#1890ff", cursor: "pointer", borderRight: "1px solid #ebeef5" }}>
+            编辑</span>
+          <Popconfirm
+            placement="topRight"
+            title={text}
+            okText="Yes"
+            onConfirm={() =>
+              this.deleteInfo(ele)
+            }
+            cancelText="No">
+            <span
+              type="primary"
+              size="small"
+              style={{ fontSize: 13, width: 60, height: 25, cursor: "pointer", color: "red", display: "inline-block" }}
+            >删除</span>
+          </Popconfirm>
+
         </td>
       </tr>)
   }

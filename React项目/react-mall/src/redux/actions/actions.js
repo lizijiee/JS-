@@ -48,7 +48,7 @@ export const fetchFoodInfo = () => dispatch => { //请求会员信息数据
 }
 
 //----------------------    按钮切换    -----------------
-export const transRecommend = (valid, targetName, body) => dispatch => { //请求会员信息数据
+export const transRecommend = (valid, targetName, body, banrender) => dispatch => { //请求会员信息数据
   // valid: 切换后的状态   false 删除数据   true 增加数据
   // targetName  目标类名
   // body整条信息
@@ -68,7 +68,19 @@ export const transRecommend = (valid, targetName, body) => dispatch => { //请�
     })
     .then(res => res.json())
     .then(
-      (data) => dispatch(fetchFoodInfo(data)))
+      // console.log(banrender)
+
+      //添加时候为  true 不需要更新数据  "新品" {spuName: "果仁菠菜", unit: "份", spuId: 1201561870, tag: "85608019", activityTag: "", …}
+      // false时候更新数据
+      async data => {
+        if (!banrender) {
+          console.log(data)
+          await dispatch(fetchFoodInfo(data))
+        }
+      }
+
+      // (data) => dispatch(fetchFoodInfo(data))
+    )
 }
 
 //----------------------    菜品编辑    -----------------
@@ -129,14 +141,14 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
     for (let items of data) {
       storeMethod = {
         // 存放方法
-        categoryName: () => {
+        categoryName: (categoryName, recommendState) => {
           // 菜品/推荐  类型存在
-          if (items.spuList.find(i => i.spuName === require.spuName)) {
-            result = items.spuList.find(i => i.spuName === require.spuName)
-          }
-          if (!require.spuName) {
-            // 菜名输入框没有内容
-            result = items.spuList
+          if (items.categoryName === require.recommendState) {
+            if (items.spuList.filter((i) => i.spuName === require.spuName).length) {
+              result = items.spuList.filter((i) => i.spuName === require.spuName)
+            } else {
+              result = null
+            }
           }
         },
         spuName: (item, list) => {
@@ -148,66 +160,71 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
               result = arr
             }
           }
+          if (items.spuList.find(i => i.spuName === require.spuName)) {
+            result = items.spuList.find(i => i.spuName === require.spuName)
+          }
+          if (!require.spuName) {
+            // 菜名输入框没有内容
+            result = items.spuList
+          }
         }
       }
       // 菜名存在分两种另外两个是否存在,两个二选一存在用或者,
       if (require.spuName && require.recommendState) {
         // 1 和 3 都存在
         if (items.categoryName === require.recommendState) {
-           if (items.spuList.filter((i) => i.spuName === require.spuName).length) {
+          if (items.spuList.filter((i) => i.spuName === require.spuName).length) {
             result = items.spuList.filter((i) => i.spuName === require.spuName)
           } else {
-            console.log(1111)
             result = null
           }
         }
       }
       if (require.spuName && require.categoryName) {
         // 1 和 2 都存在 
-        // console.log(1122)
-        console.log(items.categoryName)
-        console.log(require.categoryName)
-
-
         if (items.categoryName === require.categoryName) {
-          let arr = items.spuList.filter((i) => i.spuName === require.spuName)
-          if (arr.length) {
-            result = arr
+          if (items.spuList.filter((i) => i.spuName === require.spuName).length) {
+            result = items.spuList.filter((i) => i.spuName === require.spuName)
           } else {
             result = null
           }
         }
       }
       if (require.categoryName && require.recommendState) {
-        console.log(2132123123132132123)
         //    2 和 3都存在
+        if (require.recommendState) {
+          let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
 
+          if (tag.length&&require.recommendState!=="未推荐") {
+            console.log(tag.length)
+            console.log(tag)
+            console.log( require.recommendState )
+            console.log(data.filter(ele => ele.categoryName === require.recommendState)[0])
+            recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
+            console.log(recommendList)
+            // 循环生成新数组
+            // 菜品类型的tag
+            let arr = recommendList.filter(info => {
+              return info.tag === tag //3 get √
+            })
+            if (arr.length) {
+              result = arr
+            } else {
+              result = null
+            }
+          }  
+
+        }
         // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
         // 1.拿到菜品类型的tag,
         // 2.选中推荐状态的spuList从总数据中拿到
         // 3.查看spuList是否有需要的tag,生成新数组
-        if (require.recommendState) {
-          let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
-          recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
-          // 循环生成新数组
-          //菜品类型的tag
-          let arr = recommendList.filter(info => {
-            return info.tag === tag //3 get √
-          })
-          if (arr.length) {
-            result = arr
-          } else {
-            result = null
-          }
-        }
-        console.log(22223333)
-      } 
-      console.log( )
-      if(Object.values(require).filter((item) => item).length===1) {
+      }
+      if (Object.values(require).filter((item) => item).length === 1) {
+        //筛选获取输入key和value
         let queryValue = Object.values(require).filter((item) => item)[0]
         let queryKey = Object.keys(require).filter(ele => require[ele])[0]
 
- 
         if (items.categoryName === queryValue) {
           // 另外两个框存在,执行此函数
           result = items.spuList
@@ -221,6 +238,9 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
       }
     }
   }
+
+
+  console.log(result)
   return dispatch(combinedQuery(result)) //新数据丢进去
 }
 
@@ -228,54 +248,6 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
 
 
 
-
-
-
-/* 
-      if (items.categoryName === require.categoryName && !require.recommendState) {
-            //第一项结果根据第二项可以查找到才进来
-            //第二项存在并且第三项不为空
-            if (require.spuName) {
-              //查看第二个框中是否有第一个框的内容.
-              console.log("第一个输入框存在存在~~~~~~~~")
-              // console.log(items.spuList.filter(e => e.spuName === require.spuName))
-              if (items.spuList.find(i => i.spuName === require.spuName)) {
-                result = items.spuList.find(i => i.spuName === require.spuName)
-              } else {
-                result = null
-              }
-              return 
-            } else {
-              storeMethod.categoryName()
-            }
-          } else if (items.categoryName === require.recommendState) {
-            console.log(22222222222222222)
-            storeMethod.categoryName() // 推荐类型存在
-            if (require.recommendState) {
-              console.log(3333333333333333333)
-              //  菜品类型和推荐状态都存在
-              // 1.拿到菜品类型的tag,
-              // 2.选中推荐状态的spuList从总数据中拿到
-              // 3.查看spuList是否有需要的tag,生成新数组
-              // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
-              let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
-              recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
-              // 循环生成新数组
-              //菜品类型的tag
-              let list = recommendList.filter(info => {
-                return info.tag === tag //3 get √
-              })
-              result = list
-              if (!list) {
-                result = null
-              }
-            }
-          } else {
-            console.log(4444444444444444)
-            // 只根据菜名进行搜索,  菜品类型  和   输入检索;
-            storeMethod.spuName(items, items.spuList)
-          } 
-        */
 
 
 

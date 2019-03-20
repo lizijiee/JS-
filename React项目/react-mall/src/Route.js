@@ -17,7 +17,6 @@ import Advertise from './components/Content/Marketing/Advertise/Advertise'
 import New from './components/Content/Marketing/New/New'
 import Hot from './components/Content/Marketing/Hot/Hot'
 import Discount from './components/Content/Marketing/Discount/Discount'
-import Combos from './components/Content/Marketing/Combos/Combos'
 import Location from './components/Content/Location/Location'
 
 // 路由表
@@ -128,9 +127,6 @@ class App extends Component {
                 <Route
                     path="/sale/deals"
                     render={() => <Discount />} />
-                <Route
-                    path="/sale/combo"
-                    render={() => <Combos />} />
                 <Route
                     path="/address"
                     render={() => <Location />} />

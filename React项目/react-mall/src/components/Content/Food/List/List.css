@@ -153,6 +153,9 @@ p {
 .food-info-list .app-container .table-container table thead tr th:nth-of-type(9) {
   width: 9%;
 }
+.food-info-list .app-container .table-container table tbody tr:hover {
+  background: #098bd912;
+}
 .food-info-list .app-container .table-container table td {
   padding: 20px 0;
   border-left: 1px solid #ebeef5;

@@ -151,12 +151,6 @@ class SiderBar extends Component {
                                                 <span>优惠推荐</span>
                                           </Link>
                                     </Menu.Item>
-                                    <Menu.Item key="/sale/combo" >
-                                          <Link to="/sale/combo">
-                                                <IconFont type="mall-sale-taocan" />
-                                                <span>套餐推荐</span>
-                                          </Link>
-                                    </Menu.Item>
                               </SubMenu>
                               {/* 项目地址及链接 */}
                               <Menu.Item key="/address">

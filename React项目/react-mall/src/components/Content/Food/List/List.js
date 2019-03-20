@@ -18,13 +18,12 @@ class Temp extends Component {
         super(props)
         this.Page = null;  //用于包装Pagination组件;
         this.itemsArr = []; //初始化数组,page切换,清空
-        this.renderArr = ["热销", "推荐", "折扣"];
+        this.renderArr = ["热销", "优惠", "新品"];
         this.renderData = null;        // 渲染的数据
-        this.selectOption = ["设为推荐", "设为热销", "设为折扣", "批量删除"]
+        this.selectOption = ["设为优惠", "设为热销", "设为新品", "批量删除"]
         this.selectValue = null //选择内容
         this.categoryName = {} //菜品类名
         this.initStoreData = null; //将redux传过来数据存一下作为搜索使用,redux已经改变（因为渲染）,所以将此数据再传过去
-        this.switchChecked = null
         this.state = {
             current: 1,
             storeData: [],        // 菜品数据
@@ -35,7 +34,6 @@ class Temp extends Component {
             booleanValue: true,   // 确认按钮disable 控制属性  
             selecctValue: "批量操作", // 批量操作 
             colorBoolean: true,     // 控制select下拉框颜色
-            switchChecked: null
         }
     }
     async componentDidMount() {
@@ -52,26 +50,51 @@ class Temp extends Component {
     }
 
     /* ------------------    信息内容列表部分渲染(以下)   ------------------- */
-    async handleSearchClick() {
+    handleSearchClick() {
+        this.setState({
+            storeArr: [],
+            checkAll: false,
+            indeterminate: false,
+            selecctValue: "批量操作",
+            colorBoolean: true,
+            booleanValue: true
+            // this.setState({selecctValue: value})
+        })
+
         let booleanValue = Object.values(this.props.form.getFieldsValue()).every(ele => !!ele === false)
         if (booleanValue) {
             //   初次未设置任何筛选内容时点击搜索,不产生结果;
             return null
         } else {
-            try {
-                await this.props.batchQuery(this.props.form.getFieldsValue(), this.props.data.data)
-            } catch (error) {
-                // console.log( this.initStoreData ) // {data: Array(11), code: 0, msg: "查找成功"}
-                await this.props.batchQuery(this.props.form.getFieldsValue(), this.initStoreData.data)
-            }
+            console.log(111111111111111)
+            this.setState({
+                storeArr: [],
+                checkAll: false,
+                indeterminate: false,
+                selecctValue: "批量操作",
+                colorBoolean: true,
+                booleanValue: true
+                // this.setState({selecctValue: value})
+            }, async function () {
+                console.log(44444);
+                try {
+                    await this.props.batchQuery(this.props.form.getFieldsValue(), this.props.data.data)
+                } catch (error) {
+                    // console.log( this.initStoreData ) // {data: Array(11), code: 0, msg: "查找成功"}
+                    await this.props.batchQuery(this.props.form.getFieldsValue(), this.initStoreData.data)
+                }
+            })
         }
         // booleanValue? null :
         // 调用redux操作数据,传入表单内设置值,并将操作前数据传过去
     }
-    handleResetClick() {
+    async  handleResetClick() {
         if ((this.props.data == null) || (this.props.data.code !== 0)) { //或者运算符有先后顺序
             //查找不到再重置拿回来以后为null
-            this.props.fetchFoodInfo()  //简单减少请求
+            await this.props.fetchFoodInfo()  //简单减少请求
+
+
+
         }
         this.props.form.resetFields()
     }
@@ -87,20 +110,31 @@ class Temp extends Component {
         let confirm = screenData[0].spuList.filter(n => n.spuName === ele.spuName)
 
         if (confirm.length) {
-            /*  this.setState({
-                 switchChecked:false
-             }) 
-            */
+            // 发现其中有confirm数据,提示已经存在
             /* 
               *******   可以设置成禁止点击,最好还是分类存放不要存放到一次    *******
               一条数据两用的不要存放到一起！！！！！！！！
             */
-            const success = () => {
-                message.success(`${ele.spuName} 存在 【${ele.categoryName}】 推荐中 请重新选择~ `);
-            };
-            success()
-        } else {
+          
+            if (!valid) {
+                // 如果开关是false,将数据删除
+                const success = () => {
+                    message.success(`${ele.spuName} 已经从 【${ele.categoryName}】 中成功删除~ `);
+                };
+                await this.props.transRecommend(valid, item, ele, false)
+                success()
+            } else {
+                const success = () => {
+                    message.success(`${ele.spuName} 存在 【${ele.categoryName}】 推荐中 请重新选择~ `);
+                };
+                success()
+            }
 
+
+
+
+
+        } else {
             await this.props.transRecommend(valid, item, ele);
             /*   this.setState({
                 switchChecked:true
@@ -156,8 +190,6 @@ class Temp extends Component {
                                 <Switch
                                     size="default"
                                     defaultChecked={ele.categoryName === item}
-                                    // disabled={ele.categoryName === item}
-                                    checked={ele.categoryName === item}
                                     onClick={(valid) => {
                                         this.switchChange(valid, item, ele)
                                     }}
@@ -267,9 +299,9 @@ class Temp extends Component {
         // 拿到选择内容再进行请求;
         // console.log(tempArr)  拿到数据以后传送给后台进行修改;
         // console.log(this.selectValue)  当下选框数组,不能为空字符串
-        // console.log(this.selectOption)  ["设为推荐", "设为热销", "设为折扣", "批量删除"]
+        // console.log(this.selectOption)  ["设为优惠", "设为热销", "设为新品", "批量删除"]
         if (this.selectValue && tempArr.length) {//select不能为空,复选框不能为空,进入判断;
-            let OperString = this.selectValue.substring(2, 4) //操作方式： 热销 推荐 折扣 删除  
+            let OperString = this.selectValue.substring(2, 4) //操作方式： 热销 优惠 新品 删除  
 
             let collateData = () => { //查看是否存在
                 let tempData = [];
@@ -281,7 +313,7 @@ class Temp extends Component {
                         tempData.push(item)
                     }
                 }
-                tempData = tempData.filter((ele) => ele.categoryName == "折扣" || ele.categoryName == "热销" || ele.categoryName == "推荐"
+                tempData = tempData.filter((ele) => ele.categoryName == "新品" || ele.categoryName == "热销" || ele.categoryName == "优惠"
                 )
                 return tempData
                 /* 
@@ -308,6 +340,8 @@ class Temp extends Component {
                 let num = 0;//手动给循环加个索引,因为知道总数组,不知道循环的是谁
                 for (let ele of testExist()) { //循环原理
                     //没有就添加,有的话警告：已经存在
+
+                    console.log(        ele     )
                     ++num
                     if (ele.length) {
                         // 提示已经存在了
@@ -323,7 +357,7 @@ class Temp extends Component {
                     }
                 }
             }
-            this.props.batchUpdate(tempArr, OperString) //(数据,操作方式)
+            // this.props.batchUpdate(tempArr, OperString) //(数据,操作方式)
         }
         tempArr = []
     }
@@ -411,11 +445,18 @@ class Temp extends Component {
                     index < 5 * this.state.current
                 )
                 Items = (this.renderData).map(this.renderItems)
-                if (!Items.length) {
-                    let temp = this.state.current * 1
-                    this.setState({ current: temp - 1 })
-                    return this.state
+
+
+                if (!this.renderData.length) {
+                    this.renderData = data.filter((e, index) =>
+                        index < 5 * this.state.current && index >= 5 * (this.state.current - 2))
+                    Items = (this.renderData).map(this.renderItems)
                 }
+                // if (!Items.length) {
+                //     let temp = this.state.current * 1
+                //     this.setState({ current: temp - 1 }) //这里不能setState,所以注释掉
+                //     return this.state
+                // }
             }
             if (!this.itemsArr.length) { //itemsArr为空初始化，非空不进判断，避免重复render
                 this.itemsArr = Array(Items.length).fill(false)
@@ -479,7 +520,7 @@ class Temp extends Component {
                                             placeholder="请选择类型"
                                             style={{ width: 170, color: "#606266", fontSize: 12, marginRight: 20 }}
                                         >
-                                            {Object.keys(this.categoryName).filter(ele => ele !== "折扣" && ele !== "推荐" && ele !== "热销").map(ele =>
+                                            {Object.keys(this.categoryName).filter(ele => ele !== "新品" && ele !== "优惠" && ele !== "热销").map(ele =>
                                                 <Option value={ele} key={ele}>{ele}</Option>
                                             )}
                                         </Select>,
