@@ -10,7 +10,6 @@ const {
     User
 } = require("./ShopModel"); //导入Person类,new 一下  save一下搞定
 
-
 // 第一步:   创建Schema;
 // 第二步：  定义mongoose.model
 // 第三步：  获取connection实例,使用Connetion监听连接状态,new下导入的Shop类
