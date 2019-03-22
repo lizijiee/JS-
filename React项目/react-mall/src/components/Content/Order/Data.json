@@ -1,5 +1,76 @@
 {
-
+    "code": 200,
+    "data": {
+        "error_code": 0,
+        "address": "Smart Garden 5A",
+        "status": -1,
+        // 修改订单状态， 主要支持 2 种：
+        // 取消订单（ - 1）
+        // 用户确认（ 11） 
+        "consignee": "张三",
+        "created_at": "2013-09-24 12:31:24",
+        "deliver_fee": 20,
+        "deliver_time": "1970-01-01 08:00:00",
+        "description": "",
+        "detail": {
+            "group": [
+                [{
+                        "category_id": 1,
+                        "name": "狗不理",
+                        "price": 100,
+                        "garnish": [],
+                        "id": 1541311,
+                        "quantity": 1,
+                        "sale_mode": 0,
+                        "specs": []
+                    },
+                    {
+                        "sale_mode": 0,
+                        "specs": [],
+                        "category_id": 1,
+                        "name": "牛肉盖浇饭",
+                        "price": 100,
+                        "garnish": [{
+                            "category_id": 1,
+                            "name": "荷包蛋",
+                            "price": 2,
+                            "id": 1541313,
+                            "quantity": 1
+                        }],
+                        "id": 1541312,
+                        "quantity": 1
+                    }
+                ]
+            ],
+            "extra": [{
+                "description": "",
+                "price": 20,
+                "name": "配送费",
+                "category_id": 2,
+                "id": -10,
+                "quantity": 1
+            }],
+            "abandoned_extra": null "excluded_activities": []
+        },
+        "invoice": "",
+        "is_book": 0,
+        "is_online_paid": 0,
+        "order_id": "12637645858619059",
+        "phone_list": [
+            "15216709049"
+        ],
+        "restaurant_id": 59,
+        "restaurant_name": "饿了么体验店",
+        "status_code": 2,
+        "total_price": 120,
+        "original_price": 120,
+        "user_id": 481769,
+        "user_name": "tester",
+        "delivery_geo": "31.2538,121.4185",
+        "delivery_poi_address": "上海市普陀区金沙江路"
+    },
+    "message": "ok",
+    "request_id": "115bc4a55e3c4e9eaf3f1a111a3e7271"
 }
 //用户名
 //用户ID
@@ -12,3 +83,14 @@
 //菜价信息
 //总价信息
 
+// 不返回订单详情（show_detail=0）：
+
+{
+    "code": 200,
+    "data": {
+        "eleme_order_id": 12145048686494359,
+        "error_code": 0
+    },
+    "message": "ok",
+    "request_id": "115bc4a55e3c4e9eaf3f1a111a3e7271"
+}
