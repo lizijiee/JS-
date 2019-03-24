@@ -4292,7 +4292,7 @@ function Loop_Data(i) {
             "user": "@cname", // 会员名
             "phone_num": /^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/, // 注册手机号
             "member_num": Random.increment(1),
-            "registerTime": /201[8]\-[3]\-[1-31]/, // 注册时间
+            "registerTime": /201[8]\-0[2-3]\-[0-2][0-9]/, // 注册时间
             "member_state": "@pick(正常,注销,正常,正常,正常,正常,正常,正常,正常)", //true为会员false不是会员
             "password": /[a-z]{3,5}[0-9]{3,5}/, // 密码随机
             "balance|1-1000.1-1": 1, //余额
@@ -4344,17 +4344,30 @@ function Loop_Data(i) {
     })
     //日期处理部分
     let arr = mockData.data[0].created_at.split("-")
+    console.log(arr)
     let hour = null;
     arr[0] = 2018;
     arr[1] = 03
+    let str = "201803"
+    let modifyData = mockData.data[0].created_at.split(" ")[0].split("-")
+    // console.log(modifyData[2] )
+    modifyData[2] * 1 > 10 ? str = str + modifyData[2] : str = str + 0 + modifyData[2]
+    // console.log(str)
+
+    mockData.data[0].order_id = str + mockData.data[0].order_id
+
+    // console.log( mockData.data[0].order_id )
+
     arr = arr.join("-")
-    mockData.data[0].created_at = arr
+    // console.log(arr)
+
     // 时间处理部分
 
     let time = arr.split(" ")[1].split(":") // ["05", "59", "12"]
 
     time[1] = time[1] * 1 + mockData.data[0].deliver_time
-    // console.log(time[1])
+    console.log(time[1])
+
     if (time[1] * 1 > 60) {
         time[1] = time[1] * 1 - 60;
         time[0] = time[0] * 1 + 1
@@ -4365,6 +4378,18 @@ function Loop_Data(i) {
     obj = obj.join(" ")
     // console.log(arr)
     mockData.data[0].deliver_time = obj
+
+    // console.log( mockData.data[0].deliver_time.split(" ")[0])
+    let arr10 = []
+
+    console.log(mockData.data[0].deliver_time.split(" ")[0])
+    console.log(mockData.data[0].created_at.split(" ")[1])
+
+    arr10.push(mockData.data[0].deliver_time.split(" ")[0])
+    arr10.push(mockData.data[0].created_at.split(" ")[1])
+
+    console.log(arr10.join(" "))
+    mockData.data[0].created_at=arr10.join(" ")
 
     let num = Math.random() * 5
     num === 0 ? num = 1 : null
@@ -4382,6 +4407,9 @@ function Loop_Data(i) {
     })
     mockData.data[0].total_price = total_price + mockData.data[0].detail.extra[0].price * 1
     mockData.data[0].original_price = original_price + mockData.data[0].detail.extra[0].price * 1
+
+    // console.log(str)
+
 
     return mockData
 }
@@ -4404,7 +4432,7 @@ db.on('connected', function (err) {
     } else {
         console.log('连接数据库成功！');
         let obj = {}
-            obj.id=3
+        obj.id = 3
         obj.UsersData = []
         for (let i = 0; i < 1000; i++) {
             let obj2 = {}
@@ -4416,32 +4444,35 @@ db.on('connected', function (err) {
             obj2.state = Loop_Data().data[0].member_state
             obj2.password = Loop_Data().data[0].password
             obj2.balance = Loop_Data().data[0].balance
+            obj2.order_id = [Loop_Data().data[0].order_id]
             console.log(obj2)
             // obj2 = JSON.stringify(obj2)
 
             obj.UsersData.push(obj2)
-            console.log(obj)
+            // console.log(obj)
             const Users = new User( //new 一下导入的Shop类
                 {
                     // _id: new mongoose.Types.ObjectId(),
                     ...obj
                 }
             );
-            // Users.save()
+            Users.save()
 
-            let keys=["user_id","user","member_num","registerTime","member_state","password","balance"]
-            let result=Loop_Data()
+            let keys = [ "registerTime", "member_state", "password", "balance"]
+            let result = Loop_Data()
 
-            keys.forEach(function(item) {delete result.data[0][item]});
-            console.log( result)
-
+            keys.forEach(function (item) {
+                delete result.data[0][item]
+            });
+            console.log(result)
+            Loop_Data().data[0].user_id
             const Orders = new Order({
                 _id: new mongoose.Types.ObjectId(),
                 ...result
             });
-            // Orders.save();
+            Orders.save();
         }
-       
+
 
     }
 });

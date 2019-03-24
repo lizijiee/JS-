@@ -7,7 +7,8 @@ const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
 const {
     Shop,
-    User
+    User,
+    Order
 } = require("./ShopModel"); //导入Person类,new 一下  save一下搞定
 
 // 第一步:   创建Schema;
@@ -468,10 +469,42 @@ router.get('/food/:act', async (ctx) => { //food组件接口
             break;
     }
 });
+/* **************************    订单接口(以下)    ********************************* */
+router.get('/orders/:act', async (ctx) => { //food组件接口
+    let req = ctx.request.query; //对象
+    let params = ctx.params
+    switch (params.act) {
+        case "list":
+            try {
+                let arr = await Order.find({ //没有设置则匹配所有数据
+                })
+                console.log(    req.num    )
+                
+                let filterArr = arr.filter((e, index) =>
+                    index >= 10 * (req.num - 1) &&
+                    index < 10 * req.num
+                )
+
+                console.log(   filterArr  )
+                ctx.body = {
+                    filterArr,
+                    total:arr.length
+                }
+
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+    }
+});
+/* **************************    订单接口(以上)    ********************************* */
 app.use(bodyParser())
 router.post('/food', async (ctx) => { //food组件接口
     let req = ctx.request.query; //对象
-     switch (req.act) {
+    switch (req.act) {
         case "editFood":
             try {
                 let obj = ctx.request.body
@@ -517,14 +550,14 @@ router.post('/food', async (ctx) => { //food组件接口
         case "addMarket":
             try {
                 let obj = ctx.request.body
-                obj.categoryName=req.categoryName
+                obj.categoryName = req.categoryName
                 // console.log(obj)
                 // console.log(obj.spuId+1)
                 // console.log(parseInt(obj.spuId+1))
-                obj.spuId=obj.spuId+1
+                obj.spuId = obj.spuId + 1
                 // console.log(obj.spuId)
                 await Shop.update({
-                    categoryName:req.categoryName
+                    categoryName: req.categoryName
                 }, {
                     $push: {
                         spuList: obj
@@ -548,14 +581,14 @@ router.post('/food', async (ctx) => { //food组件接口
         case "delMarket":
             try {
                 let obj = ctx.request.body
-                 // 2.删除原来数据  
+                // 2.删除原来数据  
                 await Shop.update({
-                    categoryName:req.categoryName
+                    categoryName: req.categoryName
                 }, {
                     $pull: {
                         spuList: {
                             // 删除时候需要对num类型进行判断
-                            spuName:obj.spuName
+                            spuName: obj.spuName
                         }
                     }
                 });

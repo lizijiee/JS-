@@ -1,9 +1,11 @@
 //说明： 哪里使用那里引入此文件;
 import * as types from '../constants/actionTypes'; //注释在此文件中
-import {
-  finished
-} from 'stream';
+import axios from 'axios';
 
+// import {
+//   finished
+// } from 'stream';
+ 
 export const setMemberInfo = data => ({
   type: types.SET_DATA_MEMBER,
   data
@@ -27,6 +29,12 @@ export const bulkOperation = data => ({ //批量操作
 export const combinedQuery = data => ({ //多重查找
   type: types.BULK_SEARCH,
   data
+})
+export const getOrderInfo = (data,total) => ({ //多重查找
+  type: types.GET_DATA_ORDER,
+  data,
+  // num,
+  total
 })
 
 
@@ -195,10 +203,10 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
         if (require.recommendState) {
           let tag = data.find(i => i.categoryName === require.categoryName).tag //1 get √
 
-          if (tag.length&&require.recommendState!=="未推荐") {
+          if (tag.length && require.recommendState !== "未推荐") {
             console.log(tag.length)
             console.log(tag)
-            console.log( require.recommendState )
+            console.log(require.recommendState)
             console.log(data.filter(ele => ele.categoryName === require.recommendState)[0])
             recommendList = data.filter(ele => ele.categoryName === require.recommendState)[0].spuList //2 get √
             console.log(recommendList)
@@ -212,7 +220,7 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
             } else {
               result = null
             }
-          }  
+          }
 
         }
         // 0.操作数据时,类名对应tag,只修改文字value数值,tag当推荐类型中索引
@@ -244,7 +252,33 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
   return dispatch(combinedQuery(result)) //新数据丢进去
 }
 
+//----------------------    订单信息   ----------------------
 
+// export const fetchOrderInfo = () => dispatch => { //请求会员信息数据
+//   return fetch(`http://localhost:2000/orders/list`, {
+//       method: 'GET',
+//     })
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data)
+//       return dispatch(getFoodInfo(data))
+//     })
+// }
+export const fetchOrderInfo = (a,page) => dispatch => { //请求会员信息数据
+  console.log(a,page)
+
+  return axios.get(`http://localhost:2000/orders/list?num=${page}`)
+  .then(function (data) {
+    console.log(data.data)
+
+    let {filterArr,total}={...(data.data)}
+    console.log(filterArr,total);
+    return dispatch(getOrderInfo(filterArr,total))
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
 
 

@@ -17,6 +17,16 @@ export default class Temp extends Component {
                                 <IconFont type="mall-doc-glass" style={{ fontSize: 16, marginRight: 5 }} />
                                 <span>筛选检索</span>
                                 <button className="add">查询结果</button>
+                                <Button
+                                    className="btn"
+                                    style={{
+                                        color: "#1890ff",
+                                        float: "right",
+                                        marginRight: 20,
+                                    }}
+                                    ghost
+                                    // onClick={this.handleResetClick.bind(this)}
+                                >重置</Button>
                             </div>
                             <div className="el-form-item">
                                 <span>输入检索:</span>

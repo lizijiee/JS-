@@ -28,12 +28,12 @@ p {
     background: #fff;
     margin: 20px 0 0 16px;
     // height: 100%;
-    padding: 10px 40px 40px 40px;
+    padding: 10px 40px 0 40px;
 
     .app-container {
         .va();
         padding: 10px 20px 20px 20px;
-
+        position: relative;
         .el-serch-wrap {
             margin-top: 0;
             .bd(@border-color);
@@ -41,6 +41,7 @@ p {
             color: #303133;
             border-radius: 4px;
             overflow: hidden;
+
             .el-title-body {
                 .p(20px);
                 .va();
@@ -69,9 +70,29 @@ p {
                     margin: 0;
                 }
 
+                .btn {
+                    // 使用组件此处要删除
+                    .fr();
+                    padding: 9px 15px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                    display: inline-block;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    background: #409eff;
+                    border: 1px solid #dcdfe6;
+                    color: #fff;
+                    text-align: center;
+                    box-sizing: border-box;
+                    outline: 0;
+                    margin: 0;
+                    height: 37.5px;
+                }
+
                 .el-form-item {
                     margin: 15px 25px 55px 35px;
                     float: left;
+
                     span {
                         font-size: 14px;
                         line-height: 32px;
@@ -138,6 +159,54 @@ p {
             }
         }
 
+        .el-table {
+            margin-top: 20px;
+            thead {
+                tr {
+                    width: 100%;
+                    height:65px
+                }
+                th {
+                    text-align: center;
+                    padding: 15px 0;
+                    border-left: 1px solid@border-color;
+                    border-top: 1px solid@border-color;
+                    width: 5%;
+                    color: #909399;
+                    font-weight: 600;
+                }
+                // th:nth-of-type(2),
+                // th:nth-of-type(1){
+                //     width: 3%;
+                // }
+                th:nth-of-type(3),
+                th:nth-of-type(4){
+                    width: 9%;
+                }
+                th:nth-of-type(8){
+                    width: 12%;
+                }
+                
+            }
+
+            td {
+                padding: 15px 0;
+                border-left: 1px solid@border-color;
+                border-top: 1px solid @border-color;
+                text-align: center;
+                font-size: 14px;
+                color: #303133;
+
+                p {
+                    margin-bottom: 6px !important;
+                }
+            }
+
+            .ant-pagination{
+                margin-top: 25px
+            }
+        }
+
         // 中间部分
         .table-container {
             margin-top: 15px; // .bd(@border-color);
@@ -146,39 +215,42 @@ p {
             border-bottom: 1px solid @border-color;
             width: 100%;
             text-align: center;
-
             table {
-                thead{//搞组件样式
-                    tr{
-                       height: 70px;
-                       background:#bfbfbf1c
+                .ant-table-thead {
+                    //搞组件样式
+                    tr {
+                        height: 70px;
+                        background: #bfbfbf1c;
                     }
-                }
-                tbody{
-                    tr:hover{
+
+                    tr:hover {
                         background: #098bd912;
                     }
                 }
-                th {
-                    padding: 12px 0;
-                    border-left: 1px solid@border-color;
-                    border-top: 1px solid@border-color;
-                    width: 7%;
-                    color: #909399
-                }
 
                 thead {
+                    th {
+                        text-align: center;
+                        padding: 15px 0;
+                        border-left: 1px solid@border-color;
+                        border-top: 1px solid@border-color;
+                        width: 7%;
+                        color: #909399;
+                     }
 
                     th:nth-of-type(1),
                     th:nth-of-type(2),
                     th:nth-of-type(5),
-                    th:nth-of-type(6){
+                    th:nth-of-type(6) {
                         width: 4%;
                     }
-                    th:nth-of-type(7){
-                        width: 5%;
+
+                    th:nth-of-type(7) {
+                        width: 6%;
                     }
-                    th:nth-of-type(4), th:nth-of-type(8) {
+
+                    th:nth-of-type(4),
+                    th:nth-of-type(8) {
                         width: 8%;
                     }
                 }
@@ -215,25 +287,29 @@ p {
         width: 16px;
         height: 16px;
     }
-   
+
 }
+
 .ant-select-selection-selected-value {
-    text-indent: 1em!important;
+    text-indent: 1em !important;
 }
 
 .ant-select-selection__rendered {
     // color: rgb(220, 223, 230);
     font-size: 12px;
-    margin: 0!important;
+    margin: 0 !important;
 }
-.ant-select-selection__placeholder{
+
+.ant-select-selection__placeholder {
     text-indent: 1em
 }
-.ant-select-arrow{
-    padding-right: 0!important;
+
+.ant-select-arrow {
+    padding-right: 0 !important;
 }
-.ant-select-arrow-icon{
-        svg{
-            height: 0.7em;
-        }
+
+.ant-select-arrow-icon {
+    svg {
+        height: 0.7em;
+    }
 }
