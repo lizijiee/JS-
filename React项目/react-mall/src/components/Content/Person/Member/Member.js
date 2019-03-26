@@ -24,6 +24,7 @@ class ClerksMember extends Component {
     await this.props.fetchMemmberInfo()  //!!!!!!! 终点请求数据异步,拿不到
     //请求会员信息数据
     console.log("componentDidMount")
+    console.log(this.props)
     this.setState({
       storeData: this.props.data
     })

@@ -34,6 +34,7 @@ p {
         .va();
         padding: 10px 20px 20px 20px;
         position: relative;
+
         .el-serch-wrap {
             margin-top: 0;
             .bd(@border-color);
@@ -161,11 +162,13 @@ p {
 
         .el-table {
             margin-top: 20px;
+
             thead {
                 tr {
                     width: 100%;
-                    height:65px
+                    height: 65px
                 }
+
                 th {
                     text-align: center;
                     padding: 15px 0;
@@ -175,18 +178,23 @@ p {
                     color: #909399;
                     font-weight: 600;
                 }
+
                 // th:nth-of-type(2),
                 // th:nth-of-type(1){
                 //     width: 3%;
                 // }
                 th:nth-of-type(3),
-                th:nth-of-type(4){
+                th:nth-of-type(4) {
                     width: 9%;
                 }
-                th:nth-of-type(8){
+                th:nth-of-type(7) {
+                    width: 6%;
+                }
+
+                th:nth-of-type(8) {
                     width: 12%;
                 }
-                
+
             }
 
             td {
@@ -202,7 +210,7 @@ p {
                 }
             }
 
-            .ant-pagination{
+            .ant-pagination {
                 margin-top: 25px
             }
         }
@@ -215,64 +223,8 @@ p {
             border-bottom: 1px solid @border-color;
             width: 100%;
             text-align: center;
-            table {
-                .ant-table-thead {
-                    //搞组件样式
-                    tr {
-                        height: 70px;
-                        background: #bfbfbf1c;
-                    }
 
-                    tr:hover {
-                        background: #098bd912;
-                    }
-                }
-
-                thead {
-                    th {
-                        text-align: center;
-                        padding: 15px 0;
-                        border-left: 1px solid@border-color;
-                        border-top: 1px solid@border-color;
-                        width: 7%;
-                        color: #909399;
-                     }
-
-                    th:nth-of-type(1),
-                    th:nth-of-type(2),
-                    th:nth-of-type(5),
-                    th:nth-of-type(6) {
-                        width: 4%;
-                    }
-
-                    th:nth-of-type(7) {
-                        width: 6%;
-                    }
-
-                    th:nth-of-type(4),
-                    th:nth-of-type(8) {
-                        width: 8%;
-                    }
-                }
-
-                td {
-                    padding: 12px 0;
-                    border-left: 1px solid@border-color;
-                    border-top: 1px solid @border-color;
-                    text-align: center;
-                    font-size: 14px;
-                    color: #303133;
-
-                    img {
-                        width: 100px;
-                        height: 80px;
-                    }
-
-                    p {
-                        margin-bottom: 6px !important;
-                    }
-                }
-            }
+        
         }
     }
 }

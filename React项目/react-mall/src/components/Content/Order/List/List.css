@@ -140,6 +140,9 @@ p {
 .order-info .app-container .el-table thead th:nth-of-type(4) {
   width: 9%;
 }
+.order-info .app-container .el-table thead th:nth-of-type(7) {
+  width: 6%;
+}
 .order-info .app-container .el-table thead th:nth-of-type(8) {
   width: 12%;
 }
@@ -163,49 +166,6 @@ p {
   border-bottom: 1px solid #ebeef5;
   width: 100%;
   text-align: center;
-}
-.order-info .app-container .table-container table .ant-table-thead tr {
-  height: 70px;
-  background: #bfbfbf1c;
-}
-.order-info .app-container .table-container table .ant-table-thead tr:hover {
-  background: #098bd912;
-}
-.order-info .app-container .table-container table thead th {
-  text-align: center;
-  padding: 15px 0;
-  border-left: 1px solid #ebeef5;
-  border-top: 1px solid #ebeef5;
-  width: 7%;
-  color: #909399;
-}
-.order-info .app-container .table-container table thead th:nth-of-type(1),
-.order-info .app-container .table-container table thead th:nth-of-type(2),
-.order-info .app-container .table-container table thead th:nth-of-type(5),
-.order-info .app-container .table-container table thead th:nth-of-type(6) {
-  width: 4%;
-}
-.order-info .app-container .table-container table thead th:nth-of-type(7) {
-  width: 6%;
-}
-.order-info .app-container .table-container table thead th:nth-of-type(4),
-.order-info .app-container .table-container table thead th:nth-of-type(8) {
-  width: 8%;
-}
-.order-info .app-container .table-container table td {
-  padding: 12px 0;
-  border-left: 1px solid #ebeef5;
-  border-top: 1px solid #ebeef5;
-  text-align: center;
-  font-size: 14px;
-  color: #303133;
-}
-.order-info .app-container .table-container table td img {
-  width: 100px;
-  height: 80px;
-}
-.order-info .app-container .table-container table td p {
-  margin-bottom: 6px !important;
 }
 .ant-switch {
   min-width: 40px;

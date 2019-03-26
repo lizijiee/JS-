@@ -4285,10 +4285,10 @@ fn()
 
 function Loop_Data(i) {
     let mockData = Mock.mock({
-        "code": 200, //返回说明
-        "message": "数据获取成功",
+        // "code": 200, //返回说明
+        // "message": "数据获取成功",
         //用户id见下面
-        "data": [{
+        // "data": [{
             "user": "@cname", // 会员名
             "phone_num": /^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/, // 注册手机号
             "member_num": Random.increment(1),
@@ -4340,21 +4340,21 @@ function Loop_Data(i) {
             "user_id|1-10000": 1, // 用户id
             "user_name": "tester", // 用户名
             "delivery_poi_address": "北京市昌平区金沙江路"
-        }]
+        // }]
     })
     //日期处理部分
-    let arr = mockData.data[0].created_at.split("-")
+    let arr = mockData.created_at.split("-")
     console.log(arr)
     let hour = null;
     arr[0] = 2018;
     arr[1] = 03
     let str = "201803"
-    let modifyData = mockData.data[0].created_at.split(" ")[0].split("-")
+    let modifyData = mockData.created_at.split(" ")[0].split("-")
     // console.log(modifyData[2] )
     modifyData[2] * 1 > 10 ? str = str + modifyData[2] : str = str + 0 + modifyData[2]
     // console.log(str)
 
-    mockData.data[0].order_id = str + mockData.data[0].order_id
+    mockData.order_id = str + mockData.order_id
 
     // console.log( mockData.data[0].order_id )
 
@@ -4365,8 +4365,8 @@ function Loop_Data(i) {
 
     let time = arr.split(" ")[1].split(":") // ["05", "59", "12"]
 
-    time[1] = time[1] * 1 + mockData.data[0].deliver_time
-    console.log(time[1])
+    time[1] = time[1] * 1 + mockData.deliver_time
+    // console.log(time[1])
 
     if (time[1] * 1 > 60) {
         time[1] = time[1] * 1 - 60;
@@ -4377,40 +4377,37 @@ function Loop_Data(i) {
     obj[1] = time.join(":")
     obj = obj.join(" ")
     // console.log(arr)
-    mockData.data[0].deliver_time = obj
+    mockData.deliver_time = obj
 
     // console.log( mockData.data[0].deliver_time.split(" ")[0])
     let arr10 = []
 
-    console.log(mockData.data[0].deliver_time.split(" ")[0])
-    console.log(mockData.data[0].created_at.split(" ")[1])
+    // console.log(mockData.deliver_time.split(" ")[0])
+    // console.log(mockData.created_at.split(" ")[1])
 
-    arr10.push(mockData.data[0].deliver_time.split(" ")[0])
-    arr10.push(mockData.data[0].created_at.split(" ")[1])
+    arr10.push(mockData.deliver_time.split(" ")[0])
+    arr10.push(mockData.created_at.split(" ")[1])
 
-    console.log(arr10.join(" "))
-    mockData.data[0].created_at=arr10.join(" ")
+    // console.log(arr10.join(" "))
+    mockData.created_at=arr10.join(" ")
 
     let num = Math.random() * 5
     num === 0 ? num = 1 : null
-    mockData.data[0].detail.group.push(storeData[106])
+    mockData.detail.group.push(storeData[106])
     for (let m = 0; m < num; m++) {
-        mockData.data[0].detail.group.push(storeData[Math.floor(Math.random() * 106)])
+        mockData.detail.group.push(storeData[Math.floor(Math.random() * 106)])
     }
     let total_price = 0;
     let original_price = 0;
 
-    mockData.data[0].detail.group.forEach((ele) => {
+    mockData.detail.group.forEach((ele) => {
         ele.quantity = [1, 2, 3][Math.floor(Math.random() * 2)]
         total_price += ele.currentPrice * 1 * (ele.quantity * 1)
         original_price += ele.originPrice * 1 * (ele.quantity * 1)
     })
-    mockData.data[0].total_price = total_price + mockData.data[0].detail.extra[0].price * 1
-    mockData.data[0].original_price = original_price + mockData.data[0].detail.extra[0].price * 1
-
+    mockData.total_price = (total_price + mockData.detail.extra[0].price * 1).toFixed(2)
+    mockData.original_price =( original_price + mockData.detail.extra[0].price * 1).toFixed(2)
     // console.log(str)
-
-
     return mockData
 }
 
@@ -4436,16 +4433,16 @@ db.on('connected', function (err) {
         obj.UsersData = []
         for (let i = 0; i < 1000; i++) {
             let obj2 = {}
-            obj2.Id = Loop_Data().data[0].user_id
-            obj2.user = Loop_Data().data[0].user
-            obj2.phoneNum = Loop_Data().data[0].phone_num
-            obj2.vipNum = Loop_Data().data[0].member_num
-            obj2.registerTime = Loop_Data().data[0].registerTime
-            obj2.state = Loop_Data().data[0].member_state
-            obj2.password = Loop_Data().data[0].password
-            obj2.balance = Loop_Data().data[0].balance
-            obj2.order_id = [Loop_Data().data[0].order_id]
-            console.log(obj2)
+            obj2.Id = Loop_Data().user_id
+            obj2.user = Loop_Data().user
+            obj2.phoneNum = Loop_Data().phone_num
+            obj2.vipNum = Loop_Data().member_num
+            obj2.registerTime = Loop_Data().registerTime
+            obj2.state = Loop_Data().member_state
+            obj2.password = Loop_Data().password
+            obj2.balance = Loop_Data().balance
+            obj2.order_id = [Loop_Data().order_id]
+            // console.log(obj2)
             // obj2 = JSON.stringify(obj2)
 
             obj.UsersData.push(obj2)
@@ -4462,10 +4459,10 @@ db.on('connected', function (err) {
             let result = Loop_Data()
 
             keys.forEach(function (item) {
-                delete result.data[0][item]
+                delete result[item]
             });
             console.log(result)
-            Loop_Data().data[0].user_id
+            Loop_Data().user_id
             const Orders = new Order({
                 _id: new mongoose.Types.ObjectId(),
                 ...result

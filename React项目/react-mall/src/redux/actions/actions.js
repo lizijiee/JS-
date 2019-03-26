@@ -1,11 +1,12 @@
 //说明： 哪里使用那里引入此文件;
 import * as types from '../constants/actionTypes'; //注释在此文件中
 import axios from 'axios';
+import qs from 'qs'
 
 // import {
 //   finished
 // } from 'stream';
- 
+
 export const setMemberInfo = data => ({
   type: types.SET_DATA_MEMBER,
   data
@@ -30,7 +31,7 @@ export const combinedQuery = data => ({ //多重查找
   type: types.BULK_SEARCH,
   data
 })
-export const getOrderInfo = (data,total) => ({ //多重查找
+export const getOrderInfo = (data, total) => ({ //多重查找
   type: types.GET_DATA_ORDER,
   data,
   // num,
@@ -254,33 +255,50 @@ export const batchQuery = (require, data) => dispatch => { // 请求会员信息
 
 //----------------------    订单信息   ----------------------
 
-// export const fetchOrderInfo = () => dispatch => { //请求会员信息数据
-//   return fetch(`http://localhost:2000/orders/list`, {
-//       method: 'GET',
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log(data)
-//       return dispatch(getFoodInfo(data))
-//     })
-// }
-export const fetchOrderInfo = (a,page) => dispatch => { //请求会员信息数据
-  console.log(a,page)
-
+export const fetchOrderInfo = (a, page) => dispatch => { // 请求会员信息数据
+  console.log(a, page)
   return axios.get(`http://localhost:2000/orders/list?num=${page}`)
-  .then(function (data) {
-    console.log(data.data)
-
-    let {filterArr,total}={...(data.data)}
-    console.log(filterArr,total);
-    return dispatch(getOrderInfo(filterArr,total))
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    .then(function (data) {
+      let {
+        filterArr,
+        total
+      } = {
+        ...data.data
+      }
+      return dispatch(getOrderInfo(filterArr, total))
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
+//----------------------    订单筛选   ----------------------
+export const QueryOrderInfo = (condition) => dispatch => { // 请求会员信息数据
+  console.log(condition)
 
+   axios.post('http://localhost:2000/orders?act=queryOrder', qs.stringify(
+    condition
+  ), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    }
+  }).then(res => {
+    console.log(res.data)
+
+    return dispatch(getOrderInfo(res.data.data, res.data.total))
+  }, err => {
+    console.log(err)
+  })
+
+  // return axios.get(`http://localhost:2000/orders/list?num=${page}`)
+  // .then(function (data) {  
+  //   let {filterArr,total}={...data.data}
+  //   return dispatch(getOrderInfo(filterArr,total))
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+}
 
 
 

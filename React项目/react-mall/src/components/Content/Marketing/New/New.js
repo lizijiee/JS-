@@ -57,7 +57,6 @@ class Temp extends Component {
             //   初次未设置任何筛选内容时点击搜索,不产生结果;
             return null
         } else {
-           
             let obj = this.props.form.getFieldsValue()
             if (obj.recommendState === "已推荐") {
                 obj.recommendState = "新品"
@@ -91,7 +90,6 @@ class Temp extends Component {
         //     colorBoolean: true,
         //     booleanValue: true
         // })
-
         if ((this.props.data == null) || (this.props.data.code !== 0)) { //或者运算符有先后顺序
             //查找不到再重置拿回来以后为null
             this.props.fetchFoodInfo()  //简单减少请求
@@ -619,6 +617,7 @@ class Temp extends Component {
         )
     }
 }
+
 const Demo = Form.create({ name: 'title' })(Temp);
 
 export default withRouter(connect(

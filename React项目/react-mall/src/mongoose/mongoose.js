@@ -32,7 +32,6 @@ mongoose.connect("mongodb://localhost:27017")
 
 //解决跨域问题；
 app.use(async (ctx, next) => {
-
     //指定服务器端允许进行跨域资源访问的来源域。可以用通配符*表示允许任何域的JavaScript访问资源，但是在响应一个携带身份信息(Credential)的HTTP请求时，必需指定具体的域，不能用通配符
     ctx.set("Access-Control-Allow-Origin", "*");
 
@@ -478,19 +477,75 @@ router.get('/orders/:act', async (ctx) => { //food组件接口
             try {
                 let arr = await Order.find({ //没有设置则匹配所有数据
                 })
-                console.log(    req.num    )
-                
+                console.log(req.num)
                 let filterArr = arr.filter((e, index) =>
                     index >= 10 * (req.num - 1) &&
                     index < 10 * req.num
                 )
-
-                console.log(   filterArr  )
+                console.log(filterArr)
                 ctx.body = {
                     filterArr,
-                    total:arr.length
+                    total: arr.length
                 }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+    }
+});
 
+
+app.use(bodyParser())
+router.post('/orders', async (ctx) => { //food组件接口
+    let req = ctx.request.query; //对象
+    switch (req.act) {
+        case "delOrder":
+            try {
+                let obj = ctx.request.body
+                obj.index.forEach(async ele => {
+                    await Order.remove({
+                        order_id: ele
+                    });
+                });
+                let arr = await Order.find({})
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    total: arr.length,
+                    msg: "查找成功"
+                }
+            } catch (error) {
+                ctx.body = {
+                    code: 1,
+                    msg: "找不到"
+                }
+            }
+            break;
+        case "queryOrder":
+            try {
+                let obj = ctx.request.body
+                console.log(obj)
+              
+                // where('name.last').equals('Ghost').
+                // where('age').gt(17).lt(66).
+                // where('likes').in(['vaporizing', 'talking']).
+                // limit(10).
+                // sort('-occupation').
+                // select('name occupation').
+                // exec(callback);
+
+                let arr = await Order.
+                find(obj)
+                console.log(arr)
+                ctx.body = {
+                    code: 0,
+                    data: arr,
+                    total: arr.length,
+                    msg: "查找成功"
+                }
             } catch (error) {
                 ctx.body = {
                     code: 1,
@@ -501,7 +556,6 @@ router.get('/orders/:act', async (ctx) => { //food组件接口
     }
 });
 /* **************************    订单接口(以上)    ********************************* */
-app.use(bodyParser())
 router.post('/food', async (ctx) => { //food组件接口
     let req = ctx.request.query; //对象
     switch (req.act) {
@@ -529,8 +583,6 @@ router.post('/food', async (ctx) => { //food组件接口
                     }
                 });
                 /* ------------------------------------------- */
-
-                console.log(obj)
 
                 let arr = await Shop.find({
                     tag: obj.tag,
@@ -808,8 +860,6 @@ router.post('/pers', async (ctx) => { //用于写编辑的接口
             break;
     }
 });
-
-
 
 app.use(router.routes());
 app.listen(2000, () => {
