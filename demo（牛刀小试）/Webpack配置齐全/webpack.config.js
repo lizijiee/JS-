@@ -102,7 +102,7 @@ const obj = {
             // inject: "head", //把script标签放入head中
             // hash: true, //给js,css文件加?dsua89a
             // chunks: ['index', 'index2'],
-            title: '欢迎大家来到珠峰培训',
+            title: '欢迎大家来到我的世界',
             minify: {
                 removeEmptyAttributes: true, //去除引号
                 collapseWhitespace: true, //压缩去除空格
