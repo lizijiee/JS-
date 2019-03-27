@@ -9,7 +9,6 @@
         #outer {
             overflow: hidden;
         }
-
         #mask {
             width: 1000px;
             height: 300px;
@@ -20,7 +19,6 @@
             z-index: 1;
             position: absolute;
         }
-
         #prev {
             width: 50%;
             height: 100%;
@@ -31,7 +29,6 @@
             opacity: 0;
             transition: 1s;
         }
-
         #prev::after {
             content: "";
             width: 28px;
@@ -44,7 +41,6 @@
             margin-top: -22.5px;
             left: 0;
         }
-
         #next {
             width: 50%;
             height: 100%;
@@ -55,7 +51,6 @@
             opacity: 0;
             transition: 1s;
         }
-
         #next::after {
             /* 伪类选择器创建元素 */
             content: "";
@@ -69,18 +64,15 @@
             margin-top: -22.5px;
             right: 0;
         }
-
         #prev:hover,
         #next:hover {
             opacity: 1;
         }
-
         /* 解决办法：
          #prev:hover,#mask>div:first-child {
             opacity: 1;
         }
          */
-
         /* #prev:hover + #next {
     不合法，CSS只能选择后面不能选择前面 
             opacity: 1;
@@ -91,7 +83,6 @@
             border: 1px solid green;
             margin: 5px auto;
         }
-
         #fir div {
             border: 1px dashed gray;
             width: 100px;
@@ -100,7 +91,6 @@
             margin: 5px;
             transition: transform 0.5s;
         }
-
         #fir div:first-child:hover+.se {
             transform: rotate(30deg);
         }
