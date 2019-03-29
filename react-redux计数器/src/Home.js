@@ -8,7 +8,7 @@ export default class Home extends Component {
     console.log('Home卸载')
   }
   render(props) {
-      console.log(this.props)
+      console.log(111111111111)
     return (
       <div>
             Home

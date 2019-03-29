@@ -1,6 +1,6 @@
 //export default 只导出一个
 // const tiger=0;
-function couter (state,action){
+function couter (state=1,action){
         switch(action.type){
             case "INCREMENT":
             return state +1

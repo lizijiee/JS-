@@ -50,7 +50,6 @@ const render=()=> ReactDOM.render(
     </Router>
 </Provider> 
 , document.getElementById('root'));
-
 render();
 store.subscribe(render) //事件监听
 
