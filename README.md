@@ -1,4 +1,4 @@
-# JS-
+# 笔记/搜集/摘录/实践 -JS
 
 Github激活:https://blog.csdn.net/qazwsxpcm/article/details/68946736
 
