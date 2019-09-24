@@ -1,6 +1,6 @@
 # 笔记/搜集/摘录/实践 -JS
 
-- ##### [Github激活](https://blog.csdn.net/qazwsxpcm/article/details/68946736) - github激活教程。
+- [Github激活](https://blog.csdn.net/qazwsxpcm/article/details/68946736) - github激活教程。
 
 - [Webpack指南](https://www.webpackjs.com/guides/) - Webpack中文文档指南。
 
