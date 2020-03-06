@@ -24,7 +24,7 @@ import {reducer} from './redux/reducers'
 
 
 
-if (module.hot) {//跟新时候页面不刷新,不闪烁;
+if (module.hot) {// 跟新时候页面不刷新,不闪烁;
   module.hot.accept();
 };
 
