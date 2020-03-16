@@ -49,3 +49,5 @@
 - [Redux教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html2) -  Redux 入门教程（一）：基本用法。
 
 - [手把手教你搭建 Dva + Umi 开发环境](https://reacttraining.com/react-router/web/example/basic) -  手把手教你搭建 Dva + Umi 开发环境。
+
+- [防抖（Debounce）和节流（Throttle）](https://fangzhioo.github.io/more/more/debounce-throttle/#undefined) -  防抖（Debounce）和节流（Throttle）
