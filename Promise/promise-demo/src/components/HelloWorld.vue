@@ -23,6 +23,14 @@ export default {
       // }); //  在http全局配置了catch所以这边是不用配置的
       // console.log("假装restFields清空表单.....");
       // console.log("假装正在关闭弹框.....");
+        let getList = async () => {
+          // 避免阻塞式同步Ajax
+          const res = await this.$axios.get("/api?version=v61&appid=&appsecret=");
+          console.log("提交表单完成：", res);
+        };
+        getList();
+        console.log("假装正在清空表单.....");
+        console.log("假装正在关闭弹框.....");
 
       new Promise(resolve => {
         this.$axios.get("/api?version=v61&appid=&appsecret=").then(res => {
@@ -34,13 +42,6 @@ export default {
         console.log("假装正在关闭弹框.....");
       });
 
-      let getList = async () => {
-        const res = await this.$axios.get("/api?version=v61&appid=&appsecret=");
-        console.log("提交表单完成：", res);
-      };
-      getList();
-      console.log("假装正在清空表单.....");
-      console.log("假装正在关闭弹框.....");
 
       this.$axios
         .get("/api?version=v61&appid=&appsecret=")
