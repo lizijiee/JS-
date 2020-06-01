@@ -11,36 +11,122 @@
     pending->fulfilled，pending->rejected。
 
 */
-
 /* 
-    
+    1.先写Promise接收函数内部逻辑
+    2.先写Promise接收函数内部逻辑
 */
-function Promise(fn){
+/* 
+    Promise接收值为必须为一个函数
+*/
+// 画个fn对应Promise内部参数及函数关系图;
+function Promise(fn) {
+    // 2点限制： 形参限制，调用限制;
+    // new 创建一个对象，构造函数this，指向创建对象。
+    console.log(typeof this, this)
 
+    if (!(this instanceof Promise)) {
+        // if (typeof this !== 'object') {
+        throw new TypeError("Promise 必须采用new方式调用")
+    }
+    if (typeof fn !== 'function') {
+        throw new TypeError("Promise 参数不是一个函数")
+    }
+    this.state = 0; //存state值,pending
+    this.value = null; // 存promise值
+    this.callbacks = []; // 存放回调then方法中队列————数组
+
+    // 完成两点限制以后，promise怎样拿到传入函数参数，来对接下来States进行修改;
+    /* 
+        想到根据传入函数参数，考虑状态是否有改变，
+        Promise States:  
+        pending, fulfilled, or rejected.
+
+    */
+    // 函数作为一等公民
+    if (fn === function () {}) return;
+    doResolve(fn, this)
 }
 
-console.log(Promise)
-
-
-/* 
-    new了以后做了什么：
-    第一步创建，是一个新对象； 
-    第二步赋值，将该对象内置的原型对象设置为构造函数prototype引用的那个原型对象； 
-    第三步初始化，就是将该对象作为this参数调用构造函数，完成成员设置等初始化工作。
-    this 关键字指向当前创建的实例this 关键字指向当前创建的实例
-
-    JavaScript 中并没有真正的类，但JavaScript 中有构造函数和new 运算符。构造函数用来给实例对象初始化属性和值。任何JavaScript 函数都可以用做构造函数，构造函数必须使用new 运算符作为前缀来创建新的实例。
-    new 运算符改变了函数的执行上下文，同时改变了return 语句的行为。实际上，使用new和构造函数很类似于传统的实现了类的语言:
-
-    function Base(){
-        this.id=33333;
-    };
-    var obj = new Base();
-    var obj  = {};
-    obj.__proto__ = Base.prototype;
-    Base.prototype.toString = function() {
-        // this指向实例化对象obj;
-        return this.id;
+function resolve(self, val) {
+    // 传入参数promise及promise实参
+    self.state = 1;
+    self.value = val;
+    // 把收集.then中异步数组执行
+    // 只有promise后第一个then函数接收val
+    setTimeout(() => {
+        //若同步执行resolve 执行时，callbacks 还是空数组，后续.then无法执行
+        self.callbacks.forEach(fn => {
+            console.log(fn);
+            fn(val);
+        });
+    }, 0)
+    // promise 实例化对象,val为Promise函数中调用reslove的参数reslove(val)
+    // 状态改变以后怎样向下执行
+}
+Promise.prototype.then = function (onFulfilled, onRejected) {
+    if (this.state === 1) {
+        this.callbacks.push(onFulfilled)
+        return this //去Promise下找.then方法
     }
-    Base.call(obj);
-*/
+}
+
+// 封装state状态转换函数,回调函数封装;
+function doResolve(fn, promise) {
+    let done = false;
+    // false:pending,true:fulfilled,true:rejected
+    /* 
+        0: pending
+        1: fulfilled
+        2: rejected
+        3: adopted the states of another promise;
+    */
+    // new Promise((re)=>{re(11)},(re)=>{re(11)}).then((a)=>{console.log(a)})
+    // 我虽然不知道fn实参传入什么，但是传入函数，检查fn内部是否对形参函数进行调用,如果内部调用形参则状态变为对应state!!!!
+    // 未调用reslove和reject怎样处理？？
+    try {
+        fn(function (val) {
+            if (done) return;
+            done = true;
+            // _this.state = 1 
+            // 发现并不能直接修改,直接修改和this调用位置相关使用不方便
+            // 只是完成了状态的改变，reslove参数怎么拿到，继续往下传;————拿参数直接在传入函数形参中获取实参reslove中参数.reslove(3)=function(val){}()
+            // promise.state = 1 // fulfilled
+            resolve(promise, val)
+        }, function (reason) {
+            if (done) return;
+            done = true;
+            promise.state = 2 // rejected
+            // reject(promise, val)
+        })
+    } catch (err) {
+        if (done) return;
+        done = true;
+        // reject(err)
+        console.log("promise运行错误:", err)
+    }
+}
+
+
+
+let p = new Promise(resolve => {
+    console.log('同步执行');
+    resolve('同步执行');
+}).then(tip => {
+    console.log('then1', tip);
+}).then(tip => {
+    console.log('then2', tip);
+});
+
+setTimeout(() => {
+    p.then(tip => {
+        console.log('then3', tip);
+    })
+});
+
+// promise.then(function (value) {
+//     // success
+//     console.log(true, value)
+// }, function (value) {
+//     // failure
+//     console.log(false, value)
+// });

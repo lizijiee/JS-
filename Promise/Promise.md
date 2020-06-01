@@ -103,4 +103,82 @@ console.log(date,date1-date); //Wed May 27 2020 20:51:50 GMT+0800 (中国标准�
 > [Promise之你看得懂的Promise](https://juejin.im/post/5b32f552f265da59991155f0)
 > [你能手写一个Promise吗？Yes I promise。](https://juejin.im/post/5c41297cf265da613356d4ec)
 > [[JS基础] 6 - 执行机制, 同步异步, Event Loop, 宏任务, 微任务](https://zhuanlan.zhihu.com/p/137802406)
+> [图解 Promise 实现原理（一）—— 基础实现](https://zhuanlan.zhihu.com/p/58428287)
+>
 > 
+
+
+
+
+
+```javascript
+/* 
+    new了以后做了什么：
+    第一步创建，是一个新对象； 
+    第二步赋值，将该对象内置的原型对象设置为构造函数prototype引用的那个原型对象； 
+    第三步初始化，就是将该对象作为this参数调用构造函数，完成成员设置等初始化工作。
+    this 关键字指向当前创建的实例this 关键字指向当前创建的实例
+
+    JavaScript 中并没有真正的类，但JavaScript 中有构造函数和new 运算符。构造函数用来给实例对象初始化属性和值。任何JavaScript 函数都可以用做构造函数，构造函数必须使用new 运算符作为前缀来创建新的实例。
+    new 运算符改变了函数的执行上下文，同时改变了return 语句的行为。实际上，使用new和构造函数很类似于传统的实现了类的语言:
+
+    function Base(){
+        this.id=33333;
+    };
+    var obj = new Base();
+    var obj  = {};
+    obj.__proto__ = Base.prototype;
+    Base.prototype.toString = function() {
+        // this指向实例化对象obj;
+        return this.id;
+    }
+    Base.call(obj);
+*/
+```
+
+
+
+```javascript
+function Promise(fn) {
+    if (typeof this !== 'object') {
+        throw new TypeError("Promise 必须采用new方式调用")
+    }
+    if (typeof fn !== 'function') {
+        throw new TypeError("Promise 参数不是一个函数")
+    }
+    this.state = “pending”; //存state值
+    if (fn === function () {}) return;
+    doResolve(fn, this) //调用States状态切换函数
+}
+
+// Promise状态改变封装完成;
+function doResolve(fn, promise) {
+    let done = false;
+    /* 
+        0: pending
+        1: fulfilled
+        2: rejected
+        3: adopted the states of another promise;
+        先不采用数字，直接采用字符串看起来更加直观。
+    */
+    try {
+        fn(function (val) {
+            if (done) return;
+            done = true;
+            promise.state = “fulfilled”
+            // resolve(promise, val)
+        }, function (reason) {
+            if (done) return;
+            done = true;
+            promise.state = “rejected”
+            // reject(promise, val)
+        })
+    } catch (err) {
+        if (done) return;
+        done = true;
+		promise.state = “rejected”
+       // reject(err)
+    }
+}
+```
+

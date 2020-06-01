@@ -52,7 +52,7 @@ function tryCallTwo(fn, a, b) {
 // module.exports = Promise;
 
 function Promise(fn) {
-  console.log()
+  console.log(this,typeof this)
   if (typeof this !== 'object') {
     throw new TypeError('Promises must be constructed via new');
   }
@@ -60,9 +60,9 @@ function Promise(fn) {
     throw new TypeError('Promise constructor\'s argument is not a function');
   }
   this._U = 0;
-  this._V = 0;
-  this._W = null;
-  this._X = null;
+  this._V = 0; // state
+  this._W = null; //　value值
+  this._X = null; // 队列数组
   if (fn === noop) return;
   doResolve(fn, this);
 }
