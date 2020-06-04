@@ -12,8 +12,8 @@
 
 */
 /* 
-    1.先写Promise接收函数内部逻辑
-    2.先写Promise接收函数内部逻辑
+    1.先写Promise接收函数内部逻辑。
+    2.原型上.then方法。
 */
 /* 
     Promise接收值为必须为一个函数
@@ -22,10 +22,9 @@
 function Promise(fn) {
     // 2点限制： 形参限制，调用限制;
     // new 创建一个对象，构造函数this，指向创建对象。
-    console.log(typeof this, this)
-
-    if (!(this instanceof Promise)) {
-        // if (typeof this !== 'object') {
+    // console.log(typeof this, this)
+    // if (!(this instanceof Promise)) {
+    if (typeof this !== 'object') {
         throw new TypeError("Promise 必须采用new方式调用")
     }
     if (typeof fn !== 'function') {
@@ -48,28 +47,68 @@ function Promise(fn) {
 }
 
 function resolve(self, val) {
+    if (val && (typeof val === 'object' || typeof val === "function")) {
+        let then = val.then;
+        if (typeof then === 'function') {
+            console.log(5555, val, )
+            // doResolve(then.bind(val),self)
+            // then.call(val)
+            // 影响第一个promise.then执行,修改指针连接到下一个promise
+            return
+        }
+    }
     // 传入参数promise及promise实参
     self.state = 1;
     self.value = val;
     // 把收集.then中异步数组执行
     // 只有promise后第一个then函数接收val
-    setTimeout(() => {
-        //若同步执行resolve 执行时，callbacks 还是空数组，后续.then无法执行
-        self.callbacks.forEach(fn => {
-            console.log(fn);
-            fn(val);
-        });
-    }, 0)
+    // setTimeout(() => {
+    //若同步执行resolve 执行时，callbacks 还是空数组，后续.then无法执行
+    self.callbacks.forEach(fn => {
+        console.log("58", fn);
+        fn(val);
+    });
+    // }, 0)
     // promise 实例化对象,val为Promise函数中调用reslove的参数reslove(val)
     // 状态改变以后怎样向下执行
 }
 Promise.prototype.then = function (onFulfilled, onRejected) {
-    if (this.state === 1) {
-        this.callbacks.push(onFulfilled)
-        return this //去Promise下找.then方法
-    }
+    /* 
+     if (this.state === 0) {
+         // reslove未执行,存入callbacks
+         this.callbacks.push(onFulfilled)
+     } else {
+         // reslove执行之后,调用.then立即执行onFulfilled回调
+         onFulfilled(this.value)
+     }
+    */
+    return new Promise(resolve => {
+        handle.bind(this)({
+            onFulfilled: onFulfilled || null,
+            resolve
+        })
+    });
+    // return this 去Promise下找.then方法
 }
 
+function handle(callback) {
+    // 因为每次state都是新的需要让后面一直用前面的state
+    if (this.state === 0) {
+        //以state判断reslove是否执行；
+        this.callbacks.push(callback.onFulfilled)
+        return
+    }
+    // then中函数为空，reslove中值穿透向下传递
+    if (!callback.onFulfilled) {
+        // 把上一个值传下去
+        callback.resolve(this.value);
+        return
+    }
+    // 存返回值，向下传递
+    let nextVal = callback.onFulfilled(this.value)
+    callback.resolve(nextVal); //改变state
+    // 返回最后一次的value和state
+}
 // 封装state状态转换函数,回调函数封装;
 function doResolve(fn, promise) {
     let done = false;
@@ -109,19 +148,27 @@ function doResolve(fn, promise) {
 
 
 let p = new Promise(resolve => {
-    console.log('同步执行');
+    console.log('开始同步执行')
     resolve('同步执行');
 }).then(tip => {
     console.log('then1', tip);
+    return new Promise(resolve => {
+        resolve(8888888)
+    }).then((num) => {
+        console.log(num)
+    }).then(() => {
+        console.log(999)
+        return 232323
+    })
 }).then(tip => {
     console.log('then2', tip);
 });
 
-setTimeout(() => {
-    p.then(tip => {
-        console.log('then3', tip);
-    })
-});
+// setTimeout(() => {
+//     p.then(tip => {
+//         console.log('then3', tip);
+//     })
+// }, 3000);
 
 // promise.then(function (value) {
 //     // success
