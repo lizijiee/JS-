@@ -19,7 +19,7 @@
     Promise接收值为必须为一个函数
 */
 // 画个fn对应Promise内部参数及函数关系图;
-function Promise(fn) {
+function Promise(executor) {
     // 2点限制： 形参限制，调用限制;
     // new 创建一个对象，构造函数this，指向创建对象。
     // console.log(typeof this, this)
@@ -27,7 +27,7 @@ function Promise(fn) {
     if (typeof this !== 'object') {
         throw new TypeError("Promise 必须采用new方式调用")
     }
-    if (typeof fn !== 'function') {
+    if (typeof executor !== 'function') {
         throw new TypeError("Promise 参数不是一个函数")
     }
     this.state = 0; //存state值,pending
@@ -42,16 +42,33 @@ function Promise(fn) {
 
     */
     // 函数作为一等公民
-    if (fn === function () {}) return;
-    doResolve(fn, this)
+    if (executor === function () {}) return;
+    doResolve(executor, this);
 }
 
 function resolve(self, val) {
+    console.log("value值：", val, self)
+    //value值： 232323 Promise { state: 0, value: null, callbacks: [] }
     if (val && (typeof val === 'object' || typeof val === "function")) {
         let then = val.then;
         if (typeof then === 'function') {
-            console.log(5555, val, )
-            // doResolve(then.bind(val),self)
+            // console.log(5555, self, val, then)
+            // 相当重新new 了一下,把当前和后面建立联系
+            // 基于then函数
+            // val———旧promise最后结果
+            // Promise(fn) doResolve(fn, this)
+            console.log("~~~~~~~~begin~~~~~", val, val.then)
+            // 递归调用
+            // 如果 newValue.then 是 function 则认为 newValue 是 Promise
+            // 修正 this 指向，递归执行 doResolve 函数，直到 newValue 是一个普通值
+            //主要是考虑到newValue 是其他框架的 Promise(比如：global.Promise，nodejs 内部的 Promise 实现）的构造实例。
+            // 重新调用 doResolve,继续执行当前类型的Pormise then方法。
+            // doResolve(then.bind(val), self)
+            // 最后，它尝试使用返回的新值再次解析该函数​​
+            doResolve(bind(then, val), self)
+            console.log("~~~~~~~~ending~~~~~")
+            // 为啥使用以后会继续向下执行，之前为啥停止?????
+            //  resolve(self, val)
             // then.call(val)
             // 影响第一个promise.then执行,修改指针连接到下一个promise
             return
@@ -82,6 +99,9 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
          onFulfilled(this.value)
      }
     */
+
+    // this——为执行完成后的实例
+    // 例如：Promise {state: 1, value: "同步执行", callbacks: Array(0)}
     return new Promise(resolve => {
         handle.bind(this)({
             onFulfilled: onFulfilled || null,
@@ -106,11 +126,13 @@ function handle(callback) {
     }
     // 存返回值，向下传递
     let nextVal = callback.onFulfilled(this.value)
+    console.log("callback.onFulfilled：", callback.onFulfilled, nextVal)
     callback.resolve(nextVal); //改变state
     // 返回最后一次的value和state
 }
 // 封装state状态转换函数,回调函数封装;
 function doResolve(fn, promise) {
+    console.log("doResolvedoResolvedoResolvedoResolve",fn)
     let done = false;
     // false:pending,true:fulfilled,true:rejected
     /* 
@@ -123,7 +145,9 @@ function doResolve(fn, promise) {
     // 我虽然不知道fn实参传入什么，但是传入函数，检查fn内部是否对形参函数进行调用,如果内部调用形参则状态变为对应state!!!!
     // 未调用reslove和reject怎样处理？？
     try {
+        // fn(reslove,reject){reslove(aaa)实参传入封装自然接收传入值;}
         fn(function (val) {
+            console.log("val值：", val)
             if (done) return;
             done = true;
             // _this.state = 1 
@@ -162,6 +186,8 @@ let p = new Promise(resolve => {
     })
 }).then(tip => {
     console.log('then2', tip);
+}).then(() => {
+    console.log(857857857)
 });
 
 // setTimeout(() => {
