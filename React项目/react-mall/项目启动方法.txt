@@ -1,1 +1,0 @@
-项目采用数据mongoose和 node mongoose.js将数据存入数据库

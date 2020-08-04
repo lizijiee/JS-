@@ -182,3 +182,21 @@ function doResolve(fn, promise) {
 }
 ```
 
+
+
+[图解 Promise 实现原理（二）—— Promise 链式调用](https://zhuanlan.zhihu.com/p/102017798)
+[JS魔法堂：剖析源码理解Promises/A规范](https://www.cnblogs.com/fsjohnhuang/p/4135149.html)
+[PromiseA+规范](https://promisesaplus.com/)
+[最简实现Promise，支持异步链式调用（20行）](https://juejin.im/post/5e6f4579f265da576429a907)
+[Promise 源码浅析](https://www.dddog.com.cn/tutorial/promise.html)
+[How do Promises work under the hood?](https://dev.to/captainsafia/how-do-promises-work-under-the-hood-4edp)
+[從使用角度漸進式剖析Promise原始碼](https://codertw.com/ios/20937/)
+[从使用角度渐进式剖析Promise源码](https://segmentfault.com/a/1190000014368256)
+[Promise原理解析，你值得拥有](https://zhuanlan.zhihu.com/p/84660140)
+[实例promise -resolve流程源码解析](https://zhuanlan.zhihu.com/p/32161962)
+[写一个我自己的 promise](https://eminoda.github.io/2019/07/12/js-my-promise/)
+[How JavaScript promises actually work from the inside out](https://www.freecodecamp.org/news/how-javascript-promises-actually-work-from-the-inside-out-76698bb7210b/)
+
+
+
+ 
